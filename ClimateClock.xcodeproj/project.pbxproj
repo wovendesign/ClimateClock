@@ -40,6 +40,26 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F62A7A932B48704A002A7E25 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F62A7AAD2B48708E002A7E25 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +73,8 @@
 		F62A7A6B2B48700B002A7E25 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F62A7A6D2B48700C002A7E25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F62A7A702B48700C002A7E25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F62A7A812B487048002A7E25 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F62A7A832B487048002A7E25 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +100,7 @@
 			children = (
 				F62A7A562B48700A002A7E25 /* ClimateClock */,
 				F62A7A682B48700B002A7E25 /* ClimateClock Watch App */,
+				F62A7A802B487048002A7E25 /* Frameworks */,
 				F62A7A552B48700A002A7E25 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,6 +152,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F62A7A802B487048002A7E25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F62A7A812B487048002A7E25 /* WidgetKit.framework */,
+				F62A7A832B487048002A7E25 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +172,7 @@
 				F62A7A512B48700A002A7E25 /* Frameworks */,
 				F62A7A522B48700A002A7E25 /* Resources */,
 				F62A7A772B48700C002A7E25 /* Embed Watch Content */,
+				F62A7AAD2B48708E002A7E25 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -158,6 +191,7 @@
 				F62A7A602B48700B002A7E25 /* Sources */,
 				F62A7A612B48700B002A7E25 /* Frameworks */,
 				F62A7A622B48700B002A7E25 /* Resources */,
+				F62A7A932B48704A002A7E25 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -373,6 +407,7 @@
 		F62A7A752B48700C002A7E25 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -402,6 +437,7 @@
 		F62A7A762B48700C002A7E25 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
