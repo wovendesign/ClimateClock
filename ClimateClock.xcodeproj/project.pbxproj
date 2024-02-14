@@ -28,6 +28,7 @@
 		F62DCB842B7BD28200855D88 /* TheSeasonsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62DCB812B7BD28200855D88 /* TheSeasonsRegular.ttf */; };
 		F62DCB8D2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */; };
 		F62DCB8E2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */; };
+		F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */; };
 		F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BD67F2B7D2C590015ECBE /* Graph.swift */; };
 		F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570942B7D00240001DCE7 /* GraphView.swift */; };
 		F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570962B7D00320001DCE7 /* GraphViewModel.swift */; };
@@ -108,6 +109,7 @@
 		F62DCB812B7BD28200855D88 /* TheSeasonsRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TheSeasonsRegular.ttf; sourceTree = "<group>"; };
 		F62DCB852B7BD4BD00855D88 /* ClimateClock-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ClimateClock-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TheSeasonsRegular.ttf; path = Shared/fonts/TheSeasonsRegular.ttf; sourceTree = SOURCE_ROOT; };
+		F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		F67BD67F2B7D2C590015ECBE /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		F6C570942B7D00240001DCE7 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		F6C570962B7D00320001DCE7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				F6C570942B7D00240001DCE7 /* GraphView.swift */,
 				F6C570962B7D00320001DCE7 /* GraphViewModel.swift */,
+				F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */,
 				F62A7A6C2B48700B002A7E25 /* ContentView.swift in Sources */,
 				F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */,
+				F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */,
 				F62A7AC52B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */,
 				F62A7A6A2B48700B002A7E25 /* ClimateClockApp.swift in Sources */,
 				F6C5709A2B7D027C0001DCE7 /* PredictionModel.swift in Sources */,

@@ -11,8 +11,11 @@ import Charts
 struct ContentView: View {
     var body: some View {
 		TabView {
+			CountdownView()
 			GraphView()
+			CountdownView()
 		}
+		.tabViewStyle(.verticalPage)
     }
 }
 
