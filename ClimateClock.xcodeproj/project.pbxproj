@@ -25,6 +25,13 @@
 		F62A7AC42B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7AC32B496B73002A7E25 /* ClimateClockAPIFetch.swift */; };
 		F62A7AC52B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7AC32B496B73002A7E25 /* ClimateClockAPIFetch.swift */; };
 		F62A7AC62B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7AC32B496B73002A7E25 /* ClimateClockAPIFetch.swift */; };
+		F62DCB842B7BD28200855D88 /* TheSeasonsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62DCB812B7BD28200855D88 /* TheSeasonsRegular.ttf */; };
+		F62DCB8D2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */; };
+		F62DCB8E2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */; };
+		F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BD67F2B7D2C590015ECBE /* Graph.swift */; };
+		F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570942B7D00240001DCE7 /* GraphView.swift */; };
+		F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570962B7D00320001DCE7 /* GraphViewModel.swift */; };
+		F6C5709A2B7D027C0001DCE7 /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570992B7D027C0001DCE7 /* PredictionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +105,13 @@
 		F62A7ABA2B487136002A7E25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F62A7ABC2B487136002A7E25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F62A7AC32B496B73002A7E25 /* ClimateClockAPIFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateClockAPIFetch.swift; sourceTree = "<group>"; };
+		F62DCB812B7BD28200855D88 /* TheSeasonsRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TheSeasonsRegular.ttf; sourceTree = "<group>"; };
+		F62DCB852B7BD4BD00855D88 /* ClimateClock-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ClimateClock-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TheSeasonsRegular.ttf; path = Shared/fonts/TheSeasonsRegular.ttf; sourceTree = SOURCE_ROOT; };
+		F67BD67F2B7D2C590015ECBE /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		F6C570942B7D00240001DCE7 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		F6C570962B7D00320001DCE7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
+		F6C570992B7D027C0001DCE7 /* PredictionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +144,7 @@
 		F62A7A4B2B48700A002A7E25 = {
 			isa = PBXGroup;
 			children = (
+				F62DCB7F2B7BD26C00855D88 /* Shared */,
 				F62A7A562B48700A002A7E25 /* ClimateClock */,
 				F62A7A682B48700B002A7E25 /* ClimateClock Watch App */,
 				F62A7AB52B487134002A7E25 /* Deadline Complication */,
@@ -170,6 +185,10 @@
 		F62A7A682B48700B002A7E25 /* ClimateClock Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				F6C570982B7D02670001DCE7 /* Views */,
+				F6C570932B7D00130001DCE7 /* Screens */,
+				F62DCB872B7BD66A00855D88 /* fonts */,
+				F62DCB852B7BD4BD00855D88 /* ClimateClock-Watch-App-Info.plist */,
 				F62A7A692B48700B002A7E25 /* ClimateClockApp.swift */,
 				F62A7A6B2B48700B002A7E25 /* ContentView.swift */,
 				F62A7A6D2B48700C002A7E25 /* Assets.xcassets */,
@@ -205,6 +224,48 @@
 				F62A7AC32B496B73002A7E25 /* ClimateClockAPIFetch.swift */,
 			);
 			path = "Deadline Complication";
+			sourceTree = "<group>";
+		};
+		F62DCB7F2B7BD26C00855D88 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F62DCB802B7BD27400855D88 /* fonts */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F62DCB802B7BD27400855D88 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F62DCB812B7BD28200855D88 /* TheSeasonsRegular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		F62DCB872B7BD66A00855D88 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		F6C570932B7D00130001DCE7 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F6C570942B7D00240001DCE7 /* GraphView.swift */,
+				F6C570962B7D00320001DCE7 /* GraphViewModel.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F6C570982B7D02670001DCE7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F6C570992B7D027C0001DCE7 /* PredictionModel.swift */,
+				F67BD67F2B7D2C590015ECBE /* Graph.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +335,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					F62A7A532B48700A002A7E25 = {
 						CreatedOnToolsVersion = 15.1;
@@ -312,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F62DCB8D2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */,
 				F62A7A5F2B48700B002A7E25 /* Preview Assets.xcassets in Resources */,
 				F62A7A5C2B48700B002A7E25 /* Assets.xcassets in Resources */,
 			);
@@ -321,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F62DCB8E2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */,
 				F62A7A712B48700C002A7E25 /* Preview Assets.xcassets in Resources */,
 				F62A7A6E2B48700C002A7E25 /* Assets.xcassets in Resources */,
 			);
@@ -330,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F62DCB842B7BD28200855D88 /* TheSeasonsRegular.ttf in Resources */,
 				F62A7ABB2B487136002A7E25 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,9 +415,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */,
 				F62A7A6C2B48700B002A7E25 /* ContentView.swift in Sources */,
+				F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */,
 				F62A7AC52B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */,
 				F62A7A6A2B48700B002A7E25 /* ClimateClockApp.swift in Sources */,
+				F6C5709A2B7D027C0001DCE7 /* PredictionModel.swift in Sources */,
+				F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +485,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -478,6 +547,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -506,9 +576,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = XNG76666AC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = ClimateClock;
+				INFOPLIST_FILE = "ClimateClock-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Climate Clock Watch App Bundle Name";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = design.woven.ClimateClock;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -537,9 +609,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = XNG76666AC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = ClimateClock;
+				INFOPLIST_FILE = "ClimateClock-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Climate Clock Watch App Bundle Name";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = design.woven.ClimateClock;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -569,6 +643,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock/Preview Content\"";
+				DEVELOPMENT_TEAM = XNG76666AC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = ClimateClock;
@@ -601,6 +676,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock/Preview Content\"";
+				DEVELOPMENT_TEAM = XNG76666AC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = ClimateClock;
@@ -632,6 +708,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XNG76666AC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Deadline Complication/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Deadline Complication";
@@ -661,6 +738,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XNG76666AC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Deadline Complication/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Deadline Complication";

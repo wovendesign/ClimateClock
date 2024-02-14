@@ -123,31 +123,81 @@ struct Deadline_ComplicationEntryView : View {
     var entry: DeadlineProvider.Entry
     
     var body: some View {
+        let deadline = Calendar.current.dateComponents([.hour, .minute], from: parseDateString(entry.deadline)!)
+        
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let year = Calendar.current.component(.year, from: tomorrow)
-        let month = Calendar.current.component(.month, from: tomorrow)
-        let day = Calendar.current.component(.day, from: tomorrow)
-        let components = DateComponents(year: year, month: month, day: day, hour: 0, minute: 0)
-
-        let timer = Calendar.current.date(from: components)!
+        let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        let tomorrowComponents = Calendar.current.dateComponents([.year, .month, .day], from: tomorrow)
+        let tomorrowTimerComponents = DateComponents(
+            year: tomorrowComponents.year ?? 0,
+            month: tomorrowComponents.month ?? 0,
+            day: tomorrowComponents.day,
+            hour: deadline.hour,
+            minute: deadline.minute
+        )
+        let todayTimerComponents = DateComponents(
+            year: todayComponents.year ?? 0,
+            month: todayComponents.month ?? 0,
+            day: todayComponents.day,
+            hour: deadline.hour,
+            minute: deadline.minute
+        )
+        
+        let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
+        let isTomorrow = Calendar.current.isDateInToday(tomorrowTimer)
+        let todayTimer = Calendar.current.date(from: todayTimerComponents)!
         
         
-        HStack {
-            
-            HStack(alignment: .firstTextBaseline, content: {
-                Text(String(diff(deadline: entry.deadline).years)).font(.custom("Times New Roman", size: 32)).foregroundStyle(.red).fontWidth(.compressed)
-//                Text("Y").font(.system(size: 16)).foregroundStyle(.red).fontWidth(.compressed)
-            })
-            HStack(alignment: .firstTextBaseline, content: {
-                Text(String(diff(deadline: entry.deadline).days))
-                    .font(.system(size: 32, design: .none).width(.compressed))
-                    .foregroundStyle(.red)
+        VStack(
+            alignment: .leading
+        ) {
+            HStack {
+                Image(systemName: "flame.circle.fill")
+                Text("1,5˚C Deadline").font(.headline)
+            }
+            HStack (
+                spacing: 6
+            ) {
+                HStack(
+                    alignment: .firstTextBaseline,
+                    spacing: 0
+                ) {
+                    Text(String(diff(deadline: entry.deadline).years))
+                        .font(.system(size: 28))
+                        .foregroundStyle(.red)
+                        .fontWidth(.compressed)
+                        .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    Text("Y")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.red)
+                        .fontWidth(.compressed)
+                }
+                HStack(
+                    alignment: .firstTextBaseline,
+                    spacing: 0
+                ) {
+                    Text(String(diff(deadline: entry.deadline).days))
+                        .font(.system(size: 28))
+                        .foregroundStyle(.orange)
+                        .fontWidth(.compressed)
+                        .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    Text("D")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.orange)
+                        .fontWidth(.compressed)
+                }
+                Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
+//                    .font(.system(size: 28))
+                    .font(Font.custom("TheSeasons-Regular", size: 18))
+                    .foregroundStyle(.yellow)
                     .fontWidth(.compressed)
-                    .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-//                Text("D").font(.system(size: 16)).foregroundStyle(.orange).fontWidth(.compressed)
-            })
-            Text(timer, style: .timer).font(.system(size: 32)).foregroundStyle(.orange).fontWidth(.compressed).allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .monospacedDigit()
+                    .kerning(-1)
+                    .padding(.leading, -4)
+                    .widgetAccentable()
+            }
         }
+        
     }
 }
 
@@ -167,8 +217,8 @@ struct Deadline_Complication: Widget {
             Deadline_ComplicationEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("Game Status")
-        .description("Shows an overview of your game status")
+        .configurationDisplayName("1,5˚C Deadline")
+        .description("Shows remaining time to reach 1,5˚C goal")
         .supportedFamilies([.accessoryRectangular])
     }
 }
