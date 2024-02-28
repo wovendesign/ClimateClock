@@ -10,7 +10,13 @@ import Charts
 
 struct ContentView: View {
     var body: some View {
-        GraphView()
+		TabView {
+			CountdownView()
+			GraphView()
+			FiguresView()
+			AboutView()
+		}
+		.tabViewStyle(.verticalPage)
     }
 }
 
