@@ -17,7 +17,7 @@ struct Test: Identifiable {
 
 struct GraphView: View {
     
-    @ObservedObject var viewModel = GraphViewModel()
+    @StateObject var viewModel = GraphViewModel()
     
     var body: some View {
         VStack(alignment: .leading) {
