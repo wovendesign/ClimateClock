@@ -14,6 +14,7 @@ struct Graph: View {
 	var color: Color
 	var gridLines: [Date]
 	
+	
     var body: some View {
 		Chart {
 			ForEach(emissions) { emission in
@@ -39,6 +40,7 @@ struct Graph: View {
 				.lineStyle(StrokeStyle(lineWidth: 6,
 									   lineCap: .round))
 				.opacity(0.5)
+				
 			}
 		}
 		.chartLegend(.hidden)
@@ -60,8 +62,9 @@ struct Graph: View {
 			}
 		}
 		.chartYScale(domain: 0...4)
+		.animation(.linear(duration: 1), value: emissions)
 		.frame(maxHeight: 120)
-    }
+	}
 }
 
 #Preview {

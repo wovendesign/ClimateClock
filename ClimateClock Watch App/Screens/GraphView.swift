@@ -26,6 +26,7 @@ struct GraphView: View {
 				  temperatures: viewModel.currentModel?.temperatures ?? [],
 				  color: viewModel.currentModel?.color ?? .cyan,
 				  gridLines: viewModel.gridLines)
+			
             
             HStack {
                 Text("1980")

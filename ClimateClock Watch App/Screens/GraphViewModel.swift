@@ -11,7 +11,8 @@ enum LineType {
 	case temperature
 	case emission
 }
-struct EmissionData: Identifiable {
+
+struct EmissionData: Identifiable, Equatable {
 	var id = UUID()
 	
 	var type: LineType

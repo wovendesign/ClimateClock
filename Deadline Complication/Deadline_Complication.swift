@@ -187,8 +187,7 @@ struct Deadline_ComplicationEntryView : View {
                         .fontWidth(.compressed)
                 }
                 Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
-//                    .font(.system(size: 28))
-                    .font(Font.custom("TheSeasons-Regular", size: 18))
+                    .font(.system(size: 28))
                     .foregroundStyle(.yellow)
                     .fontWidth(.compressed)
                     .monospacedDigit()
@@ -205,6 +204,7 @@ struct Deadline_ComplicationEntryView : View {
 struct DeadlineComplications: WidgetBundle {
     var body: some Widget {
         Deadline_Complication()
+//			Lifeline
     }
 }
 

@@ -14,6 +14,7 @@ struct ContentView: View {
 			CountdownView()
 			GraphView()
 			FiguresView()
+			NewsView()
 			AboutView()
 		}
 		.tabViewStyle(.verticalPage)

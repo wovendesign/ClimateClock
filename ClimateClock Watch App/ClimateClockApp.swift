@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct ClimateClock_Watch_AppApp: App {
+struct ClimateClock_Watch_App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
