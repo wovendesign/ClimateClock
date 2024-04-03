@@ -8,8 +8,6 @@
 		<string>com.apple.widgetkit-extension</string>
 	</dict>
 	<key>UIAppFonts</key>
-	<array>
-		<string>TheSeasonsRegular.ttf</string>
-	</array>
+	<array/>
 </dict>
 </plist>

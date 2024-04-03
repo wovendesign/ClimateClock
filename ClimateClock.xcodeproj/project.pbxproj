@@ -33,9 +33,6 @@
 		F62A7AC42B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7AC32B496B73002A7E25 /* ClimateClockAPIFetch.swift */; };
 		F62A7AC52B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7AC32B496B73002A7E25 /* ClimateClockAPIFetch.swift */; };
 		F62A7AC62B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7AC32B496B73002A7E25 /* ClimateClockAPIFetch.swift */; };
-		F62DCB842B7BD28200855D88 /* TheSeasonsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62DCB812B7BD28200855D88 /* TheSeasonsRegular.ttf */; };
-		F62DCB8D2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */; };
-		F62DCB8E2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */; };
 		F62EED5C2BBB2E5C00352E46 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EED592BBB2E5C00352E46 /* NetworkManager.swift */; };
 		F62EED5D2BBB2E5C00352E46 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EED592BBB2E5C00352E46 /* NetworkManager.swift */; };
 		F62EED5E2BBB2E5C00352E46 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EED592BBB2E5C00352E46 /* NetworkManager.swift */; };
@@ -56,6 +53,12 @@
 		F6D315DD2BBC461000C75299 /* App.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DC2BBC461000C75299 /* App.State.swift */; };
 		F6D315DF2BBC462F00C75299 /* App.Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DE2BBC462F00C75299 /* App.Store.swift */; };
 		F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315E02BBD85FD00C75299 /* NewsListItem.swift */; };
+		F6D315E32BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */; };
+		F6D315E42BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */; };
+		F6D315E52BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */; };
+		F6D315E72BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
+		F6D315E82BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
+		F6D315E92BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,9 +136,7 @@
 		F62A7ABA2B487136002A7E25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F62A7ABC2B487136002A7E25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F62A7AC32B496B73002A7E25 /* ClimateClockAPIFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateClockAPIFetch.swift; sourceTree = "<group>"; };
-		F62DCB812B7BD28200855D88 /* TheSeasonsRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TheSeasonsRegular.ttf; sourceTree = "<group>"; };
 		F62DCB852B7BD4BD00855D88 /* ClimateClock-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ClimateClock-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
-		F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TheSeasonsRegular.ttf; path = Shared/fonts/TheSeasonsRegular.ttf; sourceTree = SOURCE_ROOT; };
 		F62EED592BBB2E5C00352E46 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F62EED5A2BBB2E5C00352E46 /* CCError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCError.swift; sourceTree = "<group>"; };
 		F643B94F2B8F7536006D1AC5 /* FiguresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiguresView.swift; sourceTree = "<group>"; };
@@ -151,6 +152,8 @@
 		F6D315DC2BBC461000C75299 /* App.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.State.swift; sourceTree = "<group>"; };
 		F6D315DE2BBC462F00C75299 /* App.Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.Store.swift; sourceTree = "<group>"; };
 		F6D315E02BBD85FD00C75299 /* NewsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItem.swift; sourceTree = "<group>"; };
+		F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,7 +247,6 @@
 			children = (
 				F6C570982B7D02670001DCE7 /* Views */,
 				F6C570932B7D00130001DCE7 /* Screens */,
-				F62DCB872B7BD66A00855D88 /* fonts */,
 				F62DCB852B7BD4BD00855D88 /* ClimateClock-Watch-App-Info.plist */,
 				F62A7A692B48700B002A7E25 /* App.ClimateClock.swift */,
 				F6D315DC2BBC461000C75299 /* App.State.swift */,
@@ -301,15 +303,8 @@
 		F62DCB802B7BD27400855D88 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				F62DCB812B7BD28200855D88 /* TheSeasonsRegular.ttf */,
-			);
-			path = fonts;
-			sourceTree = "<group>";
-		};
-		F62DCB872B7BD66A00855D88 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				F62DCB8C2B7BD69F00855D88 /* TheSeasonsRegular.ttf */,
+				F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */,
+				F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -474,9 +469,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F62DCB8D2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */,
 				F60B29AD2B8F91F900E41091 /* Solar Analogue.watchface in Resources */,
+				F6D315E72BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */,
 				F62A7A5F2B48700B002A7E25 /* Preview Assets.xcassets in Resources */,
+				F6D315E32BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
 				F62A7A5C2B48700B002A7E25 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,9 +481,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F62DCB8E2B7BD69F00855D88 /* TheSeasonsRegular.ttf in Resources */,
 				F62A7A712B48700C002A7E25 /* Preview Assets.xcassets in Resources */,
+				F6D315E82BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */,
 				F60B29AE2B8F91F900E41091 /* Solar Analogue.watchface in Resources */,
+				F6D315E42BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
 				F62A7A6E2B48700C002A7E25 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,7 +493,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F62DCB842B7BD28200855D88 /* TheSeasonsRegular.ttf in Resources */,
+				F6D315E92BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */,
+				F6D315E52BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
 				F60B29AF2B8F91F900E41091 /* Solar Analogue.watchface in Resources */,
 				F62A7ABB2B487136002A7E25 /* Assets.xcassets in Resources */,
 			);

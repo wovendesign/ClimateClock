@@ -31,11 +31,18 @@ struct NewsListItem: View {
 		VStack(alignment: .leading, spacing: 4) {
 			RelativeTimeCell(pushDate: newsItem.pushDate)
 			Text(newsItem.headline)
-				.fontDesign(.serif)
+				.font(
+					.custom("Oswald", size: 16)
+					.weight(.regular)
+				)
+				.tracking(0.32)
 				.frame(maxWidth: .infinity, alignment: .leading)
 			
 			Text(newsItem.source ?? "")
-				.font(.system(size: 12, weight: .semibold))
+				.font(
+					.custom("Assistant", size: 12)
+					.weight(.semibold)
+				)
 				.foregroundStyle(Color.gray)
 		}
 		.padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
@@ -67,8 +74,6 @@ struct RelativeTimeCell: View {
 		guard let pushDate else {
 			return "No Date"
 		}
-
-		
 		if(pushDate.distance(to: Date()) < 86_400) {
 			return "TODAY"
 		}
@@ -79,14 +84,23 @@ struct RelativeTimeCell: View {
 		if(pushDate != nil) {
 			if(relativeDate == "TODAY") {
 				Text(relativeDate)
-					.font(.system(size: 12, weight: .semibold))
-					.padding(EdgeInsets(top: 1.5, leading: 6, bottom: 2, trailing: 6))
+					.font(
+						.custom("Oswald", size: 12)
+						.weight(.semibold)
+					)
+					.padding(EdgeInsets(top: 1.5, 
+										leading: 6,
+										bottom: 2,
+										trailing: 6))
 					.foregroundStyle(.navy)
 					.background(.aquaBlue75)
 					.clipShape(.capsule)
 			} else {
 				Text(relativeDate)
-					.font(.system(size: 12, weight: .semibold))
+					.font(
+						.custom("Oswald", size: 12)
+						.weight(.semibold)
+					)
 					.foregroundStyle(.gray)
 			}
 		}
