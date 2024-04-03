@@ -10,15 +10,17 @@ import Charts
 
 struct ContentView: View {
 	@StateObject var viewModel = ContentViewModel()
-	@ObservedObject var newsController = NewsController(store: .newsStore)
+	@StateObject var newsController = NewsController(store: .newsStore)
 
 	
     var body: some View {
 		TabView {
+			
 			CountdownView()
 			GraphView()
-			FiguresView()
 			NewsView()
+				.environmentObject(newsController)
+			FiguresView()
 			AboutView()
 		}
 		.tabViewStyle(.verticalPage)

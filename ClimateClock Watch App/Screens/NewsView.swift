@@ -9,13 +9,14 @@ import SwiftUI
 import Boutique
 
 struct NewsView: View {
-	@Stored(in: .newsStore) var news: [NewsItem]
+	@State var news: [NewsItem] = []
+	@EnvironmentObject private var newsController: NewsController
 	
 	var body: some View {
 		ScrollView {
-			VStack {
+			LazyVStack {
 				ForEach(news) { item in
-					NewsListItem(newsItem: item)
+					NewsListItem(newsController: newsController, newsItem: item)
 				}
 			}
 		}
@@ -27,7 +28,12 @@ struct NewsView: View {
 			.opacity(1)
 		)
 		.contentMargins(.vertical, 8, for: .scrollContent)
-		.scrollTargetBehavior(.viewAligned)
+//		.onReceive(news, perform: {
+//			self.news = $0
+//		})
+		.onReceive(self.newsController.$news.$items, perform: {
+			self.news = $0.sorted(by: {$0.pushDate ?? Date() > $1.pushDate ?? Date()}).filter{$0.pushDate?.distance(to: Date()) ?? 0 > 0}
+		})
 	}
 }
 

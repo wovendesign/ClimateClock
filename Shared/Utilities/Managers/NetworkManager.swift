@@ -28,12 +28,12 @@ final class NetworkManager {
 //				completed(.failure(.unableToComplete))
 //				return
 //			}
-//			
+//
 //			guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
 //				completed(.failure(.invalidResponse))
 //				return
 //			}
-//			
+//
 //			guard let data = data else {
 //				completed(.failure(.invalidData))
 //				return
@@ -44,6 +44,7 @@ final class NetworkManager {
 			let decodedResponse = try decoder.decode(ClimateClockResponse.self, from: task)
 			return .success(decodedResponse)
 		} catch {
+			print(error)
 			return .failure(.invalidData)
 		}
 	}

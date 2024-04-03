@@ -56,6 +56,18 @@ final class NewsController: ObservableObject {
 	}
 	
 	func saveNews(news: [NewsItem]) async throws {
-		try await self.$news.insert(news)
+		let sortedNews: [NewsItem] = news.enumerated().map {
+			let today = Calendar.current.date(byAdding: .day, value: $0-1, to: Date())
+			var temp = $1
+			temp.pushDate = today
+			return temp
+		}
+		
+		try await self.$news.insert(sortedNews)
+	}
+	
+	func updateNews(oldItem: NewsItem, newItem: NewsItem) async throws {
+//		try await self.$news.remove(oldItem)
+		try await self.$news.insert(newItem)
 	}
 }

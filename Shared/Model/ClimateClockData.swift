@@ -59,4 +59,17 @@ struct NewsItem: Codable, Equatable, Identifiable {
 	let summary: String?
 	
 //	Interactive Data
+//	var new: Bool = true
+	var pushDate: Date?
+	
+	init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		self.date = try container.decode(String.self, forKey: .date)
+		self.headline = try container.decode(String.self, forKey: .headline)
+		self.headline_original = try container.decodeIfPresent(String.self, forKey: .headline_original)
+		self.source = try container.decodeIfPresent(String.self, forKey: .source)
+		self.link = try container.decodeIfPresent(String.self, forKey: .link)
+		self.summary = try container.decodeIfPresent(String.self, forKey: .summary)
+		self.pushDate = nil
+	}
 }

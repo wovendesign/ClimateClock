@@ -9,21 +9,24 @@ import SwiftUI
 
 struct NewsListItem: View {
 	@State var sheetOpen = false
+	@ObservedObject var newsController: NewsController
 	let newsItem: NewsItem
 	
-    var body: some View {
+	
+	
+	var body: some View {
+		
 		VStack(alignment: .leading) {
+			if(newsItem.pushDate != nil) {
+				Text(newsItem.pushDate?.formatted(.relative(presentation: .named)) ?? "")
+			}
 			Text(newsItem.headline)
 				.fontDesign(.serif)
 				.frame(maxWidth: .infinity, alignment: .leading)
-				.padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+			
+			Text(newsItem.source ?? "")
 		}
-		.onTapGesture {
-//			guard let url = URL(string: "https://woven.design") else {
-//				return
-//			}
-			sheetOpen = true
-		}
+		.padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
 		.sheet(isPresented: $sheetOpen) {
 			VStack{
 				ShareLink(item: newsItem.link!)
@@ -35,9 +38,17 @@ struct NewsListItem: View {
 		.scrollTransition { content, phase in
 			content.scaleEffect(phase.isIdentity ? 1.0 : 0.9)
 		}
-    }
+		.onTapGesture {
+			//			guard let url = URL(string: "https://woven.design") else {
+			//				return
+			//			}
+			sheetOpen = true
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		
+	}
 }
 
 //#Preview {
-//	NewsListItem(newsItem: NewsItem(date: "sdf", headline: "Headline", headline_original: <#T##String?#>, source: <#T##String?#>, link: <#T##String?#>, summary: <#T##String?#>))
+//	NewsListItem(newsItem: NewsItem(date: "sdf", headline: "Headline", headline_original: "sdf", source: "Reuters", link: "https://google.com", summary: "Some stuff was built", new: false))
 //}
