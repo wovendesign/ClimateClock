@@ -10,21 +10,33 @@ import SwiftUI
 struct NewsListItem: View {
 	@State var sheetOpen = false
 	@ObservedObject var newsController: NewsController
+	
 	let newsItem: NewsItem
 	
-	
+	var relativeDate: String {
+		let pushDate = newsItem.pushDate
+		guard let pushDate else {
+			return "No Date"
+		}
+
+		
+		if(pushDate.distance(to: Date()) < 86_400) {
+			return "TODAY"
+		}
+		return pushDate.formatted(.relative(presentation: .named))
+	}
 	
 	var body: some View {
 		
-		VStack(alignment: .leading) {
-			if(newsItem.pushDate != nil) {
-				Text(newsItem.pushDate?.formatted(.relative(presentation: .named)) ?? "")
-			}
+		VStack(alignment: .leading, spacing: 4) {
+			RelativeTimeCell(pushDate: newsItem.pushDate)
 			Text(newsItem.headline)
 				.fontDesign(.serif)
 				.frame(maxWidth: .infinity, alignment: .leading)
 			
 			Text(newsItem.source ?? "")
+				.font(.system(size: 12, weight: .semibold))
+				.foregroundStyle(Color.gray)
 		}
 		.padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
 		.sheet(isPresented: $sheetOpen) {
@@ -46,6 +58,38 @@ struct NewsListItem: View {
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		
+	}
+}
+
+struct RelativeTimeCell: View {
+	let pushDate: Date?
+	var relativeDate: String {
+		guard let pushDate else {
+			return "No Date"
+		}
+
+		
+		if(pushDate.distance(to: Date()) < 86_400) {
+			return "TODAY"
+		}
+		return pushDate.formatted(.relative(presentation: .named))
+	}
+	
+	var body: some View {
+		if(pushDate != nil) {
+			if(relativeDate == "TODAY") {
+				Text(relativeDate)
+					.font(.system(size: 12, weight: .semibold))
+					.padding(EdgeInsets(top: 1.5, leading: 6, bottom: 2, trailing: 6))
+					.foregroundStyle(.navy)
+					.background(.aquaBlue75)
+					.clipShape(.capsule)
+			} else {
+				Text(relativeDate)
+					.font(.system(size: 12, weight: .semibold))
+					.foregroundStyle(.gray)
+			}
+		}
 	}
 }
 

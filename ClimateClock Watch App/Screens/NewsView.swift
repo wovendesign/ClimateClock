@@ -22,7 +22,7 @@ struct NewsView: View {
 		}
 		.frame(maxWidth: .infinity)
 		.background(
-			LinearGradient(gradient: Gradient(colors: [Color(red: 0.031372549, green: 0.1882352941, blue: 0.3058823529), .black]),
+			LinearGradient(gradient: Gradient(colors: [.navy, .black]),
 						   startPoint: .top,
 						   endPoint: .bottom)
 			.opacity(1)
@@ -31,8 +31,14 @@ struct NewsView: View {
 //		.onReceive(news, perform: {
 //			self.news = $0
 //		})
-		.onReceive(self.newsController.$news.$items, perform: {
-			self.news = $0.sorted(by: {$0.pushDate ?? Date() > $1.pushDate ?? Date()}).filter{$0.pushDate?.distance(to: Date()) ?? 0 > 0}
+		.onReceive(self.newsController.$news.$items, perform: { news in
+			self.news = news
+				.sorted(by: {
+					$0.pushDate ?? Date() > $1.pushDate ?? Date()
+				})
+				.filter{
+					$0.pushDate?.distance(to: Date()) ?? 0 > 0
+				}
 		})
 	}
 }
