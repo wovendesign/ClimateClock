@@ -57,9 +57,16 @@ final class NewsController: ObservableObject {
 	
 	func saveNews(news: [NewsItem]) async throws {
 		let sortedNews: [NewsItem] = news.enumerated().map {
-			let today = Calendar.current.date(byAdding: .day, value: $0-1, to: Date())
+			let today: Date = Calendar.current.date(byAdding: .day, value: $0-1, to: Date()) ?? Date()
 			var temp = $1
 			temp.pushDate = today
+			
+			var todayComponents = Calendar.current.dateComponents([.month, .day, .hour, .minute, .second], from: today)
+			print("Scheduling notifications for \(todayComponents)")
+			todayComponents.minute = (todayComponents.minute ?? 0) + 1
+			print("Scheduling notifications for \(todayComponents)")
+			NotificationManager.instance.scheduleNotification(headline: temp.headline, triggerTime: todayComponents)
+			
 			return temp
 		}
 		

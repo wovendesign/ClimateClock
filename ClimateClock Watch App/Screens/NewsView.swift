@@ -28,9 +28,6 @@ struct NewsView: View {
 			.opacity(1)
 		)
 		.contentMargins(.vertical, 8, for: .scrollContent)
-//		.onReceive(news, perform: {
-//			self.news = $0
-//		})
 		.onReceive(self.newsController.$news.$items, perform: { news in
 			self.news = news
 				.sorted(by: {
@@ -40,6 +37,9 @@ struct NewsView: View {
 					$0.pushDate?.distance(to: Date()) ?? 0 > 0
 				}
 		})
+		.onAppear {
+			NotificationManager.instance.requestAuthorization()
+		}
 	}
 }
 

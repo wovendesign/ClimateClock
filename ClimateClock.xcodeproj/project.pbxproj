@@ -59,6 +59,9 @@
 		F6D315E72BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
 		F6D315E82BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
 		F6D315E92BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
+		F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
+		F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
+		F6D315EE2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +157,7 @@
 		F6D315E02BBD85FD00C75299 /* NewsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItem.swift; sourceTree = "<group>"; };
 		F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +249,7 @@
 		F62A7A682B48700B002A7E25 /* ClimateClock Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				F6D315EA2BBDC34100C75299 /* Utilities */,
 				F6C570982B7D02670001DCE7 /* Views */,
 				F6C570932B7D00130001DCE7 /* Screens */,
 				F62DCB852B7BD4BD00855D88 /* ClimateClock-Watch-App-Info.plist */,
@@ -356,6 +361,14 @@
 				F6D315E02BBD85FD00C75299 /* NewsListItem.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F6D315EA2BBDC34100C75299 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,6 +523,7 @@
 				F62A7A5A2B48700A002A7E25 /* ContentView.swift in Sources */,
 				F64C7ADE2B9F157900E40BB6 /* LifelineModel.swift in Sources */,
 				F62A7AC42B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */,
+				F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F60B29B22B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
 				F62EED5C2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
 				F62A7A582B48700A002A7E25 /* ClimateClockApp.swift in Sources */,
@@ -524,6 +538,7 @@
 			files = (
 				F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */,
 				F60B29A42B8F837500E41091 /* NewsView.swift in Sources */,
+				F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F62A7A6C2B48700B002A7E25 /* ContentView.swift in Sources */,
 				F62EED602BBB2E5C00352E46 /* CCError.swift in Sources */,
 				F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */,
@@ -552,6 +567,7 @@
 				F62A7AC62B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */,
 				F62EED5E2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
 				F60B29B42B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
+				F6D315EE2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F62EED612BBB2E5C00352E46 /* CCError.swift in Sources */,
 				F62A7AB92B487134002A7E25 /* AppIntent.swift in Sources */,
 			);
