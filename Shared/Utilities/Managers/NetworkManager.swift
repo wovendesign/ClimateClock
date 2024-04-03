@@ -17,64 +17,62 @@ final class NetworkManager {
 	
 	private init() {}
 	
-	func getClimateClockData(completed: @escaping (Result<ClimateClockResponse, CCError>) -> Void) {
+	func getClimateClockData() async throws -> Result<ClimateClockResponse, CCError> {
 		guard let url = URL(string: clockDataURL) else {
-			completed(.failure(.invalidURL))
-			return
+			return .failure(.invalidURL)
 		}
 		
-		let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-			if(error != nil) {
-				completed(.failure(.unableToComplete))
-				return
-			}
-			
-			guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-				completed(.failure(.invalidResponse))
-				return
-			}
-			
-			guard let data = data else {
-				completed(.failure(.invalidData))
-				return
-			}
-			
-			do {
-				let decoder = JSONDecoder()
-				let decodedResponse = try decoder.decode(ClimateClockResponse.self, from: data)
-				completed(.success(decodedResponse))
-			} catch {
-				completed(.failure(.invalidData))
-			}
+		let (task, _) = try await URLSession.shared.data(for: URLRequest(url: url))
+		
+//			if(error != nil) {
+//				completed(.failure(.unableToComplete))
+//				return
+//			}
+//			
+//			guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//				completed(.failure(.invalidResponse))
+//				return
+//			}
+//			
+//			guard let data = data else {
+//				completed(.failure(.invalidData))
+//				return
+//			}
+		
+		do {
+			let decoder = JSONDecoder()
+			let decodedResponse = try decoder.decode(ClimateClockResponse.self, from: task)
+			return .success(decodedResponse)
+		} catch {
+			return .failure(.invalidData)
 		}
-	
-		task.resume()
 	}
 	
-	func downloadImage(fromURLString urlString: String, completed: @escaping (UIImage?) -> ()) {
-		let cacheKey = NSString(string: urlString)
-		
-		if let image = cache.object(forKey: cacheKey) {
-			completed(image)
-			return
-		}
-		
-		guard let url = URL(string: urlString) else {
-			completed(nil)
-			return
-		}
-		
-		let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-			guard let data = data, let image = UIImage(data: data) else {
-				completed(nil)
-				return
-			}
-			
-			self.cache.setObject(image, forKey: cacheKey)
-			
-			completed(image)
-		}
-		
-		task.resume()
-	}
+	
+//	func downloadImage(fromURLString urlString: String, completed: @escaping (UIImage?) -> ()) {
+//		let cacheKey = NSString(string: urlString)
+//		
+//		if let image = cache.object(forKey: cacheKey) {
+//			completed(image)
+//			return
+//		}
+//		
+//		guard let url = URL(string: urlString) else {
+//			completed(nil)
+//			return
+//		}
+//		
+//		let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+//			guard let data = data, let image = UIImage(data: data) else {
+//				completed(nil)
+//				return
+//			}
+//			
+//			self.cache.setObject(image, forKey: cacheKey)
+//			
+//			completed(image)
+//		}
+//		
+//		task.resume()
+//	}
 }

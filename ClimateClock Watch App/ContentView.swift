@@ -9,6 +9,10 @@ import SwiftUI
 import Charts
 
 struct ContentView: View {
+	@StateObject var viewModel = ContentViewModel()
+	@ObservedObject var newsController = NewsController(store: .newsStore)
+
+	
     var body: some View {
 		TabView {
 			CountdownView()
@@ -18,6 +22,10 @@ struct ContentView: View {
 			AboutView()
 		}
 		.tabViewStyle(.verticalPage)
+		.task {
+//			viewModel.getClimateData()
+			print(await newsController.fetchNewsFromAPI())
+		}
     }
 }
 

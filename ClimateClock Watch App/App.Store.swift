@@ -1,0 +1,61 @@
+//
+//  App.Store.swift
+//  ClimateClock Watch App
+//
+//  Created by Eric Wätke on 02.04.24.
+//
+
+import Boutique
+import Foundation
+
+extension Store where Item == NewsItem {
+	static let newsStore = Store<NewsItem>(
+		storage: SQLiteStorageEngine.default(appendingPath: "News"),
+		cacheIdentifier: \.headline
+	)
+}
+
+final class NewsController: ObservableObject {
+	@Stored var news: [NewsItem]
+	
+	init(store: Store<NewsItem>) {
+		self._news = Stored(in: .newsStore)
+	}
+	
+
+	func fetchNewsFromAPI() async {
+		do {
+			let result = try await NetworkManager.shared.getClimateClockData()
+			
+			switch result {
+			case .success(let data):
+				try await saveNews(news: data.data.modules.newsfeed_1.newsfeed)
+				
+			case .failure(let error):
+				switch error {
+				case .invalidURL:
+					print("Invalid URL")
+					//								alertItem = AlertContext.invalidURL
+					
+				case .invalidResponse:
+					print("Invalid Response")
+					//								alertItem = AlertContext.invalidReponse
+					
+				case .invalidData:
+					print("Invalid Data")
+					//								alertItem = AlertContext.invalidData
+					
+				case .unableToComplete:
+					print("unableToComplete")
+					//								alertItem = AlertContext.invalidToComplete
+				}
+			}
+		} catch{
+			print(error)
+		}
+	}
+	
+	func saveNews(news: [NewsItem]) async throws {
+		try await self.$news.insert(news)
+	}
+}

@@ -20,7 +20,7 @@
 		F62A7A5C2B48700B002A7E25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62A7A5B2B48700B002A7E25 /* Assets.xcassets */; };
 		F62A7A5F2B48700B002A7E25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62A7A5E2B48700B002A7E25 /* Preview Assets.xcassets */; };
 		F62A7A652B48700B002A7E25 /* ClimateClock Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F62A7A642B48700B002A7E25 /* ClimateClock Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F62A7A6A2B48700B002A7E25 /* ClimateClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7A692B48700B002A7E25 /* ClimateClockApp.swift */; };
+		F62A7A6A2B48700B002A7E25 /* App.ClimateClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7A692B48700B002A7E25 /* App.ClimateClock.swift */; };
 		F62A7A6C2B48700B002A7E25 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7A6B2B48700B002A7E25 /* ContentView.swift */; };
 		F62A7A6E2B48700C002A7E25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62A7A6D2B48700C002A7E25 /* Assets.xcassets */; };
 		F62A7A712B48700C002A7E25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62A7A702B48700C002A7E25 /* Preview Assets.xcassets */; };
@@ -46,10 +46,16 @@
 		F64C7ADC2B9F139900E40BB6 /* LifelineComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64C7ADB2B9F139900E40BB6 /* LifelineComplication.swift */; };
 		F64C7ADE2B9F157900E40BB6 /* LifelineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64C7ADD2B9F157900E40BB6 /* LifelineModel.swift */; };
 		F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */; };
+		F673949B2BBC3EDD00B7258D /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F673949A2BBC3EDD00B7258D /* ContentViewModel.swift */; };
+		F673949E2BBC3FD900B7258D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F673949D2BBC3FD900B7258D /* Alert.swift */; };
 		F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BD67F2B7D2C590015ECBE /* Graph.swift */; };
 		F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570942B7D00240001DCE7 /* GraphView.swift */; };
 		F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570962B7D00320001DCE7 /* GraphViewModel.swift */; };
 		F6C5709A2B7D027C0001DCE7 /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570992B7D027C0001DCE7 /* PredictionModel.swift */; };
+		F6D315DB2BBC457A00C75299 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = F6D315DA2BBC457A00C75299 /* Boutique */; };
+		F6D315DD2BBC461000C75299 /* App.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DC2BBC461000C75299 /* App.State.swift */; };
+		F6D315DF2BBC462F00C75299 /* App.Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DE2BBC462F00C75299 /* App.Store.swift */; };
+		F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315E02BBD85FD00C75299 /* NewsListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +121,7 @@
 		F62A7A5B2B48700B002A7E25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F62A7A5E2B48700B002A7E25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F62A7A642B48700B002A7E25 /* ClimateClock Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ClimateClock Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F62A7A692B48700B002A7E25 /* ClimateClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateClockApp.swift; sourceTree = "<group>"; };
+		F62A7A692B48700B002A7E25 /* App.ClimateClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.ClimateClock.swift; sourceTree = "<group>"; };
 		F62A7A6B2B48700B002A7E25 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F62A7A6D2B48700C002A7E25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F62A7A702B48700C002A7E25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -136,10 +142,15 @@
 		F64C7ADB2B9F139900E40BB6 /* LifelineComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineComplication.swift; sourceTree = "<group>"; };
 		F64C7ADD2B9F157900E40BB6 /* LifelineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineModel.swift; sourceTree = "<group>"; };
 		F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		F673949A2BBC3EDD00B7258D /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		F673949D2BBC3FD900B7258D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F67BD67F2B7D2C590015ECBE /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		F6C570942B7D00240001DCE7 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		F6C570962B7D00320001DCE7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		F6C570992B7D027C0001DCE7 /* PredictionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
+		F6D315DC2BBC461000C75299 /* App.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.State.swift; sourceTree = "<group>"; };
+		F6D315DE2BBC462F00C75299 /* App.Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.Store.swift; sourceTree = "<group>"; };
+		F6D315E02BBD85FD00C75299 /* NewsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D315DB2BBC457A00C75299 /* Boutique in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,8 +184,8 @@
 		F60B29A52B8F8D3500E41091 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F673949C2BBC3FC400B7258D /* Alert */,
 				F62EED5B2BBB2E5C00352E46 /* Managers */,
-				F62EED5A2BBB2E5C00352E46 /* CCError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -234,8 +246,11 @@
 				F6C570932B7D00130001DCE7 /* Screens */,
 				F62DCB872B7BD66A00855D88 /* fonts */,
 				F62DCB852B7BD4BD00855D88 /* ClimateClock-Watch-App-Info.plist */,
-				F62A7A692B48700B002A7E25 /* ClimateClockApp.swift */,
+				F62A7A692B48700B002A7E25 /* App.ClimateClock.swift */,
+				F6D315DC2BBC461000C75299 /* App.State.swift */,
+				F6D315DE2BBC462F00C75299 /* App.Store.swift */,
 				F62A7A6B2B48700B002A7E25 /* ContentView.swift */,
+				F673949A2BBC3EDD00B7258D /* ContentViewModel.swift */,
 				F60B29AC2B8F91F900E41091 /* Solar Analogue.watchface */,
 				F62A7A6D2B48700C002A7E25 /* Assets.xcassets */,
 				F62A7A6F2B48700C002A7E25 /* Preview Content */,
@@ -316,6 +331,15 @@
 			path = Complications;
 			sourceTree = "<group>";
 		};
+		F673949C2BBC3FC400B7258D /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				F62EED5A2BBB2E5C00352E46 /* CCError.swift */,
+				F673949D2BBC3FD900B7258D /* Alert.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		F6C570932B7D00130001DCE7 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +358,7 @@
 			children = (
 				F6C570992B7D027C0001DCE7 /* PredictionModel.swift */,
 				F67BD67F2B7D2C590015ECBE /* Graph.swift */,
+				F6D315E02BBD85FD00C75299 /* NewsListItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -376,6 +401,9 @@
 				F62A7ABE2B487136002A7E25 /* PBXTargetDependency */,
 			);
 			name = "ClimateClock Watch App";
+			packageProductDependencies = (
+				F6D315DA2BBC457A00C75299 /* Boutique */,
+			);
 			productName = "ClimateClock Watch App";
 			productReference = F62A7A642B48700B002A7E25 /* ClimateClock Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -427,6 +455,9 @@
 				Base,
 			);
 			mainGroup = F62A7A4B2B48700A002A7E25;
+			packageReferences = (
+				F6D315D92BBC457A00C75299 /* XCRemoteSwiftPackageReference "Boutique" */,
+			);
 			productRefGroup = F62A7A552B48700A002A7E25 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -502,11 +533,16 @@
 				F60B29A22B8F7FA600E41091 /* AboutView.swift in Sources */,
 				F62A7AC52B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */,
 				F60B29B32B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
-				F62A7A6A2B48700B002A7E25 /* ClimateClockApp.swift in Sources */,
+				F62A7A6A2B48700B002A7E25 /* App.ClimateClock.swift in Sources */,
+				F6D315DF2BBC462F00C75299 /* App.Store.swift in Sources */,
 				F62EED5D2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
 				F6C5709A2B7D027C0001DCE7 /* PredictionModel.swift in Sources */,
 				F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */,
 				F643B9502B8F7536006D1AC5 /* FiguresView.swift in Sources */,
+				F673949E2BBC3FD900B7258D /* Alert.swift in Sources */,
+				F6D315DD2BBC461000C75299 /* App.State.swift in Sources */,
+				F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */,
+				F673949B2BBC3EDD00B7258D /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +926,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F6D315D92BBC457A00C75299 /* XCRemoteSwiftPackageReference "Boutique" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mergesort/Boutique";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F6D315DA2BBC457A00C75299 /* Boutique */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6D315D92BBC457A00C75299 /* XCRemoteSwiftPackageReference "Boutique" */;
+			productName = Boutique;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F62A7A4C2B48700A002A7E25 /* Project object */;
 }

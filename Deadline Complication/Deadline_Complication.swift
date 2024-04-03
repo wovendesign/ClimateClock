@@ -83,23 +83,23 @@ func get_data(completion: @escaping (String) -> Void) {
     
     print("test")
     
-    URLSession.shared.dataTask(with: request) {(data, response, error) in
-        guard let data = data else {
-            completion("2039-07-22T16:00:00+00:00")
-            return
-        }
-        
-        do {
-            guard let json = String(data: data, encoding: .utf8) else { return }
-            clock_data = parseJSON(json: json)
-            
-            if let clock_data = clock_data {
-                completion(clock_data.modules.carbonDeadlines.timestamp)
-            } else {
-                completion("2059-07-22T16:00:00+00:00")
-            }
-        }
-    }.resume()
+//    URLSession.shared.dataTask(with: request) {(data, response, error) in
+//        guard let data = data else {
+//            completion("2039-07-22T16:00:00+00:00")
+//            return
+//        }
+//        
+//        do {
+//            guard let json = String(data: data, encoding: .utf8) else { return }
+//            clock_data = parseJSON(json: json)
+//            
+//            if let clock_data = clock_data {
+//                completion(clock_data.modules.carbonDeadlines.timestamp)
+//            } else {
+//                completion("2059-07-22T16:00:00+00:00")
+//            }
+//        }
+//    }.resume()
 }
 
 func diff(deadline: String) -> DeadlineContent {
