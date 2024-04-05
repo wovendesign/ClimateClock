@@ -16,8 +16,6 @@ class NotificationManager {
 		UNUserNotificationCenter.current().requestAuthorization(options: options) { success, error in
 			if let error = error {
 				print(error)
-			} else {
-				print("successfully requested permission")
 			}
 		}
 	}

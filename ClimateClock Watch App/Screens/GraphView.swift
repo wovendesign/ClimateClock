@@ -22,7 +22,7 @@ struct GraphView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
-          if let model = viewModel.currentModel {
+			if let model = viewModel.currentModel {
 			  ZStack {
 				  Graph(
 					emissions: model.emissions,
@@ -51,8 +51,8 @@ struct GraphView: View {
 				  .animation(.bouncy, value: viewModel.currentModel)
 				  .opacity(model.color == .green ? 1 : 0)
 			  }
-            
-          }
+
+			}
             HStack {
                 Text("1980")
                     .font(.system(size: 10))

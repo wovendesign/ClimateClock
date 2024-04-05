@@ -20,6 +20,10 @@ final class NewsController: ObservableObject {
 	
 	init(store: Store<NewsItem>) {
 		self._news = Stored(in: .newsStore)
+		
+		Task(priority: .medium){
+			await self.fetchNewsFromAPI()
+		}
 	}
 	
 
@@ -56,15 +60,31 @@ final class NewsController: ObservableObject {
 	}
 	
 	func saveNews(news: [NewsItem]) async throws {
+		// Get the current calendar and today's date
+		let calendar = Calendar.current
+		let today = Date()
+
+		// Get the start of the current week
+		var startOfWeek = Date()
+		var interval = TimeInterval(0)
+		_ = calendar.dateInterval(of: .weekOfYear, start: &startOfWeek, interval: &interval, for: today)
+
+		// Get the components of the start of the week
+		let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: startOfWeek)
+
+		// Get the date of Monday in the current week
+		guard let monday = calendar.date(from: components) else {
+			print("Failed to get Monday of the current week")
+			return
+		}
+		
 		let sortedNews: [NewsItem] = news.enumerated().map {
-			let today: Date = Calendar.current.date(byAdding: .day, value: $0-1, to: Date()) ?? Date()
+			let today: Date = Calendar.current.date(byAdding: .day, value: $0, to: monday) ?? Date()
 			var temp = $1
 			temp.pushDate = today
 			
 			var todayComponents = Calendar.current.dateComponents([.month, .day, .hour, .minute, .second], from: today)
-			print("Scheduling notifications for \(todayComponents)")
 			todayComponents.minute = (todayComponents.minute ?? 0) + 1
-			print("Scheduling notifications for \(todayComponents)")
 			NotificationManager.instance.scheduleNotification(headline: temp.headline, triggerTime: todayComponents)
 			
 			return temp
