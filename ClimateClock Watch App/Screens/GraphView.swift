@@ -23,14 +23,35 @@ struct GraphView: View {
         VStack(alignment: .leading) {
             Spacer()
           if let model = viewModel.currentModel {
-            Graph(
-              emissions: model.emissions,
-              temperatures: model.temperatures,
-              color: model.color,
-              gridLines: viewModel.gridLines
-            )
-            // Animate whenever the current model changes
-            .animation(.default, value: viewModel.currentModel)
+			  ZStack {
+				  Graph(
+					emissions: model.emissions,
+					temperatures: model.temperatures,
+					color: Color.red,
+					gridLines: viewModel.gridLines
+				  )
+				  .animation(.bouncy, value: viewModel.currentModel)
+				  .opacity(model.color == .red ? 1 : 0)
+
+				  Graph(
+					emissions: model.emissions,
+					temperatures: model.temperatures,
+					color: Color.orange,
+					gridLines: viewModel.gridLines
+				  )
+				  .animation(.bouncy, value: viewModel.currentModel)
+				  .opacity(model.color == .orange ? 1 : 0)
+
+				  Graph(
+					emissions: model.emissions,
+					temperatures: model.temperatures,
+					color: Color.green,
+					gridLines: viewModel.gridLines
+				  )
+				  .animation(.bouncy, value: viewModel.currentModel)
+				  .opacity(model.color == .green ? 1 : 0)
+			  }
+            
           }
             HStack {
                 Text("1980")
