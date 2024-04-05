@@ -49,7 +49,6 @@
 		F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570942B7D00240001DCE7 /* GraphView.swift */; };
 		F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570962B7D00320001DCE7 /* GraphViewModel.swift */; };
 		F6C5709A2B7D027C0001DCE7 /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570992B7D027C0001DCE7 /* PredictionModel.swift */; };
-		F6D315DB2BBC457A00C75299 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = F6D315DA2BBC457A00C75299 /* Boutique */; };
 		F6D315DD2BBC461000C75299 /* App.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DC2BBC461000C75299 /* App.State.swift */; };
 		F6D315DF2BBC462F00C75299 /* App.Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DE2BBC462F00C75299 /* App.Store.swift */; };
 		F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315E02BBD85FD00C75299 /* NewsListItem.swift */; };
@@ -62,6 +61,7 @@
 		F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
 		F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
 		F6D315EE2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
+		F6D315F12BC0A6E900C75299 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = F6D315F02BC0A6E900C75299 /* Boutique */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,7 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6D315DB2BBC457A00C75299 /* Boutique in Frameworks */,
+				F6D315F12BC0A6E900C75299 /* Boutique in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +410,7 @@
 			);
 			name = "ClimateClock Watch App";
 			packageProductDependencies = (
-				F6D315DA2BBC457A00C75299 /* Boutique */,
+				F6D315F02BC0A6E900C75299 /* Boutique */,
 			);
 			productName = "ClimateClock Watch App";
 			productReference = F62A7A642B48700B002A7E25 /* ClimateClock Watch App.app */;
@@ -464,7 +464,7 @@
 			);
 			mainGroup = F62A7A4B2B48700A002A7E25;
 			packageReferences = (
-				F6D315D92BBC457A00C75299 /* XCRemoteSwiftPackageReference "Boutique" */,
+				F6D315EF2BC0A6E900C75299 /* XCRemoteSwiftPackageReference "Boutique" */,
 			);
 			productRefGroup = F62A7A552B48700A002A7E25 /* Products */;
 			projectDirPath = "";
@@ -942,7 +942,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F6D315D92BBC457A00C75299 /* XCRemoteSwiftPackageReference "Boutique" */ = {
+		F6D315EF2BC0A6E900C75299 /* XCRemoteSwiftPackageReference "Boutique" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mergesort/Boutique";
 			requirement = {
@@ -953,9 +953,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F6D315DA2BBC457A00C75299 /* Boutique */ = {
+		F6D315F02BC0A6E900C75299 /* Boutique */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F6D315D92BBC457A00C75299 /* XCRemoteSwiftPackageReference "Boutique" */;
+			package = F6D315EF2BC0A6E900C75299 /* XCRemoteSwiftPackageReference "Boutique" */;
 			productName = Boutique;
 		};
 /* End XCSwiftPackageProductDependency section */
