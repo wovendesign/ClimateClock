@@ -22,12 +22,16 @@ struct GraphView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
-			Graph(emissions: viewModel.currentModel?.emissions ?? [],
-				  temperatures: viewModel.currentModel?.temperatures ?? [],
-				  color: viewModel.currentModel?.color ?? .cyan,
-				  gridLines: viewModel.gridLines)
-			
-            
+          if let model = viewModel.currentModel {
+            Graph(
+              emissions: model.emissions,
+              temperatures: model.temperatures,
+              color: model.color,
+              gridLines: viewModel.gridLines
+            )
+            // Animate whenever the current model changes
+            .animation(.default, value: viewModel.currentModel)
+          }
             HStack {
                 Text("1980")
                     .font(.system(size: 10))

@@ -17,7 +17,8 @@ struct Graph: View {
 	
     var body: some View {
 		Chart {
-			ForEach(emissions) { emission in
+      // Use year for identity to tell SwiftUI which values belong together
+      ForEach(emissions, id: \.year) { emission in
 				LineMark(
 					x: .value("Year", emission.year),
 					y: .value("Risk", emission.value)
@@ -29,7 +30,8 @@ struct Graph: View {
 									   lineCap: .round))
 				.opacity(1)
 			}
-			ForEach(temperatures) { temperature in
+      // Use year for identity to tell SwiftUI which values belong together
+      ForEach(temperatures, id: \.year) { temperature in
 				LineMark(
 					x: .value("Year", temperature.year),
 					y: .value("Risk", temperature.value)
@@ -62,7 +64,6 @@ struct Graph: View {
 			}
 		}
 		.chartYScale(domain: 0...4)
-		.animation(.linear(duration: 1), value: emissions)
 		.frame(maxHeight: 120)
 	}
 }

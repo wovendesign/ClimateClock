@@ -12,15 +12,14 @@ enum LineType {
 	case emission
 }
 
-struct EmissionData: Identifiable, Equatable {
-	var id = UUID()
-	
+struct EmissionData: Hashable {
 	var type: LineType
 	var value: Double
+	// The year is now used for identity instead of a UUID so that we can animate between different datasets.
 	var year: Date
 }
 
-struct GraphData: Identifiable {
+struct GraphData: Identifiable, Equatable {
 	
 	var id = UUID()
 	
@@ -35,8 +34,24 @@ struct GraphData: Identifiable {
 
 final class GraphViewModel: ObservableObject {
 	@Published var models: [GraphData] = MockData.items
-	@Published var currentModelId: GraphData.ID?
-	
+
+	@Published private(set) var currentModel: GraphData?
+	@Published var currentModelId: GraphData.ID? {
+		didSet {
+			if currentModelId != oldValue {
+				// Assign the current model once and only if it has changed:
+				currentModel = models.first(where: { $0.id == currentModelId })
+			}
+		}
+	}
+
+	init() {
+		if let model = models.first {
+			self.currentModelId = model.id
+			self.currentModel = model
+		}
+	}
+
 	let gridLines: [Date] = [
 		getDateFromYear(date: 1980),
 		getDateFromYear(date: 1990),
@@ -52,16 +67,13 @@ final class GraphViewModel: ObservableObject {
 		getDateFromYear(date: 2090),
 		getDateFromYear(date: 2100)
 	]
+
 	let gridMarks: [Date] = [
 		getDateFromYear(date: 1980),
 		getDateFromYear(date: 2020),
 		getDateFromYear(date: 2060),
 		getDateFromYear(date: 2100)
 	]
-	
-	var currentModel: GraphData? {
-		return models.first(where: {$0.id == currentModelId})
-	}
 }
 
 struct MockData {
@@ -120,8 +132,8 @@ struct MockData {
 					.init(type: .emission, value: 1.12, year: getDateFromYear(date: 2000)),
 					.init(type: .emission, value: 1.38, year: getDateFromYear(date: 2010)),
 					.init(type: .emission, value: 1.66, year: getDateFromYear(date: 2020)),
-					.init(type: .emission, value: 1.86, year: getDateFromYear(date: 2045)),
-					.init(type: .emission, value: 1.66, year: getDateFromYear(date: 2060)),
+					.init(type: .emission, value: 1.86, year: getDateFromYear(date: 2030)),
+					.init(type: .emission, value: 1.66, year: getDateFromYear(date: 2070)),
 					.init(type: .emission, value: 0.8, year: getDateFromYear(date: 2100)),
 				  ]),
 		GraphData(title: "Green New Deal",
@@ -148,10 +160,9 @@ struct MockData {
 					.init(type: .emission, value: 0.91, year: getDateFromYear(date: 1990)),
 					.init(type: .emission, value: 1.05, year: getDateFromYear(date: 2000)),
 					.init(type: .emission, value: 1.24, year: getDateFromYear(date: 2010)),
-					.init(type: .emission, value: 0, year: getDateFromYear(date: 2060)),
+					.init(type: .emission, value: 0, year: getDateFromYear(date: 2020)),
+					.init(type: .emission, value: 0, year: getDateFromYear(date: 2030)),
 					.init(type: .emission, value: 0, year: getDateFromYear(date: 2070)),
-					.init(type: .emission, value: 0, year: getDateFromYear(date: 2080)),
-					.init(type: .emission, value: 0, year: getDateFromYear(date: 2090)),
 					.init(type: .emission, value: 0, year: getDateFromYear(date: 2100)),
 				  ]),
 	]
