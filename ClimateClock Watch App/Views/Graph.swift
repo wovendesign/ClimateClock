@@ -64,10 +64,14 @@ struct Graph: View {
 			}
 		}
 		.chartYScale(domain: 0...4)
-		.frame(maxHeight: 120)
+		.frame(maxHeight: .infinity)
 	}
 }
 
 #Preview {
-	Graph(emissions: temp_data, temperatures: temp_data, color: .red, gridLines: [getDateFromYear(date: 2020)])
+	Graph(
+		emissions: temp_data,
+		temperatures: temp_data,
+		color: .red,
+		gridLines: [getDateFromYear(date: 2020)])
 }

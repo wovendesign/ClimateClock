@@ -9,30 +9,38 @@ import SwiftUI
 
 struct PredictionModel: View {
     
-    var title: String
-    var peakTemperature: Double
-    var endTemperature: Double
+	let model: PredictionModelData
     var textColor: Color
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title)
+			Text(model.title)
                 .foregroundStyle(textColor)
-                .bold()
-            HStack(alignment: .bottom) {
-                Text("\(peakTemperature, specifier: "%.2f")°")
-                    .font(.system(size: 13))
-                    .bold()
-                Text("peak Temperature (2100)")
-                    .font(.system(size: 10))
-                    .foregroundStyle(.gray)
-            }
-            HStack(alignment: .bottom) {
-                Text("\(endTemperature, specifier: "%.2f")°")
-                    .font(.system(size: 13))
-                    .bold()
-                Text("by the end of the century")
-                    .font(.system(size: 10))
+				.font(
+					.custom("Oswald", size: 18)
+					.weight(.semibold)
+				)
+				.tracking(0.32)
+			HStack(alignment: .firstTextBaseline) {
+				if let prefix = model.prefix {
+					Text(prefix)
+						.font(
+							.custom("Assistant", size: 12)
+							.weight(.semibold)
+						)
+						.foregroundStyle(.gray)
+				}
+				Text(model.temperature)
+					.font(
+						.custom("Oswald", size: 16)
+						.weight(.semibold)
+					)
+					.tracking(0.32)
+				Text(model.arrivalDate)
+					.font(
+						.custom("Assistant", size: 12)
+						.weight(.semibold)
+					)
                     .foregroundStyle(.gray)
             }
         }
@@ -40,8 +48,12 @@ struct PredictionModel: View {
 }
 
 #Preview {
-    PredictionModel(title: "Business as Usual",
-                    peakTemperature: 3.52,
-                    endTemperature: 3.52,
-                    textColor: .red)
+	PredictionModel(
+		model: PredictionModelData(
+			title: "Green New Deal",
+			prefix: "just under",
+			temperature: "1.5°C",
+			arrivalDate: "by 2040"),
+		textColor: .red
+	)
 }
