@@ -21,12 +21,11 @@ final class NewsController: ObservableObject {
 	init(store: Store<NewsItem>) {
 		self._news = Stored(in: .newsStore)
 		
-		Task(priority: .medium){
+		Task(priority: .medium) {
 			await self.fetchNewsFromAPI()
 		}
 	}
 	
-
 	func fetchNewsFromAPI() async {
 		do {
 			let result = try await NetworkManager.shared.getClimateClockData()
@@ -54,7 +53,7 @@ final class NewsController: ObservableObject {
 					//								alertItem = AlertContext.invalidToComplete
 				}
 			}
-		} catch{
+		} catch {
 			print(error)
 		}
 	}
@@ -95,6 +94,6 @@ final class NewsController: ObservableObject {
 	
 	func updateNews(oldItem: NewsItem, newItem: NewsItem) async throws {
 //		try await self.$news.remove(oldItem)
-		try await self.$news.insert(newItem)
+		try await $news.insert(newItem)
 	}
 }

@@ -8,7 +8,7 @@ import ClockKit
 import SwiftUI
 
 struct CountdownView: View {
-    var body: some View {
+	var body: some View {
 		let watchFaceUrl = Bundle.main.url(forResource: "Solar Analogue", withExtension: "watchface")
 		VStack {
 			Text("Todo: Countdown View")
@@ -22,7 +22,7 @@ struct CountdownView: View {
 //				Text("Add watchface")
 //			})
 		}
-    }
+	}
 }
 
 #Preview {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FiguresView: View {
-    var body: some View {
+	var body: some View {
 		ScrollView {
 			VStack(alignment: .leading, spacing: 12) {
 				StatCell(value: "26.7", unit: "%", label: "Women in parliaments globally")
@@ -22,10 +22,10 @@ struct FiguresView: View {
 			.padding(.horizontal, 8.0)
 		}
 		.frame(maxWidth: .infinity)
-		.background(.linearGradient(colors: [.black, Color.green.opacity(0.2)], 
-									startPoint: .top,
-									endPoint: .bottom))
-    }
+		.background(.linearGradient(colors: [.black, Color.green.opacity(0.2)],
+		                            startPoint: .top,
+		                            endPoint: .bottom))
+	}
 }
 
 struct StatCell: View {
@@ -33,7 +33,7 @@ struct StatCell: View {
 	var unit: String
 //	var precision: Int
 	var label: String
-	
+
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {
 			HStack {
@@ -44,14 +44,14 @@ struct StatCell: View {
 					.font(.lowercaseSmallCaps(.system(size: 19))())
 					.fontWeight(.semibold)
 			}
-				.padding(EdgeInsets(top: 6,
-									leading: 4,
-									bottom: 6,
-									trailing: 4))
-				.background(.linearGradient(colors: [Color.green.opacity(0.2), Color.blue.opacity(0.2)], 
-											startPoint: .leading,
-											endPoint: .trailing))
-				.clipShape(.rect(cornerRadius: 6))
+			.padding(EdgeInsets(top: 6,
+			                    leading: 4,
+			                    bottom: 6,
+			                    trailing: 4))
+			.background(.linearGradient(colors: [Color.green.opacity(0.2), Color.blue.opacity(0.2)],
+			                            startPoint: .leading,
+			                            endPoint: .trailing))
+			.clipShape(.rect(cornerRadius: 6))
 			Text(label)
 				.font(.system(size: 12))
 				.fontWeight(.semibold)

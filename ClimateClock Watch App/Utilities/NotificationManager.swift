@@ -13,7 +13,7 @@ class NotificationManager {
 	
 	func requestAuthorization() {
 		let options: UNAuthorizationOptions = [.alert, .badge, .provisional]
-		UNUserNotificationCenter.current().requestAuthorization(options: options) { success, error in
+		UNUserNotificationCenter.current().requestAuthorization(options: options) { _, error in
 			if let error = error {
 				print(error)
 			}
@@ -28,8 +28,8 @@ class NotificationManager {
 		let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: false)
 		
 		let request = UNNotificationRequest(identifier: UUID().uuidString,
-											content: content,
-											trigger: trigger)
+		                                    content: content,
+		                                    trigger: trigger)
 		
 		UNUserNotificationCenter.current().add(request)
 	}

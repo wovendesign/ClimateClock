@@ -5,17 +5,15 @@
 //  Created by Eric Wätke on 05.01.24.
 //
 
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct ContentView: View {
 	@StateObject var viewModel = ContentViewModel()
 	@StateObject var newsController = NewsController(store: .newsStore)
 
-	
-    var body: some View {
+	var body: some View {
 		TabView {
-			
 			CountdownView()
 			GraphView()
 			NewsView()
@@ -28,9 +26,9 @@ struct ContentView: View {
 //			viewModel.getClimateData()
 			print(await newsController.fetchNewsFromAPI())
 		}
-    }
+	}
 }
 
 #Preview {
-    ContentView()
+	ContentView()
 }

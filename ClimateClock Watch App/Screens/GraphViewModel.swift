@@ -4,8 +4,8 @@
 //
 //  Created by Eric Wätke on 14.02.24.
 //
-import SwiftUI
 import Foundation
+import SwiftUI
 
 enum LineType {
 	case temperature
@@ -20,15 +20,15 @@ struct EmissionData: Hashable {
 }
 
 struct GraphData: Identifiable, Equatable, Hashable {
-	
 	var id = UUID()
-	
+
 	let model: PredictionModelData
 	var color: Color
-	
+
 	var temperatures: [EmissionData]
 	var emissions: [EmissionData]
 }
+
 struct PredictionModelData: Equatable, Hashable {
 	var title: String
 	let prefix: String?
@@ -38,7 +38,7 @@ struct PredictionModelData: Equatable, Hashable {
 
 final class GraphViewModel: ObservableObject {
 	@Published var models: [GraphData] = MockData.items
-	
+
 	@Published private(set) var currentModel: GraphData?
 	@Published var currentModelId: GraphData.ID? {
 		didSet {
@@ -48,14 +48,14 @@ final class GraphViewModel: ObservableObject {
 			}
 		}
 	}
-	
+
 	init() {
 		if let model = models.first {
 			self.currentModelId = model.id
 			self.currentModel = model
 		}
 	}
-	
+
 	let gridLines: [Date] = [
 		getDateFromYear(date: 1980),
 		getDateFromYear(date: 1990),
@@ -69,18 +69,18 @@ final class GraphViewModel: ObservableObject {
 		getDateFromYear(date: 2070),
 		getDateFromYear(date: 2080),
 		getDateFromYear(date: 2090),
-		getDateFromYear(date: 2100)
+		getDateFromYear(date: 2100),
 	]
-	
+
 	let gridMarks: [Date] = [
 		getDateFromYear(date: 1980),
 		getDateFromYear(date: 2020),
 		getDateFromYear(date: 2060),
-		getDateFromYear(date: 2100)
+		getDateFromYear(date: 2100),
 	]
 }
 
-struct MockData {
+enum MockData {
 	static let items: [GraphData] = [
 		GraphData(
 			model: PredictionModelData(
@@ -186,21 +186,22 @@ struct MockData {
 		),
 	]
 }
+
 let temp_data: [EmissionData] = [
 	.init(type: .temperature,
-		  value: 0.5,
-		  year: Calendar.autoupdatingCurrent.date(from: DateComponents(year: 1980))!),
+	      value: 0.5,
+	      year: Calendar.autoupdatingCurrent.date(from: DateComponents(year: 1980))!),
 	.init(type: .temperature,
-		  value: 1.2,
-		  year: Calendar.autoupdatingCurrent.date(from: DateComponents(year: 2020))!),
+	      value: 1.2,
+	      year: Calendar.autoupdatingCurrent.date(from: DateComponents(year: 2020))!),
 	.init(type: .temperature,
-		  value: 2.9,
-		  year: Calendar.autoupdatingCurrent.date(from: DateComponents(year: 2060))!),
+	      value: 2.9,
+	      year: Calendar.autoupdatingCurrent.date(from: DateComponents(year: 2060))!),
 	.init(type: .temperature,
-		  value: 2.6,
-		  year: Calendar.autoupdatingCurrent.date(from: DateComponents(year: 2100))!),
+	      value: 2.6,
+	      year: Calendar.autoupdatingCurrent.date(from: DateComponents(year: 2100))!),
 ]
 
 func getDateFromYear(date: Int) -> Date {
-	return Calendar.autoupdatingCurrent.date(from: DateComponents(year: date))!;
+	return Calendar.autoupdatingCurrent.date(from: DateComponents(year: date))!
 }

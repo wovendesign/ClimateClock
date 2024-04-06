@@ -5,8 +5,8 @@
 //  Created by Eric Wätke on 02.04.24.
 //
 
-import Foundation
 import Boutique
+import Foundation
 
 final class AppState: ObservableObject {
 	@StoredValue(key: "funkyRedPandaModeEnabled")

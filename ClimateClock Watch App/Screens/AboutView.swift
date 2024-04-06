@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct AboutView: View {
-    var body: some View {
+	var body: some View {
 		ScrollView {
-			VStack (spacing: 16) {
+			VStack(spacing: 16) {
 				HighlightedText(text: "All Data is provided by the v2 Climate Clock API from climateclock.world. \n\n Join in and participate in the Climate Clock Community too. \n\n #ClimateClock #ActInTime",
-								highlighted: "v2 Climate Clock API")
+				                highlighted: "v2 Climate Clock API")
 			}
 		}
-    }
+	}
 }
 
 private struct HighlightedText: View {
@@ -40,5 +40,5 @@ private struct HighlightedText: View {
 }
 
 #Preview {
-    AboutView()
+	AboutView()
 }

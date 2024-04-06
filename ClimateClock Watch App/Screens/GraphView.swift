@@ -5,20 +5,19 @@
 //  Created by Eric Wätke on 14.02.24.
 //
 
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct Test: Identifiable {
 	var id = UUID()
-	
+
 	var year: Int
 	var value: Double
 }
 
 struct GraphView: View {
-	
 	@StateObject var viewModel = GraphViewModel()
-	
+
 	var body: some View {
 		VStack(alignment: .leading) {
 			Spacer()
@@ -32,7 +31,7 @@ struct GraphView: View {
 					)
 					.animation(.bouncy, value: viewModel.currentModel)
 					.opacity(model.color == .red ? 1 : 0)
-					
+
 					Graph(
 						emissions: model.emissions,
 						temperatures: model.temperatures,
@@ -41,7 +40,7 @@ struct GraphView: View {
 					)
 					.animation(.bouncy, value: viewModel.currentModel)
 					.opacity(model.color == .orange ? 1 : 0)
-					
+
 					Graph(
 						emissions: model.emissions,
 						temperatures: model.temperatures,
@@ -66,7 +65,7 @@ struct GraphView: View {
 				Text("2100")
 					.font(.system(size: 10))
 			}
-			
+
 			ScrollView {
 				VStack(alignment: .leading) {
 					ForEach(viewModel.models) { item in
@@ -90,9 +89,9 @@ struct GraphView: View {
 		.padding(12)
 		.background(
 			LinearGradient(gradient: Gradient(colors: [.black, viewModel.currentModel?.color ?? Color.red]),
-						   startPoint: .top,
-						   endPoint: .bottom)
-			.opacity(0.3)
+			               startPoint: .top,
+			               endPoint: .bottom)
+				.opacity(0.3)
 		)
 		.ignoresSafeArea()
 	}
