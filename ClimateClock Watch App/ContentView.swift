@@ -18,7 +18,7 @@ struct ContentView: View {
 			GraphView()
 			NewsView()
 				.environmentObject(newsController)
-			FiguresView()
+			LifelineView()
 			AboutView()
 		}
 		.tabViewStyle(.verticalPage)

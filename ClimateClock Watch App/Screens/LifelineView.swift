@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct FiguresView: View {
+struct LifelineView: View {
 	var body: some View {
 		ScrollView {
 			VStack(alignment: .leading, spacing: 12) {
-				StatCell(value: "26.7", unit: "%", label: "Women in parliaments globally")
-				StatCell(value: "13.676083240", unit: "%", label: "World's energy from renewables")
-				StatCell(value: "$12.8312", unit: "trillion", label: "Loss & damage owed by G7 nations")
-				StatCell(value: "$40.60", unit: "trillion", label: "Divested from fossil fuels")
-				StatCell(value: "43,500.000", unit: "km²", label: "Land protected by indigenous people")
-				StatCell(value: "1,013,455", unit: "HA", label: "Regenerative agriculture")
+				StatCell(value: 26.7, unit: "%", label: "Women in parliaments globally")
+				StatCell(value: 13.676083240, unit: "%", label: "World's energy from renewables")
+				StatCell(value: 12.8312, unit: "trillion", label: "Loss & damage owed by G7 nations")
+				StatCell(value: 40.60, unit: "trillion", label: "Divested from fossil fuels")
+				StatCell(value: 43_500.000, unit: "km²", label: "Land protected by indigenous people")
+				StatCell(value: 1_013_455, unit: "HA", label: "Regenerative agriculture")
 			}
 			.frame(maxWidth: .infinity)
 			.padding(.horizontal, 8.0)
@@ -29,7 +29,7 @@ struct FiguresView: View {
 }
 
 struct StatCell: View {
-	var value: String
+	var value: Double
 	var unit: String
 //	var precision: Int
 	var label: String
@@ -37,9 +37,10 @@ struct StatCell: View {
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {
 			HStack {
-				Text(value)
+				Text("\(value)")
 					.font(.system(size: 19))
 					.fontWeight(.semibold)
+					.contentTransition(.numericText(value: value))
 				Text(unit)
 					.font(.lowercaseSmallCaps(.system(size: 19))())
 					.fontWeight(.semibold)
@@ -61,5 +62,5 @@ struct StatCell: View {
 }
 
 #Preview {
-	FiguresView()
+	LifelineView()
 }

@@ -178,8 +178,7 @@ enum MockData {
 				.init(type: .emission, value: 0.91, year: getDateFromYear(date: 1990)),
 				.init(type: .emission, value: 1.05, year: getDateFromYear(date: 2000)),
 				.init(type: .emission, value: 1.24, year: getDateFromYear(date: 2010)),
-				.init(type: .emission, value: 0, year: getDateFromYear(date: 2020)),
-				.init(type: .emission, value: 0, year: getDateFromYear(date: 2030)),
+				.init(type: .emission, value: 0, year: getDateFromYear(date: 2060)),
 				.init(type: .emission, value: 0, year: getDateFromYear(date: 2070)),
 				.init(type: .emission, value: 0, year: getDateFromYear(date: 2100)),
 			]
