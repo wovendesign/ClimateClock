@@ -47,8 +47,22 @@ struct NewsListItem: View {
 		.padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
 		.sheet(isPresented: $sheetOpen) {
 			ScrollView {
-				VStack {
+				VStack(alignment: .leading) {
 					Text(newsItem.headline)
+						.font(
+							.custom("Oswald", size: 16)
+							.weight(.regular)
+						)
+						.tracking(0.32)
+					if let source = newsItem.source {
+						Text(source)
+							.font(
+								.custom("Assistant", size: 12)
+								.weight(.semibold)
+							)
+							.foregroundStyle(Color.gray)
+					}
+					
 					if let url = URL(string: newsItem.link?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "") {
 						let _ = print(url)
 						Button("Read on watch") {
