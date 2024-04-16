@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct LifeLine {
+	var prefix: String? = nil
 	let value: Double
 	let unit: String
 	let label: String
 	let precision: Int
 	var size: LifeLineSize = .Small
+	var goal: String? = nil
 }
 
 struct LifelineView: View {
 	let lifelines = [
-		LifeLine(value: 26.7, unit: "%", label: "Women in parliaments globally", precision: 1, size: .Large),
-		LifeLine(value: 13.676083240, unit: "%", label: "World's energy from renewables", precision: 9, size: .Large),
-		LifeLine(value: 12.8312, unit: "trillion", label: "Loss & damage owed by G7 nations", precision: 4),
-		LifeLine(value: 40.60, unit: "trillion", label: "Divested from fossil fuels", precision: 2),
+		LifeLine(value: 26.7, unit: "%", label: "Women in parliaments globally", precision: 1, size: .Large, goal: "100% before 2030"),
+		LifeLine(value: 13.676083240, unit: "%", label: "World's energy from renewables", precision: 9, size: .Large, goal: "50%"),
+		LifeLine(prefix: "$", value: 12.8312, unit: "trillion", label: "Loss & damage owed by G7 nations", precision: 4),
+		LifeLine(prefix: "$", value: 40.60, unit: "trillion", label: "Divested from fossil fuels", precision: 2),
 		LifeLine(value: 43_500.000, unit: "km²", label: "Land protected by indigenous people", precision: 3),
 		LifeLine(value: 1_013_455, unit: "HA", label: "Regenerative agriculture", precision: 0)
 	]
@@ -31,12 +33,14 @@ struct LifelineView: View {
 				
 				ForEachIndexed(lifelines) { index, item in
 					LifeLineCell(
+						prefix: item.prefix,
 						value: item.value,
 						unit: item.unit,
 						precision: item.precision,
 						label: item.label,
 						index: index,
-						size: item.size
+						size: item.size,
+						goal: item.goal
 					)
 				}
 			}
@@ -55,12 +59,14 @@ enum LifeLineSize {
 }
 
 struct LifeLineCell: View {
+	let prefix: String?
 	var value: Double
 	var unit: String
 	let precision: Int
 	var label: String
 	let index: Int
 	let size: LifeLineSize
+	let goal: String?
 	
 	@State private var animatedValue = 0.0
 	
@@ -69,7 +75,7 @@ struct LifeLineCell: View {
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading) {
 					HStack {
-						Text("\(animatedValue, specifier: "%0.\(precision)f")")
+						Text("\(prefix ?? "")\(animatedValue, specifier: "%0.\(precision)f")")
 							.font(
 								.custom("Oswald", size: 20)
 								.weight(.medium)
@@ -102,7 +108,7 @@ struct LifeLineCell: View {
 				)
 				
 				if(size == .Large) {
-					Text("Our goal: 100% before 2030")
+					Text("Our goal: \(goal ?? "")")
 						.font(
 							.custom("Oswald", size: 14)
 							.weight(.medium)
@@ -111,12 +117,12 @@ struct LifeLineCell: View {
 						.scaledToFill()
 						.minimumScaleFactor(0.5)
 						.foregroundStyle(.white)
-						.frame(maxWidth: .infinity)
+						.frame(maxWidth: .infinity, alignment: .leading)
 						.padding(
 							EdgeInsets(
 								top: 4,
 								leading: 6,
-								bottom: 4,
+								bottom: 5,
 								trailing: 6
 							)
 						)

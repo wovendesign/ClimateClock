@@ -32,7 +32,6 @@ final class NewsController: ObservableObject {
 			
 			switch result {
 			case .success(let data):
-				print("Got news trying to save")
 				return try await saveNews(news: data.data.modules.newsfeed_1.newsfeed)
 				
 			case .failure(let error):

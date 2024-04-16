@@ -23,7 +23,6 @@ final class NetworkManager {
 		}
 		
 		let (task, _) = try await URLSession.shared.data(for: URLRequest(url: url))
-		print("got data")
 		
 		do {
 			let decoder = JSONDecoder()
