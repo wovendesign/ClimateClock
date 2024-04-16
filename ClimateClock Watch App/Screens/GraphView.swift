@@ -66,29 +66,35 @@ struct GraphView: View {
 					.font(.system(size: 10))
 			}
 
-			ScrollView {
-				VStack(alignment: .leading) {
-					ForEach(viewModel.models) { item in
-						PredictionModel(
-							model: item.model,
-							textColor: item.color
-						)
-						.containerRelativeFrame(.vertical)
-						.scrollTransition { content, phase in
-							content.opacity(phase.isIdentity ? 1.0 : 0)
+//			ScrollViewReader { proxy in
+				ScrollView {
+					VStack(alignment: .leading) {
+						ForEach(viewModel.models) { item in
+							PredictionModel(
+								model: item.model,
+								textColor: item.color
+							)
+							.containerRelativeFrame(.vertical)
+							.scrollTransition { content, phase in
+								content.opacity(phase.isIdentity ? 1.0 : 0)
+							}
+//							.id(index)
 						}
 					}
+					.scrollTargetLayout()
 				}
-				.scrollTargetLayout()
-			}
-			.defaultScrollAnchor(.center)
-			.scrollPosition(id: $viewModel.currentModelId)
-			.contentMargins(.vertical, 16, for: .scrollContent)
-			.scrollTargetBehavior(.viewAligned)
+				.defaultScrollAnchor(.center)
+				.scrollPosition(id: $viewModel.currentModelId)
+				.contentMargins(.vertical, 16, for: .scrollContent)
+				.scrollTargetBehavior(.viewAligned)
+//				.onAppear {
+//					proxy.scrollTo(viewModel.models.first?.id)
+//				}
+//			}
 		}
 		.padding(12)
 		.background(
-			LinearGradient(gradient: Gradient(colors: [.black, viewModel.currentModel?.color ?? Color.red]),
+			LinearGradient(gradient: Gradient(colors: [viewModel.currentModel?.color ?? .red, .black]),
 			               startPoint: .top,
 			               endPoint: .bottom)
 				.opacity(0.3)

@@ -14,17 +14,17 @@ struct ContentView: View {
 
 	var body: some View {
 		TabView {
+			LifelineView()
 			CountdownView()
 			GraphView()
 			NewsView()
 				.environmentObject(newsController)
-			LifelineView()
+			
 			AboutView()
 		}
 		.tabViewStyle(.verticalPage)
 		.task {
-//			viewModel.getClimateData()
-			print(await newsController.fetchNewsFromAPI())
+			await newsController.fetchNewsFromAPI()
 		}
 	}
 }

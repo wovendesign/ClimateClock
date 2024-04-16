@@ -5,6 +5,7 @@
 //  Created by Eric Wätke on 03.04.24.
 //
 
+import AuthenticationServices
 import SwiftUI
 
 struct NewsListItem: View {
@@ -18,7 +19,7 @@ struct NewsListItem: View {
 		guard let pushDate else {
 			return "No Date"
 		}
-
+		
 		if pushDate.distance(to: Date()) < 86_400 {
 			return "TODAY"
 		}
@@ -31,7 +32,7 @@ struct NewsListItem: View {
 			Text(newsItem.headline)
 				.font(
 					.custom("Oswald", size: 16)
-						.weight(.regular)
+					.weight(.regular)
 				)
 				.tracking(0.32)
 				.frame(maxWidth: .infinity, alignment: .leading)
@@ -39,14 +40,35 @@ struct NewsListItem: View {
 			Text(newsItem.source ?? "")
 				.font(
 					.custom("Assistant", size: 12)
-						.weight(.semibold)
+					.weight(.semibold)
 				)
 				.foregroundStyle(Color.gray)
 		}
 		.padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
 		.sheet(isPresented: $sheetOpen) {
-			VStack {
-				ShareLink(item: newsItem.link!)
+			ScrollView {
+				VStack {
+					Text(newsItem.headline)
+					if let url = URL(string: newsItem.link?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "") {
+						let _ = print(url)
+						Button("Read on watch") {
+							// Source: https://www.reddit.com/r/apple/comments/rcn2h7/comment/hnwr8do/
+							let session = ASWebAuthenticationSession(
+								url: url,
+								callbackURLScheme: nil
+							) { _, _ in
+								
+							}
+							
+							// Makes the "Watch App Wants To Use example.com to Sign In" popup not show up
+							session.prefersEphemeralWebBrowserSession = true
+							
+							session.start()
+						}
+						ShareLink(item: url)
+					}
+					
+				}
 			}
 		}
 		.frame(maxWidth: .infinity)
@@ -83,12 +105,12 @@ struct RelativeTimeCell: View {
 				Text(relativeDate)
 					.font(
 						.custom("Oswald", size: 12)
-							.weight(.semibold)
+						.weight(.semibold)
 					)
 					.padding(EdgeInsets(top: 1.5,
-					                    leading: 6,
-					                    bottom: 2,
-					                    trailing: 6))
+										leading: 6,
+										bottom: 2,
+										trailing: 6))
 					.foregroundStyle(.navy)
 					.background(.aquaBlue75)
 					.clipShape(.capsule)
@@ -96,7 +118,7 @@ struct RelativeTimeCell: View {
 				Text(relativeDate)
 					.font(
 						.custom("Oswald", size: 12)
-							.weight(.semibold)
+						.weight(.semibold)
 					)
 					.foregroundStyle(.gray)
 			}

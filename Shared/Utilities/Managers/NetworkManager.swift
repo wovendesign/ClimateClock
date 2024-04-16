@@ -23,21 +23,7 @@ final class NetworkManager {
 		}
 		
 		let (task, _) = try await URLSession.shared.data(for: URLRequest(url: url))
-		
-//			if(error != nil) {
-//				completed(.failure(.unableToComplete))
-//				return
-//			}
-//
-//			guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//				completed(.failure(.invalidResponse))
-//				return
-//			}
-//
-//			guard let data = data else {
-//				completed(.failure(.invalidData))
-//				return
-//			}
+		print("got data")
 		
 		do {
 			let decoder = JSONDecoder()

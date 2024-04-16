@@ -9,9 +9,10 @@ import SwiftUI
 
 struct CountdownView: View {
 	var body: some View {
-		let watchFaceUrl = Bundle.main.url(forResource: "Solar Analogue", withExtension: "watchface")
+//		let watchFaceUrl = Bundle.main.url(forResource: "Solar Analogue", withExtension: "watchface")
 		VStack {
 			Text("Todo: Countdown View")
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
 //			Button(action: {
 //				//An object for importing watch faces that the app provides
 //				let library = CLKWatchFaceLibrary()
@@ -22,6 +23,14 @@ struct CountdownView: View {
 //				Text("Add watchface")
 //			})
 		}
+//		.frame(minWidth: .infinity, minHeight: .infinity)
+		
+		.background(
+			LinearGradient(gradient: Gradient(colors: [.aubergine, .black]),
+						   startPoint: .top,
+						   endPoint: .bottom)
+				.opacity(0.6)
+		)
 	}
 }
 

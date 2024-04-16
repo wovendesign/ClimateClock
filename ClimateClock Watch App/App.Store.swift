@@ -32,7 +32,8 @@ final class NewsController: ObservableObject {
 			
 			switch result {
 			case .success(let data):
-				try await saveNews(news: data.data.modules.newsfeed_1.newsfeed)
+				print("Got news trying to save")
+				return try await saveNews(news: data.data.modules.newsfeed_1.newsfeed)
 				
 			case .failure(let error):
 				switch error {
@@ -89,7 +90,7 @@ final class NewsController: ObservableObject {
 			return temp
 		}
 		
-		try await self.$news.insert(sortedNews)
+		return try await self.$news.insert(sortedNews)
 	}
 	
 	func updateNews(oldItem: NewsItem, newItem: NewsItem) async throws {
