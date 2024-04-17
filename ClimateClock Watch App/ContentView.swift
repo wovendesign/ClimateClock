@@ -14,7 +14,20 @@ struct ContentView: View {
 
 	var body: some View {
 		TabView {
-			LifelineView()
+			NavigationStack {
+				LifelineView()
+					.toolbar {
+						ToolbarItem(placement: .confirmationAction) {
+							Button {
+								print("I pressed something")
+							} label: {
+								Image(systemName: "info.circle.fill")
+									.foregroundStyle(.white)
+							}
+							.controlSize(.mini)
+						}
+					}
+			}
 			CountdownView()
 			GraphView()
 			NewsView()
