@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+struct LifeLineValue {
+	let timestamp: String // 2020-01-01T00:00:00+00:00
+	let initial: Double
+	let rate: Double
+}
+
 struct LifeLine {
 	var prefix: String? = nil
-	let value: Double
+	let value: LifeLineValue
 	let unit: String
 	let label: String
 	let precision: Int
@@ -19,12 +25,34 @@ struct LifeLine {
 
 struct LifelineView: View {
 	let lifelines = [
-		LifeLine(value: 26.7, unit: "%", label: "Women in parliaments globally", precision: 1, size: .Large, goal: "100% before 2030"),
-		LifeLine(value: 13.676083240, unit: "%", label: "World's energy from renewables", precision: 9, size: .Large, goal: "50%"),
-		LifeLine(prefix: "$", value: 12.8312, unit: "trillion", label: "Loss & damage owed by G7 nations", precision: 4),
-		LifeLine(prefix: "$", value: 40.60, unit: "trillion", label: "Divested from fossil fuels", precision: 2),
-		LifeLine(value: 43_500.000, unit: "km²", label: "Land protected by indigenous people", precision: 3),
-		LifeLine(value: 1_013_455, unit: "HA", label: "Regenerative agriculture", precision: 0)
+		LifeLine(
+			value: LifeLineValue(
+				timestamp: "2023-02-14T00:00:00+00:00",
+				initial: 26.9,
+				rate: 0.0
+			),
+			unit: "%",
+			label: "Women in parliaments globally",
+			precision: 1,
+			size: .Large,
+			goal: "100% before 2030"
+		),
+		LifeLine(
+			value: LifeLineValue(
+				timestamp: "2020-01-01T00:00:00+00:00",
+				initial: 11.4,
+				rate: 2.0428359571070087e-8
+			),
+			unit: "%",
+			label: "World's energy from renewables",
+			precision: 9,
+			size: .Large,
+			goal: "50%"
+		),
+//		LifeLine(prefix: "$", value: 12.8312, unit: "trillion", label: "Loss & damage owed by G7 nations", precision: 4),
+//		LifeLine(prefix: "$", value: 40.60, unit: "trillion", label: "Divested from fossil fuels", precision: 2),
+//		LifeLine(value: 43_500.000, unit: "km²", label: "Land protected by indigenous people", precision: 3),
+//		LifeLine(value: 1_013_455, unit: "HA", label: "Regenerative agriculture", precision: 0)
 	]
 	
 	var body: some View {
@@ -60,7 +88,7 @@ enum LifeLineSize {
 
 struct LifeLineCell: View {
 	let prefix: String?
-	var value: Double
+	var value: LifeLineValue
 	var unit: String
 	let precision: Int
 	var label: String
@@ -70,22 +98,52 @@ struct LifeLineCell: View {
 	
 	@State private var animatedValue = 0.0
 	
+	init?(prefix: String?, value: LifeLineValue, unit: String, precision: Int, label: String, index: Int, size: LifeLineSize, goal: String?, animatedValue: Double = 0.0) {
+		let dateFormatter = ISO8601DateFormatter()
+		
+		guard let pastTimestamp = dateFormatter.date(from: value.timestamp) else {
+			print("Couldnt calculate Timestamp")
+			return nil
+		}
+		
+		self.prefix = prefix
+		self.value = value
+		self.unit = unit
+		self.precision = precision
+		self.label = label
+		self.index = index
+		self.size = size
+		self.goal = goal
+		self.animatedValue = animatedValue
+		self.timestamp = pastTimestamp
+	}
+	
+	let timestamp: Date
+	
+	func valueByDate(date: Date) -> Double {
+		let timeDifference = date.timeIntervalSince(timestamp)
+		
+		return (value.initial + timeDifference * value.rate)
+	}
+	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading) {
 					HStack {
-						Text("\(prefix ?? "")\(animatedValue, specifier: "%0.\(precision)f")")
-							.font(
-								.custom("Oswald", size: 20)
-								.weight(.medium)
-							)
-							.tracking(0.32)
-							.contentTransition(.numericText(value: animatedValue))
-							.animation(
-								.linear(duration: 0.5).delay(0.5),
-								value: animatedValue
-							)
+						TimelineView(.periodic(from: .now, by: 1)) { context in
+							Text("\(prefix ?? "")\(valueByDate(date: context.date), specifier: "%0.\(precision)f")")
+								.font(
+									.custom("Oswald", size: 20)
+									.weight(.medium)
+								)
+								.tracking(0.32)
+								.contentTransition(.numericText(value: valueByDate(date: context.date)))
+								.animation(
+									.linear(duration: 0.5).delay(0.5),
+									value: valueByDate(date: context.date)
+								)
+						}
 						Text(unit)
 							.font(.lowercaseSmallCaps(
 								.custom("Oswald", size: 20)
@@ -150,7 +208,22 @@ struct LifeLineCell: View {
 			}
 		}
 		.onAppear {
-			animatedValue = value
+			let dateFormatter = ISO8601DateFormatter()
+			
+			guard let pastTimestamp = dateFormatter.date(from: value.timestamp) else {
+				print("Couldnt calculate Timestamp")
+				return
+			}
+			
+			let currentTime = Date()
+			let timeDifference = currentTime.timeIntervalSince(pastTimestamp)
+			
+			
+			let newValue = value.initial + timeDifference * value.rate
+			
+			withAnimation {
+				animatedValue = newValue
+			}
 		}
 	}
 }
