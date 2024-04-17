@@ -123,35 +123,32 @@ struct LifeLineCell: View {
 	func valueByDate(date: Date) -> Double {
 		let timeDifference = date.timeIntervalSince(timestamp)
 		
-		return (value.initial + timeDifference * value.rate)
+		return (value.initial + timeDifference * (value.rate))
 	}
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading) {
-					HStack {
-						TimelineView(.periodic(from: .now, by: 1)) { context in
-							Text("\(prefix ?? "")\(valueByDate(date: context.date), specifier: "%0.\(precision)f")")
-								.font(
-									.custom("Oswald", size: 20)
-									.weight(.medium)
-								)
-								.tracking(0.32)
-								.contentTransition(.numericText(value: valueByDate(date: context.date)))
-								.animation(
-									.linear(duration: 0.5).delay(0.5),
-									value: valueByDate(date: context.date)
-								)
+						VStack {
+							TimelineView(.periodic(from: .now, by: 0.5)) { context in
+								Text("\(prefix ?? "")\(valueByDate(date: context.date), specifier: "%0.\(precision)f") \(unit)")
+									.font(
+										.custom("Oswald", size: 20)
+										.weight(.medium)
+									)
+									.tracking(0.32)
+									.contentTransition(
+										.numericText(
+											value: valueByDate(date: context.date)
+										)
+									)
+									.animation(
+										.linear(duration: 0.5).delay(0.5),
+										value: valueByDate(date: context.date)
+									)
+							}
 						}
-						Text(unit)
-							.font(.lowercaseSmallCaps(
-								.custom("Oswald", size: 20)
-								.weight(.medium)
-							)())
-							.tracking(0.32)
-							.fontWeight(.semibold)
-					}
 					
 					if(size == .Large) {
 						Text(label)
