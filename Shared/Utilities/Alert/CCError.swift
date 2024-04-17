@@ -8,8 +8,8 @@
 import Foundation
 
 enum CCError: Error {
-	case invalidURL
-	case invalidResponse
-	case invalidData
-	case unableToComplete
+    case invalidURL
+    case invalidResponse
+    case invalidData
+    case unableToComplete
 }

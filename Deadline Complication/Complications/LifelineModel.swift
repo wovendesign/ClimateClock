@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct LifelineMockData {
-	static let sample_data: LifelineEntry = LifelineEntry(date: Date(),
-														  label: "Women in Parliment",
-														  value: 10.0344,
-														  unit: "%")
+public enum LifelineMockData {
+    static let sample_data: LifelineEntry = .init(date: Date(),
+                                                  label: "Women in Parliment",
+                                                  value: 10.0344,
+                                                  unit: "%")
 }

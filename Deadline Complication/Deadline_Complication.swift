@@ -5,40 +5,38 @@
 //  Created by Eric Wätke on 05.01.24.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 struct DeadlineProvider: TimelineProvider {
-    func placeholder(in context: Context) -> DeadlineEntry {
-        return DeadlineEntry(date: .now, deadline:"2029-07-22T16:00:00+00:00")
+    func placeholder(in _: Context) -> DeadlineEntry {
+        return DeadlineEntry(date: .now, deadline: "2029-07-22T16:00:00+00:00")
     }
-    
+
     //    var hasFetchedDeadlineData: Bool
     //    var deadlineData: String
-    
-    
-    func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) {
+
+    func getSnapshot(in _: Context, completion: @escaping (Entry) -> Void) {
         let date = Date()
         let entry: DeadlineEntry
-        
-        
-        entry = DeadlineEntry(date: date, deadline:"2029-07-22T16:00:00+00:00")
+
+        entry = DeadlineEntry(date: date, deadline: "2029-07-22T16:00:00+00:00")
         completion(entry)
     }
-    
-    func getTimeline(in context: Context, completion: @escaping (Timeline<DeadlineEntry>) -> Void) {
+
+    func getTimeline(in _: Context, completion: @escaping (Timeline<DeadlineEntry>) -> Void) {
         // Create a timeline entry for "now."
         let date = Date()
-        
+
         get_data { deadlineContent in
             let entry = DeadlineEntry(date: date, deadline: deadlineContent)
-            
+
             // Create a date that's 15 minutes in the future.
             let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 30, to: date)!
-            
+
             // Create the timeline with the entry and a reload policy with the date for the next update.
             let timeline = Timeline(entries: [entry], policy: .after(nextUpdateDate))
-            
+
             // Call the completion to pass the timeline to WidgetKit.
             completion(timeline)
         }
@@ -67,32 +65,33 @@ func parseDateString(_ dateString: String) -> Date? {
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
     return dateFormatter.date(from: dateString)
 }
+
 func dateDiff(deadline: Date, now: Date) -> DateComponents {
     let calendar = Calendar.current
-    
+
     let components = calendar.dateComponents([.year, .day, .hour, .minute, .second], from: now, to: deadline)
-    
+
     return components
 }
 
-func get_data(completion: @escaping (String) -> Void) {
+func get_data(completion _: @escaping (String) -> Void) {
     let url = URL(string: "https://api.climateclock.world/v2/widget/clock.json")!
     let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 5)
-    
+
     var clock_data: ClimateClockData?
-    
+
     print("test")
-    
+
 //    URLSession.shared.dataTask(with: request) {(data, response, error) in
 //        guard let data = data else {
 //            completion("2039-07-22T16:00:00+00:00")
 //            return
 //        }
-//        
+//
 //        do {
 //            guard let json = String(data: data, encoding: .utf8) else { return }
 //            clock_data = parseJSON(json: json)
-//            
+//
 //            if let clock_data = clock_data {
 //                completion(clock_data.modules.carbonDeadlines.timestamp)
 //            } else {
@@ -105,26 +104,27 @@ func get_data(completion: @escaping (String) -> Void) {
 func diff(deadline: String) -> DeadlineContent {
     if let deadline = parseDateString(deadline) {
         let now = Date()
-        
+
         let diffComponents = dateDiff(deadline: deadline, now: now)
-        
+
         return DeadlineContent(
             years: diffComponents.year ?? 0,
             days: diffComponents.day ?? 4,
             hours: diffComponents.hour ?? 0,
             minutes: diffComponents.minute ?? 0,
-            seconds: diffComponents.second ?? 0)
+            seconds: diffComponents.second ?? 0
+        )
     } else {
         return DeadlineContent(years: 0, days: 5, hours: 0, minutes: 0, seconds: 0)
     }
 }
 
-struct Deadline_ComplicationEntryView : View {
+struct Deadline_ComplicationEntryView: View {
     var entry: DeadlineProvider.Entry
-    
+
     var body: some View {
         let deadline = Calendar.current.dateComponents([.hour, .minute], from: parseDateString(entry.deadline)!)
-        
+
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
         let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         let tomorrowComponents = Calendar.current.dateComponents([.year, .month, .day], from: tomorrow)
@@ -142,12 +142,11 @@ struct Deadline_ComplicationEntryView : View {
             hour: deadline.hour,
             minute: deadline.minute
         )
-        
+
         let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
         let isTomorrow = Calendar.current.isDateInToday(tomorrowTimer)
         let todayTimer = Calendar.current.date(from: todayTimerComponents)!
-        
-        
+
         VStack(
             alignment: .leading
         ) {
@@ -155,7 +154,7 @@ struct Deadline_ComplicationEntryView : View {
                 Image(systemName: "flame.circle.fill")
                 Text("1,5˚C Deadline").font(.headline)
             }
-            HStack (
+            HStack(
                 spacing: 6
             ) {
                 HStack(
@@ -196,7 +195,6 @@ struct Deadline_ComplicationEntryView : View {
                     .widgetAccentable()
             }
         }
-        
     }
 }
 
@@ -204,14 +202,13 @@ struct Deadline_ComplicationEntryView : View {
 struct DeadlineComplications: WidgetBundle {
     var body: some Widget {
         Deadline_Complication()
-//			Lifeline
+        //			Lifeline
     }
 }
 
-
 struct Deadline_Complication: Widget {
     let kind: String = "Deadline_Complication"
-    
+
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: DeadlineProvider()) { entry in
             Deadline_ComplicationEntryView(entry: entry)
@@ -222,8 +219,6 @@ struct Deadline_Complication: Widget {
         .supportedFamilies([.accessoryRectangular])
     }
 }
-
-
 
 #Preview(as: .accessoryRectangular) {
     Deadline_Complication()
