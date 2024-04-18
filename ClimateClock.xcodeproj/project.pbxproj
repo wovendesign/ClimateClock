@@ -49,6 +49,9 @@
 		F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570942B7D00240001DCE7 /* GraphView.swift */; };
 		F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570962B7D00320001DCE7 /* GraphViewModel.swift */; };
 		F6C5709A2B7D027C0001DCE7 /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570992B7D027C0001DCE7 /* PredictionModel.swift */; };
+		F6CCBC9F2BD11B7600EB80C2 /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
+		F6CCBCA02BD11B7600EB80C2 /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
+		F6CCBCA12BD11B7600EB80C2 /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
 		F6D315DD2BBC461000C75299 /* App.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DC2BBC461000C75299 /* App.State.swift */; };
 		F6D315DF2BBC462F00C75299 /* App.Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DE2BBC462F00C75299 /* App.Store.swift */; };
 		F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315E02BBD85FD00C75299 /* NewsListItem.swift */; };
@@ -152,6 +155,7 @@
 		F6C570942B7D00240001DCE7 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		F6C570962B7D00320001DCE7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		F6C570992B7D027C0001DCE7 /* PredictionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
+		F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OswaldVF.ttf; sourceTree = "<group>"; };
 		F6D315DC2BBC461000C75299 /* App.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.State.swift; sourceTree = "<group>"; };
 		F6D315DE2BBC462F00C75299 /* App.Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.Store.swift; sourceTree = "<group>"; };
 		F6D315E02BBD85FD00C75299 /* NewsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItem.swift; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 		F62DCB802B7BD27400855D88 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */,
 				F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */,
 				F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */,
 			);
@@ -484,6 +489,7 @@
 			files = (
 				F60B29AD2B8F91F900E41091 /* Solar Analogue.watchface in Resources */,
 				F6D315E72BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */,
+				F6CCBC9F2BD11B7600EB80C2 /* OswaldVF.ttf in Resources */,
 				F62A7A5F2B48700B002A7E25 /* Preview Assets.xcassets in Resources */,
 				F6D315E32BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
 				F62A7A5C2B48700B002A7E25 /* Assets.xcassets in Resources */,
@@ -496,6 +502,7 @@
 			files = (
 				F62A7A712B48700C002A7E25 /* Preview Assets.xcassets in Resources */,
 				F6D315E82BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */,
+				F6CCBCA02BD11B7600EB80C2 /* OswaldVF.ttf in Resources */,
 				F60B29AE2B8F91F900E41091 /* Solar Analogue.watchface in Resources */,
 				F6D315E42BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
 				F62A7A6E2B48700C002A7E25 /* Assets.xcassets in Resources */,
@@ -508,6 +515,7 @@
 			files = (
 				F6D315E92BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */,
 				F6D315E52BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
+				F6CCBCA12BD11B7600EB80C2 /* OswaldVF.ttf in Resources */,
 				F60B29AF2B8F91F900E41091 /* Solar Analogue.watchface in Resources */,
 				F62A7ABB2B487136002A7E25 /* Assets.xcassets in Resources */,
 			);

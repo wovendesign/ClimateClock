@@ -130,12 +130,13 @@ struct LifeLineCell: View {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
                     VStack {
-                        TimelineView(.periodic(from: .now, by: 0.5)) { context in
+                        TimelineView(.periodic(from: .now, by: 0.3)) { context in
                             Text("\(prefix ?? "")\(valueByDate(date: context.date), specifier: "%0.\(precision)f") \(unit)")
                                 .font(
                                     .custom("Oswald", size: 20)
                                         .weight(.medium)
                                 )
+								.monospacedDigit()
                                 .tracking(0.32)
                                 .contentTransition(
                                     .numericText(
