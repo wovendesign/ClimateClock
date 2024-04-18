@@ -94,28 +94,46 @@ struct LifelineView: View {
     ]
 
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 12) {
-                ForEachIndexed(lifelines) { index, item in
-                    LifeLineCell(
-                        prefix: item.prefix,
-                        value: item.value,
-                        unit: item.unit,
-                        precision: item.precision,
-                        label: item.label,
-                        index: index,
-                        size: item.size,
-                        goal: item.goal
-                    )
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 8.0)
-        }
-        .frame(maxWidth: .infinity)
-        .background(.linearGradient(colors: [.lime.opacity(0.4), .black],
-                                    startPoint: .top,
-                                    endPoint: .bottom))
+		ScrollView() {
+			VStack(spacing: 0) {
+				TabTitle(headline: "Lifelines", subtitle: "Change is already happening")
+					.padding(.vertical, 48)
+					.scrollTransition { content, phase in
+						content.scaleEffect(phase.isIdentity ? 1.0 : 0.8, anchor: .bottom)
+							.blur(radius: !phase.isIdentity ? 5.0 : 0)
+							.opacity(phase.isIdentity ? 1.0 : 0.3)
+					}
+					.defaultScrollAnchor(.center)
+				ScrollView {
+					LazyVStack(alignment: .leading, spacing: 12) {
+						ForEachIndexed(lifelines) { index, item in
+							LifeLineCell(
+								prefix: item.prefix,
+								value: item.value,
+								unit: item.unit,
+								precision: item.precision,
+								label: item.label,
+								index: index,
+								size: item.size,
+								goal: item.goal
+							)
+						}
+					}
+					.frame(maxWidth: .infinity)
+					
+				}
+			}
+			
+		}
+		.padding(.horizontal, 8.0)
+		.padding(.vertical, 16)
+		.frame(maxWidth: .infinity)
+		.ignoresSafeArea()
+		
+		.background(.linearGradient(colors: [.lime.opacity(0.4), .black],
+									startPoint: .top,
+									endPoint: .bottom))
+		
     }
 }
 
