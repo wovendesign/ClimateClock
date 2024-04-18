@@ -49,10 +49,48 @@ struct LifelineView: View {
             size: .Large,
             goal: "50%"
         ),
-        //		LifeLine(prefix: "$", value: 12.8312, unit: "trillion", label: "Loss & damage owed by G7 nations", precision: 4),
-        //		LifeLine(prefix: "$", value: 40.60, unit: "trillion", label: "Divested from fossil fuels", precision: 2),
-        //		LifeLine(value: 43_500.000, unit: "km²", label: "Land protected by indigenous people", precision: 3),
-        //		LifeLine(value: 1_013_455, unit: "HA", label: "Regenerative agriculture", precision: 0)
+        LifeLine(
+            prefix: "$",
+            value: LifeLineValue(
+                timestamp: "2020-01-01T00:00:00+00:00",
+                initial: 11.192,
+                rate: 1.26686668330479e-8
+            ),
+            unit: "trillion",
+            label: "Loss & damage owed by G7 nations",
+            precision: 8
+        ),
+        LifeLine(
+            prefix: "$",
+            value: LifeLineValue(
+                timestamp: "2000-01-01T00:00:00+00:00",
+                initial: 40.6,
+                rate: 0
+            ),
+            unit: "trillion",
+            label: "Divested from fossil fuels",
+            precision: 2
+        ),
+        LifeLine(
+            value: LifeLineValue(
+                timestamp: "2021-10-01T00:00:00+00:00",
+                initial: 43.5,
+                rate: 0
+            ),
+            unit: "km²",
+            label: "Land protected by indigenous people",
+            precision: 1
+        ),
+        LifeLine(
+            value: LifeLineValue(
+                timestamp: "2021-10-01T00:00:00+00:00",
+                initial: 1_302_905,
+                rate: 0
+            ),
+            unit: "ha",
+            label: "Regenerative agriculture",
+            precision: 0
+        ),
     ]
 
     var body: some View {
@@ -136,7 +174,7 @@ struct LifeLineCell: View {
                                     .custom("Oswald", size: 20)
                                         .weight(.medium)
                                 )
-								.monospacedDigit()
+                                .monospacedDigit()
                                 .tracking(0.32)
                                 .contentTransition(
                                     .numericText(
@@ -147,6 +185,8 @@ struct LifeLineCell: View {
                                     .linear(duration: 0.5).delay(0.5),
                                     value: valueByDate(date: context.date)
                                 )
+								.minimumScaleFactor(0.5)
+								.lineLimit(1)
                         }
                     }
 

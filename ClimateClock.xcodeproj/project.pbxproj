@@ -43,7 +43,6 @@
 		F64C7ADC2B9F139900E40BB6 /* LifelineComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64C7ADB2B9F139900E40BB6 /* LifelineComplication.swift */; };
 		F64C7ADE2B9F157900E40BB6 /* LifelineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64C7ADD2B9F157900E40BB6 /* LifelineModel.swift */; };
 		F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */; };
-		F673949B2BBC3EDD00B7258D /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F673949A2BBC3EDD00B7258D /* ContentViewModel.swift */; };
 		F673949E2BBC3FD900B7258D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F673949D2BBC3FD900B7258D /* Alert.swift */; };
 		F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BD67F2B7D2C590015ECBE /* Graph.swift */; };
 		F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C570942B7D00240001DCE7 /* GraphView.swift */; };
@@ -52,6 +51,7 @@
 		F6CCBC9F2BD11B7600EB80C2 /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
 		F6CCBCA02BD11B7600EB80C2 /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
 		F6CCBCA12BD11B7600EB80C2 /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
+		F6CCBCA32BD170F700EB80C2 /* TabTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */; };
 		F6D315DD2BBC461000C75299 /* App.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DC2BBC461000C75299 /* App.State.swift */; };
 		F6D315DF2BBC462F00C75299 /* App.Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315DE2BBC462F00C75299 /* App.Store.swift */; };
 		F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315E02BBD85FD00C75299 /* NewsListItem.swift */; };
@@ -149,13 +149,13 @@
 		F64C7ADB2B9F139900E40BB6 /* LifelineComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineComplication.swift; sourceTree = "<group>"; };
 		F64C7ADD2B9F157900E40BB6 /* LifelineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineModel.swift; sourceTree = "<group>"; };
 		F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
-		F673949A2BBC3EDD00B7258D /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		F673949D2BBC3FD900B7258D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F67BD67F2B7D2C590015ECBE /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		F6C570942B7D00240001DCE7 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		F6C570962B7D00320001DCE7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		F6C570992B7D027C0001DCE7 /* PredictionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
 		F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OswaldVF.ttf; sourceTree = "<group>"; };
+		F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTitle.swift; sourceTree = "<group>"; };
 		F6D315DC2BBC461000C75299 /* App.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.State.swift; sourceTree = "<group>"; };
 		F6D315DE2BBC462F00C75299 /* App.Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.Store.swift; sourceTree = "<group>"; };
 		F6D315E02BBD85FD00C75299 /* NewsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItem.swift; sourceTree = "<group>"; };
@@ -261,7 +261,6 @@
 				F6D315DC2BBC461000C75299 /* App.State.swift */,
 				F6D315DE2BBC462F00C75299 /* App.Store.swift */,
 				F62A7A6B2B48700B002A7E25 /* ContentView.swift */,
-				F673949A2BBC3EDD00B7258D /* ContentViewModel.swift */,
 				F60B29AC2B8F91F900E41091 /* Solar Analogue.watchface */,
 				F62A7A6D2B48700C002A7E25 /* Assets.xcassets */,
 				F62A7A6F2B48700C002A7E25 /* Preview Content */,
@@ -354,6 +353,7 @@
 				F643B94F2B8F7536006D1AC5 /* LifelineView.swift */,
 				F60B29A12B8F7FA600E41091 /* AboutView.swift */,
 				F60B29A32B8F837500E41091 /* NewsView.swift */,
+				F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -554,6 +554,7 @@
 				F60B29A22B8F7FA600E41091 /* AboutView.swift in Sources */,
 				F62A7AC52B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */,
 				F60B29B32B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
+				F6CCBCA32BD170F700EB80C2 /* TabTitle.swift in Sources */,
 				F62A7A6A2B48700B002A7E25 /* App.ClimateClock.swift in Sources */,
 				F6D315DF2BBC462F00C75299 /* App.Store.swift in Sources */,
 				F62EED5D2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
@@ -563,7 +564,6 @@
 				F673949E2BBC3FD900B7258D /* Alert.swift in Sources */,
 				F6D315DD2BBC461000C75299 /* App.State.swift in Sources */,
 				F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */,
-				F673949B2BBC3EDD00B7258D /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +742,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
 			};
 			name = Debug;
 		};
@@ -776,7 +776,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
 			};
 			name = Release;
 		};

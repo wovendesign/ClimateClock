@@ -54,6 +54,6 @@ struct PredictionModel: View {
             temperature: "1.5°C",
             arrivalDate: "by 2040"
         ),
-        textColor: .red
+        textColor: .ccRed
     )
 }

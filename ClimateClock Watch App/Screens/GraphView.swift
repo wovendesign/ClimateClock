@@ -26,11 +26,11 @@ struct GraphView: View {
                     Graph(
                         emissions: model.emissions,
                         temperatures: model.temperatures,
-                        color: Color.red,
+                        color: Color.ccRed,
                         gridLines: viewModel.gridLines
                     )
                     .animation(.bouncy, value: viewModel.currentModel)
-                    .opacity(model.color == .red ? 1 : 0)
+                    .opacity(model.color == .ccRed ? 1 : 0)
 
                     Graph(
                         emissions: model.emissions,
@@ -94,7 +94,7 @@ struct GraphView: View {
         }
         .padding(12)
         .background(
-            LinearGradient(gradient: Gradient(colors: [viewModel.currentModel?.color ?? .red, .black]),
+            LinearGradient(gradient: Gradient(colors: [viewModel.currentModel?.color ?? .ccRed, .black]),
                            startPoint: .top,
                            endPoint: .bottom)
                 .opacity(0.3)
