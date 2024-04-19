@@ -112,7 +112,7 @@ enum MockData {
                 .init(type: .emission, value: 1.41, year: getDateFromYear(date: 2010)),
                 .init(type: .emission, value: 1.76, year: getDateFromYear(date: 2020)),
                 .init(type: .emission, value: 2.11, year: getDateFromYear(date: 2030)),
-				.init(type: .emission, value: 2.4, year: getDateFromYear(date: 2060)),
+                .init(type: .emission, value: 2.4, year: getDateFromYear(date: 2060)),
                 .init(type: .emission, value: 2.4, year: getDateFromYear(date: 2070)),
                 .init(type: .emission, value: 2.11, year: getDateFromYear(date: 2100)),
             ]
@@ -147,7 +147,7 @@ enum MockData {
                 .init(type: .emission, value: 1.38, year: getDateFromYear(date: 2010)),
                 .init(type: .emission, value: 1.66, year: getDateFromYear(date: 2020)),
                 .init(type: .emission, value: 1.86, year: getDateFromYear(date: 2030)),
-				.init(type: .emission, value: 1.8, year: getDateFromYear(date: 2060)),
+                .init(type: .emission, value: 1.8, year: getDateFromYear(date: 2060)),
                 .init(type: .emission, value: 1.66, year: getDateFromYear(date: 2070)),
                 .init(type: .emission, value: 0.8, year: getDateFromYear(date: 2100)),
             ]
@@ -180,8 +180,8 @@ enum MockData {
                 .init(type: .emission, value: 0.91, year: getDateFromYear(date: 1990)),
                 .init(type: .emission, value: 1.05, year: getDateFromYear(date: 2000)),
                 .init(type: .emission, value: 1.24, year: getDateFromYear(date: 2010)),
-				.init(type: .emission, value: 1.66, year: getDateFromYear(date: 2020)),
-				.init(type: .emission, value: 0, year: getDateFromYear(date: 2030)),
+                .init(type: .emission, value: 1.66, year: getDateFromYear(date: 2020)),
+                .init(type: .emission, value: 0, year: getDateFromYear(date: 2030)),
                 .init(type: .emission, value: 0, year: getDateFromYear(date: 2060)),
                 .init(type: .emission, value: 0, year: getDateFromYear(date: 2070)),
                 .init(type: .emission, value: 0, year: getDateFromYear(date: 2100)),
