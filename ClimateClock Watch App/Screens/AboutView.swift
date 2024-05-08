@@ -32,7 +32,7 @@ private struct HighlightedText: View {
         var attributedString = AttributedString(text)
 
         if let range = attributedString.range(of: highlighted) {
-            attributedString[range].foregroundColor = .red
+            attributedString[range].foregroundColor = .ccRed75
         }
 
         return attributedString

@@ -12,31 +12,31 @@ struct DeadlineProvider: TimelineProvider {
     func placeholder(in _: Context) -> DeadlineEntry {
         return DeadlineEntry(date: .now, deadline: "2029-07-22T16:00:00+00:00")
     }
-
+    
     //    var hasFetchedDeadlineData: Bool
     //    var deadlineData: String
-
+    
     func getSnapshot(in _: Context, completion: @escaping (Entry) -> Void) {
         let date = Date()
         let entry: DeadlineEntry
-
+        
         entry = DeadlineEntry(date: date, deadline: "2029-07-22T16:00:00+00:00")
         completion(entry)
     }
-
+    
     func getTimeline(in _: Context, completion: @escaping (Timeline<DeadlineEntry>) -> Void) {
         // Create a timeline entry for "now."
         let date = Date()
-
+        
         get_data { deadlineContent in
             let entry = DeadlineEntry(date: date, deadline: deadlineContent)
-
+            
             // Create a date that's 15 minutes in the future.
             let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 30, to: date)!
-
+            
             // Create the timeline with the entry and a reload policy with the date for the next update.
             let timeline = Timeline(entries: [entry], policy: .after(nextUpdateDate))
-
+            
             // Call the completion to pass the timeline to WidgetKit.
             completion(timeline)
         }
@@ -68,45 +68,45 @@ func parseDateString(_ dateString: String) -> Date? {
 
 func dateDiff(deadline: Date, now: Date) -> DateComponents {
     let calendar = Calendar.current
-
+    
     let components = calendar.dateComponents([.year, .day, .hour, .minute, .second], from: now, to: deadline)
-
+    
     return components
 }
 
 func get_data(completion _: @escaping (String) -> Void) {
     let url = URL(string: "https://api.climateclock.world/v2/widget/clock.json")!
     let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 5)
-
+    
     var clock_data: ClimateClockData?
-
+    
     print("test")
-
-//    URLSession.shared.dataTask(with: request) {(data, response, error) in
-//        guard let data = data else {
-//            completion("2039-07-22T16:00:00+00:00")
-//            return
-//        }
-//
-//        do {
-//            guard let json = String(data: data, encoding: .utf8) else { return }
-//            clock_data = parseJSON(json: json)
-//
-//            if let clock_data = clock_data {
-//                completion(clock_data.modules.carbonDeadlines.timestamp)
-//            } else {
-//                completion("2059-07-22T16:00:00+00:00")
-//            }
-//        }
-//    }.resume()
+    
+    //    URLSession.shared.dataTask(with: request) {(data, response, error) in
+    //        guard let data = data else {
+    //            completion("2039-07-22T16:00:00+00:00")
+    //            return
+    //        }
+    //
+    //        do {
+    //            guard let json = String(data: data, encoding: .utf8) else { return }
+    //            clock_data = parseJSON(json: json)
+    //
+    //            if let clock_data = clock_data {
+    //                completion(clock_data.modules.carbonDeadlines.timestamp)
+    //            } else {
+    //                completion("2059-07-22T16:00:00+00:00")
+    //            }
+    //        }
+    //    }.resume()
 }
 
 func diff(deadline: String) -> DeadlineContent {
     if let deadline = parseDateString(deadline) {
         let now = Date()
-
+        
         let diffComponents = dateDiff(deadline: deadline, now: now)
-
+        
         return DeadlineContent(
             years: diffComponents.year ?? 0,
             days: diffComponents.day ?? 4,
@@ -121,10 +121,10 @@ func diff(deadline: String) -> DeadlineContent {
 
 struct Deadline_ComplicationEntryView: View {
     var entry: DeadlineProvider.Entry
-
+    
     var body: some View {
         let deadline = Calendar.current.dateComponents([.hour, .minute], from: parseDateString(entry.deadline)!)
-
+        
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
         let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         let tomorrowComponents = Calendar.current.dateComponents([.year, .month, .day], from: tomorrow)
@@ -142,39 +142,39 @@ struct Deadline_ComplicationEntryView: View {
             hour: deadline.hour,
             minute: deadline.minute
         )
-
+        
         let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
         let isTomorrow = Calendar.current.isDateInToday(tomorrowTimer)
         let todayTimer = Calendar.current.date(from: todayTimerComponents)!
-
+        
         VStack(
-            alignment: .leading
+            alignment: .center,
+            spacing: -6
         ) {
             HStack {
-                Spacer()
                 Text("1,5˚C Deadline")
                     .font(.custom("Assistant", size: 14))
                     .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                Spacer()
+                    .fontWeight(.semibold)
             }
             HStack(
-                spacing: 2
+                spacing: 6
             ) {
-                Spacer()
                 HStack(
                     alignment: .firstTextBaseline,
                     spacing: 0
                 ) {
                     Text(String(diff(deadline: entry.deadline).years))
-                        
+                    
                         .font(.custom("Oswald", size: 22))
-                        .foregroundStyle(.red)
-                        .fontWidth(.compressed)
+                        .foregroundStyle(.ccRed75)
                         .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    Text("years")
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    Text(" years")
                         .font(.custom("Oswald", size: 22))
-                        .foregroundStyle(.red)
+                        .foregroundStyle(.ccRed75)
                         .fontWidth(.compressed)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 }
                 HStack(
                     alignment: .firstTextBaseline,
@@ -182,28 +182,32 @@ struct Deadline_ComplicationEntryView: View {
                 ) {
                     Text(String(diff(deadline: entry.deadline).days))
                         .font(.custom("Oswald", size: 22))
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(.ccRed75)
                         .fontWidth(.compressed)
                         .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    Text("days")
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    Text(" days")
                         .font(.custom("Oswald", size: 22))
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(.ccRed75)
                         .fontWidth(.compressed)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 }
-                Spacer()
+                
             }
-            HStack {
-                Spacer()
             Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
                 .font(.custom("Oswald", size: 22))
-                .foregroundStyle(.yellow)
+                .foregroundStyle(.lime)
                 .fontWidth(.compressed)
                 .monospacedDigit()
-                .kerning(-1)
                 .widgetAccentable()
-            }
+                .multilineTextAlignment(.center)
+                .padding(.top, -2)
         }
+        .padding(.top, 8)
+//        .background(Color.gray)
+        
     }
+    
 }
 
 @main
@@ -216,7 +220,7 @@ struct DeadlineComplications: WidgetBundle {
 
 struct Deadline_Complication: Widget {
     let kind: String = "Deadline_Complication"
-
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: DeadlineProvider()) { entry in
             Deadline_ComplicationEntryView(entry: entry)
