@@ -151,23 +151,28 @@ struct Deadline_ComplicationEntryView: View {
             alignment: .leading
         ) {
             HStack {
-                Image(systemName: "flame.circle.fill")
-                Text("1,5˚C Deadline").font(.headline)
+                Spacer()
+                Text("1,5˚C Deadline")
+                    .font(.custom("Assistant", size: 14))
+                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+                Spacer()
             }
             HStack(
-                spacing: 6
+                spacing: 2
             ) {
+                Spacer()
                 HStack(
                     alignment: .firstTextBaseline,
                     spacing: 0
                 ) {
                     Text(String(diff(deadline: entry.deadline).years))
-                        .font(.system(size: 28))
+                        
+                        .font(.custom("Oswald", size: 22))
                         .foregroundStyle(.red)
                         .fontWidth(.compressed)
                         .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    Text("Y")
-                        .font(.system(size: 12))
+                    Text("years")
+                        .font(.custom("Oswald", size: 22))
                         .foregroundStyle(.red)
                         .fontWidth(.compressed)
                 }
@@ -176,23 +181,26 @@ struct Deadline_ComplicationEntryView: View {
                     spacing: 0
                 ) {
                     Text(String(diff(deadline: entry.deadline).days))
-                        .font(.system(size: 28))
+                        .font(.custom("Oswald", size: 22))
                         .foregroundStyle(.orange)
                         .fontWidth(.compressed)
                         .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    Text("D")
-                        .font(.system(size: 12))
+                    Text("days")
+                        .font(.custom("Oswald", size: 22))
                         .foregroundStyle(.orange)
                         .fontWidth(.compressed)
                 }
-                Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
-                    .font(.system(size: 28))
-                    .foregroundStyle(.yellow)
-                    .fontWidth(.compressed)
-                    .monospacedDigit()
-                    .kerning(-1)
-                    .padding(.leading, -4)
-                    .widgetAccentable()
+                Spacer()
+            }
+            HStack {
+                Spacer()
+            Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
+                .font(.custom("Oswald", size: 22))
+                .foregroundStyle(.yellow)
+                .fontWidth(.compressed)
+                .monospacedDigit()
+                .kerning(-1)
+                .widgetAccentable()
             }
         }
     }
