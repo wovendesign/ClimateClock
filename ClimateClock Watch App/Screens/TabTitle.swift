@@ -10,9 +10,7 @@ import SwiftUI
 struct TabTitle: View {
 	let headline: String
 	let subtitle: String
-	let height: Double
-	let width: Double
-	
+
 	var body: some View {
 		ZStack {
 			VStack {
@@ -40,8 +38,8 @@ struct TabTitle: View {
 		}
 		
 		.frame(
-			width: width,
-			height: height
+			width: WKInterfaceDevice.current().screenBounds.width,
+			height: WKInterfaceDevice.current().screenBounds.height
 		)
 		.ignoresSafeArea()
 	}
@@ -50,8 +48,6 @@ struct TabTitle: View {
 #Preview {
 	TabTitle(
 		headline: "Lifelines",
-		subtitle: "Real-Time Progess on Climate Solutions",
-		height: .infinity,
-		width: .infinity
+		subtitle: "Real-Time Progess on Climate Solutions"
 	)
 }

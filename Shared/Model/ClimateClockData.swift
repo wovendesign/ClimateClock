@@ -16,21 +16,52 @@ struct ClimateClockResponseModules: Decodable {
     var modules: ClimateClockData
 }
 
-struct ClimateClockData: Decodable {
-    var carbon_deadline_1: ClimateClockModule
-    var newsfeed_1: NewsFeedModule
+enum LifeLineType {
+	case renewables, agriculture, indigenous, g20, g7, women, youth, divestment, prolife
 }
 
-struct ClimateClockModule: Decodable {
-    // Define properties based on the actual structure of each module
-    // Example for "carbon_deadline_1":
-    let type: String
-    let flavor: String
-    let description: String
-    let update_interval_seconds: Int
-    let timestamp: String
-    let labels: [String]
-    let lang: String
+struct ClimateClockData: Decodable {
+    let carbon_deadline_1: CarbonDeadline
+	let renewables_1: LifeLineModule
+	let regen_agriculture: LifeLineModule
+	let indigenous_land_1: LifeLineModule
+	let loss_damage_g20_debt: LifeLineModule
+	let loss_damage_g7_debt: LifeLineModule
+	let women_in_parliaments: LifeLineModule
+	let ff_divestment_stand_dot_earth: LifeLineModule
+	let _youth_anxiety: LifeLineModule
+    let newsfeed_1: NewsFeedModule
+}
+
+struct CarbonDeadline: Decodable {
+	
+}
+
+enum apiType: String, Codable {
+	case value = "value", newsfeed = "newsfeed", timer = "timer"
+}
+
+enum apiFlavor: String, Codable {
+	case lifeline = "lifeline", deadline = "deadline"
+}
+
+enum apiGrowth: String, Codable {
+	case linear = "linear"
+}
+
+struct LifeLineModule: Decodable {
+	let type: apiType
+	let flavor: apiFlavor
+	let description: String
+	let update_interval_seconds: Int
+	let initial: Double
+	let timestamp: String
+	let growth: apiGrowth
+	let resolution: Decimal
+	let rate: Double
+	let labels: [String]
+	let unit_labels: [String]
+	let lang: String
 }
 
 struct NewsFeedModule: Decodable {
@@ -40,37 +71,4 @@ struct NewsFeedModule: Decodable {
     let update_interval_seconds: Int
     let lang: String
     let newsfeed: [NewsItem]
-}
-
-struct NewsItem2: Codable, Equatable, Identifiable {
-    var id: String {
-        var hasher = Hasher()
-        hasher.combine(headline)
-        hasher.combine(link)
-        return "\(hasher.finalize())"
-    }
-
-    let date: String
-    let headline: String
-
-    //	Optional
-    let headline_original: String?
-    let source: String?
-    let link: String?
-    let summary: String?
-
-    //	Interactive Data
-    //	var new: Bool = true
-    var pushDate: Date?
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        date = try container.decode(String.self, forKey: .date)
-        headline = try container.decode(String.self, forKey: .headline)
-        headline_original = try container.decodeIfPresent(String.self, forKey: .headline_original)
-        source = try container.decodeIfPresent(String.self, forKey: .source)
-        link = try container.decodeIfPresent(String.self, forKey: .link)
-        summary = try container.decodeIfPresent(String.self, forKey: .summary)
-        pushDate = nil
-    }
 }

@@ -5,7 +5,6 @@
 //  Created by Eric Wätke on 28.02.24.
 //
 import AuthenticationServices
-import Boutique
 import SwiftUI
 import SwiftData
 
@@ -34,6 +33,6 @@ struct NewsView: View {
     }
 }
 
-// #Preview {
-//	NewsView()
-// }
+ #Preview {
+	NewsView()
+ }

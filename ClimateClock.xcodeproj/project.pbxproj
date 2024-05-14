@@ -18,9 +18,10 @@
 		F6256D8D2BF39FE10012FD30 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D8C2BF39FE10012FD30 /* Client.swift */; };
 		F6256D8E2BF39FE10012FD30 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D8C2BF39FE10012FD30 /* Client.swift */; };
 		F6256D8F2BF39FE10012FD30 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D8C2BF39FE10012FD30 /* Client.swift */; };
-		F6256D912BF3A0EB0012FD30 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D902BF3A0EB0012FD30 /* NewsItem.swift */; };
-		F6256D922BF3A0EB0012FD30 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D902BF3A0EB0012FD30 /* NewsItem.swift */; };
-		F6256D932BF3A0EB0012FD30 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D902BF3A0EB0012FD30 /* NewsItem.swift */; };
+		F6256D952BF3B2200012FD30 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D942BF3B2200012FD30 /* DataModels.swift */; };
+		F6256D962BF3B2200012FD30 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D942BF3B2200012FD30 /* DataModels.swift */; };
+		F6256D972BF3B2200012FD30 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D942BF3B2200012FD30 /* DataModels.swift */; };
+		F6256D9B2BF3BB310012FD30 /* LifeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D9A2BF3BB310012FD30 /* LifeLineCell.swift */; };
 		F62A7A582B48700A002A7E25 /* ClimateClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */; };
 		F62A7A5A2B48700A002A7E25 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7A592B48700A002A7E25 /* ContentView.swift */; };
 		F62A7A5C2B48700B002A7E25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62A7A5B2B48700B002A7E25 /* Assets.xcassets */; };
@@ -128,7 +129,8 @@
 		F60B29AC2B8F91F900E41091 /* Solar Analogue.watchface */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solar Analogue.watchface"; sourceTree = "<group>"; };
 		F60B29B12B8F9C1E00E41091 /* ClimateClockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateClockData.swift; sourceTree = "<group>"; };
 		F6256D8C2BF39FE10012FD30 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		F6256D902BF3A0EB0012FD30 /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
+		F6256D942BF3B2200012FD30 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
+		F6256D9A2BF3BB310012FD30 /* LifeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeLineCell.swift; sourceTree = "<group>"; };
 		F62A7A542B48700A002A7E25 /* ClimateClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClimateClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateClockApp.swift; sourceTree = "<group>"; };
 		F62A7A592B48700A002A7E25 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -207,9 +209,26 @@
 			isa = PBXGroup;
 			children = (
 				F60B29B12B8F9C1E00E41091 /* ClimateClockData.swift */,
-				F6256D902BF3A0EB0012FD30 /* NewsItem.swift */,
+				F6256D942BF3B2200012FD30 /* DataModels.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F6256D982BF3BA470012FD30 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				F6256D992BF3BA560012FD30 /* LifeLines */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		F6256D992BF3BA560012FD30 /* LifeLines */ = {
+			isa = PBXGroup;
+			children = (
+				F643B94F2B8F7536006D1AC5 /* LifelineView.swift */,
+				F6256D9A2BF3BB310012FD30 /* LifeLineCell.swift */,
+			);
+			path = LifeLines;
 			sourceTree = "<group>";
 		};
 		F62A7A4B2B48700A002A7E25 = {
@@ -256,6 +275,7 @@
 		F62A7A682B48700B002A7E25 /* ClimateClock Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				F6256D982BF3BA470012FD30 /* Tabs */,
 				F6D315EA2BBDC34100C75299 /* Utilities */,
 				F6C570982B7D02670001DCE7 /* Views */,
 				F6C570932B7D00130001DCE7 /* Screens */,
@@ -352,7 +372,6 @@
 				F6C570962B7D00320001DCE7 /* GraphViewModel.swift */,
 				F6C570942B7D00240001DCE7 /* GraphView.swift */,
 				F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */,
-				F643B94F2B8F7536006D1AC5 /* LifelineView.swift */,
 				F60B29A12B8F7FA600E41091 /* AboutView.swift */,
 				F60B29A32B8F837500E41091 /* NewsView.swift */,
 				F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */,
@@ -536,7 +555,7 @@
 				F62EED5C2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
 				F62A7A582B48700A002A7E25 /* ClimateClockApp.swift in Sources */,
 				F62EED5F2BBB2E5C00352E46 /* CCError.swift in Sources */,
-				F6256D912BF3A0EB0012FD30 /* NewsItem.swift in Sources */,
+				F6256D952BF3B2200012FD30 /* DataModels.swift in Sources */,
 				F6256D8D2BF39FE10012FD30 /* Client.swift in Sources */,
 				F64C7ADC2B9F139900E40BB6 /* LifelineComplication.swift in Sources */,
 			);
@@ -556,6 +575,7 @@
 				F60B29A22B8F7FA600E41091 /* AboutView.swift in Sources */,
 				F6256D8E2BF39FE10012FD30 /* Client.swift in Sources */,
 				F62A7AC52B496B73002A7E25 /* ClimateClockAPIFetch.swift in Sources */,
+				F6256D9B2BF3BB310012FD30 /* LifeLineCell.swift in Sources */,
 				F60B29B32B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
 				F6CCBCA32BD170F700EB80C2 /* TabTitle.swift in Sources */,
 				F62A7A6A2B48700B002A7E25 /* App.ClimateClock.swift in Sources */,
@@ -564,7 +584,7 @@
 				F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */,
 				F643B9502B8F7536006D1AC5 /* LifelineView.swift in Sources */,
 				F673949E2BBC3FD900B7258D /* Alert.swift in Sources */,
-				F6256D922BF3A0EB0012FD30 /* NewsItem.swift in Sources */,
+				F6256D962BF3B2200012FD30 /* DataModels.swift in Sources */,
 				F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,7 +600,7 @@
 				F6D315EE2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F62EED612BBB2E5C00352E46 /* CCError.swift in Sources */,
 				F6256D8F2BF39FE10012FD30 /* Client.swift in Sources */,
-				F6256D932BF3A0EB0012FD30 /* NewsItem.swift in Sources */,
+				F6256D972BF3B2200012FD30 /* DataModels.swift in Sources */,
 				F62A7AB92B487134002A7E25 /* AppIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,7 +5,6 @@
 //  Created by Eric Wätke on 05.01.24.
 //
 
-import Boutique
 import SwiftUI
 import SwiftData
 
@@ -15,7 +14,7 @@ struct ClimateClock_Watch_App: App {
 	
 	// SwiftData Container
 	let container: ModelContainer = {
-		let schema = Schema([NewsItem.self])
+		let schema = Schema([NewsItem.self, LifeLine.self])
 		let container = try! ModelContainer(for: schema, configurations: [])
 		return container
 	}()
