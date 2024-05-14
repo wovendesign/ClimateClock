@@ -105,7 +105,7 @@ struct LifelineView: View {
 					)
 					.scrollTransition { content, phase in
 						content.scaleEffect(phase.isIdentity ? 1.0 : 0.8, anchor: .bottom)
-							.blur(radius: !phase.isIdentity ? 5.0 : 0)
+							.blur(radius: !phase.isIdentity ? 3.0 : 0)
 							.opacity(phase.isIdentity ? 1.0 : 0.3)
 					}
 					.defaultScrollAnchor(.center)

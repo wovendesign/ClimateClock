@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct ClimateClockResponse: Decodable, Encodable {
+struct ClimateClockResponse: Decodable {
     var status: String
     var data: ClimateClockResponseModules
 }
 
-struct ClimateClockResponseModules: Decodable, Encodable {
+struct ClimateClockResponseModules: Decodable {
     var modules: ClimateClockData
 }
 
-struct ClimateClockData: Decodable, Encodable {
+struct ClimateClockData: Decodable {
     var carbon_deadline_1: ClimateClockModule
     var newsfeed_1: NewsFeedModule
 }
 
-struct ClimateClockModule: Decodable, Encodable {
+struct ClimateClockModule: Decodable {
     // Define properties based on the actual structure of each module
     // Example for "carbon_deadline_1":
     let type: String
@@ -33,7 +33,7 @@ struct ClimateClockModule: Decodable, Encodable {
     let lang: String
 }
 
-struct NewsFeedModule: Decodable, Encodable {
+struct NewsFeedModule: Decodable {
     let type: String
     let flavor: String
     let description: String
@@ -42,7 +42,7 @@ struct NewsFeedModule: Decodable, Encodable {
     let newsfeed: [NewsItem]
 }
 
-struct NewsItem: Codable, Equatable, Identifiable {
+struct NewsItem2: Codable, Equatable, Identifiable {
     var id: String {
         var hasher = Hasher()
         hasher.combine(headline)

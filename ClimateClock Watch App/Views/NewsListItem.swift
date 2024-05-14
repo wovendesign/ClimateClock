@@ -10,7 +10,6 @@ import SwiftUI
 
 struct NewsListItem: View {
     @State var sheetOpen = false
-    @ObservedObject var newsController: NewsController
 
     let newsItem: NewsItem
 

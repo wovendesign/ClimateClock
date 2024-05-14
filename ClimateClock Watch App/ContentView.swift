@@ -9,7 +9,8 @@ import Charts
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var newsController = NewsController(store: .newsStore)
+	@Environment(Client.self) var client
+	@Environment(\.modelContext) var context
 
     var body: some View {
         TabView {
@@ -19,14 +20,17 @@ struct ContentView: View {
             CountdownView()
             GraphView()
             NewsView()
-                .environmentObject(newsController)
 
             AboutView()
         }
         .tabViewStyle(.verticalPage)
         .task {
-            await newsController.fetchNewsFromAPI()
+			let newsItems = await client.fetchNewsFromAPI()
+			newsItems?.forEach { newsItem in
+				context.insert(newsItem)
+			}
         }
+		
     }
 }
 

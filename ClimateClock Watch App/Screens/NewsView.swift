@@ -7,16 +7,16 @@
 import AuthenticationServices
 import Boutique
 import SwiftUI
+import SwiftData
 
 struct NewsView: View {
-    @State var news: [NewsItem] = []
-    @EnvironmentObject private var newsController: NewsController
+	@Query(sort: \NewsItem.pushDate) var news: [NewsItem] = []
 
     var body: some View {
         ScrollView {
             LazyVStack {
                 ForEach(news) { item in
-                    NewsListItem(newsController: newsController, newsItem: item)
+                    NewsListItem(newsItem: item)
                 }
             }
         }
@@ -28,15 +28,6 @@ struct NewsView: View {
                 .opacity(1)
         )
         .contentMargins(.vertical, 8, for: .scrollContent)
-        .onReceive(newsController.$news.$items, perform: { news in
-            self.news = news
-                .sorted(by: {
-                    $0.pushDate ?? Date() > $1.pushDate ?? Date()
-                })
-                .filter {
-                    $0.pushDate?.distance(to: Date()) ?? 0 > 0
-                }
-        })
         .onAppear {
             NotificationManager.instance.requestAuthorization()
         }

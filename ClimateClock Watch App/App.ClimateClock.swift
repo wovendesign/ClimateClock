@@ -7,22 +7,23 @@
 
 import Boutique
 import SwiftUI
+import SwiftData
 
 @main
 struct ClimateClock_Watch_App: App {
     @StateObject private var appState = AppState()
-    @ObservedObject var newsController = NewsController(store: .newsStore)
+	@State private var client: Client = Client()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(appState)
-                .onAppear {
-                    //					appState.$lastAppLaunchTimestamp.set(Date.
-                }
+				.environment(client)
         }
-        .backgroundTask(.appRefresh("updateClockData")) { _ in
-            await newsController.fetchNewsFromAPI()
-        }
+		
+		.modelContainer(for: [NewsItem.self])
+		.backgroundTask(.appRefresh("updateClockData")) { _ in
+			
+		}
     }
 }
