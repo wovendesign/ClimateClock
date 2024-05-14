@@ -25,12 +25,8 @@ struct ContentView: View {
         }
         .tabViewStyle(.verticalPage)
         .task {
-			let newsItems = await client.fetchNewsFromAPI()
-			newsItems?.forEach { newsItem in
-				context.insert(newsItem)
-			}
+			await client.getDataFromClimateClockAPI(context: context)
         }
-		
     }
 }
 

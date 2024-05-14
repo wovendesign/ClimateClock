@@ -11,19 +11,25 @@ import SwiftData
 
 @main
 struct ClimateClock_Watch_App: App {
-    @StateObject private var appState = AppState()
 	@State private var client: Client = Client()
+	
+	// SwiftData Container
+	let container: ModelContainer = {
+		let schema = Schema([NewsItem.self])
+		let container = try! ModelContainer(for: schema, configurations: [])
+		return container
+	}()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(appState)
 				.environment(client)
         }
 		
-		.modelContainer(for: [NewsItem.self])
+		.modelContainer(container)
 		.backgroundTask(.appRefresh("updateClockData")) { _ in
-			
+			let context: ModelContext = ModelContext(container)
+			await client.getDataFromClimateClockAPI(context: context)
 		}
     }
 }
