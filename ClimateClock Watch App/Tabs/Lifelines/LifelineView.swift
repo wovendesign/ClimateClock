@@ -12,33 +12,19 @@ struct LifelineView: View {
 	@Query(sort: \LifeLine.order) var lifeLines: [LifeLine]
 	
 	var body: some View {
-		ScrollView {
-			VStack(spacing: 0) {
-				TabTitle(
-					headline: "Lifelines",
-					subtitle: "Change is already happening"
-				)
-				.scrollTransition { content, phase in
-					content.scaleEffect(phase.isIdentity ? 1.0 : 0.8, anchor: .bottom)
-						.blur(radius: !phase.isIdentity ? 3.0 : 0)
-						.opacity(phase.isIdentity ? 1.0 : 0.3)
-				}
-				.defaultScrollAnchor(.center)
-				ScrollView {
-					LazyVStack(alignment: .leading, spacing: 12) {
-						ForEachIndexed(lifeLines) { index, lifeLine in
-							LifeLineCell(lifeLine: lifeLine)
-						}
+		TabTitleLayout(headline: "Lifelines", 
+					   subtitle: "Change is already happening"){
+			ScrollView {
+				LazyVStack(alignment: .leading, spacing: 12) {
+					ForEachIndexed(lifeLines) { index, lifeLine in
+						LifeLineCell(lifeLine: lifeLine)
 					}
-					.frame(maxWidth: .infinity)
 				}
-				.padding(.horizontal, 8.0)
-				.padding(.vertical, 16)
+				.frame(maxWidth: .infinity)
 			}
+			.padding(.horizontal, 8.0)
+			.padding(.vertical, 16)
 		}
-		//			.contentMargins(.vertical, 12)
-		.frame(maxWidth: .infinity)
-		.ignoresSafeArea()
 		.background(.linearGradient(colors: [.lime.opacity(0.4), .black],
 									startPoint: .top,
 									endPoint: .bottom))

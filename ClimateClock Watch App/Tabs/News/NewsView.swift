@@ -17,20 +17,23 @@ struct NewsView: View {
 	var news: [NewsItem] = []
 
     var body: some View {
-        ScrollView {
-            LazyVStack {
-				ForEach(news, id: \.id) { item in
-                    NewsListItem(newsItem: item)
-                }
-            }
-        }
-        .frame(maxWidth: .infinity)
+		TabTitleLayout(
+			headline: "Newsfeed of Hope",
+			subtitle: "Daily news of recent climate victories.") {
+			ScrollView {
+				LazyVStack {
+					ForEach(news, id: \.id) { item in
+						NewsListItem(newsItem: item)
+					}
+				}
+			}
+			.contentMargins(.vertical, 8, for: .scrollContent)
+		}
         .background(
             LinearGradient(gradient: Gradient(colors: [.navy, .black]),
                            startPoint: .top,
                            endPoint: .bottom)
         )
-        .contentMargins(.vertical, 8, for: .scrollContent)
         .onAppear {
 			print(news.count)
             NotificationManager.instance.requestAuthorization()
