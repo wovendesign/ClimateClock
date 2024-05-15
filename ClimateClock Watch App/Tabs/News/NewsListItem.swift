@@ -89,9 +89,6 @@ struct NewsListItem: View {
             content.scaleEffect(phase.isIdentity ? 1.0 : 0.9)
         }
         .onTapGesture {
-            //			guard let url = URL(string: "https://woven.design") else {
-            //				return
-            //			}
             sheetOpen = true
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

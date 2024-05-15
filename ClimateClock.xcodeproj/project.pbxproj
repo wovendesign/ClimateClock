@@ -22,6 +22,7 @@
 		F6256D962BF3B2200012FD30 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D942BF3B2200012FD30 /* DataModels.swift */; };
 		F6256D972BF3B2200012FD30 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D942BF3B2200012FD30 /* DataModels.swift */; };
 		F6256D9B2BF3BB310012FD30 /* LifeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D9A2BF3BB310012FD30 /* LifeLineCell.swift */; };
+		F6256D9D2BF4ABE80012FD30 /* LifeLineGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D9C2BF4ABE80012FD30 /* LifeLineGoal.swift */; };
 		F62A7A582B48700A002A7E25 /* ClimateClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */; };
 		F62A7A5A2B48700A002A7E25 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A7A592B48700A002A7E25 /* ContentView.swift */; };
 		F62A7A5C2B48700B002A7E25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62A7A5B2B48700B002A7E25 /* Assets.xcassets */; };
@@ -131,6 +132,7 @@
 		F6256D8C2BF39FE10012FD30 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		F6256D942BF3B2200012FD30 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		F6256D9A2BF3BB310012FD30 /* LifeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeLineCell.swift; sourceTree = "<group>"; };
+		F6256D9C2BF4ABE80012FD30 /* LifeLineGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeLineGoal.swift; sourceTree = "<group>"; };
 		F62A7A542B48700A002A7E25 /* ClimateClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClimateClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateClockApp.swift; sourceTree = "<group>"; };
 		F62A7A592B48700A002A7E25 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				F6256D992BF3BA560012FD30 /* LifeLines */,
+				F6256D9E2BF4AE180012FD30 /* News */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -227,8 +230,18 @@
 			children = (
 				F643B94F2B8F7536006D1AC5 /* LifelineView.swift */,
 				F6256D9A2BF3BB310012FD30 /* LifeLineCell.swift */,
+				F6256D9C2BF4ABE80012FD30 /* LifeLineGoal.swift */,
 			);
 			path = LifeLines;
+			sourceTree = "<group>";
+		};
+		F6256D9E2BF4AE180012FD30 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				F60B29A32B8F837500E41091 /* NewsView.swift */,
+				F6D315E02BBD85FD00C75299 /* NewsListItem.swift */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		F62A7A4B2B48700A002A7E25 = {
@@ -373,7 +386,6 @@
 				F6C570942B7D00240001DCE7 /* GraphView.swift */,
 				F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */,
 				F60B29A12B8F7FA600E41091 /* AboutView.swift */,
-				F60B29A32B8F837500E41091 /* NewsView.swift */,
 				F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */,
 			);
 			path = Screens;
@@ -384,7 +396,6 @@
 			children = (
 				F6C570992B7D027C0001DCE7 /* PredictionModel.swift */,
 				F67BD67F2B7D2C590015ECBE /* Graph.swift */,
-				F6D315E02BBD85FD00C75299 /* NewsListItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -571,6 +582,7 @@
 				F62A7A6C2B48700B002A7E25 /* ContentView.swift in Sources */,
 				F62EED602BBB2E5C00352E46 /* CCError.swift in Sources */,
 				F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */,
+				F6256D9D2BF4ABE80012FD30 /* LifeLineGoal.swift in Sources */,
 				F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */,
 				F60B29A22B8F7FA600E41091 /* AboutView.swift in Sources */,
 				F6256D8E2BF39FE10012FD30 /* Client.swift in Sources */,

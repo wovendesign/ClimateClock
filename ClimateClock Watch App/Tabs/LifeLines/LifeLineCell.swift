@@ -13,7 +13,7 @@ struct LifeLineCell: View {
 	@State private var animatedValue = 0.0
 	let timestamp: Date
 	let unit: String
-	let prefix = ""
+	var precision: Int = 0
 	
 	init(lifeLine: LifeLine) {
 		let dateFormatter = ISO8601DateFormatter()
@@ -24,16 +24,18 @@ struct LifeLineCell: View {
 		self.label = lifeLine.labels.first
 		self.animatedValue = 0.0
 		self.timestamp = pastTimestamp
-		self.unit = lifeLine.unit_labels.first ?? "n"
+		
+		// Get the shortest unit
+		self.unit = lifeLine.unit_labels.sorted(by: { $0.count < $1.count }).first ?? "n"
+		self.precision = resolutionToPrecision(lifeLine.resolution)
 	}
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading) {
-					VStack {
 						TimelineView(.periodic(from: .now, by: 0.3)) { context in
-							Text("\(prefix ?? "")\(valueByDate(date: context.date), specifier: "%0.\(resolutionToPrecision(lifeLine.resolution))f") \(unit)")
+							Text("\(valueByDate(date: context.date), specifier: "%0.\(precision)f") \(unit)")
 								.font(
 									.custom("Oswald", size: 20)
 									.weight(.medium)
@@ -52,7 +54,7 @@ struct LifeLineCell: View {
 								.minimumScaleFactor(0.5)
 								.lineLimit(1)
 						}
-					}
+					
 					
 					if lifeLine.size == .large {
 						Text(label ?? "")
@@ -67,26 +69,7 @@ struct LifeLineCell: View {
 				)
 				
 				if lifeLine.size == .large {
-					Text("Our goal: ")
-						.font(
-							.custom("Oswald", size: 14)
-							.weight(.medium)
-						)
-						.tracking(0.2)
-						.scaledToFill()
-						.minimumScaleFactor(0.5)
-						.foregroundStyle(.white)
-						.frame(maxWidth: .infinity, alignment: .leading)
-						.padding(
-							EdgeInsets(
-								top: 4,
-								leading: 6,
-								bottom: 5,
-								trailing: 6
-							)
-						)
-						.background(.black)
-						.clipShape(.rect(cornerRadii: RectangleCornerRadii(topLeading: 0, bottomLeading: 17, bottomTrailing: 17, topTrailing: 0)))
+					LifeLineGoal(goal: "")
 				}
 			}
 			.padding(EdgeInsets(top: 2,
@@ -109,23 +92,25 @@ struct LifeLineCell: View {
 			}
 		}
 		.onAppear {
-			let dateFormatter = ISO8601DateFormatter()
-			
-			guard let pastTimestamp = dateFormatter.date(from: lifeLine.timestamp) else {
-				print("Couldnt calculate Timestamp")
-				return
-			}
-			
-			let currentTime = Date()
-			let timeDifference = currentTime.timeIntervalSince(pastTimestamp)
-			
-			let newValue = lifeLine.initial + timeDifference * lifeLine.rate
-			
-			withAnimation {
-				animatedValue = newValue
-			}
-			
-			print(resolutionToPrecision(lifeLine.resolution))
+			calculateTimeAdjustedValue()
+		}
+	}
+	
+	func calculateTimeAdjustedValue() {
+		let dateFormatter = ISO8601DateFormatter()
+		
+		guard let pastTimestamp = dateFormatter.date(from: lifeLine.timestamp) else {
+			print("Couldnt calculate Timestamp")
+			return
+		}
+		
+		let currentTime = Date()
+		let timeDifference = currentTime.timeIntervalSince(pastTimestamp)
+		
+		let newValue = lifeLine.initial + timeDifference * lifeLine.rate
+		
+		withAnimation {
+			animatedValue = newValue
 		}
 	}
 	
@@ -136,8 +121,8 @@ struct LifeLineCell: View {
 	}
 	
 	func resolutionToPrecision(_ resolution: Double) -> Int {
-		let log10Resolution = log10(abs(resolution))
-		let precision = max(0, floor(log10Resolution + 1))
+		let log10Resolution = -log10(abs(resolution))
+		let precision = max(0, floor(log10Resolution))
 		return Int(precision)
 	}
 }

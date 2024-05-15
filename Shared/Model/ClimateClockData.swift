@@ -57,7 +57,7 @@ struct LifeLineModule: Decodable {
 	let initial: Double
 	let timestamp: String
 	let growth: apiGrowth
-	let resolution: Decimal
+	let resolution: Double
 	let rate: Double
 	let labels: [String]
 	let unit_labels: [String]

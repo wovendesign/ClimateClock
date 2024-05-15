@@ -9,12 +9,17 @@ import SwiftUI
 import SwiftData
 
 struct NewsView: View {
-	@Query(sort: \NewsItem.pushDate) var news: [NewsItem] = []
+	static var now: Date { Date.now }
+	@Query(filter: #Predicate<NewsItem> {$0.pushDate ?? now < now},
+		   sort: \NewsItem.pushDate,
+		   order: .reverse
+	)
+	var news: [NewsItem] = []
 
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(news) { item in
+				ForEach(news, id: \.id) { item in
                     NewsListItem(newsItem: item)
                 }
             }
@@ -24,10 +29,10 @@ struct NewsView: View {
             LinearGradient(gradient: Gradient(colors: [.navy, .black]),
                            startPoint: .top,
                            endPoint: .bottom)
-                .opacity(1)
         )
         .contentMargins(.vertical, 8, for: .scrollContent)
         .onAppear {
+			print(news.count)
             NotificationManager.instance.requestAuthorization()
         }
     }

@@ -13,16 +13,9 @@ class NewsItem: Decodable {
 	enum CodingKeys: CodingKey {
 		case date, headline, headline_original, source, link, summary
 	}
-	
-	@Attribute(.unique) var id: String {
-		var hasher = Hasher()
-		hasher.combine(headline)
-		hasher.combine(link)
-		return "\(hasher.finalize())"
-	}
 
 	let date: String
-	let headline: String
+	@Attribute(.unique) let headline: String
 
 	//	Optional
 	let headline_original: String?
