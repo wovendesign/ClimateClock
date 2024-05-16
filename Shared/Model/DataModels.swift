@@ -47,33 +47,35 @@ class NewsItem: Decodable {
 
 @Model
 class LifeLine {
-    enum LifeLineSize: Codable {
-        case small, large
-    }
+	enum LifeLineSize: Codable {
+		case small, large
+	}
+	
+	@Attribute(.unique) let order: Int
+	let size: LifeLineSize
+	let desc: String
+	let update_interval_seconds: Int
+	let initial: Double
+	let timestamp: String
+	let growth: apiGrowth
+	let resolution: Double
+	let rate: Double
+	let labels: [String]
+	let unit_labels: [String]
+    let goal: String?
 
-    @Attribute(.unique) let order: Int
-    let size: LifeLineSize
-    let desc: String
-    let update_interval_seconds: Int
-    let initial: Double
-    let timestamp: String
-    let growth: apiGrowth
-    let resolution: Double
-    let rate: Double
-    let labels: [String]
-    let unit_labels: [String]
-
-    init(order: Int, size: LifeLineSize, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String]) {
-        self.order = order
-        self.size = size
-        self.desc = desc
-        self.update_interval_seconds = update_interval_seconds
-        self.initial = initial
-        self.timestamp = timestamp
-        self.growth = growth
-        self.resolution = resolution
-        self.rate = rate
-        self.labels = labels
-        self.unit_labels = unit_labels
-    }
+    init(order: Int, size: LifeLineSize, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String], goal: String?) {
+		self.order = order
+		self.size = size
+		self.desc = desc
+		self.update_interval_seconds = update_interval_seconds
+		self.initial = initial
+		self.timestamp = timestamp
+		self.growth = growth
+		self.resolution = resolution
+		self.rate = rate
+		self.labels = labels
+		self.unit_labels = unit_labels
+        self.goal = goal
+	}
 }
