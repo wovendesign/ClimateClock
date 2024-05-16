@@ -66,14 +66,17 @@ struct LifeLineCell: View {
                         }
                     }
                     .padding(
-                        lifeLine.size == .large ? EdgeInsets(top: 6, leading: 6, bottom: 0, trailing: 6) : EdgeInsets()
+                        lifeLine.size == .large ? EdgeInsets(top: 6, leading: 6, bottom: 0, trailing: 6) : EdgeInsets(top: 0, leading: 6, bottom: -2, trailing: 6)
                     )
                     
                     if lifeLine.size == .large {
-                        LifeLineGoal(goal: "")
-                            .padding(.leading, 4)
+                        if let goal = lifeLine.goal {
+                            LifeLineGoal(goal: goal)
+                                .padding(.leading, 4)
+                        }
                     }
                 }
+                .frame(maxWidth: lifeLine.size == .large ? .infinity : nil, alignment: .leading)
                 .padding(EdgeInsets(top: 0,
                                     leading: 0,
                                     bottom: 4,
@@ -85,31 +88,44 @@ struct LifeLineCell: View {
                 .clipShape(.rect(cornerRadius:lifeLine.size == .small ? 6 : 8))
                 
                 if lifeLine.size == .small {
-                    Text(label ?? "")
-                        .font(
-                            .custom("Assistant", size: 12)
-                            .weight(.semibold)
-                        )
-                        .foregroundStyle(.white)
+                    HStack() {
+                        Text(label ?? "")
+                            .font(
+                                .custom("Assistant", size: 12)
+                                .weight(.semibold)
+                            )
+                            .foregroundStyle(.white)
+                        Spacer()
+                        Image("arrow_topright_4px_aquablue75")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 6, height: 6)
+                            .frame(width: 14, height: 14)
+                            .background{
+                                Rectangle()
+                                    .fill(Color(red: 0.25, green: 0.25, blue: 0.25))
+                                    .cornerRadius(8.0)
+                            }
+                    }
                 }
             }
             .onAppear {
                 calculateTimeAdjustedValue()
             }
-            HStack(spacing: 4) {
+            lifeLine.size == .large ? HStack(spacing: 2) {
                 Text("Learn More")
                     .font(
                         .custom("Assistant", size: 10)
                         .weight(.semibold)
                     )
                     .foregroundColor(.aquaBlue75)
-                    .frame(height: 14)
                     
                 Image("arrow_topright_4px_aquablue75")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 6, height: 6)
             }
+            .frame(height: 14)
             .padding(EdgeInsets(top: 0,
                                 leading: 4,
                                 bottom: 0,
@@ -118,7 +134,7 @@ struct LifeLineCell: View {
                 Rectangle()
                     .fill(Color(red: 0.25, green: 0.25, blue: 0.25))
                     .cornerRadius(8.0)
-            }
+            } : nil
         }
 	}
 	

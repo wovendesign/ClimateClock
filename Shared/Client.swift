@@ -78,6 +78,15 @@ import SwiftData
 				return 999
 			}
 		}()
+        
+        let goal: String? = {
+            switch type {
+            case .renewables: return "100% BEFORE 2030"
+            case .women: return "Reaching 50%"
+            default:
+                return nil
+            }
+        }()
 		
 		return LifeLine(order: order,
 						size: type == .renewables || type == .women ? .large : .small,
@@ -89,7 +98,9 @@ import SwiftData
 						resolution: module.resolution,
 						rate: module.rate,
 						labels: module.labels,
-						unit_labels: module.unit_labels)
+						unit_labels: module.unit_labels,
+                        goal: goal
+                            )
 	}
 	
 	func saveNewsNotifications(news: [NewsItem], context: ModelContext) {

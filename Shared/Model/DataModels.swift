@@ -56,8 +56,9 @@ class LifeLine {
 	let rate: Double
 	let labels: [String]
 	let unit_labels: [String]
+    let goal: String?
 
-	init(order: Int, size: LifeLineSize, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String]) {
+    init(order: Int, size: LifeLineSize, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String], goal: String?) {
 		self.order = order
 		self.size = size
 		self.desc = desc
@@ -69,5 +70,6 @@ class LifeLine {
 		self.rate = rate
 		self.labels = labels
 		self.unit_labels = unit_labels
+        self.goal = goal
 	}
 }
