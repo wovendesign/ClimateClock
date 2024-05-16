@@ -10,26 +10,31 @@ import SwiftUI
 struct LifeLineGoal: View {
 	let goal: String
     var body: some View {
-		Text("Our goal: \(goal)")
+		Text("Goal: \(goal)")
 			.font(
-				.custom("Oswald", size: 14)
+				.custom("Oswald", size: 10)
 				.weight(.medium)
 			)
+            .textCase(.uppercase)
 			.tracking(0.2)
 			.scaledToFill()
 			.minimumScaleFactor(0.5)
 			.foregroundStyle(.white)
-			.frame(maxWidth: .infinity, alignment: .leading)
+//            .frame(maxWidth: .infinity, alignment: .leading)
 			.padding(
 				EdgeInsets(
-					top: 4,
-					leading: 6,
-					bottom: 5,
-					trailing: 6
+					top: 2,
+					leading: 4,
+					bottom: 3,
+					trailing: 4
 				)
 			)
-			.background(.black)
-			.clipShape(.rect(cornerRadii: RectangleCornerRadii(topLeading: 0, bottomLeading: 17, bottomTrailing: 17, topTrailing: 0)))
+            .background{
+                Rectangle()
+                    .fill(.black)
+                    .cornerRadius(4.0)
+            }
+//			.clipShape(.rect(cornerRadii: RectangleCornerRadii(topLeading: 0, bottomLeading: 17, bottomTrailing: 17, topTrailing: 0)))
     }
 }
 

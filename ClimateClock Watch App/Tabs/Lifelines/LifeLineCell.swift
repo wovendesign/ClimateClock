@@ -31,69 +31,95 @@ struct LifeLineCell: View {
 	}
 	
 	var body: some View {
-		VStack(alignment: .leading, spacing: 4) {
-			VStack(alignment: .leading) {
-				VStack(alignment: .leading) {
-						TimelineView(.periodic(from: .now, by: 0.3)) { context in
-							Text("\(valueByDate(date: context.date), specifier: "%0.\(precision)f") \(unit)")
-								.font(
-									.custom("Oswald", size: 20)
-									.weight(.medium)
-								)
-								.monospacedDigit()
-								.tracking(0.32)
-								.contentTransition(
-									.numericText(
-										value: valueByDate(date: context.date)
-									)
-								)
-								.animation(
-									.linear(duration: 0.5).delay(0.5),
-									value: valueByDate(date: context.date)
-								)
-								.minimumScaleFactor(0.5)
-								.lineLimit(1)
-						}
-					
-					
-					if lifeLine.size == .large {
-						Text(label ?? "")
-							.font(
-								.custom("Assistant", size: 12)
-								.weight(.semibold)
-							)
-					}
-				}
-				.padding(
-					lifeLine.size == .large ? EdgeInsets(top: 6, leading: 6, bottom: 0, trailing: 6) : EdgeInsets()
-				)
-				
-				if lifeLine.size == .large {
-					LifeLineGoal(goal: "")
-				}
-			}
-			.padding(EdgeInsets(top: 2,
-								leading: 2,
-								bottom: 2,
-								trailing: 2))
-			.background(.linearGradient(colors: [.lime, .aquaBlue],
-										startPoint: .leading,
-										endPoint: .trailing))
-			.foregroundStyle(.black)
-			.clipShape(.rect(cornerRadius:lifeLine.size == .small ? 6 : 18))
-			
-			if lifeLine.size == .small {
-				Text(label ?? "")
-					.font(
-						.custom("Assistant", size: 12)
-						.weight(.semibold)
-					)
-					.foregroundStyle(.white)
-			}
-		}
-		.onAppear {
-			calculateTimeAdjustedValue()
-		}
+        VStack(alignment: .trailing, spacing: 4) {
+            VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
+                        TimelineView(.periodic(from: .now, by: 0.3)) { context in
+                            Text("\(valueByDate(date: context.date), specifier: "%0.\(precision)f") \(unit)")
+                                .font(
+                                    .custom("Oswald", size: 20)
+                                    .weight(.medium)
+                                )
+                                .monospacedDigit()
+                                .tracking(0.32)
+                                .contentTransition(
+                                    .numericText(
+                                        value: valueByDate(date: context.date)
+                                    )
+                                )
+                                .animation(
+                                    .linear(duration: 0.5).delay(0.5),
+                                    value: valueByDate(date: context.date)
+                                )
+                                .minimumScaleFactor(0.5)
+                                .lineLimit(1)
+                        }
+                        
+                        
+                        if lifeLine.size == .large {
+                            Text(label ?? "")
+                                .font(
+                                    .custom("Assistant", size: 12)
+                                    .weight(.semibold)
+                                )
+                        }
+                    }
+                    .padding(
+                        lifeLine.size == .large ? EdgeInsets(top: 6, leading: 6, bottom: 0, trailing: 6) : EdgeInsets()
+                    )
+                    
+                    if lifeLine.size == .large {
+                        LifeLineGoal(goal: "")
+                            .padding(.leading, 4)
+                    }
+                }
+                .padding(EdgeInsets(top: 0,
+                                    leading: 0,
+                                    bottom: 4,
+                                    trailing: 0))
+                .background(.linearGradient(colors: [.lime, .aquaBlue],
+                                            startPoint: .leading,
+                                            endPoint: .trailing))
+                .foregroundStyle(.black)
+                .clipShape(.rect(cornerRadius:lifeLine.size == .small ? 6 : 8))
+                
+                if lifeLine.size == .small {
+                    Text(label ?? "")
+                        .font(
+                            .custom("Assistant", size: 12)
+                            .weight(.semibold)
+                        )
+                        .foregroundStyle(.white)
+                }
+            }
+            .onAppear {
+                calculateTimeAdjustedValue()
+            }
+            HStack(spacing: 4) {
+                Text("Learn More")
+                    .font(
+                        .custom("Assistant", size: 10)
+                        .weight(.semibold)
+                    )
+                    .foregroundColor(.aquaBlue75)
+                    .frame(height: 14)
+                    
+                Image("arrow_topright_4px_aquablue75")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 6, height: 6)
+            }
+            .padding(EdgeInsets(top: 0,
+                                leading: 4,
+                                bottom: 0,
+                                trailing: 6))
+            .background{
+                Rectangle()
+                    .fill(Color(red: 0.25, green: 0.25, blue: 0.25))
+                    .cornerRadius(8.0)
+            }
+        }
 	}
 	
 	func calculateTimeAdjustedValue() {
