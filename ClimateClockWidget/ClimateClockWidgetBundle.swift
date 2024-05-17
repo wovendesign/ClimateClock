@@ -15,5 +15,6 @@ struct ClimateClockWidgetBundle: WidgetBundle {
     var body: some Widget {
 //        ClimateClockWidget()
 		NewsWidget()
+		RenewablesWidget()
     }
 }

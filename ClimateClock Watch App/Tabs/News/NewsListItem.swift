@@ -95,6 +95,3 @@ struct NewsListItem: View {
     }
 }
 
-// #Preview {
-//	NewsListItem(newsItem: NewsItem(date: "sdf", headline: "Headline", headline_original: "sdf", source: "Reuters", link: "https://google.com", summary: "Some stuff was built", new: false))
-// }

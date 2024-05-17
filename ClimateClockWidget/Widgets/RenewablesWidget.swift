@@ -68,15 +68,20 @@ struct RenewablesWidget: Widget {
 					.background()
 			}
 		}
-		.configurationDisplayName("My Widget")
+		.configurationDisplayName("Renewables Widget")
 		.description("This is an example widget.")
 		.supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryRectangular])
 	}
 }
 
-#Preview(as: .systemSmall) {
+#Preview(as: .accessoryRectangular) {
 	RenewablesWidget()
 } timeline: {
 	RenewablesEntry(date: .now, emoji: "😀")
-	RenewablesEntry(date: .now, emoji: "🤩")
 }
+//
+//#Preview("Watch", as: .accessoryRectangular) {
+//	RenewablesWidget()
+//} timeline: {
+//	RenewablesEntry(date: .now, emoji: "😀")
+//}

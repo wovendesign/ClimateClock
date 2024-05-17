@@ -85,7 +85,7 @@ struct NewsWidget: Widget {
 					.background()
 			}
 		}
-		.configurationDisplayName("My Widget")
+		.configurationDisplayName("News Widget")
 		.description("This is an example widget.")
 	}
 }
