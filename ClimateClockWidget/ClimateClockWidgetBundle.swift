@@ -8,10 +8,12 @@
 
 import WidgetKit
 import SwiftUI
+import SwiftData
 
 @main
 struct ClimateClockWidgetBundle: WidgetBundle {
     var body: some Widget {
-        ClimateClockWidget()
+//        ClimateClockWidget()
+		NewsWidget()
     }
 }

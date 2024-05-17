@@ -21,6 +21,10 @@ struct NewsWidgetProvider: TimelineProvider {
 
 	func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
 		var entries: [NewsWidgetEntry] = []
+		
+		let client: Client = Client()
+		
+
 
 		// Generate a timeline consisting of five entries an hour apart, starting from the current date.
 		let currentDate = Date()
@@ -68,7 +72,7 @@ struct NewsWidgetEntryView : View {
 }
 
 struct NewsWidget: Widget {
-	let kind: String = "ClimateClockWidget"
+	let kind: String = "NewsWidget"
 
 	var body: some WidgetConfiguration {
 		StaticConfiguration(kind: kind, provider: NewsWidgetProvider()) { entry in
