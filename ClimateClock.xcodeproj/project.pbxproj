@@ -39,6 +39,13 @@
 		F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */; };
 		F673949E2BBC3FD900B7258D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F673949D2BBC3FD900B7258D /* Alert.swift */; };
 		F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BD67F2B7D2C590015ECBE /* Graph.swift */; };
+		F6BBABE12BF7BCD20090780B /* NewsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE02BF7BCD20090780B /* NewsWidget.swift */; };
+		F6BBABE52BF7BF240090780B /* RelativeTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */; };
+		F6BBABE62BF7BF240090780B /* RelativeTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */; };
+		F6BBABE72BF7BF240090780B /* RelativeTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */; };
+		F6BBABE92BF7BF650090780B /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6BBABE82BF7BF650090780B /* SharedAssets.xcassets */; };
+		F6BBABEA2BF7BF650090780B /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6BBABE82BF7BF650090780B /* SharedAssets.xcassets */; };
+		F6BBABEB2BF7BF650090780B /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6BBABE82BF7BF650090780B /* SharedAssets.xcassets */; };
 		F6BFA2C12BF50BDA00E21B72 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F62A7A812B487048002A7E25 /* WidgetKit.framework */; };
 		F6BFA2C22BF50BDA00E21B72 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F62A7A832B487048002A7E25 /* SwiftUI.framework */; };
 		F6BFA2C52BF50BDA00E21B72 /* ClimateClockWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BFA2C42BF50BDA00E21B72 /* ClimateClockWidgetBundle.swift */; };
@@ -143,6 +150,9 @@
 		F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		F673949D2BBC3FD900B7258D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F67BD67F2B7D2C590015ECBE /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		F6BBABE02BF7BCD20090780B /* NewsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWidget.swift; sourceTree = "<group>"; };
+		F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeTimeCell.swift; sourceTree = "<group>"; };
+		F6BBABE82BF7BF650090780B /* SharedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedAssets.xcassets; sourceTree = "<group>"; };
 		F6BFA2C02BF50BDA00E21B72 /* ClimateClockWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClimateClockWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BFA2C42BF50BDA00E21B72 /* ClimateClockWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateClockWidgetBundle.swift; sourceTree = "<group>"; };
 		F6BFA2C62BF50BDA00E21B72 /* ClimateClockWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateClockWidget.swift; sourceTree = "<group>"; };
@@ -233,6 +243,7 @@
 			children = (
 				F60B29A32B8F837500E41091 /* NewsView.swift */,
 				F6D315E02BBD85FD00C75299 /* NewsListItem.swift */,
+				F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -346,6 +357,7 @@
 				F60B29A52B8F8D3500E41091 /* Utilities */,
 				F62DCB802B7BD27400855D88 /* fonts */,
 				F6256D8C2BF39FE10012FD30 /* Client.swift */,
+				F6BBABE82BF7BF650090780B /* SharedAssets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -377,9 +389,18 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		F6BBABDF2BF7BCBF0090780B /* News */ = {
+			isa = PBXGroup;
+			children = (
+				F6BBABE02BF7BCD20090780B /* NewsWidget.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		F6BCA9DC2BF50F2C001E255E /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				F6BBABDF2BF7BCBF0090780B /* News */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -518,6 +539,7 @@
 				F6D315E72BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */,
 				F6CCBC9F2BD11B7600EB80C2 /* OswaldVF.ttf in Resources */,
 				F62A7A5F2B48700B002A7E25 /* Preview Assets.xcassets in Resources */,
+				F6BBABE92BF7BF650090780B /* SharedAssets.xcassets in Resources */,
 				F6D315E32BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
 				F62A7A5C2B48700B002A7E25 /* Assets.xcassets in Resources */,
 			);
@@ -531,6 +553,7 @@
 				F6D315E82BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */,
 				F6CCBCA02BD11B7600EB80C2 /* OswaldVF.ttf in Resources */,
 				F60B29AE2B8F91F900E41091 /* Solar Analogue.watchface in Resources */,
+				F6BBABEA2BF7BF650090780B /* SharedAssets.xcassets in Resources */,
 				F6D315E42BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
 				F62A7A6E2B48700C002A7E25 /* Assets.xcassets in Resources */,
 			);
@@ -541,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6BFA2C92BF50BDB00E21B72 /* Assets.xcassets in Resources */,
+				F6BBABEB2BF7BF650090780B /* SharedAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +579,7 @@
 				F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F60B29B22B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
 				F62EED5C2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
+				F6BBABE52BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
 				F62A7A582B48700A002A7E25 /* ClimateClockApp.swift in Sources */,
 				F62EED5F2BBB2E5C00352E46 /* CCError.swift in Sources */,
 				F6256D952BF3B2200012FD30 /* DataModels.swift in Sources */,
@@ -575,6 +600,7 @@
 				F6256D9D2BF4ABE80012FD30 /* LifeLineGoal.swift in Sources */,
 				F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */,
 				F60B29A22B8F7FA600E41091 /* AboutView.swift in Sources */,
+				F6BBABE62BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
 				F6256D8E2BF39FE10012FD30 /* Client.swift in Sources */,
 				F6256D9B2BF3BB310012FD30 /* LifeLineCell.swift in Sources */,
 				F60B29B32B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
@@ -597,8 +623,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6BBABE72BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
 				F6BFA2C72BF50BDA00E21B72 /* ClimateClockWidget.swift in Sources */,
 				F6BFA2C52BF50BDA00E21B72 /* ClimateClockWidgetBundle.swift in Sources */,
+				F6BBABE12BF7BCD20090780B /* NewsWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
