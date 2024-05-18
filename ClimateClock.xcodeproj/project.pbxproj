@@ -65,12 +65,12 @@
 		F6CCBCA02BD11B7600EB80C2 /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
 		F6CCBCA32BD170F700EB80C2 /* TabTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */; };
 		F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315E02BBD85FD00C75299 /* NewsListItem.swift */; };
-		F6D315E32BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */; };
-		F6D315E42BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */; };
 		F6D315E72BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
 		F6D315E82BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
 		F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
 		F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
+		F6D844472BF90DD1006CB10F /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
+		F6D844482BF90DD3006CB10F /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,7 +173,6 @@
 		F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OswaldVF.ttf; sourceTree = "<group>"; };
 		F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTitle.swift; sourceTree = "<group>"; };
 		F6D315E02BBD85FD00C75299 /* NewsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItem.swift; sourceTree = "<group>"; };
-		F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -379,7 +378,6 @@
 			children = (
 				F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */,
 				F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */,
-				F6D315E22BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -552,7 +550,6 @@
 				F6CCBC9F2BD11B7600EB80C2 /* OswaldVF.ttf in Resources */,
 				F62A7A5F2B48700B002A7E25 /* Preview Assets.xcassets in Resources */,
 				F6BBABE92BF7BF650090780B /* SharedAssets.xcassets in Resources */,
-				F6D315E32BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
 				F62A7A5C2B48700B002A7E25 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,7 +563,6 @@
 				F6CCBCA02BD11B7600EB80C2 /* OswaldVF.ttf in Resources */,
 				F60B29AE2B8F91F900E41091 /* Solar Analogue.watchface in Resources */,
 				F6BBABEA2BF7BF650090780B /* SharedAssets.xcassets in Resources */,
-				F6D315E42BBDB98D00C75299 /* Oswald-VariableFont_wght.ttf in Resources */,
 				F62A7A6E2B48700C002A7E25 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,8 +571,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D844482BF90DD3006CB10F /* Assistant-VariableFont_wght.ttf in Resources */,
 				F6BFA2C92BF50BDB00E21B72 /* Assets.xcassets in Resources */,
 				F6BBABEB2BF7BF650090780B /* SharedAssets.xcassets in Resources */,
+				F6D844472BF90DD1006CB10F /* OswaldVF.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
