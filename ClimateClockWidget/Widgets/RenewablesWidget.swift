@@ -63,7 +63,7 @@ struct RenewablesWidgetEntryView : View {
 			Text("\(valueByDate(date: entry.date), specifier: "%0.\(entry.precision)f") %")
 				.font(
 					.custom("Oswald", size: 20)
-					.weight(.medium)
+					.weight(.semibold)
 				)
 				.monospacedDigit()
 //				.minimumScaleFactor(0.5)
@@ -74,10 +74,14 @@ struct RenewablesWidgetEntryView : View {
 					)
 				)
 			
-			Rectangle()
+			RoundedRectangle(cornerRadius: 6)
+				.overlay{
+					RoundedRectangle(cornerRadius: 6)
+						.stroke(lineWidth: 2)
+						.foregroundStyle(.white)
+				}
 				.containerRelativeFrame(.horizontal)
-				.frame(height: 25)
-				.border(.white, width: 4)
+//				.frame(height: 20)
 				.foregroundStyle(.windowBackground)
 				.overlay(alignment: .leading) {
 					Rectangle()
@@ -88,8 +92,9 @@ struct RenewablesWidgetEntryView : View {
 				.clipShape(.rect(cornerRadius: 6))
 			
 			Text("Energy from renewables")
+				.textCase(.uppercase)
 				.font(
-					.custom("Assistant", size: 14)
+					.custom("Assistant", size: 12)
 					.weight(.semibold)
 				)
 		}
