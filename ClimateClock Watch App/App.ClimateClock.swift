@@ -11,6 +11,17 @@ import Sentry
 
 @main
 struct ClimateClock_Watch_App: App {
+    init() {
+        SentrySDK.start { options in
+            options.dsn = "https://8233dd3afc564e37ba352634dcbd803d@glitchtip.woven.design/3"
+            options.debug = true // Enabled debug when first installing is always helpful
+            options.enableTracing = true 
+
+            // Uncomment the following lines to add more data to your events
+            // options.attachScreenshot = true // This adds a screenshot to the error events
+            // options.attachViewHierarchy = true // This adds the view hierarchy to the error events
+        }
+    }
 	@AppStorage("first_launch") var firstLaunch: Bool = true
 	
 	

@@ -9,7 +9,6 @@ import SwiftData
 import SwiftUI
 
 struct NewsView: View {
-    @AppStorage("first_notification_hour") var first_hour: Int = 8
     static var now: Date { Date.now }
     @Query(filter: #Predicate<NewsItem> { $0.pushDate ?? now < now },
            sort: \NewsItem.pushDate,
@@ -23,7 +22,6 @@ struct NewsView: View {
         ) {
             ScrollView {
                 LazyVStack {
-                    Text("\(first_hour)")
                     ForEach(news, id: \.id) { item in
                         NewsListItem(newsItem: item)
                     }

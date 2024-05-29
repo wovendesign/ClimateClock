@@ -76,7 +76,7 @@
 		F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
 		F6EF80DD2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
 		F6EF80DE2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
-		F6EF80E12C0794AC001996C9 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = F6EF80E02C0794AC001996C9 /* Sentry */; };
+		F6EF80E42C079AB8001996C9 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = F6EF80E32C079AB8001996C9 /* Sentry */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,7 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6EF80E12C0794AC001996C9 /* Sentry in Frameworks */,
+				F6EF80E42C079AB8001996C9 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +488,7 @@
 				F62A7A612B48700B002A7E25 /* Frameworks */,
 				F62A7A622B48700B002A7E25 /* Resources */,
 				F6BFA2A62BF4F87C00E21B72 /* Embed Foundation Extensions */,
+				F02FE556BC9E4D52ABB96475 /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -495,7 +496,7 @@
 			);
 			name = "ClimateClock Watch App";
 			packageProductDependencies = (
-				F6EF80E02C0794AC001996C9 /* Sentry */,
+				F6EF80E32C079AB8001996C9 /* Sentry */,
 			);
 			productName = "ClimateClock Watch App";
 			productReference = F62A7A642B48700B002A7E25 /* ClimateClock Watch App.app */;
@@ -550,7 +551,7 @@
 			);
 			mainGroup = F62A7A4B2B48700A002A7E25;
 			packageReferences = (
-				F6EF80DF2C0794AC001996C9 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				F6EF80E22C079AB8001996C9 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = F62A7A552B48700A002A7E25 /* Products */;
 			projectDirPath = "";
@@ -602,6 +603,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F02FE556BC9E4D52ABB96475 /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			name = "Upload Debug Symbols to Sentry";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script is responsable to upload debug symbols and source context for Sentry.\nif which sentry-cli >/dev/null; then\nexport SENTRY_ORG=woven\nexport SENTRY_PROJECT=climate-clock\nERROR=$(sentry-cli debug-files upload --include-sources \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F62A7A502B48700A002A7E25 /* Sources */ = {
@@ -818,6 +837,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
@@ -854,6 +874,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
@@ -1057,7 +1078,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F6EF80DF2C0794AC001996C9 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+		F6EF80E22C079AB8001996C9 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
@@ -1068,9 +1089,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F6EF80E02C0794AC001996C9 /* Sentry */ = {
+		F6EF80E32C079AB8001996C9 /* Sentry */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F6EF80DF2C0794AC001996C9 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			package = F6EF80E22C079AB8001996C9 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
 			productName = Sentry;
 		};
 /* End XCSwiftPackageProductDependency section */

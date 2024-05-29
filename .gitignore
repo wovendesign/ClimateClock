@@ -6,3 +6,5 @@ xcuserdata/
 *.xccheckout
 # macOS
 .DS_Store
+
+.sentryclirc
