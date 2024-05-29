@@ -94,4 +94,3 @@ struct NewsListItem: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
-

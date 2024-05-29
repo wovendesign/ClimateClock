@@ -6,15 +6,15 @@
 //  Copyright © 2024 woven. All rights reserved.
 //
 
-import WidgetKit
-import SwiftUI
 import SwiftData
+import SwiftUI
+import WidgetKit
 
 @main
 struct ClimateClockWidgetBundle: WidgetBundle {
     var body: some Widget {
 //        ClimateClockWidget()
-		NewsWidget()
-		RenewablesWidget()
+        NewsWidget()
+        RenewablesWidget()
     }
 }

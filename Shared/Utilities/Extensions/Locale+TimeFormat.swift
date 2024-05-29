@@ -6,7 +6,7 @@ extension Locale {
     }
 
     static func is24HoursFormat() -> Bool {
-        !Self.is12HoursFormat()
+        !is12HoursFormat()
     }
 
     func is12HoursFormat() -> Bool {

@@ -9,27 +9,26 @@ import Charts
 import SwiftUI
 
 struct ContentView: View {
-	@Environment(Client.self) var client
-	@Environment(\.modelContext) var context
+    @Environment(Client.self) var client
+    @Environment(\.modelContext) var context
 
     var body: some View {
-		NavigationStack {
-			TabView {
-				//				TabTitle(headline: "Lifelines", subtitle: "Change is already happening")
-				LifelineView()
+        NavigationStack {
+            TabView {
+                //				TabTitle(headline: "Lifelines", subtitle: "Change is already happening")
+                LifelineView()
 
-	//            CountdownView()
-	//            GraphView()
-				NewsView()
-				
+                //            CountdownView()
+                //            GraphView()
+                NewsView()
 
-				AboutView()
-			}
-			.tabViewStyle(.verticalPage)
-			.task {
-				await client.getDataFromClimateClockAPI(context: context)
-			}
-		}
+                AboutView()
+            }
+            .tabViewStyle(.verticalPage)
+            .task {
+                await client.getDataFromClimateClockAPI(context: context)
+            }
+        }
     }
 }
 

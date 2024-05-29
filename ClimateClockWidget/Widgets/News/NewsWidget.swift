@@ -1,106 +1,104 @@
 //
-//  ClimateClockWidget.swift
+//  NewsWidget.swift
 //  ClimateClockWidget
 //
 //  Created by Eric Wätke on 15.05.24.
 //  Copyright © 2024 woven. All rights reserved.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 struct NewsWidgetProvider: TimelineProvider {
-	func placeholder(in context: Context) -> NewsWidgetEntry {
-		NewsWidgetMockData().mockEntry
-	}
+    func placeholder(in _: Context) -> NewsWidgetEntry {
+        NewsWidgetMockData().mockEntry
+    }
 
-	func getSnapshot(in context: Context, completion: @escaping (NewsWidgetEntry) -> ()) {
-		let entry = NewsWidgetMockData().mockEntry
-		completion(entry)
-	}
+    func getSnapshot(in _: Context, completion: @escaping (NewsWidgetEntry) -> Void) {
+        let entry = NewsWidgetMockData().mockEntry
+        completion(entry)
+    }
 
-	func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-		var entries: [NewsWidgetEntry] = []
-		
-		let client: Client = Client()
-		
+    func getTimeline(in _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
+        var entries: [NewsWidgetEntry] = []
 
+        let client = Client()
 
-		// Generate a timeline consisting of five entries an hour apart, starting from the current date.
-		let currentDate = Date()
-		for hourOffset in 0 ..< 5 {
-			let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-			let entry = NewsWidgetMockData().mockEntry
-			entries.append(entry)
-		}
+        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        let currentDate = Date()
+        for hourOffset in 0 ..< 5 {
+            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+            let entry = NewsWidgetMockData().mockEntry
+            entries.append(entry)
+        }
 
-		let timeline = Timeline(entries: entries, policy: .atEnd)
-		completion(timeline)
-	}
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
+    }
 }
 
 struct NewsWidgetEntry: TimelineEntry {
-	let date: Date
-	
-	let relativeDate: String
-	let headline: String
-	let source: String
+    let date: Date
+
+    let relativeDate: String
+    let headline: String
+    let source: String
 }
 
-struct NewsWidgetEntryView : View {
-	var entry: NewsWidgetProvider.Entry
+struct NewsWidgetEntryView: View {
+    var entry: NewsWidgetProvider.Entry
 
-	var body: some View {
-		VStack(alignment: .leading, spacing: 4) {
-			RelativeTimeCell(pushDate: entry.date)
-			Text(entry.headline)
-				.font(
-					.custom("Oswald", size: 16)
-						.weight(.regular)
-				)
-				.tracking(0.32)
-				.frame(maxWidth: .infinity, alignment: .leading)
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            RelativeTimeCell(pushDate: entry.date)
+            Text(entry.headline)
+                .font(
+                    .custom("Oswald", size: 16)
+                        .weight(.regular)
+                )
+                .tracking(0.32)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
-			Text(entry.source)
-				.font(
-					.custom("Assistant", size: 12)
-						.weight(.semibold)
-				)
-				.foregroundStyle(Color.gray)
-		}
-	}
+            Text(entry.source)
+                .font(
+                    .custom("Assistant", size: 12)
+                        .weight(.semibold)
+                )
+                .foregroundStyle(Color.gray)
+        }
+    }
 }
 
 struct NewsWidget: Widget {
-	let kind: String = "NewsWidget"
+    let kind: String = "NewsWidget"
 
-	var body: some WidgetConfiguration {
-		StaticConfiguration(kind: kind, provider: NewsWidgetProvider()) { entry in
-			if #available(iOS 17.0, *) {
-				NewsWidgetEntryView(entry: entry)
-					.containerBackground(.fill.tertiary, for: .widget)
-			} else {
-				NewsWidgetEntryView(entry: entry)
-					.padding()
-					.background()
-			}
-		}
-		.configurationDisplayName("News Widget")
-		.description("This is an example widget.")
-	}
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: NewsWidgetProvider()) { entry in
+            if #available(iOS 17.0, *) {
+                NewsWidgetEntryView(entry: entry)
+                    .containerBackground(.fill.tertiary, for: .widget)
+            } else {
+                NewsWidgetEntryView(entry: entry)
+                    .padding()
+                    .background()
+            }
+        }
+        .configurationDisplayName("News Widget")
+        .description("This is an example widget.")
+    }
 }
 
 #Preview(as: .systemSmall) {
-	NewsWidget()
+    NewsWidget()
 } timeline: {
-	NewsWidgetMockData().mockEntry
+    NewsWidgetMockData().mockEntry
 }
 
-
 struct NewsWidgetMockData {
-	let mockEntry = NewsWidgetEntry(
-		date: Date(),
-		relativeDate: "Today",
-		headline: "UK pledges $6m to back climate-smart farming in Zambia & curb deforestation",
-		source: "The New York Times")
+    let mockEntry = NewsWidgetEntry(
+        date: Date(),
+        relativeDate: "Today",
+        headline: "UK pledges $6m to back climate-smart farming in Zambia & curb deforestation",
+        source: "The New York Times"
+    )
 }

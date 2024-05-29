@@ -21,14 +21,14 @@ class NotificationManager {
     }
 
     func scheduleNotification(news: NewsItem, triggerTime: DateComponents) {
-		print("Got Notification Scheduling request: ", news.headline, triggerTime)
+        print("Got Notification Scheduling request: ", news.headline, triggerTime)
         let content = UNMutableNotificationContent()
         content.title = "New hope is coming"
-		content.subtitle = news.headline
+        content.subtitle = news.headline
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: false)
 
-		let request = UNNotificationRequest(identifier: news.headline,
+        let request = UNNotificationRequest(identifier: news.headline,
                                             content: content,
                                             trigger: trigger)
 
