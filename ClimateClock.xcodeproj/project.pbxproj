@@ -71,6 +71,11 @@
 		F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
 		F6D844472BF90DD1006CB10F /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
 		F6D844482BF90DD3006CB10F /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
+		F6EF80D72C0757E5001996C9 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80D62C0757E5001996C9 /* NotificationSettings.swift */; };
+		F6EF80D92C075D15001996C9 /* NotificationTimeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80D82C075D15001996C9 /* NotificationTimeSetter.swift */; };
+		F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
+		F6EF80DD2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
+		F6EF80DE2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +180,9 @@
 		F6D315E02BBD85FD00C75299 /* NewsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItem.swift; sourceTree = "<group>"; };
 		F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		F6EF80D62C0757E5001996C9 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		F6EF80D82C075D15001996C9 /* NotificationTimeSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeSetter.swift; sourceTree = "<group>"; };
+		F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+TimeFormat.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +215,7 @@
 		F60B29A52B8F8D3500E41091 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F6EF80DA2C0763C0001996C9 /* Extensions */,
 				F673949C2BBC3FC400B7258D /* Alert */,
 				F62EED5B2BBB2E5C00352E46 /* Managers */,
 			);
@@ -252,6 +261,8 @@
 				F60B29A32B8F837500E41091 /* NewsView.swift */,
 				F6D315E02BBD85FD00C75299 /* NewsListItem.swift */,
 				F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */,
+				F6EF80D62C0757E5001996C9 /* NotificationSettings.swift */,
+				F6EF80D82C075D15001996C9 /* NotificationTimeSetter.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -435,6 +446,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		F6EF80DA2C0763C0001996C9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -588,6 +607,7 @@
 				F62A7A5A2B48700A002A7E25 /* ContentView.swift in Sources */,
 				F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F60B29B22B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
+				F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */,
 				F62EED5C2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
 				F6BBABE52BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
 				F62A7A582B48700A002A7E25 /* ClimateClockApp.swift in Sources */,
@@ -602,6 +622,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */,
+				F6EF80DD2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */,
 				F60B29A42B8F837500E41091 /* NewsView.swift in Sources */,
 				F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F62A7A6C2B48700B002A7E25 /* ContentView.swift in Sources */,
@@ -610,11 +631,13 @@
 				F6256D9D2BF4ABE80012FD30 /* LifeLineGoal.swift in Sources */,
 				F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */,
 				F60B29A22B8F7FA600E41091 /* AboutView.swift in Sources */,
+				F6EF80D72C0757E5001996C9 /* NotificationSettings.swift in Sources */,
 				F6BBABE62BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
 				F6256D8E2BF39FE10012FD30 /* Client.swift in Sources */,
 				F6256D9B2BF3BB310012FD30 /* LifeLineCell.swift in Sources */,
 				F60B29B32B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
 				F6CCBCA32BD170F700EB80C2 /* TabTitle.swift in Sources */,
+				F6EF80D92C075D15001996C9 /* NotificationTimeSetter.swift in Sources */,
 				F6256DA72BF4DA940012FD30 /* ActionItem.swift in Sources */,
 				F6256DA02BF4BE170012FD30 /* TabTitleLayout.swift in Sources */,
 				F62A7A6A2B48700B002A7E25 /* App.ClimateClock.swift in Sources */,
@@ -636,6 +659,7 @@
 				F6BBABF72BF7CA680090780B /* ClimateClockData.swift in Sources */,
 				F6BBABE72BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
 				F6BBABFA2BF7CA890090780B /* NotificationManager.swift in Sources */,
+				F6EF80DE2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */,
 				F6BFA2C52BF50BDA00E21B72 /* ClimateClockWidgetBundle.swift in Sources */,
 				F6BBABF02BF7C19D0090780B /* DataModels.swift in Sources */,
 				F6BBABF82BF7CA770090780B /* NetworkManager.swift in Sources */,

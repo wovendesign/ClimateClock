@@ -71,3 +71,15 @@ class LifeLine {
 		self.unit_labels = unit_labels
 	}
 }
+
+@Model
+class SchedulingPreferences {
+	let id = UUID()
+	var first_date: Date
+	var second_date: Date
+	
+	init(first_date: Date, second_date: Date) {
+		self.first_date = first_date
+		self.second_date = second_date
+	}
+}

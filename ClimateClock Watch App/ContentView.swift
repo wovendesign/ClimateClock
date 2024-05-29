@@ -13,20 +13,23 @@ struct ContentView: View {
 	@Environment(\.modelContext) var context
 
     var body: some View {
-        TabView {
-            //				TabTitle(headline: "Lifelines", subtitle: "Change is already happening")
-            LifelineView()
+		NavigationStack {
+			TabView {
+				//				TabTitle(headline: "Lifelines", subtitle: "Change is already happening")
+				LifelineView()
 
-            CountdownView()
-//            GraphView()
-            NewsView()
+	//            CountdownView()
+	//            GraphView()
+				NewsView()
+				
 
-            AboutView()
-        }
-        .tabViewStyle(.verticalPage)
-        .task {
-			await client.getDataFromClimateClockAPI(context: context)
-        }
+				AboutView()
+			}
+			.tabViewStyle(.verticalPage)
+			.task {
+				await client.getDataFromClimateClockAPI(context: context)
+			}
+		}
     }
 }
 

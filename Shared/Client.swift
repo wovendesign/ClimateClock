@@ -169,4 +169,26 @@ import SwiftData
 			context.insert(temp)
 		}
 	}
+	
+	
+	enum NotificationType: String {
+		case first = "first"
+		case second = "second"
+	}
+	func getSchedulingPreferences() -> SchedulingPreferences {
+		let first_hour = UserDefaults.standard.integer(forKey: "first_notification_hour")
+		let first_minute = UserDefaults.standard.integer(forKey: "first_notification_minute")
+		var components = DateComponents()
+		components.hour = first_hour
+		components.minute = first_minute
+		
+		return SchedulingPreferences(
+			first_date: Calendar.current.date(from: components) ?? Date.now,
+			second_date: Date.now
+		)
+	}
+	
+	func setSchedulingPreference(notificationType: NotificationType, date: Date) {
+		
+	}
 }
