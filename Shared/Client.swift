@@ -165,7 +165,7 @@ import SwiftData
 			
 			var todayComponents = Calendar.current.dateComponents([.month, .day, .hour, .minute, .second], from: today)
 			todayComponents.minute = (todayComponents.minute ?? 0) + 1
-			NotificationManager.instance.scheduleNotification(headline: temp.headline, triggerTime: todayComponents)
+			NotificationManager.instance.scheduleNotification(news: temp, triggerTime: todayComponents)
 			context.insert(temp)
 		}
 	}

@@ -12,7 +12,7 @@ class NotificationManager {
     static let instance = NotificationManager()
 
     func requestAuthorization() {
-        let options: UNAuthorizationOptions = [.alert, .badge, .provisional]
+        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(options: options) { _, error in
             if let error = error {
                 print(error)
@@ -20,14 +20,15 @@ class NotificationManager {
         }
     }
 
-    func scheduleNotification(headline: String, triggerTime: DateComponents) {
+    func scheduleNotification(news: NewsItem, triggerTime: DateComponents) {
+		print("Got Notification Scheduling request: ", news.headline, triggerTime)
         let content = UNMutableNotificationContent()
         content.title = "New hope is coming"
-        content.subtitle = headline
+		content.subtitle = news.headline
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: false)
 
-        let request = UNNotificationRequest(identifier: UUID().uuidString,
+		let request = UNNotificationRequest(identifier: news.headline,
                                             content: content,
                                             trigger: trigger)
 

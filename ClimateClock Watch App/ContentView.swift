@@ -18,7 +18,7 @@ struct ContentView: View {
             LifelineView()
 
             CountdownView()
-            GraphView()
+//            GraphView()
             NewsView()
 
             AboutView()

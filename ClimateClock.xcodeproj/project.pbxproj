@@ -331,7 +331,6 @@
 		F62A7A682B48700B002A7E25 /* ClimateClock Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				F6BBABEE2BF7C0C20090780B /* ClimateClock Watch App.entitlements */,
 				F6256D982BF3BA470012FD30 /* Tabs */,
 				F6D315EA2BBDC34100C75299 /* Utilities */,
 				F62DCB852B7BD4BD00855D88 /* Info.plist */,
@@ -339,6 +338,7 @@
 				F62A7A6B2B48700B002A7E25 /* ContentView.swift */,
 				F60B29AC2B8F91F900E41091 /* Solar Analogue.watchface */,
 				F62A7A6D2B48700C002A7E25 /* Assets.xcassets */,
+				F6BBABEE2BF7C0C20090780B /* ClimateClock Watch App.entitlements */,
 				F62A7A6F2B48700C002A7E25 /* Preview Content */,
 			);
 			path = "ClimateClock Watch App";
