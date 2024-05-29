@@ -19,6 +19,8 @@ enum DateFormat {
 }
 
 struct NotificationSettings: View {
+	@Environment(Client.self) var client
+	@Environment(\.modelContext) var context
     @State var first_date: Date
 
     var body: some View {
@@ -35,9 +37,9 @@ struct NotificationSettings: View {
                     }
                 }
                 .onChange(of: first_date) {
-                    let components = Calendar.current.dateComponents([.hour, .minute], from: first_date)
-                    UserDefaults.standard.set(components.hour, forKey: "first_notification_hour")
-                    UserDefaults.standard.set(components.minute, forKey: "first_notification_minute")
+					client.updateSchedulingPreference(notificationType: .first,
+													  date: first_date,
+													  context: context)
                 }
 
                 //
@@ -54,9 +56,6 @@ struct NotificationSettings: View {
 
                 Text("We will notify you when it is time for the new News of Hope. Sometimes even twice a day.")
             }
-        }
-        .onAppear {
-            //			print(test)
         }
         .navigationTitle("News of Hope")
     }

@@ -111,79 +111,71 @@ import SwiftData
             return
         }
 
+		var currentSlot: NotificationType = .first
         for (index, newsItem) in news.enumerated() {
-            //			print(newsItem.id)
-            // Check if the news is already saved in SwiftData and scheduled
-            //			let newsPredicate = #Predicate<NewsItem> { item in
-            //				item.id
-            //			}
-//
-            //			do {
-            //				if let i: [NewsItem]? = try context.fetch(FetchDescriptor(predicate: newsPredicate)) {
-            //					if i != nil {
-            //						return
-            //					}
-//
-            let today: Date = Calendar.current.date(byAdding: .day, value: index, to: monday) ?? Date()
+			if (index > 7) {
+				currentSlot = .second
+			}
+			
+            let today: Date = Calendar.current.date(byAdding: .day, value: index % 7, to: monday) ?? Date()
             let temp = newsItem
             temp.pushDate = today
+			temp.scheduled = currentSlot
 
+			scheduleNewsNotifications(news: temp, context: context)
             context.insert(temp)
-            //				}
-            //			} catch {
-            //				print("Couldnt fetch newsItem from ID")
-            //			}
         }
     }
 
-    func scheduleNewsNotifications(news: [NewsItem], context: ModelContext) {
-        //		Get the current calendar and today's date
-        let calendar = Calendar.current
-        let today = Date()
-
-        // Get the start of the current week
-        var startOfWeek = Date()
-        var interval = TimeInterval(0)
-        _ = calendar.dateInterval(of: .weekOfYear, start: &startOfWeek, interval: &interval, for: today)
-
-        // Get the components of the start of the week
-        let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: startOfWeek)
-
-        // Get the date of Monday in the current week
-        guard let monday = calendar.date(from: components) else {
-            print("Failed to get Monday of the current week")
+	func scheduleNewsNotifications(news: NewsItem, context: ModelContext) {
+		guard let pushDate = news.pushDate else {
+            print("News didnt have a push date")
             return
         }
+		
+		guard let scheduled = news.scheduled else {
+			print("News isn’t scheduled yet")
+			return
+		}
 
-        news.enumerated().forEach {
-            let today: Date = Calendar.current.date(byAdding: .day, value: $0, to: monday) ?? Date()
-            let temp = $1
-            temp.pushDate = today
-
-            var todayComponents = Calendar.current.dateComponents([.month, .day, .hour, .minute, .second], from: today)
-            todayComponents.minute = (todayComponents.minute ?? 0) + 1
-            NotificationManager.instance.scheduleNotification(news: temp, triggerTime: todayComponents)
-            context.insert(temp)
-        }
+		var scheduleDateComponents = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: pushDate)
+		
+		let schedulingPreference = getSchedulingPreference(notificationType: scheduled)
+		
+		scheduleDateComponents.hour = schedulingPreference.hour
+		scheduleDateComponents.minute = schedulingPreference.minute
+		
+		NotificationManager.instance.scheduleNotification(news: news, triggerTime: scheduleDateComponents)
     }
 
-    enum NotificationType: String {
-        case first
-        case second
-    }
+    
+	
+	struct SchedulingPreference {
+		let hour: Int
+		let minute: Int
+	}
+	
+	func getSchedulingPreference(notificationType: NotificationType) -> SchedulingPreference {
+		switch notificationType {
+			case .first:
+				return SchedulingPreference(hour: UserDefaults.standard.integer(forKey: "first_notification_hour"),
+											minute: UserDefaults.standard.integer(forKey: "first_notification_minute"))
+			case .second:
+				return SchedulingPreference(hour: UserDefaults.standard.integer(forKey: "second_notification_hour"),
+											minute: UserDefaults.standard.integer(forKey: "second_notification_minute"))
+		}
+	}
 
-    func getSchedulingPreferences() -> SchedulingPreferences {
-        let first_hour = UserDefaults.standard.integer(forKey: "first_notification_hour")
-        let first_minute = UserDefaults.standard.integer(forKey: "first_notification_minute")
-        var components = DateComponents()
-        components.hour = first_hour
-        components.minute = first_minute
-
-        return SchedulingPreferences(
-            first_date: Calendar.current.date(from: components) ?? Date.now,
-            second_date: Date.now
-        )
-    }
-
-    func setSchedulingPreference(notificationType _: NotificationType, date _: Date) {}
+	func updateSchedulingPreference(notificationType: NotificationType, date: Date, context: ModelContext) {
+		let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+		
+		switch notificationType {
+			case .first:
+				UserDefaults.standard.set(components.hour, forKey: "first_notification_hour")
+				UserDefaults.standard.set(components.minute, forKey: "first_notification_minute")
+			case .second:
+				UserDefaults.standard.set(components.hour, forKey: "second_notification_hour")
+				UserDefaults.standard.set(components.minute, forKey: "second_notification_minute")
+		}
+	}
 }

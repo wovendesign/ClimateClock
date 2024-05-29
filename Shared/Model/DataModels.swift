@@ -8,6 +8,11 @@
 import Foundation
 import SwiftData
 
+enum NotificationType: String {
+	case first
+	case second
+}
+
 @Model
 class NewsItem: Decodable {
     enum CodingKeys: CodingKey {
@@ -26,6 +31,7 @@ class NewsItem: Decodable {
     //	Interactive Data
     //	var new: Bool = true
     var pushDate: Date?
+	var scheduled: NotificationType?
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -69,17 +75,5 @@ class LifeLine {
         self.rate = rate
         self.labels = labels
         self.unit_labels = unit_labels
-    }
-}
-
-@Model
-class SchedulingPreferences {
-    let id = UUID()
-    var first_date: Date
-    var second_date: Date
-
-    init(first_date: Date, second_date: Date) {
-        self.first_date = first_date
-        self.second_date = second_date
     }
 }
