@@ -76,6 +76,7 @@
 		F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
 		F6EF80DD2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
 		F6EF80DE2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
+		F6EF80E12C0794AC001996C9 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = F6EF80E02C0794AC001996C9 /* Sentry */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6EF80E12C0794AC001996C9 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +495,7 @@
 			);
 			name = "ClimateClock Watch App";
 			packageProductDependencies = (
+				F6EF80E02C0794AC001996C9 /* Sentry */,
 			);
 			productName = "ClimateClock Watch App";
 			productReference = F62A7A642B48700B002A7E25 /* ClimateClock Watch App.app */;
@@ -547,6 +550,7 @@
 			);
 			mainGroup = F62A7A4B2B48700A002A7E25;
 			packageReferences = (
+				F6EF80DF2C0794AC001996C9 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = F62A7A552B48700A002A7E25 /* Products */;
 			projectDirPath = "";
@@ -1051,6 +1055,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F6EF80DF2C0794AC001996C9 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.26.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F6EF80E02C0794AC001996C9 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6EF80DF2C0794AC001996C9 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F62A7A4C2B48700A002A7E25 /* Project object */;
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-enum NotificationType: String {
+enum NotificationType: String, Codable {
 	case first
 	case second
 }

@@ -147,12 +147,18 @@ import SwiftData
 		
 		NotificationManager.instance.scheduleNotification(news: news, triggerTime: scheduleDateComponents)
     }
-
-    
 	
 	struct SchedulingPreference {
 		let hour: Int
 		let minute: Int
+	}
+	
+	func setDefaultSchedulingPreferences() {
+		UserDefaults.standard.set(8, forKey: "first_notification_hour")
+		UserDefaults.standard.set(0, forKey: "first_notification_minute")
+	
+		UserDefaults.standard.set(18, forKey: "second_notification_hour")
+		UserDefaults.standard.set(0, forKey: "second_notification_minute")
 	}
 	
 	func getSchedulingPreference(notificationType: NotificationType) -> SchedulingPreference {
@@ -176,6 +182,23 @@ import SwiftData
 			case .second:
 				UserDefaults.standard.set(components.hour, forKey: "second_notification_hour")
 				UserDefaults.standard.set(components.minute, forKey: "second_notification_minute")
+			
+		}
+		
+		
+		let now = Date.now
+		let fetchDescriptor = FetchDescriptor<NewsItem>(predicate: #Predicate { news in
+			news.pushDate != nil && news.pushDate! >= now && news.scheduled == notificationType
+		})
+		
+		do {
+			let newsItems = try context.fetch(fetchDescriptor)
+
+			newsItems.forEach { newsItem in
+				scheduleNewsNotifications(news: newsItem, context: context)
+			}
+		} catch {
+			print("Failed to load News.")
 		}
 	}
 }

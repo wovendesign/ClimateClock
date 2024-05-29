@@ -47,20 +47,7 @@ struct NewsView: View {
             }
         }
         .onAppear {
-            print(news.count)
             NotificationManager.instance.requestAuthorization()
-
-            let date = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
-            guard let date else {
-                print("Couldnt get date")
-                return
-            }
-            let dateComponents: DateComponents = Calendar.current.dateComponents([.day, .month, .hour, .minute], from: date)
-
-            if let firstNews = news.first {
-                NotificationManager.instance.scheduleNotification(news: firstNews,
-                                                                  triggerTime: dateComponents)
-            }
         }
     }
 }

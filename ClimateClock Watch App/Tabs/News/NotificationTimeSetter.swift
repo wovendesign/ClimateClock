@@ -10,28 +10,19 @@ import SwiftData
 import SwiftUI
 
 struct NotificationTimeSetter: View {
-    let notificationType: Client.NotificationType
-    //	@Query var scheduling_preferences: [SchedulingPreferences]?
+    let notificationType: NotificationType
     @Environment(\.modelContext) var context
+	@State private var navPath = NavigationPath()
 
     @Binding var date: Date
-    @State private var temp_date: Date = .now
 
     var body: some View {
         VStack {
             DatePicker(
                 "Start Date",
-                selection: $temp_date,
+                selection: $date,
                 displayedComponents: [.hourAndMinute]
             )
-            Button {
-                date = temp_date
-            } label: {
-                Text("Done")
-            }
-        }
-        .onAppear {
-            temp_date = date
         }
         .navigationTitle("Set Time")
     }

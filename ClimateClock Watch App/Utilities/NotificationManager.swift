@@ -21,7 +21,6 @@ class NotificationManager {
     }
 
     func scheduleNotification(news: NewsItem, triggerTime: DateComponents) {
-        print("Got Notification Scheduling request: ", news.headline, triggerTime)
         let content = UNMutableNotificationContent()
         content.title = "New hope is coming"
         content.subtitle = news.headline
