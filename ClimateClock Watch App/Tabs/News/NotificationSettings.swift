@@ -24,40 +24,42 @@ struct NotificationSettings: View {
     @State var first_date: Date
 
     var body: some View {
-        ScrollView {
-            VStack {
-                Text("Your News Notifications")
-                NavigationLink {
-                    NotificationTimeSetter(notificationType: .first, date: $first_date)
-                } label: {
-                    VStack {
-                        Text("First Notification")
-                        Text(DateFormat.timeHourFormat(from: first_date,
-                                                       twentyFourHourFormat: Locale.is24HoursFormat()))
-                    }
-                }
-                .onChange(of: first_date) {
-					client.updateSchedulingPreference(notificationType: .first,
-													  date: first_date,
-													  context: context)
-                }
+		NavigationStack {
+			ScrollView {
+				VStack {
+					Text("Your News Notifications")
+					NavigationLink {
+						NotificationTimeSetter(notificationType: .first, date: $first_date)
+					} label: {
+						VStack {
+							Text("First Notification")
+							Text(DateFormat.timeHourFormat(from: first_date,
+														   twentyFourHourFormat: Locale.is24HoursFormat()))
+						}
+					}
+					.onChange(of: first_date) {
+						client.updateSchedulingPreference(notificationType: .first,
+														  date: first_date,
+														  context: context)
+					}
 
-                //
-                //				if let second_date = second_date {
-                //					NavigationLink {
-                //						NotificationTimeSetter(notificationType: .second)
-                //					} label: {
-                //						VStack {
-                //							Text("Second Notification")
-                //							Text("6:00 pm")
-                //						}
-                //					}
-                //				}
+					//
+					//				if let second_date = second_date {
+					//					NavigationLink {
+					//						NotificationTimeSetter(notificationType: .second)
+					//					} label: {
+					//						VStack {
+					//							Text("Second Notification")
+					//							Text("6:00 pm")
+					//						}
+					//					}
+					//				}
 
-                Text("We will notify you when it is time for the new News of Hope. Sometimes even twice a day.")
-            }
-        }
-        .navigationTitle("News of Hope")
+					Text("We will notify you when it is time for the new News of Hope. Sometimes even twice a day.")
+				}
+			}
+			.navigationTitle("News of Hope")
+		}
     }
 
     init() {
