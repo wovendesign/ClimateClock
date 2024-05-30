@@ -10,11 +10,7 @@ import SwiftData
 import SwiftUI
 
 struct NotificationTimeSetter: View {
-    let notificationType: NotificationType
-    @Environment(\.modelContext) var context
-	@State private var navPath = NavigationPath()
-
-    @Binding var date: Date
+   @Binding var date: Date
 
     var body: some View {
         VStack {
@@ -23,6 +19,7 @@ struct NotificationTimeSetter: View {
                 selection: $date,
                 displayedComponents: [.hourAndMinute]
             )
+			.foregroundStyle(.white)
         }
         .navigationTitle("Set Time")
     }

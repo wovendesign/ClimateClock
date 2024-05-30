@@ -145,6 +145,8 @@ import SwiftData
 		scheduleDateComponents.hour = schedulingPreference.hour
 		scheduleDateComponents.minute = schedulingPreference.minute
 		
+		print("Scheduled \(news.headline) for \(scheduleDateComponents)")
+		
 		NotificationManager.instance.scheduleNotification(news: news, triggerTime: scheduleDateComponents)
     }
 	
@@ -187,9 +189,14 @@ import SwiftData
 		
 		
 		let now = Date.now
-		let fetchDescriptor = FetchDescriptor<NewsItem>(predicate: #Predicate { news in
-			news.pushDate != nil && news.pushDate! >= now && news.scheduled == notificationType
-		})
+		let predicate = #Predicate<NewsItem> { news in
+			if let date = news.pushDate {
+				return date >= now
+			} else {
+				return false
+			}
+		}
+		let fetchDescriptor = FetchDescriptor<NewsItem>(predicate: predicate)
 		
 		do {
 			let newsItems = try context.fetch(fetchDescriptor)
@@ -198,7 +205,7 @@ import SwiftData
 				scheduleNewsNotifications(news: newsItem, context: context)
 			}
 		} catch {
-			print("Failed to load News.")
+			print("Failed to load News: ", error)
 		}
 	}
 }

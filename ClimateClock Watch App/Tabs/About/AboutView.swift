@@ -33,7 +33,8 @@ struct AboutView: View {
                            callToAction: "Open Up Doors")
 
                 HighlightedText(text: "All Data is provided by the v2 Climate Clock API from climateclock.world. \n\n Join in and participate in the Climate Clock Community too. \n\n #ClimateClock #ActInTime",
-                                highlighted: "v2 Climate Clock API")
+                                highlighted: "v2 Climate Clock API",
+								highlightColor: .red)
                     .padding()
             }
             .padding()
