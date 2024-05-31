@@ -14,6 +14,8 @@ struct NewsView: View {
            sort: \NewsItem.pushDate,
            order: .reverse)
     var news: [NewsItem] = []
+	
+	@Environment(Client.self) var client: Client
 	@State private var isShowingSheet = false
 
     var body: some View {
@@ -41,23 +43,25 @@ struct NewsView: View {
 					Button {
 						isShowingSheet.toggle()
 					} label: {
-						Image(systemName: "bell.badge.fill")
+						Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
 							.foregroundStyle(.white)
 					}
 					.sheet(isPresented: $isShowingSheet, onDismiss: {
 						isShowingSheet = false
 					}) { 
 						NotificationSettings()
+							.background(.black)
 					}
 				}
 			}
 		}
         .onAppear {
-            NotificationManager.instance.requestAuthorization()
+			client.checkNotificationPermission()
+//            NotificationManager.instance.requestAuthorization()
         }
     }
 }
 
-#Preview {
-    NewsView()
-}
+//#Preview {
+//    NewsView()
+//}

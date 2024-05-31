@@ -21,6 +21,7 @@ struct NotificationTimeSetter: View {
             )
 			.foregroundStyle(.white)
         }
+		.background(.black)
         .navigationTitle("Set Time")
     }
 }

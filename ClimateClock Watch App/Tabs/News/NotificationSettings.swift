@@ -35,19 +35,27 @@ struct NotificationSettings: View {
 								.weight(.semibold)
 						)
 					
-					NotificationSettingButton(date: $first_date,
-											  notificationType: .first) {
-						client.updateSchedulingPreference(notificationType: .first,
-														  date: first_date,
-														  context: context)
+					if (!client.notificationPermissionGranted) {
+						Button {
+							client.requestNotificationPermissions()
+						} label: {
+							Text("Allow Notifications")
+						}
+
+					} else {
+						NotificationSettingButton(date: $first_date,
+												  notificationType: .first) {
+							client.updateSchedulingPreference(notificationType: .first,
+															  date: first_date,
+															  context: context)
+						}
+						NotificationSettingButton(date: $second_date,
+												  notificationType: .second) {
+							client.updateSchedulingPreference(notificationType: .second,
+															  date: second_date,
+															  context: context)
+						}
 					}
-					NotificationSettingButton(date: $second_date,
-											  notificationType: .second) {
-						client.updateSchedulingPreference(notificationType: .second,
-														  date: second_date,
-														  context: context)
-					}
-					
 					
 					HighlightedText(
 						text: "We will notify you when it is time for the new News of Hope. Sometimes even twice a day.",
@@ -105,7 +113,9 @@ struct NotificationSettingButton: View {
 											   twentyFourHourFormat: Locale.is24HoursFormat()))
 					.fontWeight(.medium)
 			}
+			.containerRelativeFrame(.horizontal)
 		}
 		.onChange(of: date, action)
+		.buttonBorderShape(.roundedRectangle(radius: 11))
 	}
 }
