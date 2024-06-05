@@ -183,7 +183,7 @@ import UserNotifications
 		scheduleDateComponents.hour = schedulingPreference.hour
 		scheduleDateComponents.minute = schedulingPreference.minute
 		
-		print("Scheduled \(news.headline) for \(scheduleDateComponents)")
+//		print("Scheduled \(news.headline) for \(scheduleDateComponents)")
 		
 		scheduleNotification(news: news, triggerTime: scheduleDateComponents)
 	}

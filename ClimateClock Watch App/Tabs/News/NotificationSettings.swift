@@ -32,7 +32,7 @@ struct NotificationSettings: View {
 					Text("Your News Notifications")
 						.font(
 							.custom("Assistant", size: 13)
-								.weight(.semibold)
+							.weight(.semibold)
 						)
 					
 					if (!client.notificationPermissionGranted) {
@@ -41,7 +41,11 @@ struct NotificationSettings: View {
 						} label: {
 							Text("Allow Notifications")
 						}
-
+						.foregroundStyle(.black)
+						.background(.aquaBlue)
+						.buttonBorderShape(.capsule)
+						.clipped()
+						
 					} else {
 						NotificationSettingButton(date: $first_date,
 												  notificationType: .first) {
@@ -64,9 +68,9 @@ struct NotificationSettings: View {
 					.foregroundStyle(.gray)
 					.font(
 						.custom("Assistant", size: 12)
-							.weight(.semibold)
+						.weight(.semibold)
 					)
-						
+					
 				}
 				.padding()
 			}
@@ -101,17 +105,27 @@ struct NotificationSettingButton: View {
 	let action: () -> Void
 	
 	var body: some View {
-		NavigationLink {
-			NotificationTimeSetter(date: $date)
-		} label: {
+		NavigationLink(destination: NotificationTimeSetter(date: $date)){
 			VStack(alignment: .leading) {
-				Text(notificationType == .first ? "First Notification" : "Second Notification")
-					.fontWeight(.light)
-					.lineLimit(1)
-					.minimumScaleFactor(0.5)
-				Text(DateFormat.timeHourFormat(from: date,
-											   twentyFourHourFormat: Locale.is24HoursFormat()))
-					.fontWeight(.medium)
+				HStack {
+					Text(notificationType == .first ? "First Notification" : "Second Notification")
+						.fontWeight(.light)
+						.multilineTextAlignment(.leading)
+						.lineLimit(1)
+//						.minimumScaleFactor(0.5)
+						.containerRelativeFrame(.horizontal)
+					Spacer()
+				}
+				.containerRelativeFrame(.horizontal)
+				
+				HStack {
+					Text(DateFormat.timeHourFormat(from: date,
+												   twentyFourHourFormat: Locale.is24HoursFormat()))
+						.fontWeight(.medium)
+						
+					Spacer()
+				}
+				.containerRelativeFrame(.horizontal)
 			}
 			.containerRelativeFrame(.horizontal)
 		}
