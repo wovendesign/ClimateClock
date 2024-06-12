@@ -22,6 +22,15 @@ import UserNotifications
 		}
 	}
 	
+	func getNotificationPermission(completion: @escaping (UNAuthorizationStatus) -> Void) {
+		UNUserNotificationCenter.current().getNotificationSettings { settings in
+			DispatchQueue.main.async {
+				completion(settings.authorizationStatus)
+			}
+		}
+	}
+
+	
 	func requestNotificationPermissions() {
 		let options: UNAuthorizationOptions = [.alert, .badge, .sound]
 		UNUserNotificationCenter.current().requestAuthorization(options: options) { success, error in

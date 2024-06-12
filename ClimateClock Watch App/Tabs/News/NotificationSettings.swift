@@ -25,26 +25,37 @@ struct NotificationSettings: View {
 	@State var first_date: Date
 	@State var second_date: Date
 	
+	@State private var settingsAlert: Bool = false
+	
 	var body: some View {
-		NavigationView {
-			ScrollView {
-				VStack(alignment: .leading) {
-					Text("Your News Notifications")
-						.font(
-							.custom("Assistant", size: 13)
-							.weight(.semibold)
-						)
-					
+		NavigationStack {
+			List {
+				Section {
 					if (!client.notificationPermissionGranted) {
 						Button {
-							client.requestNotificationPermissions()
+							client.getNotificationPermission { status in
+								switch status {
+								case .denied:
+									settingsAlert = true
+								default:
+									client.requestNotificationPermissions()
+								}
+							}
 						} label: {
 							Text("Allow Notifications")
 						}
 						.foregroundStyle(.black)
-						.background(.aquaBlue)
-						.buttonBorderShape(.capsule)
-						.clipped()
+						.listRowBackground(RoundedRectangle(cornerRadius: 11)
+							.foregroundStyle(.aquaBlue))
+						.alert("Notifications Disabled", isPresented: $settingsAlert) {
+							Text("To enable Notifications, go to your Phone Settings > Notifications > Climate Clock and enable 'Allow Notifications'.")
+							Button {
+								settingsAlert = false
+							} label: {
+								Text("OK")
+							}
+
+						}
 						
 					} else {
 						NotificationSettingButton(date: $first_date,
@@ -60,7 +71,13 @@ struct NotificationSettings: View {
 															  context: context)
 						}
 					}
-					
+				} header: {
+					Text("Your News Notifications")
+						.font(
+							.custom("Assistant", size: 13)
+							.weight(.semibold)
+						)
+				} footer: {
 					HighlightedText(
 						text: "We will notify you when it is time for the new News of Hope. Sometimes even twice a day.",
 						highlighted: "News of Hope",
@@ -70,9 +87,7 @@ struct NotificationSettings: View {
 						.custom("Assistant", size: 12)
 						.weight(.semibold)
 					)
-					
 				}
-				.padding()
 			}
 			.foregroundStyle(.white)
 			.navigationTitle("News of Hope")
@@ -105,31 +120,18 @@ struct NotificationSettingButton: View {
 	let action: () -> Void
 	
 	var body: some View {
-		NavigationLink(destination: NotificationTimeSetter(date: $date)){
+		NavigationLink(destination: NotificationTimeSetter(date: $date)) {
 			VStack(alignment: .leading) {
-				HStack {
-					Text(notificationType == .first ? "First Notification" : "Second Notification")
-						.fontWeight(.light)
-						.multilineTextAlignment(.leading)
-						.lineLimit(1)
-//						.minimumScaleFactor(0.5)
-						.containerRelativeFrame(.horizontal)
-					Spacer()
-				}
-				.containerRelativeFrame(.horizontal)
+				Text(notificationType == .first ? "First Notification" : "Second Notification")
+					.fontWeight(.light)
+					.lineLimit(1)
+					.minimumScaleFactor(0.5)
 				
-				HStack {
-					Text(DateFormat.timeHourFormat(from: date,
-												   twentyFourHourFormat: Locale.is24HoursFormat()))
-						.fontWeight(.medium)
-						
-					Spacer()
-				}
-				.containerRelativeFrame(.horizontal)
+				Text(DateFormat.timeHourFormat(from: date,
+											   twentyFourHourFormat: Locale.is24HoursFormat()))
+				.fontWeight(.medium)
 			}
-			.containerRelativeFrame(.horizontal)
 		}
 		.onChange(of: date, action)
-		.buttonBorderShape(.roundedRectangle(radius: 11))
 	}
 }

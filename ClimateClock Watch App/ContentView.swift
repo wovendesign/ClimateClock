@@ -14,8 +14,7 @@ struct ContentView: View {
 	
 	var body: some View {
 		TabView {
-			//				TabTitle(headline: "Lifelines", subtitle: "Change is already happening")
-			LifelineView()
+//			LifelineView()
 			
 			//            CountdownView()
 			//            GraphView()
