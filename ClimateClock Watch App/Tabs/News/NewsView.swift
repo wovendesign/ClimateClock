@@ -20,38 +20,42 @@ struct NewsView: View {
     @State private var isShowingSheet = false
 
     var body: some View {
-        TabTitleLayout(
-            headline: "Newsfeed of Hope",
-            subtitle: "Daily news of recent climate victories."
-        ) {
-            ScrollView {
-                LazyVStack {
-                    ForEach(news, id: \.id) { item in
-                        NewsListItem(newsItem: item)
-                    }
-                }
-            }
-            .contentMargins(.vertical, 8, for: .scrollContent)
-        }
-        .background(
-            LinearGradient(gradient: Gradient(colors: [.navy, .black]),
-                           startPoint: .top,
-                           endPoint: .bottom)
-        )
-        .overlay {
-            Button {
-                isShowingSheet.toggle()
-            } label: {
-                Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
-                    .foregroundStyle(.white)
-            }
-            .sheet(isPresented: $isShowingSheet, onDismiss: {
-                isShowingSheet = false
-            }) {
-                NotificationSettings()
-                    .background(.black)
-            }
-        }
+		NavigationView {
+			TabTitleLayout(
+				headline: "Newsfeed of Hope",
+				subtitle: "Daily news of recent climate victories."
+			) {
+				ScrollView {
+					LazyVStack {
+						ForEach(news, id: \.id) { item in
+							NewsListItem(newsItem: item)
+						}
+					}
+				}
+				.contentMargins(.vertical, 8, for: .scrollContent)
+			}
+			.background(
+				LinearGradient(gradient: Gradient(colors: [.navy, .black]),
+							   startPoint: .top,
+							   endPoint: .bottom)
+			)
+			.toolbar {
+				ToolbarItem(placement: .confirmationAction) {
+					Button {
+						isShowingSheet.toggle()
+					} label: {
+						Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
+							.foregroundStyle(.white)
+					}
+					.sheet(isPresented: $isShowingSheet, onDismiss: {
+						isShowingSheet = false
+					}) {
+						NotificationSettings()
+							.background(.black)
+					}
+				}
+			}
+		}
 
         .onAppear {
             client.checkNotificationPermission()
