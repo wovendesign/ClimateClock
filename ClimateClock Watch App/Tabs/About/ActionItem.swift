@@ -28,9 +28,9 @@ struct ActionItem: View {
                 }
 
                 Text(description)
-                    .font(.custom("Assistant",
-                                  size: 12)
-                            .weight(.semibold)
+					.font(
+						.custom("Assistant", size: 12)
+						.weight(.semibold)
                     )
             }
             .padding(6)
@@ -40,10 +40,11 @@ struct ActionItem: View {
                     .textCase(.uppercase)
                     .font(.custom("Oswald",
                                   size: 14))
+				Spacer()
                 Image("arrow_topright")
             }
-            .padding()
-            .frame(maxWidth: .infinity)
+			.padding(.horizontal, 6)
+			.padding(.vertical, 4)
             .background(.aquaBlue)
             .foregroundStyle(.navy)
             .clipShape(.rect(cornerRadius: 5))
@@ -51,7 +52,6 @@ struct ActionItem: View {
         .padding(4)
         .background(.white.opacity(0.12))
         .clipShape(.rect(cornerRadius: 8))
-        .frame(maxWidth: .infinity)
     }
 }
 

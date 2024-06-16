@@ -37,10 +37,10 @@ struct AboutView: View {
                                 highlightColor: .red)
                     .padding()
             }
-            .padding()
+			.padding(.horizontal, 4)
         }
         .frame(maxWidth: .infinity)
-        .background(.linearGradient(colors: [.navy.opacity(0.4), .black],
+        .background(.linearGradient(colors: [.navy, .black],
                                     startPoint: .top,
                                     endPoint: .bottom))
     }
