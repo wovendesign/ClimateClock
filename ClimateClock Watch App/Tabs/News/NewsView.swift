@@ -10,16 +10,17 @@ import SwiftUI
 import WatchKit
 
 struct NewsView: View {
-    static var now: Date { Date.now }
-    @Query(filter: #Predicate<NewsItem> { $0.pushDate ?? now < now },
-           sort: \NewsItem.pushDate,
-           order: .reverse)
-    var news: [NewsItem] = []
-
-    @Environment(Client.self) var client: Client
-    @State private var isShowingSheet = false
-
-    var body: some View {
+	static var now: Date { Date.now }
+	
+	@Query(filter: #Predicate<NewsItem> { $0.pushDate ?? now < now },
+		   sort: \NewsItem.pushDate,
+		   order: .reverse)
+	var news: [NewsItem]
+	
+	@Environment(Client.self) var client: Client
+	@State private var isShowingSheet = false
+	
+	var body: some View {
 		NavigationView {
 			TabTitleLayout(
 				headline: "Newsfeed of Hope",
@@ -41,27 +42,31 @@ struct NewsView: View {
 			)
 			.toolbar {
 				ToolbarItem(placement: .confirmationAction) {
-					Button {
-						isShowingSheet.toggle()
-					} label: {
-						Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
-							.foregroundStyle(.white)
-					}
-					.sheet(isPresented: $isShowingSheet, onDismiss: {
-						isShowingSheet = false
-					}) {
-						NotificationSettings()
-							.background(.black)
-					}
+					toolbarButton
 				}
 			}
 		}
-
-        .onAppear {
-            client.checkNotificationPermission()
-            //            NotificationManager.instance.requestAuthorization()
-        }
-    }
+		
+		.onAppear {
+			client.checkNotificationPermission()
+			//            NotificationManager.instance.requestAuthorization()
+		}
+	}
+	
+	private var toolbarButton: some View {
+		Button {
+			isShowingSheet.toggle()
+		} label: {
+			Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
+				.foregroundStyle(.white)
+		}
+		.sheet(isPresented: $isShowingSheet, onDismiss: {
+			isShowingSheet = false
+		}) {
+			NotificationSettings()
+				.background(.black)
+		}
+	}
 }
 
 // #Preview {
