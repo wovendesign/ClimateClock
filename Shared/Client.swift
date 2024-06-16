@@ -59,6 +59,11 @@ import UserNotifications
 	
 	func getDataFromClimateClockAPI(context: ModelContext) async {
 		do {
+			try context.delete(model: LifeLine.self)
+		} catch {
+			fatalError(error.localizedDescription)
+		}
+		do {
 			let result = try await NetworkManager.shared.getClimateClockData()
 			
 			switch result {
@@ -145,8 +150,8 @@ import UserNotifications
 						rate: module.rate,
 						labels: module.labels,
 						unit_labels: module.unit_labels,
-                        goal: goal
-                            )
+                        goal: goal,
+						type: type)
 	}
 	
 	func saveNewsNotifications(news: [NewsItem], context: ModelContext) {

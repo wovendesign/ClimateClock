@@ -16,8 +16,8 @@ struct ClimateClockResponseModules: Decodable {
     var modules: ClimateClockData
 }
 
-enum LifeLineType {
-    case renewables, agriculture, indigenous, g20, g7, women, youth, divestment, prolife
+enum LifeLineType: Codable {
+	case renewables, agriculture, indigenous, g20, g7, women, youth, divestment, prolife
 }
 
 struct ClimateClockData: Decodable {

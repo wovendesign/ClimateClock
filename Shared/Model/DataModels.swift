@@ -53,7 +53,7 @@ class LifeLine {
 	
 	@Attribute(.unique) let order: Int
 	let size: LifeLineSize
-	let desc: String
+	@Attribute(.unique) let desc: String
 	let update_interval_seconds: Int
 	let initial: Double
 	let timestamp: String
@@ -63,8 +63,9 @@ class LifeLine {
 	let labels: [String]
 	let unit_labels: [String]
     let goal: String?
+	let type: LifeLineType?
 
-    init(order: Int, size: LifeLineSize, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String], goal: String?) {
+	init(order: Int, size: LifeLineSize, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String], goal: String?, type: LifeLineType?) {
 		self.order = order
 		self.size = size
 		self.desc = desc
@@ -77,5 +78,6 @@ class LifeLine {
 		self.labels = labels
 		self.unit_labels = unit_labels
         self.goal = goal
+		self.type = type
 	}
 }
