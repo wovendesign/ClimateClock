@@ -34,7 +34,7 @@ struct AboutView: View {
 
                 HighlightedText(text: "All Data is provided by the v2 Climate Clock API from climateclock.world. \n\n Join in and participate in the Climate Clock Community too. \n\n #ClimateClock #ActInTime",
                                 highlighted: "v2 Climate Clock API",
-								highlightColor: .red)
+                                highlightColor: .red)
                     .padding()
             }
             .padding()

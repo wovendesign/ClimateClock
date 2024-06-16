@@ -14,12 +14,12 @@ class NotificationManager {
 //    func requestAuthorization() -> Bool {
 //        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
 //        UNUserNotificationCenter.current().requestAuthorization(options: options) { success, error in
-//			if (success) {
-//				return true
-//			} else if let error = error {
-//				print(error.localizedDescription)
-//			}
-//			return false
+    //			if (success) {
+    //				return true
+    //			} else if let error = error {
+    //				print(error.localizedDescription)
+    //			}
+    //			return false
 //        }
 //    }
 //

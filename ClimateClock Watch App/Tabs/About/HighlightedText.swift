@@ -10,7 +10,7 @@ import SwiftUI
 struct HighlightedText: View {
     let text: String
     let highlighted: String
-	let highlightColor: Color
+    let highlightColor: Color
 
     var body: some View {
         Text(attributedString)
@@ -30,5 +30,5 @@ struct HighlightedText: View {
 
 #Preview {
     HighlightedText(text: "All Data is provided by the v2 Climate Clock API from climateclock.world. \n\n Join in and participate in the Climate Clock Community too. \n\n #ClimateClock #ActInTime",
-					highlighted: "v2 Climate Clock API", highlightColor: .red)
+                    highlighted: "v2 Climate Clock API", highlightColor: .red)
 }

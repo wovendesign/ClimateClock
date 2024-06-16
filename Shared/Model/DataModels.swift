@@ -9,8 +9,8 @@ import Foundation
 import SwiftData
 
 enum NotificationType: String, Codable {
-	case first
-	case second
+    case first
+    case second
 }
 
 @Model
@@ -31,7 +31,7 @@ class NewsItem: Decodable {
     //	Interactive Data
     //	var new: Bool = true
     var pushDate: Date?
-	var scheduled: NotificationType?
+    var scheduled: NotificationType?
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -47,37 +47,37 @@ class NewsItem: Decodable {
 
 @Model
 class LifeLine {
-	enum LifeLineSize: Codable {
-		case small, large
-	}
-	
-	@Attribute(.unique) let order: Int
-	let size: LifeLineSize
-	@Attribute(.unique) let desc: String
-	let update_interval_seconds: Int
-	let initial: Double
-	let timestamp: String
-	let growth: apiGrowth
-	let resolution: Double
-	let rate: Double
-	let labels: [String]
-	let unit_labels: [String]
-    let goal: String?
-	let type: LifeLineType?
+    enum LifeLineSize: Codable {
+        case small, large
+    }
 
-	init(order: Int, size: LifeLineSize, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String], goal: String?, type: LifeLineType?) {
-		self.order = order
-		self.size = size
-		self.desc = desc
-		self.update_interval_seconds = update_interval_seconds
-		self.initial = initial
-		self.timestamp = timestamp
-		self.growth = growth
-		self.resolution = resolution
-		self.rate = rate
-		self.labels = labels
-		self.unit_labels = unit_labels
+    @Attribute(.unique) let order: Int
+    let size: LifeLineSize
+    @Attribute(.unique) let desc: String
+    let update_interval_seconds: Int
+    let initial: Double
+    let timestamp: String
+    let growth: apiGrowth
+    let resolution: Double
+    let rate: Double
+    let labels: [String]
+    let unit_labels: [String]
+    let goal: String?
+    let type: LifeLineType?
+
+    init(order: Int, size: LifeLineSize, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String], goal: String?, type: LifeLineType?) {
+        self.order = order
+        self.size = size
+        self.desc = desc
+        self.update_interval_seconds = update_interval_seconds
+        self.initial = initial
+        self.timestamp = timestamp
+        self.growth = growth
+        self.resolution = resolution
+        self.rate = rate
+        self.labels = labels
+        self.unit_labels = unit_labels
         self.goal = goal
-		self.type = type
-	}
+        self.type = type
+    }
 }

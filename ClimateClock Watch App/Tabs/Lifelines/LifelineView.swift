@@ -17,9 +17,9 @@ struct LifelineView: View {
         {
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
-					ForEach(lifeLines) { lifeLine in
-						LifeLineCell(lifeLine: lifeLine)
-					}
+                    ForEach(lifeLines) { lifeLine in
+                        LifeLineCell(lifeLine: lifeLine)
+                    }
                 }
             }
             .padding(.horizontal, 8.0)

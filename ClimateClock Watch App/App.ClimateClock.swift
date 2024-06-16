@@ -5,15 +5,14 @@
 //  Created by Eric Wätke on 05.01.24.
 //
 
+import Sentry
 import SwiftData
 import SwiftUI
-import Sentry
 
 @main
 struct ClimateClock_Watch_App: App {
-	@AppStorage("first_launch") var firstLaunch: Bool = true
-	
-	
+    @AppStorage("first_launch") var firstLaunch: Bool = true
+
     @State private var client: Client = .init()
 
     // SwiftData Container
@@ -27,12 +26,12 @@ struct ClimateClock_Watch_App: App {
         WindowGroup {
             ContentView()
                 .environment(client)
-				.onAppear {
-					if firstLaunch {
-						firstLaunch = false
-						client.setDefaultSchedulingPreferences()
-					}
-				}
+                .onAppear {
+                    if firstLaunch {
+                        firstLaunch = false
+                        client.setDefaultSchedulingPreferences()
+                    }
+                }
         }
         .modelContainer(container)
         .backgroundTask(.appRefresh("updateClockData")) { _ in
@@ -40,16 +39,16 @@ struct ClimateClock_Watch_App: App {
             await client.getDataFromClimateClockAPI(context: context)
         }
     }
-	
-	init() {
-		SentrySDK.start { options in
-			options.dsn = "https://8233dd3afc564e37ba352634dcbd803d@glitchtip.woven.design/3"
-			options.debug = false // Enabled debug when first installing is always helpful
-			options.enableTracing = true
 
-			// Uncomment the following lines to add more data to your events
-			// options.attachScreenshot = true // This adds a screenshot to the error events
-			// options.attachViewHierarchy = true // This adds the view hierarchy to the error events
-		}
-	}
+    init() {
+        SentrySDK.start { options in
+            options.dsn = "https://8233dd3afc564e37ba352634dcbd803d@glitchtip.woven.design/3"
+            options.debug = false // Enabled debug when first installing is always helpful
+            options.enableTracing = true
+
+            // Uncomment the following lines to add more data to your events
+            // options.attachScreenshot = true // This adds a screenshot to the error events
+            // options.attachViewHierarchy = true // This adds the view hierarchy to the error events
+        }
+    }
 }
