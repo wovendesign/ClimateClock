@@ -11,21 +11,20 @@ import SwiftUI
 struct ContentView: View {
     @Environment(Client.self) var client
     @Environment(\.modelContext) var context
-
+	
     var body: some View {
         TabView {
-            LifelineView()
-
-            //            CountdownView()
-            //            GraphView()
-            NewsView()
-
-            AboutView()
+			LifelineView()
+				.containerBackground(.lime.gradient, for: .tabView)
+			NewsView()
+				.containerBackground(.navy.gradient, for: .tabView)
+			AboutView()
+				.containerBackground(.navy.gradient, for: .tabView)
         }
         .tabViewStyle(.verticalPage)
-        .task {
-            await client.getDataFromClimateClockAPI(context: context)
-        }
+		.task {
+			await client.getDataFromClimateClockAPI(context: context)
+		}
     }
 }
 

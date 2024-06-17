@@ -23,9 +23,6 @@ struct LifelineView: View {
             .padding(.horizontal, 8.0)
             .padding(.vertical, 16)
         }
-        .background(.linearGradient(colors: [.lime.opacity(0.4), .black],
-                                    startPoint: .top,
-                                    endPoint: .bottom))
     }
 }
 

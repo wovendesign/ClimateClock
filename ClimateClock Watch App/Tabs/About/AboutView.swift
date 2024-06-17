@@ -40,9 +40,6 @@ struct AboutView: View {
 			.padding(.horizontal, 4)
         }
         .frame(maxWidth: .infinity)
-        .background(.linearGradient(colors: [.navy, .black],
-                                    startPoint: .top,
-                                    endPoint: .bottom))
     }
 }
 

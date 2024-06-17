@@ -36,11 +36,8 @@ struct TabTitle: View {
             .frame(maxWidth: .infinity)
             .padding(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
         }
-
-        .frame(
-            width: WKInterfaceDevice.current().screenBounds.width,
-            height: WKInterfaceDevice.current().screenBounds.height
-        )
+		.containerRelativeFrame(.horizontal)
+		.containerRelativeFrame(.vertical)
         .ignoresSafeArea()
     }
 }

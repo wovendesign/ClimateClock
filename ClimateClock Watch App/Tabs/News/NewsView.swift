@@ -21,7 +21,6 @@ struct NewsView: View {
 	@State private var isShowingSheet = false
 	
 	var body: some View {
-		NavigationView {
 			TabTitleLayout(
 				headline: "Newsfeed of Hope",
 				subtitle: "Daily news of recent climate victories."
@@ -33,40 +32,15 @@ struct NewsView: View {
 				}
 				.contentMargins(.vertical, 8, for: .scrollContent)
 			}
-			.background(
-				LinearGradient(gradient: Gradient(colors: [.navy, .black]),
-							   startPoint: .top,
-							   endPoint: .bottom)
-			)
 			.toolbar {
-				ToolbarItem(placement: .confirmationAction) {
-					toolbarButton
+				ToolbarItemGroup(placement: .bottomBar) {
+					Spacer()
+					ToolbarButton(isShowingSheet: $isShowingSheet)
 				}
 			}
-		}
 		
 		.onAppear {
 			client.checkNotificationPermission()
-			//            NotificationManager.instance.requestAuthorization()
-		}
-	}
-	
-	private var toolbarButton: some View {
-		Button {
-			isShowingSheet.toggle()
-		} label: {
-			Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
-				.foregroundStyle(.white)
-		}
-		.sheet(isPresented: $isShowingSheet, onDismiss: {
-			isShowingSheet = false
-		}) {
-			NotificationSettings()
-				.background(.black)
 		}
 	}
 }
-
-// #Preview {
-//    NewsView()
-// }
