@@ -75,19 +75,23 @@ struct RenewablesWidgetEntryView: View {
                 )
 
             RoundedRectangle(cornerRadius: 6)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(lineWidth: 2)
-                        .foregroundStyle(.white)
-                }
                 .containerRelativeFrame(.horizontal)
-                //				.frame(height: 20)
+				.frame(height: 12)
                 .foregroundStyle(.windowBackground)
+				.opacity(0.5)
+				.overlay {
+					RoundedRectangle(cornerRadius: 6)
+						.stroke(lineWidth: 2)
+						.foregroundStyle(.foreground)
+				}
                 .overlay(alignment: .leading) {
                     Rectangle()
                         .containerRelativeFrame(.horizontal) { length, _ in
                             length * (valueByDate(date: entry.date) / 100)
                         }
+						.clipShape(.rect(cornerRadius: 6))
+						.padding(2)
+						.foregroundStyle(.foreground)
                 }
                 .clipShape(.rect(cornerRadius: 6))
 
@@ -98,6 +102,7 @@ struct RenewablesWidgetEntryView: View {
                         .weight(.semibold)
                 )
         }
+		.containerBackground(.blue, for: .widget)
     }
 
     func valueByDate(date: Date) -> Double {
@@ -115,6 +120,7 @@ struct RenewablesWidget: Widget {
             if #available(iOS 17.0, *) {
                 RenewablesWidgetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
+//					.containerBackground(.blue, for: .widget)
             } else {
                 RenewablesWidgetEntryView(entry: entry)
                     .padding()
@@ -123,11 +129,15 @@ struct RenewablesWidget: Widget {
         }
         .configurationDisplayName("Renewables Widget")
         .description("This is an example widget.")
-        .supportedFamilies([.accessoryRectangular])
+		#if os(watchOS)
+			.supportedFamilies([.accessoryRectangular])
+		#else
+			.supportedFamilies([.accessoryRectangular, .systemSmall])
+		#endif
     }
 }
 
-#Preview(as: .accessoryRectangular) {
+#Preview(as: .systemSmall) {
     RenewablesWidget()
 } timeline: {
     RenewablesWidgetMockData().mockEntry
@@ -145,5 +155,5 @@ struct RenewablesWidgetMockData {
                                     timestamp: "2020-01-01T00:00:00+00:00",
                                     initial: 11.4,
                                     rate: 2.0428359571070087e-8,
-                                    precision: 9)
+                                    precision: 5)
 }

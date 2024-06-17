@@ -85,10 +85,16 @@ struct NewsWidget: Widget {
         }
         .configurationDisplayName("News Widget")
         .description("This is an example widget.")
+		#if os(watchOS)
+			.supportedFamilies([.accessoryRectangular])
+		#else
+			.supportedFamilies([.accessoryRectangular, .systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
+		#endif
     }
 }
 
 #Preview(as: .systemSmall) {
+//#Preview(as: .accessoryRectangular) {
     NewsWidget()
 } timeline: {
     NewsWidgetMockData().mockEntry
