@@ -137,11 +137,11 @@ struct RenewablesWidget: Widget {
     }
 }
 
-#Preview(as: .systemSmall) {
-    RenewablesWidget()
-} timeline: {
-    RenewablesWidgetMockData().mockEntry
-}
+//#Preview(as: .systemSmall) {
+//    RenewablesWidget()
+//} timeline: {
+//    RenewablesWidgetMockData().mockEntry
+//}
 
 //
 // #Preview("Watch", as: .accessoryRectangular) {
