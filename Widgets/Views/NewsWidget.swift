@@ -49,23 +49,34 @@ struct NewsWidgetEntryView: View {
     var entry: NewsWidgetProvider.Entry
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            RelativeTimeCell(pushDate: entry.date)
+        VStack(alignment: .leading, spacing: 2) {
+			HStack(spacing: 4) {
+				Image(systemName: "globe.central.south.asia.fill")
+					.resizable()
+					.scaledToFit()
+					.frame(width: 11, height: 11)
+				
+				Text("· NEWS OF HOPE")
+					.font(
+						.custom("Assistant", size: 14)
+						.weight(.bold)
+					)
+					.opacity(0.5)
+			}
             Text(entry.headline)
                 .font(
-                    .custom("Oswald", size: 16)
-                        .weight(.regular)
+                    .custom("Assistant", size: 13)
+					.weight(.semibold)
+					.leading(.tight)
                 )
                 .tracking(0.32)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-            Text(entry.source)
-                .font(
-                    .custom("Assistant", size: 12)
-                        .weight(.semibold)
-                )
-                .foregroundStyle(Color.gray)
+				.frame(height: 50)
+				.foregroundStyle(.foreground)
+				.environment(\._lineHeightMultiple, 0.9)
         }
+		.containerRelativeFrame(.vertical)
+		.padding(.vertical, 2)
+		
     }
 }
 
@@ -93,8 +104,8 @@ struct NewsWidget: Widget {
     }
 }
 
-#Preview(as: .systemSmall) {
-//#Preview(as: .accessoryRectangular) {
+//#Preview(as: .systemSmall) {
+#Preview(as: .accessoryRectangular) {
     NewsWidget()
 } timeline: {
     NewsWidgetMockData().mockEntry

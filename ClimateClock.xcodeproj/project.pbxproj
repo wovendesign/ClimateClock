@@ -44,6 +44,15 @@
 		F6579C7F2C204581003F037D /* RenewablesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABF12BF7C9530090780B /* RenewablesWidget.swift */; };
 		F6579C802C20462D003F037D /* OswaldVF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */; };
 		F6579C812C204632003F037D /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
+		F6579C822C2047DC003F037D /* NewsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE02BF7BCD20090780B /* NewsWidget.swift */; };
+		F6579C832C204820003F037D /* RelativeTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */; };
+		F6579C842C204876003F037D /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6BBABE82BF7BF650090780B /* SharedAssets.xcassets */; };
+		F6579C852C20488A003F037D /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D8C2BF39FE10012FD30 /* Client.swift */; };
+		F6579C862C2048A4003F037D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EED592BBB2E5C00352E46 /* NetworkManager.swift */; };
+		F6579C872C2048AC003F037D /* ClimateClockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60B29B12B8F9C1E00E41091 /* ClimateClockData.swift */; };
+		F6579C882C2048B1003F037D /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D942BF3B2200012FD30 /* DataModels.swift */; };
+		F6579C892C2048B7003F037D /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
+		F6579C8A2C2048BE003F037D /* CCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EED5A2BBB2E5C00352E46 /* CCError.swift */; };
 		F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */; };
 		F673949E2BBC3FD900B7258D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F673949D2BBC3FD900B7258D /* Alert.swift */; };
 		F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BD67F2B7D2C590015ECBE /* Graph.swift */; };
@@ -456,6 +465,7 @@
 		F6579C7E2C204572003F037D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F6BBABE02BF7BCD20090780B /* NewsWidget.swift */,
 				F6BBABF12BF7C9530090780B /* RenewablesWidget.swift */,
 			);
 			path = Views;
@@ -470,26 +480,9 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
-		F6BBABDF2BF7BCBF0090780B /* News */ = {
-			isa = PBXGroup;
-			children = (
-				F6BBABE02BF7BCD20090780B /* NewsWidget.swift */,
-			);
-			path = News;
-			sourceTree = "<group>";
-		};
-		F6BCA9DC2BF50F2C001E255E /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-				F6BBABDF2BF7BCBF0090780B /* News */,
-			);
-			path = Widgets;
-			sourceTree = "<group>";
-		};
 		F6BFA2C32BF50BDA00E21B72 /* iosWidgets */ = {
 			isa = PBXGroup;
 			children = (
-				F6BCA9DC2BF50F2C001E255E /* Widgets */,
 				F6BFA2C42BF50BDA00E21B72 /* ClimateClockWidgetBundle.swift */,
 				F6BFA2C82BF50BDB00E21B72 /* Assets.xcassets */,
 				F6BFA2CA2BF50BDB00E21B72 /* Info.plist */,
@@ -677,6 +670,7 @@
 				F6579C802C20462D003F037D /* OswaldVF.ttf in Resources */,
 				F6579C752C2043AC003F037D /* Assets.xcassets in Resources */,
 				F6579C812C204632003F037D /* Assistant-VariableFont_wght.ttf in Resources */,
+				F6579C842C204876003F037D /* SharedAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,7 +762,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6579C892C2048B7003F037D /* Locale+TimeFormat.swift in Sources */,
+				F6579C872C2048AC003F037D /* ClimateClockData.swift in Sources */,
+				F6579C882C2048B1003F037D /* DataModels.swift in Sources */,
+				F6579C862C2048A4003F037D /* NetworkManager.swift in Sources */,
+				F6579C8A2C2048BE003F037D /* CCError.swift in Sources */,
+				F6579C832C204820003F037D /* RelativeTimeCell.swift in Sources */,
+				F6579C822C2047DC003F037D /* NewsWidget.swift in Sources */,
 				F6579C732C2043AB003F037D /* ClimateClockWidgets.swift in Sources */,
+				F6579C852C20488A003F037D /* Client.swift in Sources */,
 				F6579C7F2C204581003F037D /* RenewablesWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
