@@ -31,7 +31,9 @@ struct TabTitleLayout<Content: View>: View {
                         .opacity(phase.isIdentity ? 1.0 : 0.3)
                 }
                 .defaultScrollAnchor(.center)
-                content
+				Group {
+					content
+				}
             }
         }
         .frame(maxWidth: .infinity)

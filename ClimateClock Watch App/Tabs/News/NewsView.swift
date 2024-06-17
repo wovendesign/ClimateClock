@@ -26,11 +26,9 @@ struct NewsView: View {
 				headline: "Newsfeed of Hope",
 				subtitle: "Daily news of recent climate victories."
 			) {
-				ScrollView {
-					LazyVStack {
-						ForEach(news, id: \.id) { item in
-							NewsListItem(newsItem: item)
-						}
+				LazyVStack {
+					ForEach(news, id: \.id) { item in
+						NewsListItem(newsItem: item)
 					}
 				}
 				.contentMargins(.vertical, 8, for: .scrollContent)

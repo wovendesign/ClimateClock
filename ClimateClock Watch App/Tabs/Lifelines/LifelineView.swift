@@ -15,13 +15,11 @@ struct LifelineView: View {
         TabTitleLayout(headline: "Lifelines",
                        subtitle: "Change is already happening")
         {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
-                    ForEach(lifeLines) { lifeLine in
-                        LifeLineCell(lifeLine: lifeLine)
-                    }
-                }
-            }
+			VStack(alignment: .leading, spacing: 12) {
+				ForEach(lifeLines) { lifeLine in
+					LifeLineCell(lifeLine: lifeLine)
+				}
+			}
             .padding(.horizontal, 8.0)
             .padding(.vertical, 16)
         }
