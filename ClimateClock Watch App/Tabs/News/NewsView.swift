@@ -21,23 +21,20 @@ struct NewsView: View {
 	@State private var isShowingSheet = false
 	
 	var body: some View {
-			TabTitleLayout(
-				headline: "Newsfeed of Hope",
-				subtitle: "Daily news of recent climate victories."
-			) {
-				LazyVStack {
-					ForEach(news, id: \.id) { item in
-						NewsListItem(newsItem: item)
-					}
-				}
-				.contentMargins(.vertical, 8, for: .scrollContent)
-			}
-			.toolbar {
-				ToolbarItem(placement: .confirmationAction) {
-					ToolbarButton(isShowingSheet: $isShowingSheet)
+		ScrollView {
+			LazyVStack {
+				ForEach(news, id: \.id) { item in
+					NewsListItem(newsItem: item)
 				}
 			}
-		
+			.contentMargins(.vertical, 8, for: .scrollContent)
+		}
+		.containerBackground(.navy75.gradient, for: .navigation)
+		.toolbar {
+			ToolbarItem(placement: .confirmationAction) {
+				ToolbarButton(isShowingSheet: $isShowingSheet)
+			}
+		}
 		.onAppear {
 			client.checkNotificationPermission()
 		}

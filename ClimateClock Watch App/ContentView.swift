@@ -9,30 +9,25 @@ import Charts
 import SwiftUI
 
 enum Page {
-	case lifeline, news, about
+	case lifeline, news, about, deadline
 }
 
 struct ContentView: View {
     @Environment(Client.self) var client
     @Environment(\.modelContext) var context
 	
-	private var pages: [Page] = [.lifeline, .news, .about]
+	private var pages: [Page] = [.lifeline, .deadline, .news, .about]
 	
     var body: some View {
-//        TabView {
-//			LifelineView()
-//				.containerBackground(.lime.gradient, for: .tabView)
-//			NewsView()
-//				.containerBackground(.navy.gradient, for: .tabView)
-//			AboutView()
-//				.containerBackground(.navy.gradient, for: .tabView)
-//        }
-//        .tabViewStyle(.verticalPage)
 		NavigationStack {
-			List(pages, id: \.self) { page in
-				NavigationLinkItem(page: page)
+			List {
+				TabTitle(headline: "Climate Clock", subtitle: "")
+				Section {
+					ForEach(pages, id:  \.self) { page in
+						NavigationLinkItem(page: page)
+					}
+				}
 			}
-			.listStyle(.carousel)
 			.navigationDestination(for: Page.self) { page in
 				switch (page) {
 				case .news:
@@ -41,6 +36,9 @@ struct ContentView: View {
 					LifelineView()
 				case .about:
 					AboutView()
+				case .deadline:
+					Text("Deadline")
+						.containerBackground(Color.ccRed50.gradient, for: .navigation)
 				}
 			}
 		}
