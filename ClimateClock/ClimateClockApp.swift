@@ -12,7 +12,6 @@ struct ClimateClockApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-				.background(.black)
         }
     }
 }

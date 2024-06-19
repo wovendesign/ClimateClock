@@ -35,6 +35,7 @@ struct NewsListItem: View {
                 )
                 .tracking(0.32)
                 .frame(maxWidth: .infinity, alignment: .leading)
+				.environment(\._lineHeightMultiple, 0.8)
 
             Text(newsItem.source ?? "")
                 .font(
@@ -43,7 +44,7 @@ struct NewsListItem: View {
                 )
                 .foregroundStyle(Color.gray)
         }
-        .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+//        .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
         .sheet(isPresented: $sheetOpen) {
             ScrollView {
                 VStack(alignment: .leading) {
@@ -82,15 +83,16 @@ struct NewsListItem: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity)
-        .background(Color.white.opacity(0.12))
-        .clipShape(.rect(cornerRadius: 18))
-        .scrollTransition { content, phase in
-            content.scaleEffect(phase.isIdentity ? 1.0 : 0.9)
-        }
+//        .frame(maxWidth: .infinity)
+//        .background(Color.white.opacity(0.12))
+//        .clipShape(.rect(cornerRadius: 18))
+//        .scrollTransition { content, phase in
+//            content.scaleEffect(phase.isIdentity ? 1.0 : 0.9)
+//        }
         .onTapGesture {
             sheetOpen = true
         }
+		.listRowInsets(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

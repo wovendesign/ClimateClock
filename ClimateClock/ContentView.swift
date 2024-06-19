@@ -13,10 +13,9 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("The Climate Clock iOS App is still in development. Please open the Climate Clock App on your Apple Watch.")
         }
         .padding()
-        ColorPicker(/*@START_MENU_TOKEN@*/"Title"/*@END_MENU_TOKEN@*/, selection: /*@START_MENU_TOKEN@*/ .constant(.red)/*@END_MENU_TOKEN@*/)
     }
 }
 

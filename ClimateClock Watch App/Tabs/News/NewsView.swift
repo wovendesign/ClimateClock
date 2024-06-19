@@ -21,14 +21,18 @@ struct NewsView: View {
 	@State private var isShowingSheet = false
 	
 	var body: some View {
-		ScrollView {
-			LazyVStack {
-				ForEach(news, id: \.id) { item in
-					NewsListItem(newsItem: item)
-				}
-			}
-			.contentMargins(.vertical, 8, for: .scrollContent)
+		List(news) { item in
+			NewsListItem(newsItem: item)
 		}
+		.padding(.horizontal, 4)
+//		ScrollView {
+//			LazyVStack {
+//				ForEach(news, id: \.id) { item in
+//					NewsListItem(newsItem: item)
+//				}
+//			}
+//			.contentMargins(.vertical, 8, for: .scrollContent)
+//		}
 		.containerBackground(.navy75.gradient, for: .navigation)
 		.toolbar {
 			ToolbarItem(placement: .confirmationAction) {

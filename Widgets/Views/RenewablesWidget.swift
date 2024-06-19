@@ -66,7 +66,6 @@ struct RenewablesWidgetEntryView: View {
                         .weight(.semibold)
                 )
                 .monospacedDigit()
-                //				.minimumScaleFactor(0.5)
                 .lineLimit(1)
                 .contentTransition(
                     .numericText(
