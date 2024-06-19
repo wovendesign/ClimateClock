@@ -90,30 +90,6 @@ struct NavigationLinkItem: View {
 		}
 	}
 }
-struct MyNavViewButton: ButtonStyle {
-	func makeBody(configuration: Configuration) -> some View {
-		configuration.label
-			.frame(maxWidth: .infinity)
-			.padding()
-			.foregroundStyle(.purple)
-			.background(configuration.isPressed ? .blue : .green)
-			.clipShape(RoundedRectangle(cornerRadius: 10))
-			.overlay {
-				RoundedRectangle(cornerRadius: 10)
-					.stroke(.red, lineWidth: configuration.isPressed ? 2 : 0)
-			}
-			.padding(3)
-	}
-}
-struct BlueButton: ButtonStyle {
-	func makeBody(configuration: Configuration) -> some View {
-		configuration.label
-			.padding()
-			.background(.blue)
-			.foregroundStyle(.white)
-			.clipShape(Capsule())
-	}
-}
 
 #Preview {
 	NavigationLinkItem(page: .news)

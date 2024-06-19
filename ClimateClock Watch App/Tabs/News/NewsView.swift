@@ -32,7 +32,11 @@ struct NewsView: View {
 		.containerBackground(.navy75.gradient, for: .navigation)
 		.toolbar {
 			ToolbarItem(placement: .confirmationAction) {
-				ToolbarButton(isShowingSheet: $isShowingSheet)
+//				ToolbarButton(isShowingSheet: $isShowingSheet)
+				NavigationLink(value: "notificationSettings") {
+					Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
+									.foregroundStyle(.white)
+				}
 			}
 		}
 		.onAppear {

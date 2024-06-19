@@ -28,7 +28,7 @@ struct NotificationSettings: View {
     @State private var settingsAlert: Bool = false
 
     var body: some View {
-        NavigationStack {
+        
             List {
                 Section {
                     if !client.notificationPermissionGranted {
@@ -94,7 +94,7 @@ struct NotificationSettings: View {
             .foregroundStyle(.white)
             .navigationTitle("News of Hope")
         }
-    }
+    
 
     init() {
         let first_hour = UserDefaults.standard.integer(forKey: "first_notification_hour")

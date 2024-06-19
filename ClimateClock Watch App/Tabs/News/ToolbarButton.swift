@@ -13,17 +13,23 @@ struct ToolbarButton: View {
 	@Binding var isShowingSheet: Bool
 	
     var body: some View {
-		Button {
-			isShowingSheet.toggle()
+//		Button {
+//			client.notificationPermissionGranted ? isShowingSheet.toggle() : client.requestNotificationPermissions()
+//		} label: {
+//			Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
+//				.foregroundStyle(.white)
+//		}
+//		.sheet(isPresented: $isShowingSheet, onDismiss: {
+//			isShowingSheet = false
+//		}) {
+//			NotificationSettings()
+//				.background(.black)
+//		}
+		NavigationLink{
+			NotificationSettings()
 		} label: {
 			Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
-				.foregroundStyle(.white)
-		}
-		.sheet(isPresented: $isShowingSheet, onDismiss: {
-			isShowingSheet = false
-		}) {
-			NotificationSettings()
-				.background(.black)
+							.foregroundStyle(.white)
 		}
     }
 }

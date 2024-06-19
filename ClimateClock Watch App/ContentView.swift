@@ -16,10 +16,11 @@ struct ContentView: View {
     @Environment(Client.self) var client
     @Environment(\.modelContext) var context
 	
+	@State private var path = NavigationPath()
 	private var pages: [Page] = [.lifeline, .deadline, .news, .about]
 	
     var body: some View {
-		NavigationStack {
+		NavigationStack(path: $path) {
 			List {
 				TabTitle(headline: "Climate Clock", subtitle: "")
 				Section {
@@ -39,6 +40,11 @@ struct ContentView: View {
 				case .deadline:
 					Text("Deadline")
 						.containerBackground(Color.ccRed50.gradient, for: .navigation)
+				}
+			}
+			.navigationDestination(for: String.self) { textValue in
+				if (textValue == "notificationSettings") {
+					NotificationSettings()
 				}
 			}
 		}
