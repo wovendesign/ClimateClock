@@ -39,7 +39,7 @@ struct AboutView: View {
             }
 			.padding(.horizontal, 4)
         }
-        .frame(maxWidth: .infinity)
+		.containerRelativeFrame(.horizontal)
     }
 }
 

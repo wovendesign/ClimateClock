@@ -33,8 +33,7 @@ struct NewsView: View {
 				.contentMargins(.vertical, 8, for: .scrollContent)
 			}
 			.toolbar {
-				ToolbarItemGroup(placement: .bottomBar) {
-					Spacer()
+				ToolbarItem(placement: .confirmationAction) {
 					ToolbarButton(isShowingSheet: $isShowingSheet)
 				}
 			}

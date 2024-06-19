@@ -57,6 +57,7 @@
 		F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */; };
 		F673949E2BBC3FD900B7258D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F673949D2BBC3FD900B7258D /* Alert.swift */; };
 		F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BD67F2B7D2C590015ECBE /* Graph.swift */; };
+		F6A15DC22C230702006A5643 /* NavigationLinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A15DC12C230702006A5643 /* NavigationLinkItem.swift */; };
 		F6BBABE12BF7BCD20090780B /* NewsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE02BF7BCD20090780B /* NewsWidget.swift */; };
 		F6BBABE52BF7BF240090780B /* RelativeTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */; };
 		F6BBABE62BF7BF240090780B /* RelativeTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */; };
@@ -193,6 +194,7 @@
 		F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		F673949D2BBC3FD900B7258D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F67BD67F2B7D2C590015ECBE /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		F6A15DC12C230702006A5643 /* NavigationLinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkItem.swift; sourceTree = "<group>"; };
 		F6BBABE02BF7BCD20090780B /* NewsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWidget.swift; sourceTree = "<group>"; };
 		F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeTimeCell.swift; sourceTree = "<group>"; };
 		F6BBABE82BF7BF650090780B /* SharedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedAssets.xcassets; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				F62DCB852B7BD4BD00855D88 /* Info.plist */,
 				F62A7A692B48700B002A7E25 /* App.ClimateClock.swift */,
 				F62A7A6B2B48700B002A7E25 /* ContentView.swift */,
+				F6A15DC12C230702006A5643 /* NavigationLinkItem.swift */,
 				F60B29AC2B8F91F900E41091 /* Solar Analogue.watchface */,
 				F62A7A6D2B48700C002A7E25 /* Assets.xcassets */,
 				F6BBABEE2BF7C0C20090780B /* ClimateClock Watch App.entitlements */,
@@ -750,6 +753,7 @@
 				F6256DA72BF4DA940012FD30 /* ActionItem.swift in Sources */,
 				F6256DA02BF4BE170012FD30 /* TabTitleLayout.swift in Sources */,
 				F62A7A6A2B48700B002A7E25 /* App.ClimateClock.swift in Sources */,
+				F6A15DC22C230702006A5643 /* NavigationLinkItem.swift in Sources */,
 				F62EED5D2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
 				F6C5709A2B7D027C0001DCE7 /* PredictionModel.swift in Sources */,
 				F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */,
