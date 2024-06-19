@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -219,6 +219,20 @@
 		F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+TimeFormat.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F6A15DC62C2343D9006A5643 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SheetView.swift,
+			);
+			target = F62A7A632B48700B002A7E25 /* ClimateClock Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F6A15DC32C2343C9006A5643 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F6A15DC62C2343D9006A5643 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		F62A7A512B48700A002A7E25 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -387,6 +401,7 @@
 		F62A7A682B48700B002A7E25 /* ClimateClock Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				F6A15DC32C2343C9006A5643 /* Views */,
 				F6256D982BF3BA470012FD30 /* Tabs */,
 				F6D315EA2BBDC34100C75299 /* Utilities */,
 				F62DCB852B7BD4BD00855D88 /* Info.plist */,
@@ -1093,6 +1108,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/WatchWidgets/Info.plist;
@@ -1123,6 +1139,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/WatchWidgets/Info.plist;

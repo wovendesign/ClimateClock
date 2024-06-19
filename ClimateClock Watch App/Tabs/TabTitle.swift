@@ -30,11 +30,9 @@ struct TabTitle: View {
 					)
 			}
 			.frame(maxWidth: .infinity)
-//			.padding(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
 		}
 		.listRowBackground(Color.clear)
 		.frame(
-//			width: .infinity,
 			height: WKInterfaceDevice.current().screenBounds.height / 2
 		)
 		.padding(.vertical, 8)
