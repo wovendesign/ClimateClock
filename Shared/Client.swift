@@ -11,15 +11,16 @@ import SwiftData
 import UserNotifications
 
 @Observable public final class Client {
-    func getDataFromClimateClockAPI(context: ModelContext) async {
+    func getDataFromClimateClockAPI(context: ModelContext) async -> [NewsItem]? {
         do {
             let result = try await NetworkManager.shared.getClimateClockData()
 
             switch result {
             case let .success(data):
                 // Saving News
-                saveNewsNotifications(news: data.data.modules.newsfeed_1.newsfeed,
-                                      context: context)
+				return data.data.modules.newsfeed_1.newsfeed
+//                saveNewsNotifications(news: ,
+//                                      context: context)
 
                 // Saving LifeLines
                 context.insert(moduleToLifeline(module: data.data.modules._youth_anxiety,
@@ -57,10 +58,12 @@ import UserNotifications
                     print("unableToComplete")
                     //								alertItem = AlertContext.invalidToComplete
                 }
+				return nil
             }
         } catch {
             print(error)
         }
+		return nil
     }
 
     func moduleToLifeline(module: LifeLineModule, type: LifeLineType) -> LifeLine {

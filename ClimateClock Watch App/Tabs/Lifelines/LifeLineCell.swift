@@ -9,18 +9,22 @@ import SwiftUI
 
 struct LifeLineCell: View {
     let lifeLine: LifeLine
+	let lifelineColor: LifelineColor
     var label: String?
     @State private var animatedValue = 0.0
     let timestamp: Date
     let unit: String
     var precision: Int = 0
+	
+	@State var sheetOpen = false
 
-    init(lifeLine: LifeLine) {
+	init(lifeLine: LifeLine, lifelineColor: LifelineColor) {
         let dateFormatter = ISO8601DateFormatter()
 
         let pastTimestamp = dateFormatter.date(from: lifeLine.timestamp) ?? Date()
 
         self.lifeLine = lifeLine
+		self.lifelineColor = lifelineColor
         label = lifeLine.labels.first
         animatedValue = 0.0
         timestamp = pastTimestamp
@@ -28,6 +32,8 @@ struct LifeLineCell: View {
         // Get the shortest unit
         unit = lifeLine.unit_labels.sorted(by: { $0.count < $1.count }).first ?? "n"
         precision = resolutionToPrecision(lifeLine.resolution)
+		
+//		print(self.lifelineColor)
     }
 
     var body: some View {
@@ -80,10 +86,8 @@ struct LifeLineCell: View {
                                     leading: 0,
                                     bottom: 4,
                                     trailing: 0))
-                .background(.linearGradient(colors: [.lime, .aquaBlue],
-                                            startPoint: .leading,
-                                            endPoint: .trailing))
-                .foregroundStyle(.black)
+				.background(lifelineColor.backgroundColor)
+				.foregroundStyle(lifelineColor.foregroundColor)
                 .clipShape(.rect(cornerRadius: lifeLine.size == .small ? 6 : 8))
 
                 if lifeLine.size == .small {
@@ -93,16 +97,17 @@ struct LifeLineCell: View {
                                 .custom("Assistant", size: 12)
                                     .weight(.semibold)
                             )
-                            .foregroundStyle(.white)
+							.foregroundStyle(.white)
                         Spacer()
                         Image("arrow_topright_4px_aquablue75")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 6, height: 6)
                             .frame(width: 14, height: 14)
+							.foregroundStyle(.white.opacity(0.7))
                             .background {
                                 Rectangle()
-                                    .fill(Color(red: 0.25, green: 0.25, blue: 0.25))
+									.fill(Color(red: 0.25, green: 0.25, blue: 0.25))
                                     .cornerRadius(8.0)
                             }
                     }
@@ -117,7 +122,7 @@ struct LifeLineCell: View {
                         .custom("Assistant", size: 10)
                             .weight(.semibold)
                     )
-                    .foregroundColor(.aquaBlue75)
+					.foregroundColor(.white.opacity(0.7))
 
                 Image("arrow_topright_4px_aquablue75")
                     .resizable()
@@ -131,10 +136,13 @@ struct LifeLineCell: View {
                                 trailing: 6))
             .background {
                 Rectangle()
-                    .fill(Color(red: 0.25, green: 0.25, blue: 0.25))
+					.fill(Color(red: 0.25, green: 0.25, blue: 0.25))
                     .cornerRadius(8.0)
             } : nil
         }
+		.onTapGesture {
+			<#code#>
+		}
     }
 
     func calculateTimeAdjustedValue() {

@@ -30,6 +30,11 @@ struct ContentView: View {
 					}
 				}
 			}
+			.listStyle(.carousel)
+			.navigationTitle {
+				Text("Climate Clock")
+					.foregroundStyle(.white)
+			}
 			.navigationDestination(for: Page.self) { page in
 				switch (page) {
 				case .news:

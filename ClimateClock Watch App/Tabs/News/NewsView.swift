@@ -26,18 +26,9 @@ struct NewsView: View {
 			NewsListItem(newsItem: item)
 		}
 		.padding(.horizontal, 4)
-//		ScrollView {
-//			LazyVStack {
-//				ForEach(news, id: \.id) { item in
-//					NewsListItem(newsItem: item)
-//				}
-//			}
-//			.contentMargins(.vertical, 8, for: .scrollContent)
-//		}
 		.containerBackground(.navy75.gradient, for: .navigation)
 		.toolbar {
 			ToolbarItem(placement: .confirmationAction) {
-//				ToolbarButton(isShowingSheet: $isShowingSheet)
 				NavigationLink(value: "notificationSettings") {
 					Image(systemName: localNotificationManager.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
 									.foregroundStyle(.white)

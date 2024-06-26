@@ -63,16 +63,20 @@ struct NotificationSettings: View {
                         NotificationSettingButton(date: $first_date,
                                                   notificationType: .first)
                         {
-                            client.updateSchedulingPreference(notificationType: .first,
-                                                              date: first_date,
-                                                              context: context)
+							Task {
+								await localNotificationManager.updateSchedulingPreference(notificationType: .first,
+																  date: first_date,
+																  context: context)
+							}
                         }
                         NotificationSettingButton(date: $second_date,
                                                   notificationType: .second)
                         {
-                            client.updateSchedulingPreference(notificationType: .second,
-                                                              date: second_date,
-                                                              context: context)
+							Task {
+								await localNotificationManager.updateSchedulingPreference(notificationType: .second,
+																  date: second_date,
+																  context: context)
+							}
                         }
                     }
                 } header: {

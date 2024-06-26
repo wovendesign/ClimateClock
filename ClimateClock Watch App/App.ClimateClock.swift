@@ -30,15 +30,17 @@ struct ClimateClock_Watch_App: App {
 				.environment(localNotificationManager)
                 .onAppear {
                     if firstLaunch {
-                        firstLaunch = false
-                        client.setDefaultSchedulingPreferences()
+						firstLaunch = false
+						localNotificationManager.setDefaultSchedulingPreferences()
                     }
                 }
         }
         .modelContainer(container)
         .backgroundTask(.appRefresh("updateClockData")) { _ in
             let context: ModelContext = .init(container)
-            await client.getDataFromClimateClockAPI(context: context)
+			if let data = await client.getDataFromClimateClockAPI(context: context) {
+				await localNotificationManager.saveNewsNotifications(news: data, context: context)
+			}
         }
     }
 
