@@ -18,6 +18,7 @@ struct NewsView: View {
 	var news: [NewsItem]
 	
 	@Environment(Client.self) var client: Client
+	@Environment(LocalNotificationManager.self) var localNotificationManager: LocalNotificationManager
 	@State private var isShowingSheet = false
 	
 	var body: some View {
@@ -38,13 +39,15 @@ struct NewsView: View {
 			ToolbarItem(placement: .confirmationAction) {
 //				ToolbarButton(isShowingSheet: $isShowingSheet)
 				NavigationLink(value: "notificationSettings") {
-					Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
+					Image(systemName: localNotificationManager.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
 									.foregroundStyle(.white)
 				}
 			}
 		}
 		.onAppear {
-			client.checkNotificationPermission()
+			Task {
+				await localNotificationManager.getCurrentSettings()
+			}
 		}
 	}
 }

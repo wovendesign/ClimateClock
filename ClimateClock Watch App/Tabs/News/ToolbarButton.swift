@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ToolbarButton: View {
 	@Environment(Client.self) var client: Client
+	@Environment(LocalNotificationManager.self) var localNotificationManager
 	@Binding var isShowingSheet: Bool
 	
     var body: some View {
@@ -28,7 +29,7 @@ struct ToolbarButton: View {
 		NavigationLink{
 			NotificationSettings()
 		} label: {
-			Image(systemName: client.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
+			Image(systemName: localNotificationManager.notificationPermissionGranted ? "bell.badge.fill" : "bell.slash.fill")
 							.foregroundStyle(.white)
 		}
     }

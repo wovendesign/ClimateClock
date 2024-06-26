@@ -31,11 +31,6 @@ struct AboutView: View {
                            title: "Key",
                            description: "Open up doors to decision-makers. The clock can get you access to decision-makers that previously ignored you.",
                            callToAction: "Open Up Doors")
-
-                HighlightedText(text: "All Data is provided by the v2 Climate Clock API from climateclock.world. \n\n Join in and participate in the Climate Clock Community too. \n\n #ClimateClock #ActInTime",
-                                highlighted: "v2 Climate Clock API",
-                                highlightColor: .red)
-                    .padding()
             }
 			.padding(.horizontal, 4)
         }

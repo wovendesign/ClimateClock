@@ -20,6 +20,7 @@ enum DateFormat {
 
 struct NotificationSettings: View {
     @Environment(Client.self) var client
+	@Environment(LocalNotificationManager.self) var localNotificationManager
     @Environment(\.modelContext) var context
 
     @State var first_date: Date
@@ -31,14 +32,16 @@ struct NotificationSettings: View {
         
             List {
                 Section {
-                    if !client.notificationPermissionGranted {
+                    if !localNotificationManager.notificationPermissionGranted {
                         Button {
-                            client.getNotificationPermission { status in
+							localNotificationManager.getNotificationPermission { status in
                                 switch status {
                                 case .denied:
                                     settingsAlert = true
                                 default:
-                                    client.requestNotificationPermissions()
+									Task {
+										try await localNotificationManager.requestAuthorization()
+									}
                                 }
                             }
                         } label: {

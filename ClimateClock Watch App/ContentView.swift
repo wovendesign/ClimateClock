@@ -14,6 +14,7 @@ enum Page {
 
 struct ContentView: View {
     @Environment(Client.self) var client
+	@Environment(LocalNotificationManager.self) var localNotificationManager
     @Environment(\.modelContext) var context
 	
 	@State private var path = NavigationPath()

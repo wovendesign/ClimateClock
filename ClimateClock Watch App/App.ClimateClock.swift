@@ -14,6 +14,7 @@ struct ClimateClock_Watch_App: App {
     @AppStorage("first_launch") var firstLaunch: Bool = true
 
     @State private var client: Client = .init()
+	@State private var localNotificationManager: LocalNotificationManager = .init()
 
     // SwiftData Container
     let container: ModelContainer = {
@@ -26,6 +27,7 @@ struct ClimateClock_Watch_App: App {
         WindowGroup {
             ContentView()
                 .environment(client)
+				.environment(localNotificationManager)
                 .onAppear {
                     if firstLaunch {
                         firstLaunch = false
