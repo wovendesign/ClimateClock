@@ -41,26 +41,7 @@ struct LifeLineCell: View {
             VStack(alignment: .leading, spacing: 4) {
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading) {
-                        TimelineView(.periodic(from: .now, by: 0.3)) { context in
-                            Text("\(valueByDate(date: context.date), specifier: "%0.\(precision)f") \(unit)")
-                                .font(
-                                    .custom("Oswald", size: 20)
-                                        .weight(.medium)
-                                )
-                                .monospacedDigit()
-                                .tracking(0.32)
-                                .contentTransition(
-                                    .numericText(
-                                        value: valueByDate(date: context.date)
-                                    )
-                                )
-                                .animation(
-                                    .linear(duration: 0.5).delay(0.5),
-                                    value: valueByDate(date: context.date)
-                                )
-                                .minimumScaleFactor(0.5)
-                                .lineLimit(1)
-                        }
+						LifeLineText(precision: precision, unit: unit, timestamp: timestamp, lifeLine: lifeLine)
 
                         if lifeLine.size == .large {
                             Text(label ?? "")
@@ -140,8 +121,23 @@ struct LifeLineCell: View {
                     .cornerRadius(8.0)
             } : nil
         }
+		.sheet(isPresented: $sheetOpen) {
+			SheetView(url: URL(string: "https://climateclock.world/science#renewable-energy")) {
+				LifeLineText(precision: precision, unit: unit, timestamp: timestamp, lifeLine: lifeLine)
+				Text(label ?? "")
+					.font(
+						.custom("Oswald", size: 16)
+					)
+				Text("https://climateclock.world/science#renewable-energy")
+					.font(
+						.custom("Assistant", size: 12)
+							.weight(.semibold)
+					)
+					.foregroundStyle(.white)
+			}
+		}
 		.onTapGesture {
-			<#code#>
+			sheetOpen = true
 		}
     }
 
@@ -163,12 +159,6 @@ struct LifeLineCell: View {
         }
     }
 
-    func valueByDate(date: Date) -> Double {
-        let timeDifference = date.timeIntervalSince(timestamp)
-
-        return lifeLine.initial + timeDifference * (lifeLine.rate)
-    }
-
     func resolutionToPrecision(_ resolution: Double) -> Int {
         let log10Resolution = -log10(abs(resolution))
         let precision = max(0, floor(log10Resolution))
@@ -179,3 +169,40 @@ struct LifeLineCell: View {
 // #Preview {
 //	LifeLineCell()
 // }
+
+
+struct LifeLineText: View {
+	let precision: Int
+	let unit: String
+	let timestamp: Date
+	let lifeLine: LifeLine
+	
+	var body: some View {
+		TimelineView(.periodic(from: .now, by: 0.3)) { context in
+			Text("\(valueByDate(date: context.date), specifier: "%0.\(precision)f") \(unit)")
+				.font(
+					.custom("Oswald", size: 20)
+						.weight(.medium)
+				)
+				.monospacedDigit()
+				.tracking(0.32)
+				.contentTransition(
+					.numericText(
+						value: valueByDate(date: context.date)
+					)
+				)
+				.animation(
+					.linear(duration: 0.5).delay(0.5),
+					value: valueByDate(date: context.date)
+				)
+				.minimumScaleFactor(0.5)
+				.lineLimit(1)
+		}
+	}
+	
+	func valueByDate(date: Date) -> Double {
+		let timeDifference = date.timeIntervalSince(timestamp)
+
+		return lifeLine.initial + timeDifference * (lifeLine.rate)
+	}
+}

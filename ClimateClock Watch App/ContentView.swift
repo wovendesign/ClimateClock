@@ -23,7 +23,7 @@ struct ContentView: View {
     var body: some View {
 		NavigationStack(path: $path) {
 			List {
-				TabTitle(headline: "Climate Clock", subtitle: "")
+				TabTitle(headline: "", subtitle: "")
 				Section {
 					ForEach(pages, id:  \.self) { page in
 						NavigationLinkItem(page: page)
