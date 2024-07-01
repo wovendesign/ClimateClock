@@ -13,15 +13,11 @@ import UserNotifications
 @Observable public final class Client {
     func getDataFromClimateClockAPI(context: ModelContext) async -> [NewsItem]? {
         do {
+			print("In do")
             let result = try await NetworkManager.shared.getClimateClockData()
 
             switch result {
             case let .success(data):
-                // Saving News
-				return data.data.modules.newsfeed_1.newsfeed
-//                saveNewsNotifications(news: ,
-//                                      context: context)
-
                 // Saving LifeLines
                 context.insert(moduleToLifeline(module: data.data.modules._youth_anxiety,
                                                 type: .youth))
@@ -39,6 +35,8 @@ import UserNotifications
                                                 type: .renewables))
                 context.insert(moduleToLifeline(module: data.data.modules.women_in_parliaments,
                                                 type: .women))
+				
+				return data.data.modules.newsfeed_1.newsfeed
 
             case let .failure(error):
                 switch error {
@@ -61,6 +59,7 @@ import UserNotifications
 				return nil
             }
         } catch {
+			print("Couldnt get Data")
             print(error)
         }
 		return nil

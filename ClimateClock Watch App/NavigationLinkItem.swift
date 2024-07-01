@@ -15,7 +15,8 @@ struct NavigationLinkItem: View {
 	let secondaryTitle: String?
 	let description: String?
 	let icon: String
-	let color: AnyGradient
+	let foregroundColor: Color
+	let backgroundColor: LinearGradient
 	
     var body: some View {
 			NavigationLink(value: page) {
@@ -30,6 +31,7 @@ struct NavigationLinkItem: View {
 								.tracking(0.32)
 								.environment(\._lineHeightMultiple, 0.75)
 								.padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
+								.minimumScaleFactor(0.5)
 						}
 						if let secondaryTitle = secondaryTitle {
 							Text(secondaryTitle)
@@ -48,41 +50,72 @@ struct NavigationLinkItem: View {
 									.custom("Assistant", size: 12)
 										.weight(.regular)
 								)
+								.lineLimit(3)
+								.multilineTextAlignment(.leading)
 						}
 					}
-					.padding(.vertical, 16)
+//					.padding(.vertical, 16)
 					Spacer()
 					Image(icon)
 				}
 			}
-
-			.listRowBackground(Rectangle().foregroundStyle(color).clipShape(.rect(cornerRadius: 18)).opacity(0.2))
+			.frame(height: 82)
+			.foregroundStyle(foregroundColor)
+			.listRowBackground(Rectangle().foregroundStyle(backgroundColor).clipShape(.rect(cornerRadius: 18)))
     }
 	
 	init(page: Page) {
 		self.page = page
 		
 		switch (page) {
-		case .about:
-			self.color = Color.gray.gradient
+		case .action:
+			self.foregroundColor = .white
+			self.backgroundColor = LinearGradient(
+				colors: [
+					Color(red: 0.17, green: 0.17, blue: 0.17),
+					Color(red: 0.09, green: 0.09, blue: 0.09)
+				],
+				startPoint: .top,
+				endPoint: .bottom)
 			self.title = nil
 			self.secondaryTitle = "3 Ways to Use a CLIMATE CLOCK"
 			self.description = nil
 			self.icon = "megaphone"
 		case .lifeline:
-			self.color = Color.lime50.gradient
+			self.foregroundColor = Color(red: 224/255, green: 241/255, blue: 111/255)
+			self.backgroundColor = LinearGradient(
+				colors: [
+					Color(red: 0.19, green: 0.19, blue: 0.13),
+					Color(red: 0.11, green: 0.11, blue: 0.07)
+				],
+				startPoint: .top,
+				endPoint: .bottom)
 			self.title = "Lifeline"
 			self.secondaryTitle = nil
 			self.description = "Change is already happening!"
 			self.icon = "lifeline"
 		case .news:
-			self.color = Color.navy50.gradient
-			self.title = "Newsfeed of Hope"
+			self.foregroundColor = Color(red: 170/255, green: 209/255, blue: 255/255)
+			self.backgroundColor = LinearGradient(
+				colors: [
+					Color(red: 0.14, green: 0.17, blue: 0.2),
+					Color(red: 0.05, green: 0.09, blue: 0.14)
+				],
+				startPoint: .top,
+				endPoint: .bottom)
+			self.title = "News of Hope"
 			self.secondaryTitle = nil
 			self.description = "Daily news of recent climate victories."
 			self.icon = "news"
 		case .deadline:
-			self.color = Color.ccRed50.gradient
+			self.foregroundColor = Color(red: 255/255, green: 107/255, blue: 107/255)
+			self.backgroundColor = LinearGradient(
+				colors: [
+					Color(red: 0.24, green: 0.16, blue: 0.16),
+					Color(red: 0.16, green: 0.08, blue: 0.08)
+				],
+				startPoint: .top,
+				endPoint: .bottom)
 			self.title = "Deadline"
 			self.secondaryTitle = "6y 12d 01:26:37"
 			self.description = nil

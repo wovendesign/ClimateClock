@@ -9,7 +9,7 @@ import Charts
 import SwiftUI
 
 enum Page {
-	case lifeline, news, about, deadline
+	case lifeline, news, action, deadline
 }
 
 struct ContentView: View {
@@ -18,22 +18,23 @@ struct ContentView: View {
     @Environment(\.modelContext) var context
 	
 	@State private var path = NavigationPath()
-	private var pages: [Page] = [.lifeline, .deadline, .news, .about]
+	private var pages: [Page] = [.lifeline, .deadline, .news, .action]
 	
     var body: some View {
 		NavigationStack(path: $path) {
-			List {
-				TabTitle(headline: "", subtitle: "")
-				Section {
-					ForEach(pages, id:  \.self) { page in
-						NavigationLinkItem(page: page)
-					}
-				}
+			List(pages, id:  \.self) { page in
+				NavigationLinkItem(page: page)
 			}
 			.listStyle(.carousel)
-			.navigationTitle {
-				Text("Climate Clock")
-					.foregroundStyle(.white)
+			.navigationTitle("Climate Clock")
+			.toolbar {
+				ToolbarItem(placement: .topBarLeading) {
+					NavigationLink(value: "aboutView") {
+						Image("climate_icon")
+							.resizable()
+							.frame(width: 16, height: 16)
+					}
+				}
 			}
 			.navigationDestination(for: Page.self) { page in
 				switch (page) {
@@ -41,8 +42,8 @@ struct ContentView: View {
 					NewsView()
 				case .lifeline:
 					LifelineView()
-				case .about:
-					AboutView()
+				case .action:
+					ActionView()
 				case .deadline:
 					Text("Deadline")
 						.containerBackground(Color.ccRed50.gradient, for: .navigation)
@@ -51,11 +52,16 @@ struct ContentView: View {
 			.navigationDestination(for: String.self) { textValue in
 				if (textValue == "notificationSettings") {
 					NotificationSettings()
+				} else if (textValue == "aboutView") {
+					AboutView()
 				}
 			}
 		}
-		.task {
-			await client.getDataFromClimateClockAPI(context: context)
+		.onAppear {
+			Task {
+				print("Getting Data from API")
+				await client.getDataFromClimateClockAPI(context: context)
+			}
 		}
     }
 }
