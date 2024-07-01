@@ -8,6 +8,7 @@
 
 import SwiftUI
 import WidgetKit
+import SwiftData
 
 struct NewsWidgetProvider: TimelineProvider {
     func placeholder(in _: Context) -> NewsWidgetEntry {
@@ -21,8 +22,6 @@ struct NewsWidgetProvider: TimelineProvider {
 
     func getTimeline(in _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         var entries: [NewsWidgetEntry] = []
-
-        let client = Client()
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
@@ -47,6 +46,17 @@ struct NewsWidgetEntry: TimelineEntry {
 
 struct NewsWidgetEntryView: View {
     var entry: NewsWidgetProvider.Entry
+	
+	static var now: Date { Date.now }
+	
+	static var descriptor: FetchDescriptor<NewsItem> {
+		var descriptor = FetchDescriptor<NewsItem>(
+			predicate: #Predicate<NewsItem> { $0.pushDate ?? now < now },
+			sortBy: [SortDescriptor(\.pushDate, order: .reverse)])
+		descriptor.fetchLimit = 1
+		return descriptor
+	}
+	@Query(descriptor) var news: [NewsItem]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -56,42 +66,57 @@ struct NewsWidgetEntryView: View {
 					.scaledToFit()
 					.frame(width: 11, height: 11)
 				
-				Text("· NEWS OF HOPE")
+				Text(" NEWS OF HOPE")
 					.font(
 						.custom("Assistant", size: 14)
 						.weight(.bold)
 					)
 					.opacity(0.5)
 			}
-            Text(entry.headline)
-                .font(
-                    .custom("Assistant", size: 13)
-					.weight(.semibold)
-					.leading(.tight)
-                )
-                .tracking(0.32)
-				.frame(height: 50)
-				.foregroundStyle(.foreground)
-				.environment(\._lineHeightMultiple, 0.9)
+			if let newsItem = news.first {
+				Text(newsItem.headline)
+					.font(
+						.custom("Assistant", size: 13)
+						.weight(.semibold)
+						.leading(.tight)
+					)
+					.tracking(0.32)
+					.frame(height: 50)
+					.foregroundStyle(.foreground)
+					.environment(\._lineHeightMultiple, 0.9)
+			}
         }
+		.containerRelativeFrame(.horizontal)
 		.containerRelativeFrame(.vertical)
 		.padding(.vertical, 2)
-		
+		.padding(.horizontal, 6)
+		.onAppear {
+			print(news)
+		}
     }
 }
 
 struct NewsWidget: Widget {
     let kind: String = "NewsWidget"
+	
+	// SwiftData Container
+	let container: ModelContainer = {
+		let schema = Schema([NewsItem.self])
+		let container = try! ModelContainer(for: schema, configurations: [])
+		return container
+	}()
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: NewsWidgetProvider()) { entry in
             if #available(iOS 17.0, *) {
                 NewsWidgetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
+					.modelContainer(container)
             } else {
                 NewsWidgetEntryView(entry: entry)
                     .padding()
                     .background()
+					.modelContainer(container)
             }
         }
         .configurationDisplayName("News Widget")

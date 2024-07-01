@@ -60,7 +60,7 @@ struct RenewablesWidgetEntryView: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            Text("\(valueByDate(date: entry.date), specifier: "%0.\(entry.precision)f") %")
+            Text("\(valueByDate(date: entry.date), specifier: "%0.\(entry.precision)f") %")
                 .font(
                     .custom("Oswald", size: 20)
                         .weight(.semibold)
