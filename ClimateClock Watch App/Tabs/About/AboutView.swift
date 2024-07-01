@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct AboutView: View {
+	@State var sheetOpen = false
+	
+	
 	var body: some View {
 		ScrollView {
 			VStack(alignment: .leading, spacing: 16) {
@@ -18,6 +21,15 @@ struct AboutView: View {
 							.weight(.semibold)
 					)
 					.tracking(0.32)
+				
+				HStack(alignment: .center) {
+					Spacer()
+					Image("climateclock-logo")
+					Text("Climate Clock")
+					  .font(Font.custom("Oswald", size: 14))
+					  .foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))
+					Spacer()
+				}
 				
 				Text("Join in and participate in the Climate Clock Community too.\n\n#ClimateClock #ActInTime")
 				  .font(
@@ -38,16 +50,19 @@ struct AboutView: View {
 									highlightColor: .red)
 				}
 				.onTapGesture {
-					print("TODO: Open Sheet")
+					sheetOpen = true
 				}
-
+				.sheet(isPresented: $sheetOpen) {
+					SheetView(url: URL(string: "https://woven.design")) {
+						Text("woven.design")
+							.font(
+								.custom("Oswald", size: 16)
+							)
+					}
+				}
 			}
 			.padding(.horizontal, 4)
 		}
 		.containerRelativeFrame(.horizontal)
 	}
-}
-
-#Preview {
-	AboutView()
 }

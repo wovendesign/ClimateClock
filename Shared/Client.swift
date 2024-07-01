@@ -13,7 +13,6 @@ import UserNotifications
 @Observable public final class Client {
     func getDataFromClimateClockAPI(context: ModelContext) async -> [NewsItem]? {
         do {
-			print("In do")
             let result = try await NetworkManager.shared.getClimateClockData()
 
             switch result {
