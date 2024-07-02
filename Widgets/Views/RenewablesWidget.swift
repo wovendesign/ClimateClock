@@ -59,7 +59,7 @@ struct RenewablesWidgetEntryView: View {
     var entry: RenewablesProvider.Entry
 
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+		VStack(alignment: .leading, spacing: 0) {
             Text("\(valueByDate(date: entry.date), specifier: "%0.\(entry.precision)f") %")
                 .font(
                     .custom("Oswald", size: 20)
@@ -90,7 +90,8 @@ struct RenewablesWidgetEntryView: View {
                         }
 						.clipShape(.rect(cornerRadius: 6))
 						.padding(2)
-						.foregroundStyle(.foreground)
+						.foregroundStyle(.lime)
+						.widgetAccentable()
                 }
                 .clipShape(.rect(cornerRadius: 6))
 
@@ -101,6 +102,7 @@ struct RenewablesWidgetEntryView: View {
                         .weight(.semibold)
                 )
         }
+		.padding(.horizontal, 6)
 		.containerBackground(.blue, for: .widget)
     }
 
@@ -154,5 +156,5 @@ struct RenewablesWidgetMockData {
                                     timestamp: "2020-01-01T00:00:00+00:00",
                                     initial: 11.4,
                                     rate: 2.0428359571070087e-8,
-                                    precision: 5)
+                                    precision: 6)
 }
