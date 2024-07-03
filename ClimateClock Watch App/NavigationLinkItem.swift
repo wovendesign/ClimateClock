@@ -18,7 +18,35 @@ struct NavigationLinkItem: View {
 	let foregroundColor: Color
 	let backgroundColor: LinearGradient
 	
+    let entry = DeadlineEntry(date: Date(), deadline:"2029-07-22T16:00:00+00:00")
+    
     var body: some View {
+        
+        let deadline = Calendar.current.dateComponents([.hour, .minute], from: parseDateString(entry.deadline)!)
+
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        let tomorrowComponents = Calendar.current.dateComponents([.year, .month, .day], from: tomorrow)
+        let tomorrowTimerComponents = DateComponents(
+            year: tomorrowComponents.year ?? 0,
+            month: tomorrowComponents.month ?? 0,
+            day: tomorrowComponents.day,
+            hour: deadline.hour,
+            minute: deadline.minute
+        )
+        let todayTimerComponents = DateComponents(
+            year: todayComponents.year ?? 0,
+            month: todayComponents.month ?? 0,
+            day: todayComponents.day,
+            hour: deadline.hour,
+            minute: deadline.minute
+        )
+
+        let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
+        let isTomorrow = Calendar.current.isDateInToday(tomorrowTimer)
+        let todayTimer = Calendar.current.date(from: todayTimerComponents)!
+    
+        
 			NavigationLink(value: page) {
 				HStack {
 					VStack (alignment: .leading) {
@@ -44,6 +72,51 @@ struct NavigationLinkItem: View {
 								// Top Padding when no other title exists
 								.padding(EdgeInsets(top: title == nil ? 4 : 0, leading: 0, bottom: 0, trailing: 0))
 						}
+                        
+                        if title == "Deadline" {
+                            HStack(alignment: .bottom, spacing: 0) {
+                                Text("\(diff(deadline: entry.deadline).years)")
+                                    .font(
+                                        .custom("Oswald", size: 16)
+                                        .weight(.regular)
+                                    )
+                                    .tracking(0.32)
+                                    .monospacedDigit()
+                                Text("y")
+                                    .font(
+                                        .custom("Oswald", size: 16)
+                                        .weight(.regular)
+                                    )
+                                    .tracking(0.32)
+                                    .monospacedDigit()
+                                
+                                Text("\(diff(deadline: entry.deadline).days)")
+                                    .font(
+                                        .custom("Oswald", size: 16)
+                                        .weight(.regular)
+                                    )
+                                    .tracking(0.32)
+                                    .monospacedDigit()
+                                    .padding(.leading, 4)
+                                Text("d")
+                                    .font(
+                                        .custom("Oswald", size: 16)
+                                        .weight(.regular)
+                                    )
+                                    .tracking(0.32)
+                                    .monospacedDigit()
+                                Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
+                                    .font(
+                                        .custom("Oswald", size: 16)
+                                        .weight(.regular)
+                                    )
+                                    .tracking(0.32)
+                                    .monospacedDigit()
+                                    .padding(.leading, 4)
+                                
+                            }
+                        }
+                        
 						if let description = description {
 							Text(description)
 								.font(
@@ -117,7 +190,7 @@ struct NavigationLinkItem: View {
 				startPoint: .top,
 				endPoint: .bottom)
 			self.title = "Deadline"
-			self.secondaryTitle = "6y 12d 01:26:37"
+			self.secondaryTitle = nil
 			self.description = nil
 			self.icon = "deadline"
 		}
