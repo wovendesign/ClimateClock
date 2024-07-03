@@ -46,6 +46,7 @@ struct NewsWidgetEntry: TimelineEntry {
 
 struct NewsWidgetEntryView: View {
     var entry: NewsWidgetProvider.Entry
+	@Environment(\.showsWidgetContainerBackground) var showsBackground
 	
 	static var now: Date { Date.now }
 	
@@ -59,20 +60,9 @@ struct NewsWidgetEntryView: View {
 	@Query(descriptor) var news: [NewsItem]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
-			HStack(spacing: 4) {
-				Image(systemName: "globe.central.south.asia.fill")
-					.resizable()
-					.scaledToFit()
-					.frame(width: 11, height: 11)
-				
-				Text(" NEWS OF HOPE")
-					.font(
-						.custom("Assistant", size: 14)
-						.weight(.bold)
-					)
-					.opacity(0.5)
-			}
+		VStack(alignment: .leading) {
+			Spacer()
+			
 			if let newsItem = news.first {
 				Text(newsItem.headline)
 					.font(
@@ -80,18 +70,32 @@ struct NewsWidgetEntryView: View {
 						.weight(.semibold)
 						.leading(.tight)
 					)
-					.tracking(0.32)
+					.lineLimit(3)
+					.tracking(0)
 					.frame(height: 50)
-					.foregroundStyle(.foreground)
-					.environment(\._lineHeightMultiple, 0.9)
+					.foregroundStyle(.newsFg1)
+					.environment(\._lineHeightMultiple, 0.8)
+					.padding(EdgeInsets(top: -5, leading: 6, bottom: -10, trailing: 6))
 			}
+			
+			Spacer()
+			
+			WidgetTitle(title: "News of Hope", withBackground: true)
         }
+		.padding(.vertical, 3)
 		.containerRelativeFrame(.horizontal)
 		.containerRelativeFrame(.vertical)
-		.padding(.vertical, 2)
-		.padding(.horizontal, 6)
-		.onAppear {
-			print(news)
+		.widgetBackground(LinearGradient(colors: [.newsBg1, .newsBg2],
+										 startPoint: .top,
+										 endPoint: .bottom))
+		.background {
+			if (showsBackground) {
+				LinearGradient(colors: [.newsBg1, .newsBg2],
+							   startPoint: .top,
+							   endPoint: .bottom)
+			} else {
+				Color.clear
+			}
 		}
     }
 }

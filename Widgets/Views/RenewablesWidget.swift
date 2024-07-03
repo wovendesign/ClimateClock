@@ -60,20 +60,28 @@ struct RenewablesWidgetEntryView: View {
 	@Environment(\.showsWidgetContainerBackground) var showsBackground
 	
 	var body: some View {
-		VStack(alignment: .leading, spacing: 0) {
-			Text("\(valueByDate(date: entry.date), specifier: "%0.\(entry.precision)f") %")
-				.font(
-					.custom("Oswald", size: 20)
-					.weight(.semibold)
-				)
-				.monospacedDigit()
-				.lineLimit(1)
-				.contentTransition(
-					.numericText(
-						value: valueByDate(date: entry.date)
+		VStack(alignment: .leading) {
+			VStack {
+				Text("\(valueByDate(date: entry.date), specifier: "%0.\(entry.precision)f") %")
+					.font(
+						.custom("Oswald", size: 20)
+						.weight(.semibold)
 					)
-				)
-				.foregroundStyle(.lifelineFg1)
+					.monospacedDigit()
+					.lineLimit(1)
+					.contentTransition(
+						.numericText(
+							value: valueByDate(date: entry.date)
+						)
+					)
+					.foregroundStyle(.lifelineFg1)
+					.multilineTextAlignment(.center)
+					.padding(.horizontal, 6)
+					.padding(EdgeInsets(top: 0, leading: 0, bottom: -10, trailing: 0))
+			}
+			.frame(maxWidth: .infinity, alignment: .center)
+			
+			Spacer()
 			
 			RoundedRectangle(cornerRadius: 3)
 							.frame(height: 21)
@@ -87,16 +95,13 @@ struct RenewablesWidgetEntryView: View {
 										.widgetAccentable()
 								}
 							}
+							.padding(.horizontal, 6)
+							.padding(EdgeInsets(top: 0, leading: 0, bottom: -10, trailing: 0))
 			
 			Spacer()
-			Text("Energy from renewables")
-				.textCase(.uppercase)
-				.font(
-					.custom("Assistant", size: 12)
-					.weight(.semibold)
-				)
+			
+			WidgetTitle(title: "Energy from Renewables", withBackground: false)
 		}
-		.padding(EdgeInsets(top: 0, leading: 6, bottom: 6, trailing: 6))
 		.containerRelativeFrame(.horizontal)
 		.containerRelativeFrame(.vertical)
 		.widgetBackground(LinearGradient(colors: [.lifelineBg1, .lifelineBg2],
