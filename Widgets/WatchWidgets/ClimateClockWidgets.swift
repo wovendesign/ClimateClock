@@ -15,5 +15,6 @@ struct WatchWidgetBundle: WidgetBundle {
 	var body: some Widget {
 		NewsWidget()
 		RenewablesWidget()
+		DeadlineWidget()
 	}
 }

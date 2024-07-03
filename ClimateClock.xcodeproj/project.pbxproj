@@ -19,6 +19,7 @@
 		F60B29B22B8F9C1E00E41091 /* ClimateClockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60B29B12B8F9C1E00E41091 /* ClimateClockData.swift */; };
 		F60B29B32B8F9C1E00E41091 /* ClimateClockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60B29B12B8F9C1E00E41091 /* ClimateClockData.swift */; };
 		F6130CE02C3563D0007908E3 /* WidgetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6130CDF2C3563CC007908E3 /* WidgetTitle.swift */; };
+		F6130CE32C3572D4007908E3 /* DeadlineWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6130CE22C3572D0007908E3 /* DeadlineWidget.swift */; };
 		F6256D8D2BF39FE10012FD30 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D8C2BF39FE10012FD30 /* Client.swift */; };
 		F6256D8E2BF39FE10012FD30 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D8C2BF39FE10012FD30 /* Client.swift */; };
 		F6256D952BF3B2200012FD30 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6256D942BF3B2200012FD30 /* DataModels.swift */; };
@@ -144,6 +145,7 @@
 		F60B29AC2B8F91F900E41091 /* Solar Analogue.watchface */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solar Analogue.watchface"; sourceTree = "<group>"; };
 		F60B29B12B8F9C1E00E41091 /* ClimateClockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateClockData.swift; sourceTree = "<group>"; };
 		F6130CDF2C3563CC007908E3 /* WidgetTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTitle.swift; sourceTree = "<group>"; };
+		F6130CE22C3572D0007908E3 /* DeadlineWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineWidget.swift; sourceTree = "<group>"; };
 		F6256D8C2BF39FE10012FD30 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		F6256D942BF3B2200012FD30 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		F6256D9A2BF3BB310012FD30 /* LifeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeLineCell.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 		F6579C7E2C204572003F037D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F6130CE22C3572D0007908E3 /* DeadlineWidget.swift */,
 				F6130CDF2C3563CC007908E3 /* WidgetTitle.swift */,
 				F6BBABE02BF7BCD20090780B /* NewsWidget.swift */,
 				F6BBABF12BF7C9530090780B /* RenewablesWidget.swift */,
@@ -750,6 +753,7 @@
 				F6579C882C2048B1003F037D /* DataModels.swift in Sources */,
 				F6579C862C2048A4003F037D /* NetworkManager.swift in Sources */,
 				F6017E7C2C2C3C1A00929507 /* LocalNotificationManager.swift in Sources */,
+				F6130CE32C3572D4007908E3 /* DeadlineWidget.swift in Sources */,
 				F6579C8A2C2048BE003F037D /* CCError.swift in Sources */,
 				F6130CE02C3563D0007908E3 /* WidgetTitle.swift in Sources */,
 				F6579C832C204820003F037D /* RelativeTimeCell.swift in Sources */,
