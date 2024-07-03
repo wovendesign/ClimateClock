@@ -45,8 +45,7 @@ struct ContentView: View {
 				case .action:
 					ActionView()
 				case .deadline:
-					Text("Deadline")
-						.containerBackground(Color.ccRed50.gradient, for: .navigation)
+					DeadlineView()
 				}
 			}
 			.navigationDestination(for: String.self) { textValue in

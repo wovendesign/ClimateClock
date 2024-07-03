@@ -60,7 +60,7 @@
 		F6579C8A2C2048BE003F037D /* CCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62EED5A2BBB2E5C00352E46 /* CCError.swift */; };
 		F6579C8C2C20AC64003F037D /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6579C8B2C20AC64003F037D /* ToolbarButton.swift */; };
 		F668F6E12C32B79F0083448E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F668F6E02C32B79C0083448E /* AboutView.swift */; };
-		F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */; };
+		F672CA452B7D4F4100FAA4B4 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672CA442B7D4F4100FAA4B4 /* DeadlineView.swift */; };
 		F673949E2BBC3FD900B7258D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F673949D2BBC3FD900B7258D /* Alert.swift */; };
 		F67505072C358B3200351101 /* DirectusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67505062C358B2E00351101 /* DirectusData.swift */; };
 		F67505082C358B3200351101 /* DirectusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67505062C358B2E00351101 /* DirectusData.swift */; };
@@ -177,7 +177,7 @@
 		F6579C8B2C20AC64003F037D /* ToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButton.swift; sourceTree = "<group>"; };
 		F668F6E02C32B79C0083448E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		F668F6E22C32BF4B0083448E /* watchWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchWidgets.entitlements; sourceTree = "<group>"; };
-		F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		F672CA442B7D4F4100FAA4B4 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
 		F673949D2BBC3FD900B7258D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F67505062C358B2E00351101 /* DirectusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectusData.swift; sourceTree = "<group>"; };
 		F67BD67F2B7D2C590015ECBE /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -346,7 +346,7 @@
 		F6256DA22BF4D8F00012FD30 /* Deadline */ = {
 			isa = PBXGroup;
 			children = (
-				F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */,
+				F672CA442B7D4F4100FAA4B4 /* DeadlineView.swift */,
 			);
 			path = Deadline;
 			sourceTree = "<group>";
@@ -737,7 +737,7 @@
 				F62EED602BBB2E5C00352E46 /* CCError.swift in Sources */,
 				F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */,
 				F6256D9D2BF4ABE80012FD30 /* LifeLineGoal.swift in Sources */,
-				F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */,
+				F672CA452B7D4F4100FAA4B4 /* DeadlineView.swift in Sources */,
 				F6EF80D72C0757E5001996C9 /* NotificationSettings.swift in Sources */,
 				F6BBABE62BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
 				F6256D8E2BF39FE10012FD30 /* Client.swift in Sources */,
