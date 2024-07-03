@@ -62,6 +62,9 @@
 		F668F6E12C32B79F0083448E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F668F6E02C32B79C0083448E /* AboutView.swift */; };
 		F672CA452B7D4F4100FAA4B4 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */; };
 		F673949E2BBC3FD900B7258D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F673949D2BBC3FD900B7258D /* Alert.swift */; };
+		F67505072C358B3200351101 /* DirectusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67505062C358B2E00351101 /* DirectusData.swift */; };
+		F67505082C358B3200351101 /* DirectusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67505062C358B2E00351101 /* DirectusData.swift */; };
+		F67505092C358B3200351101 /* DirectusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67505062C358B2E00351101 /* DirectusData.swift */; };
 		F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BD67F2B7D2C590015ECBE /* Graph.swift */; };
 		F6A15DC22C230702006A5643 /* NavigationLinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A15DC12C230702006A5643 /* NavigationLinkItem.swift */; };
 		F6BBABE52BF7BF240090780B /* RelativeTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BBABE42BF7BF240090780B /* RelativeTimeCell.swift */; };
@@ -176,6 +179,7 @@
 		F668F6E22C32BF4B0083448E /* watchWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchWidgets.entitlements; sourceTree = "<group>"; };
 		F672CA442B7D4F4100FAA4B4 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		F673949D2BBC3FD900B7258D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		F67505062C358B2E00351101 /* DirectusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectusData.swift; sourceTree = "<group>"; };
 		F67BD67F2B7D2C590015ECBE /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		F6A15DC12C230702006A5643 /* NavigationLinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkItem.swift; sourceTree = "<group>"; };
 		F6BBABE02BF7BCD20090780B /* NewsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWidget.swift; sourceTree = "<group>"; };
@@ -211,6 +215,13 @@
 			);
 			target = F62A7A632B48700B002A7E25 /* ClimateClock Watch App */;
 		};
+		F675050F2C358EFF00351101 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				IdeaList.swift,
+			);
+			target = F62A7A532B48700A002A7E25 /* ClimateClock */;
+		};
 		F6A15DC62C2343D9006A5643 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -222,6 +233,8 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F668F6DE2C32B6AA0083448E /* Action */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F668F6DF2C32B7880083448E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Action; sourceTree = "<group>"; };
+		F675050A2C358EDA00351101 /* Tabs */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tabs; sourceTree = "<group>"; };
+		F675050B2C358EE900351101 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F675050F2C358EFF00351101 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		F6A15DC32C2343C9006A5643 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F6A15DC62C2343D9006A5643 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -274,6 +287,7 @@
 		F60B29B02B8F9C0D00E41091 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F67505062C358B2E00351101 /* DirectusData.swift */,
 				F60B29B12B8F9C1E00E41091 /* ClimateClockData.swift */,
 				F6256D942BF3B2200012FD30 /* DataModels.swift */,
 			);
@@ -372,6 +386,8 @@
 		F62A7A562B48700A002A7E25 /* ClimateClock */ = {
 			isa = PBXGroup;
 			children = (
+				F675050B2C358EE900351101 /* Views */,
+				F675050A2C358EDA00351101 /* Tabs */,
 				F6BBABED2BF7C0980090780B /* ClimateClock.entitlements */,
 				F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */,
 				F62A7A592B48700A002A7E25 /* ContentView.swift */,
@@ -427,6 +443,7 @@
 		F62DCB7F2B7BD26C00855D88 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F60B29B02B8F9C0D00E41091 /* Model */,
 				F60B29A52B8F8D3500E41091 /* Utilities */,
 				F62DCB802B7BD27400855D88 /* fonts */,
 				F6256D8C2BF39FE10012FD30 /* Client.swift */,
@@ -438,7 +455,6 @@
 		F62DCB802B7BD27400855D88 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				F60B29B02B8F9C0D00E41091 /* Model */,
 				F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */,
 				F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */,
 			);
@@ -697,6 +713,7 @@
 				F60B29B22B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
 				F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */,
 				F6017E7B2C2C3C1A00929507 /* LocalNotificationManager.swift in Sources */,
+				F67505082C358B3200351101 /* DirectusData.swift in Sources */,
 				F62EED5C2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
 				F6BBABE52BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
 				F62A7A582B48700A002A7E25 /* ClimateClockApp.swift in Sources */,
@@ -733,6 +750,7 @@
 				F62A7A6A2B48700B002A7E25 /* App.ClimateClock.swift in Sources */,
 				F6A15DC22C230702006A5643 /* NavigationLinkItem.swift in Sources */,
 				F6017E7D2C2C3C1A00929507 /* LocalNotificationManager.swift in Sources */,
+				F67505092C358B3200351101 /* DirectusData.swift in Sources */,
 				F62EED5D2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
 				F6C5709A2B7D027C0001DCE7 /* PredictionModel.swift in Sources */,
 				F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */,
@@ -749,6 +767,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6579C892C2048B7003F037D /* Locale+TimeFormat.swift in Sources */,
+				F67505072C358B3200351101 /* DirectusData.swift in Sources */,
 				F6579C872C2048AC003F037D /* ClimateClockData.swift in Sources */,
 				F6579C882C2048B1003F037D /* DataModels.swift in Sources */,
 				F6579C862C2048A4003F037D /* NetworkManager.swift in Sources */,
@@ -908,7 +927,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ClimateClock Watch App/ClimateClock Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
@@ -945,7 +964,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ClimateClock Watch App/ClimateClock Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
@@ -982,7 +1001,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClimateClock/ClimateClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
@@ -1017,7 +1036,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClimateClock/ClimateClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
@@ -1053,7 +1072,7 @@
 				CODE_SIGN_ENTITLEMENTS = watchWidgets.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/WatchWidgets/Info.plist;
@@ -1085,7 +1104,7 @@
 				CODE_SIGN_ENTITLEMENTS = watchWidgets.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/WatchWidgets/Info.plist;
