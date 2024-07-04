@@ -56,7 +56,8 @@ struct ExampleSheet: View {
 															 date_created: Date.now,
 															 title: title,
 															 idea: description,
-															 device_identifier: uuid))
+															 device_identifier: uuid,
+															 votes: [UUID(uuidString: uuid)!]))
 									dismiss()
 								case .failure(let err):
 									print(err)

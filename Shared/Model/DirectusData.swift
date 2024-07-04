@@ -42,14 +42,16 @@ class Idea: Decodable {
 	let title: String
 	let idea: String
 	let device_identifier: String
+	let votes: [UUID]
 	
-	init(id: UUID, status: IdeaStatus, date_created: Date, title: String, idea: String, device_identifier: String) {
+	init(id: UUID, status: IdeaStatus, date_created: Date, title: String, idea: String, device_identifier: String, votes: [UUID]) {
 		self.id = id
 		self.status = status
 		self.date_created = date_created
 		self.title = title
 		self.idea = idea
 		self.device_identifier = device_identifier
+		self.votes = votes
 	}
 	
 	// Define CodingKeys to map JSON keys to properties
@@ -60,6 +62,7 @@ class Idea: Decodable {
 		case title
 		case idea
 		case device_identifier
+		case votes
 	}
 	
 	// Implement Decodable initializers
@@ -73,11 +76,24 @@ class Idea: Decodable {
 		let idea = try container.decode(String.self, forKey: .idea)
 		let device_identifier = try container.decode(String.self, forKey: .device_identifier)
 		
+		// Decode votes array which contains objects with `device_identifier`
+		var votes: [UUID] = []
+		if container.contains(.votes) {
+			var votesContainer = try container.nestedUnkeyedContainer(forKey: .votes)
+			while !votesContainer.isAtEnd {
+				let voteContainer = try votesContainer.nestedContainer(keyedBy: CodingKeys.self)
+				let voteDeviceIdentifier = try voteContainer.decode(String.self, forKey: .device_identifier)
+				if let uuid = UUID(uuidString: voteDeviceIdentifier) {
+					votes.append(uuid)
+				}
+			}
+		}
+		
 		// Convert dateString to Date
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 		if let date = dateFormatter.date(from: dateString) {
-			self.init(id: id, status: status, date_created: date, title: title, idea: idea, device_identifier: device_identifier)
+			self.init(id: id, status: status, date_created: date, title: title, idea: idea, device_identifier: device_identifier, votes: votes)
 		} else {
 			throw DecodingError.dataCorruptedError(forKey: .date_created, in: container, debugDescription: "Date string does not match format expected by formatter.")
 		}

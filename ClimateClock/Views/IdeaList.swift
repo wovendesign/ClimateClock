@@ -15,6 +15,7 @@ struct IdeaList: View {
 	
     var body: some View {
 		List(ideas) { idea in
+			let hasVoted = idea.votes.contains{ $0.uuidString == UIDevice.current.identifierForVendor!.uuidString }
 			HStack {
 				VStack(alignment: .leading) {
 					Text(idea.date_created.formatted(.relative(presentation: .named, unitsStyle: .wide)))
@@ -28,7 +29,9 @@ struct IdeaList: View {
 				Button {
 					
 				} label: {
-					Text("0 +")
+					Text("\(idea.votes.count) +")
+						.background(hasVoted ? .blue : .clear)
+						.foregroundStyle(hasVoted ? .white : .blue)
 				}
 				
 			}

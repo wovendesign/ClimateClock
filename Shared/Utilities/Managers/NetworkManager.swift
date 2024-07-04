@@ -34,7 +34,7 @@ final class NetworkManager {
     }
 	
 	static let directusURL = "https://directus.woven.design/"
-	private let ideasURL = directusURL + "items/climateclock_ios_feedback"
+	private let ideasURL = directusURL + "items/climateclock_ios_feedback?fields[]=*&fields[]=votes.device_identifier"
 	
 	func getIdeas() async throws -> Result<DirectusResponse, CCError> {
 		guard let url = URL(string: ideasURL) else {
