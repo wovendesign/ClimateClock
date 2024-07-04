@@ -8,24 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+	@State var list: [Idea] = []
+	@State var errorMessage: String?
+	
     var body: some View {
-//        VStack {
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundStyle(.tint)
-//            Text("The Climate Clock iOS App is still in development. Please open the Climate Clock App on your Apple Watch.")
-//        }
-//        .padding()
 		NavigationStack {
-			IdeaList(list: [
-				Idea(id: UUID(), status: .approved, date_created: "", title: "Forum", idea: "Have a plattform for people to connect and share ideas"),
-				Idea(id: UUID(), status: .approved, date_created: "", title: "Upcoming Protests", idea: "Why isnt there a list of upcoming protests")
-			])
+			if let errorMessage = errorMessage {
+								Text(errorMessage).foregroundColor(.red)
+							}
+			IdeaList(list: $list)
 			.navigationTitle("Climate Clock")
+		}
+		.onAppear {
+			Task {
+				let result = try await NetworkManager.shared.getIdeas()
+				switch result {
+				case .success(let response):
+					print(response.data)
+					list = response.data
+				case .failure(let error):
+					errorMessage = error.localizedDescription
+				}
+			}
 		}
     }
 }
-
-#Preview {
-    ContentView()
-}
+//
+//#Preview {
+//    ContentView()
+//}

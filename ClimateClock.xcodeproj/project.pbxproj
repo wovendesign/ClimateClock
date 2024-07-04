@@ -219,6 +219,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				IdeaList.swift,
+				IdeaListViewModel.swift,
 			);
 			target = F62A7A532B48700A002A7E25 /* ClimateClock */;
 		};
@@ -233,9 +234,9 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F668F6DE2C32B6AA0083448E /* Action */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F668F6DF2C32B7880083448E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Action; sourceTree = "<group>"; };
-		F675050A2C358EDA00351101 /* Tabs */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tabs; sourceTree = "<group>"; };
 		F675050B2C358EE900351101 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F675050F2C358EFF00351101 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		F6A15DC32C2343C9006A5643 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F6A15DC62C2343D9006A5643 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		F6F2A7812C36B0550056FD94 /* Tabs */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tabs; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,8 +387,8 @@
 		F62A7A562B48700A002A7E25 /* ClimateClock */ = {
 			isa = PBXGroup;
 			children = (
+				F6F2A7812C36B0550056FD94 /* Tabs */,
 				F675050B2C358EE900351101 /* Views */,
-				F675050A2C358EDA00351101 /* Tabs */,
 				F6BBABED2BF7C0980090780B /* ClimateClock.entitlements */,
 				F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */,
 				F62A7A592B48700A002A7E25 /* ContentView.swift */,

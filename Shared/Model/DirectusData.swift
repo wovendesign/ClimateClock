@@ -9,7 +9,7 @@
 import Foundation
 
 struct DirectusResponse: Decodable {
-	var data: Idea
+	var data: [Idea]
 }
 
 struct DirectusIdeaInsertResponse: Decodable {

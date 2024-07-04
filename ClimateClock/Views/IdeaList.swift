@@ -9,23 +9,46 @@
 import SwiftUI
 
 struct IdeaList: View {
-	@State var list: [Idea]
+	@Binding var list: [Idea]
 	@State private var searchText: String = ""
 	@State private var showingSheet = false
 	
-	
 	var filteredList: [Idea] {
 		guard !searchText.isEmpty else { return list }
-		return list.filter { $0.idea.localizedCaseInsensitiveContains(searchText) }
+		return list.filter { idea in
+			idea.idea.localizedCaseInsensitiveContains(searchText) ||
+			idea.title.localizedCaseInsensitiveContains(searchText)
+		}
 	}
 	
 	var body: some View {
 		VStack {
 			List(filteredList) { idea in
-				Text(idea.idea)
+				HStack {
+					VStack(alignment: .leading) {
+						Text(idea.title)
+							.bold()
+						Text(idea.idea)
+					}
+					
+					Spacer()
+					
+					Button {
+						
+					} label: {
+						Text("0 +")
+					}
+
+				}
 			}
 			.searchable(text: $searchText, placement: .navigationBarDrawer)
+			.overlay {
+				if filteredList.isEmpty, !searchText.isEmpty {
+					ContentUnavailableView.search
+				}
+			}
 			.sheet(isPresented: $showingSheet, content: ExampleSheet.init)
+			
 			
 			Spacer()
 			
@@ -92,9 +115,9 @@ struct ExampleSheet: View {
 	}
 }
 
-#Preview {
-	IdeaList(list: [
-		Idea(id: UUID(), status: .approved, date_created: "", title: "Forum", idea: "Have a plattform for people to connect and share ideas", device_identifier: UIDevice.current.identifierForVendor!.uuidString),
-		Idea(id: UUID(), status: .approved, date_created: "", title: "Upcoming Protests", idea: "Why isnt there a list of upcoming protests", device_identifier: UIDevice.current.identifierForVendor!.uuidString)
-	])
-}
+//#Preview {
+//	IdeaList(list: [
+//		Idea(id: UUID(), status: .approved, date_created: "", title: "Forum", idea: "Have a plattform for people to connect and share ideas", device_identifier: UIDevice.current.identifierForVendor!.uuidString),
+//		Idea(id: UUID(), status: .approved, date_created: "", title: "Upcoming Protests", idea: "Why isnt there a list of upcoming protests", device_identifier: UIDevice.current.identifierForVendor!.uuidString)
+//	])
+//}
