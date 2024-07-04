@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ExampleSheet: View {
+	@Environment(\.modelContext) var modelContext
 	@Environment(\.dismiss) var dismiss
 	@State var title: String = ""
 	@State var description: String = ""
@@ -40,14 +41,27 @@ struct ExampleSheet: View {
 				}
 				ToolbarItem(placement: .topBarTrailing) {
 					Button {
-						dismiss()
 						Task {
+							let uuid = UIDevice.current.identifierForVendor!.uuidString
 							let idea = InsertableIdea(title: title,
 													  idea: description,
-													  device_identifier: UIDevice.current.identifierForVendor!.uuidString)
+													  device_identifier: uuid)
 							do {
 								let res = try await NetworkManager.shared.submitIdea(idea: idea)
 								print (res)
+								switch res {
+								case .success(let res):
+									modelContext.insert(Idea(id: res,
+															 status: .approved,
+															 date_created: Date.now,
+															 title: title,
+															 idea: description,
+															 device_identifier: uuid))
+									dismiss()
+								case .failure(let err):
+									print(err)
+								}
+								
 							} catch {
 								print(error)
 							}

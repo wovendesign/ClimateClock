@@ -56,7 +56,7 @@ final class NetworkManager {
 	}
 	
 	
-	func submitIdea(idea: InsertableIdea) async throws -> Result<String, CCError> {
+	func submitIdea(idea: InsertableIdea) async throws -> Result<UUID, CCError> {
 	 guard let url = URL(string: ideasURL) else {
 		 return .failure(.invalidURL)
 	 }

@@ -18,7 +18,7 @@ struct DirectusIdeaInsertResponse: Decodable {
 }
 
 struct DirectusIdeaInsertData: Decodable {
-	var id: String
+	var id: UUID
 }
 
 enum IdeaStatus: String, Codable {
