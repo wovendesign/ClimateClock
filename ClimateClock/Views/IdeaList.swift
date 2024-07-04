@@ -72,6 +72,17 @@ struct ExampleSheet: View {
 				ToolbarItem(placement: .topBarTrailing) {
 					Button {
 						dismiss()
+						Task {
+							let idea = InsertableIdea(title: title, 
+													  idea: description,
+													  device_identifier: UIDevice.current.identifierForVendor!.uuidString)
+							do {
+								let res = try await NetworkManager.shared.submitIdea(idea: idea)
+								print (res)
+							} catch {
+								print(error)
+							}
+						}
 					} label: {
 						Text("Send")
 					}
@@ -83,7 +94,7 @@ struct ExampleSheet: View {
 
 #Preview {
 	IdeaList(list: [
-		Idea(id: UUID(), status: .approved, date_created: "", idea: "Have a plattform for people to connect and share ideas"),
-		Idea(id: UUID(), status: .approved, date_created: "", idea: "Why isnt there a list of upcoming protests")
+		Idea(id: UUID(), status: .approved, date_created: "", title: "Forum", idea: "Have a plattform for people to connect and share ideas", device_identifier: UIDevice.current.identifierForVendor!.uuidString),
+		Idea(id: UUID(), status: .approved, date_created: "", title: "Upcoming Protests", idea: "Why isnt there a list of upcoming protests", device_identifier: UIDevice.current.identifierForVendor!.uuidString)
 	])
 }

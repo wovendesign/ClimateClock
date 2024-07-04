@@ -34,7 +34,7 @@ final class NetworkManager {
     }
 	
 	static let directusURL = "https://directus.woven.design/"
-	private let ideasURL = directusURL + "https://directus.woven.design/items/climateclock_ios_feedback"
+	private let ideasURL = directusURL + "items/climateclock_ios_feedback"
 	
 	func getIdeas() async throws -> Result<DirectusResponse, CCError> {
 		guard let url = URL(string: ideasURL) else {
@@ -55,29 +55,37 @@ final class NetworkManager {
 		}
 	}
 	
-	func submitIdea() async throws -> Result<Int, CCError> {
-		guard let url = URL(string: ideasURL) else {
-		  return .failure(.invalidURL)
-		}
-		
-		let json: [String: Any] = ["title": "ABC",
-								   "dict": ["1":"First", "2":"Second"]]
-
-		let jsonData = try? JSONSerialization.data(withJSONObject: json)
-		
-		var request = URLRequest(url: url)
-		request.httpMethod = "POST"
-		request.httpBody = jsonData
-		
-		let (task, _) = try await URLSession.shared.data(for: URLRequest(url: url))
-
-		do {
-		  let decoder = JSONDecoder()
-			let decodedResponse = try decoder.decode(DirectusResponse.self, from: task)
-		  return .success(1)
-		} catch {
-		  print(error)
-		  return .failure(.invalidData)
-		}
-	}
+	
+	func submitIdea(idea: InsertableIdea) async throws -> Result<String, CCError> {
+	 guard let url = URL(string: ideasURL) else {
+		 return .failure(.invalidURL)
+	 }
+	 
+	 let jsonData = try JSONEncoder().encode(idea)
+	 
+	 var request = URLRequest(url: url)
+	 request.httpMethod = "POST"
+	 request.httpBody = jsonData
+	 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+	 
+	 do {
+		 let (data, response) = try await URLSession.shared.data(for: request)
+		 
+		 // Check if the response is an HTTP response and has a valid status code
+		 if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+			 if let jsonString = String(data: data, encoding: .utf8) {
+				 print("Server error response: \(jsonString)")
+			 }
+			 return .failure(.invalidResponse)
+		 }
+		 
+		 // Decode response
+		 let decoder = JSONDecoder()
+		 let decodedResponse = try decoder.decode(DirectusIdeaInsertResponse.self, from: data)
+		 return .success(decodedResponse.data.id)
+	 } catch {
+		 print("Decoding error: \(error)")
+		 return .failure(.invalidData)
+	 }
+ }
 }
