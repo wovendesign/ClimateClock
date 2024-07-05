@@ -104,9 +104,9 @@ struct RenewablesWidgetEntryView: View {
 		}
 		.containerRelativeFrame(.horizontal)
 		.containerRelativeFrame(.vertical)
-		.widgetBackground(LinearGradient(colors: [.lifelineBg1, .lifelineBg2],
+		.containerBackground(LinearGradient(colors: [.lifelineBg1, .lifelineBg2],
 										 startPoint: .top,
-										 endPoint: .bottom))
+											endPoint: .bottom), for: .widget)
 		.background {
 			if (showsBackground) {
 				LinearGradient(colors: [.lifelineBg1, .lifelineBg2],
@@ -169,17 +169,4 @@ struct RenewablesWidgetMockData {
 									initial: 11.4,
 									rate: 2.0428359571070087e-8,
 									precision: 6)
-}
-
-
-extension View {
-	func widgetBackground(_ backgroundView: some View) -> some View {
-		if #available(iOSApplicationExtension 17.0, *) {
-			return containerBackground(for: .widget) {
-				backgroundView
-			}
-		} else {
-			return background(backgroundView)
-		}
-	}
 }

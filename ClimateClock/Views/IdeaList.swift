@@ -12,8 +12,9 @@ import SwiftUI
 struct IdeaList: View {
 	@Environment(\.modelContext) var modelContext
 	@Query var ideas: [Idea]
+	var searchText: String = ""
 	
-    var body: some View {
+	var body: some View {
 		List(ideas) { idea in
 			let hasVoted = idea.votes.contains{ $0.uuidString == UIDevice.current.identifierForVendor!.uuidString }
 			HStack {
@@ -30,13 +31,26 @@ struct IdeaList: View {
 					
 				} label: {
 					Text("\(idea.votes.count) +")
-						.background(hasVoted ? .blue : .clear)
+						.padding(.horizontal, 6)
+						.padding(.vertical, 2)
+						.background(hasVoted ? .aquaBlue : .clear)
+						.clipShape(.rect(cornerRadius: 20))
 						.foregroundStyle(hasVoted ? .white : .blue)
 				}
 				
 			}
 		}
-    }
+		.onAppear {
+			print(ideas)
+		}
+		.overlay {
+			if ideas.isEmpty, !searchText.isEmpty {
+				/// In case there aren't any search results, we can
+				/// show the new content unavailable view.
+				ContentUnavailableView.search
+			}
+		}
+	}
 	
 	init(sort: SortDescriptor<Idea>, searchString: String) {
 		_ideas = Query(filter: #Predicate {
@@ -46,6 +60,7 @@ struct IdeaList: View {
 				return $0.title.localizedStandardContains(searchString) || $0.idea.localizedStandardContains(searchString)
 			}
 		}, sort: [sort])
+		self.searchText = searchString
 	}
 }
 

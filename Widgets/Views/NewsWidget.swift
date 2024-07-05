@@ -85,9 +85,9 @@ struct NewsWidgetEntryView: View {
 		.padding(.vertical, 3)
 		.containerRelativeFrame(.horizontal)
 		.containerRelativeFrame(.vertical)
-		.widgetBackground(LinearGradient(colors: [.newsBg1, .newsBg2],
+		.containerBackground(LinearGradient(colors: [.newsBg1, .newsBg2],
 										 startPoint: .top,
-										 endPoint: .bottom))
+										 endPoint: .bottom), for: .widget)
 		.background {
 			if (showsBackground) {
 				LinearGradient(colors: [.newsBg1, .newsBg2],

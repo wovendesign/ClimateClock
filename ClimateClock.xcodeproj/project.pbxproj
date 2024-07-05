@@ -221,6 +221,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AddIdeaSheet.swift,
+				DigitalClock.swift,
 				IdeaList.swift,
 				IdeaListView.swift,
 				IdeaListViewModel.swift,
@@ -934,7 +935,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ClimateClock Watch App/ClimateClock Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
@@ -971,7 +972,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ClimateClock Watch App/ClimateClock Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
@@ -1008,7 +1009,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClimateClock/ClimateClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
@@ -1043,7 +1044,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClimateClock/ClimateClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
@@ -1079,7 +1080,7 @@
 				CODE_SIGN_ENTITLEMENTS = watchWidgets.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/WatchWidgets/Info.plist;
@@ -1111,7 +1112,7 @@
 				CODE_SIGN_ENTITLEMENTS = watchWidgets.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/WatchWidgets/Info.plist;

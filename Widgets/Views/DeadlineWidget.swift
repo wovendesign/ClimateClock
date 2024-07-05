@@ -156,9 +156,9 @@ struct Deadline_ComplicationEntryView : View {
 		}
 		.containerRelativeFrame(.horizontal)
 		.containerRelativeFrame(.vertical)
-		.widgetBackground(LinearGradient(colors: [.deadlineBackground1, .deadlineBackground2],
+		.containerBackground(LinearGradient(colors: [.deadlineBackground1, .deadlineBackground2],
 										 startPoint: .top,
-										 endPoint: .bottom))
+										 endPoint: .bottom), for: .widget)
 		.background {
 			if (showsBackground) {
 				LinearGradient(colors: [.deadlineBackground1, .deadlineBackground2],
