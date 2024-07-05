@@ -7,6 +7,7 @@
 //
 
 import SwiftData
+import UserNotifications
 import SwiftUI
 
 enum DateFormat {
@@ -29,7 +30,6 @@ struct NotificationSettings: View {
     @State private var settingsAlert: Bool = false
 
     var body: some View {
-        
             List {
                 Section {
                     if !localNotificationManager.notificationPermissionGranted {
@@ -97,6 +97,24 @@ struct NotificationSettings: View {
                             .weight(.semibold)
                     )
                 }
+				
+				Section {
+					ForEach(localNotificationManager.pendingRequests, id: \.identifier) { request in
+						VStack(alignment: .leading) {
+							if let trigger: UNNotificationTrigger = request.trigger {
+								Text(trigger.debugDescription)
+							}
+							
+							HStack {
+								Text(request.identifier)
+									.font(.caption)
+									.foregroundStyle(.secondary)
+							}
+						}
+					}
+				} header: {
+					Text("Upcoming Notifications")
+				}
             }
             .foregroundStyle(.white)
             .navigationTitle("News of Hope")

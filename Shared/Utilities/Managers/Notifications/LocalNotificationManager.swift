@@ -122,7 +122,7 @@ public final class LocalNotificationManager: NSObject {
 			return
 		}
 
-		var scheduleDateComponents = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: pushDate)
+		var scheduleDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: pushDate)
 
 		let schedulingPreference = getSchedulingPreference(notificationType: scheduled)
 

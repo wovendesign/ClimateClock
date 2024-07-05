@@ -58,10 +58,11 @@ struct ContentView: View {
 		}
 		.onAppear {
 			Task {
-				print("Getting Data from API")
 				if let data = await client.getDataFromClimateClockAPI(context: context) {
 					await localNotificationManager.saveNewsNotifications(news: data, context: context)
 				}
+				
+				await localNotificationManager.getPendingRequests()
 			}
 		}
     }
