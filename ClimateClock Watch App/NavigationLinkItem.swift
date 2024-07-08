@@ -165,7 +165,7 @@ struct NavigationLinkItem: View {
 				endPoint: .bottom)
 			self.title = "Lifelines"
 			self.secondaryTitle = nil
-			self.description = "Change is already happening!"
+			self.description = "Solutions are already happening!"
 			self.icon = "lifeline"
 		case .news:
 			self.foregroundColor = Color(red: 170/255, green: 209/255, blue: 255/255)
