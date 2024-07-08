@@ -163,7 +163,7 @@ struct NavigationLinkItem: View {
 				],
 				startPoint: .top,
 				endPoint: .bottom)
-			self.title = "Lifeline"
+			self.title = "Lifelines"
 			self.secondaryTitle = nil
 			self.description = "Change is already happening!"
 			self.icon = "lifeline"
