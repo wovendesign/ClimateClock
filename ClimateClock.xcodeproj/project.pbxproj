@@ -220,17 +220,14 @@
 		F675050F2C358EFF00351101 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				AddIdeaSheet.swift,
-				DigitalClock.swift,
 				IdeaList.swift,
-				IdeaListView.swift,
-				IdeaListViewModel.swift,
 			);
 			target = F62A7A532B48700A002A7E25 /* ClimateClock */;
 		};
 		F6A15DC62C2343D9006A5643 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				SheetButtonGroup.swift,
 				SheetView.swift,
 			);
 			target = F62A7A632B48700B002A7E25 /* ClimateClock Watch App */;

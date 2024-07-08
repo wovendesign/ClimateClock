@@ -16,10 +16,10 @@ struct ContentView: View {
 	
     var body: some View {
 		TabView {
-			DigitalClock()
-				.tabItem {
-					Label("Climate Clock", systemImage: "globe.americas.fill")
-				}
+//			DigitalClock()
+//				.tabItem {
+//					Label("Climate Clock", systemImage: "globe.americas.fill")
+//				}
 
 			Text("Tab 2")
 				.tabItem {

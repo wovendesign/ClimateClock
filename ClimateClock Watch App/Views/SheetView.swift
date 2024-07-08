@@ -41,7 +41,7 @@ struct SheetView<Content: View>: View {
 					}
 					.disabled(true)
 					.opacity(0.5)
-					
+
 					ShareLink(item: url)
 				}
 			}

@@ -10,31 +10,13 @@ import SwiftUI
 struct LifeLineCell: View {
     let lifeLine: LifeLine
 	let lifelineColor: LifelineColor
-    var label: String?
-    @State private var animatedValue = 0.0
-    let timestamp: Date
-    let unit: String
-    var precision: Int = 0
+	@Binding var selectedLifeLine: SelectedLifeLine?
 	
-	@State var sheetOpen = false
-
-	init(lifeLine: LifeLine, lifelineColor: LifelineColor) {
-        let dateFormatter = ISO8601DateFormatter()
-
-        let pastTimestamp = dateFormatter.date(from: lifeLine.timestamp) ?? Date()
-
-        self.lifeLine = lifeLine
-		self.lifelineColor = lifelineColor
-        label = lifeLine.labels.first
-        animatedValue = 0.0
-        timestamp = pastTimestamp
-
-        // Get the shortest unit
-        unit = lifeLine.unit_labels.sorted(by: { $0.count < $1.count }).first ?? "n"
-        precision = resolutionToPrecision(lifeLine.resolution)
-		
-//		print(self.lifelineColor)
-    }
+    @State var label: String?
+    @State private var animatedValue = 0.0
+	@State var timestamp: Date = Date()
+    @State var unit: String = ""
+    @State var precision: Int = 0
 
     var body: some View {
         VStack(alignment: .trailing, spacing: 4) {
@@ -95,6 +77,18 @@ struct LifeLineCell: View {
                 }
             }
             .onAppear {
+				let dateFormatter = ISO8601DateFormatter()
+
+				let pastTimestamp = dateFormatter.date(from: lifeLine.timestamp) ?? Date()
+
+
+				label = lifeLine.labels.first
+				animatedValue = 0.0
+				timestamp = pastTimestamp
+
+				// Get the shortest unit
+				unit = lifeLine.unit_labels.sorted(by: { $0.count < $1.count }).first ?? "n"
+				precision = resolutionToPrecision(lifeLine.resolution)
                 calculateTimeAdjustedValue()
             }
             lifeLine.size == .large ? HStack(spacing: 2) {
@@ -121,23 +115,13 @@ struct LifeLineCell: View {
                     .cornerRadius(8.0)
             } : nil
         }
-		.sheet(isPresented: $sheetOpen) {
-			SheetView(url: URL(string: "https://climateclock.world/science#renewable-energy")) {
-				LifeLineText(precision: precision, unit: unit, timestamp: timestamp, lifeLine: lifeLine)
-				Text(label ?? "")
-					.font(
-						.custom("Oswald", size: 16)
-					)
-				Text("https://climateclock.world/science#renewable-energy")
-					.font(
-						.custom("Assistant", size: 12)
-							.weight(.semibold)
-					)
-					.foregroundStyle(.white)
-			}
-		}
 		.onTapGesture {
-			sheetOpen = true
+			selectedLifeLine = SelectedLifeLine(precision: precision,
+												unit: unit,
+												timestamp: timestamp,
+												lifeLine: lifeLine,
+												label: label ?? "n",
+												url: "https://climateclock.world/science#renewable-energy")
 		}
     }
 

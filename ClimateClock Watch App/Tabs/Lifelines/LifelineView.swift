@@ -13,8 +13,20 @@ struct LifelineColor {
 	var backgroundColor: Color
 }
 
+struct SelectedLifeLine: Equatable {
+	var precision: Int
+	var unit: String
+	var timestamp: Date
+	var lifeLine: LifeLine
+	var label: String
+	var url: String
+}
+
 struct LifelineView: View {
     @Query(sort: \LifeLine.order) var lifeLines: [LifeLine]
+	
+	@State var sheetOpen = false
+	@State var selectedLifeline: SelectedLifeLine?
 
 	let colorGradients: [LifelineColor] = [
 			LifelineColor(foregroundColor: Color(red: 224/255, green: 241/255, blue: 111/255),
@@ -35,10 +47,43 @@ struct LifelineView: View {
 		
 		List(lifeLines.indices, id: \.self) { index in
 			LifeLineCell(lifeLine: lifeLines[index],
-						 lifelineColor: (colorGradients.count > index ? colorGradients[index] : colorGradients.last)!)
+						 lifelineColor: (colorGradients.count > index ? colorGradients[index] : colorGradients.last)!,
+						 selectedLifeLine: $selectedLifeline)
 			.listRowBackground(Color.clear)
 			.contentMargins(4, for: .scrollContent)
 		}
+		.onChange(of: selectedLifeline, { oldValue, newValue in
+			if (newValue != nil) {
+				sheetOpen = true
+			}
+		})
+		.sheet(isPresented: $sheetOpen, onDismiss: {
+			selectedLifeline = nil
+		}, content: {
+			if let lifeline = selectedLifeline {
+				ScrollView {
+					VStack(alignment: .leading) {
+						LifeLineText(precision: lifeline.precision,
+									 unit: lifeline.unit,
+									 timestamp: lifeline.timestamp,
+									 lifeLine: lifeline.lifeLine)
+						Text(lifeline.label)
+							.font(
+								.custom("Oswald", size: 16)
+							)
+						Text("https://climateclock.world/science#renewable-energy")
+							.font(
+								.custom("Assistant", size: 12)
+									.weight(.semibold)
+							)
+							.foregroundStyle(.white)
+						if let url = URL(string: lifeline.url) {
+							SheetButtonGroup(url: url)
+						}
+					}
+				}
+			}
+		})
 		.containerBackground(.lime75.opacity(0.5).gradient, for: .navigation)
     }
 }
