@@ -110,6 +110,7 @@ struct NavigationLinkItem: View {
                                         .custom("Oswald", size: 16)
                                         .weight(.regular)
                                     )
+                                    .lineLimit(1)
                                     .tracking(0.32)
                                     .monospacedDigit()
                                     .padding(.leading, 4)
