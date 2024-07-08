@@ -32,8 +32,8 @@ struct RelativeTimeCell: View {
                                         leading: 6,
                                         bottom: 2,
                                         trailing: 6))
-                    .foregroundStyle(.navy)
-                    .background(.aquaBlue75)
+                    .foregroundStyle(.black)
+                    .background(.lifelineFg1)
                     .clipShape(.capsule)
             } else {
                 Text(relativeDate)

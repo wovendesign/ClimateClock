@@ -155,28 +155,28 @@ struct NavigationLinkItem: View {
 			self.description = nil
 			self.icon = "megaphone"
 		case .lifeline:
-			self.foregroundColor = Color(red: 224/255, green: 241/255, blue: 111/255)
-			self.backgroundColor = LinearGradient(
-				colors: [
-					Color(red: 0.19, green: 0.19, blue: 0.13),
-					Color(red: 0.11, green: 0.11, blue: 0.07)
-				],
-				startPoint: .top,
-				endPoint: .bottom)
+            self.foregroundColor = Color(red: 170/255, green: 209/255, blue: 255/255)
+            self.backgroundColor = LinearGradient(
+                colors: [
+                    Color(red: 0.14, green: 0.17, blue: 0.2),
+                    Color(red: 0.05, green: 0.09, blue: 0.14)
+                ],
+                startPoint: .top,
+                endPoint: .bottom)
 			self.title = "Lifelines"
 			self.secondaryTitle = nil
 			self.description = "Solutions are already happening!"
 			self.icon = "lifeline"
 		case .news:
-			self.foregroundColor = Color(red: 170/255, green: 209/255, blue: 255/255)
-			self.backgroundColor = LinearGradient(
-				colors: [
-					Color(red: 0.14, green: 0.17, blue: 0.2),
-					Color(red: 0.05, green: 0.09, blue: 0.14)
-				],
-				startPoint: .top,
-				endPoint: .bottom)
-			self.title = "News of Hope"
+            self.foregroundColor = Color(red: 224/255, green: 241/255, blue: 111/255)
+            self.backgroundColor = LinearGradient(
+                colors: [
+                    Color(red: 0.19, green: 0.19, blue: 0.13),
+                    Color(red: 0.11, green: 0.11, blue: 0.07)
+                ],
+                startPoint: .top,
+                endPoint: .bottom)
+			self.title = "Newsfeed of Hope"
 			self.secondaryTitle = nil
 			self.description = "Daily news of recent climate victories."
 			self.icon = "news"

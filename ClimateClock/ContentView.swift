@@ -17,11 +17,11 @@ struct ContentView: View {
 //        }
 //        .padding()
 		NavigationStack {
-			IdeaList(list: [
-				Idea(id: UUID(), status: .approved, date_created: "", title: "Forum", idea: "Have a plattform for people to connect and share ideas"),
-				Idea(id: UUID(), status: .approved, date_created: "", title: "Upcoming Protests", idea: "Why isnt there a list of upcoming protests")
-			])
-			.navigationTitle("Climate Clock")
+//			IdeaList(list: [
+//				Idea(id: UUID(), status: .approved, date_created: "", title: "Forum", idea: "Have a plattform for people to connect and share ideas"),
+//				Idea(id: UUID(), status: .approved, date_created: "", title: "Upcoming Protests", idea: "Why isnt there a list of upcoming protests")
+//			])
+//			.navigationTitle("Climate Clock")
 		}
     }
 }

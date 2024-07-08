@@ -49,7 +49,7 @@ struct NotificationSettings: View {
                         }
                         .foregroundStyle(.black)
                         .listRowBackground(RoundedRectangle(cornerRadius: 11)
-                            .foregroundStyle(.aquaBlue))
+                            .foregroundStyle(.lime))
                         .alert("Notifications Disabled", isPresented: $settingsAlert) {
                             Text("To enable Notifications, go to your Phone Settings > Notifications > Climate Clock and enable 'Allow Notifications'.")
                             Button {
