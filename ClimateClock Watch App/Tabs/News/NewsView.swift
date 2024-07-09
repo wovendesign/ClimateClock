@@ -26,7 +26,7 @@ struct NewsView: View {
 			NewsListItem(newsItem: item)
 		}
 		.padding(.horizontal, 4)
-		.containerBackground(.navy75.gradient, for: .navigation)
+		.containerBackground(.lime.gradient, for: .navigation)
 		.toolbar {
 			ToolbarItem(placement: .confirmationAction) {
 				NavigationLink(value: "notificationSettings") {

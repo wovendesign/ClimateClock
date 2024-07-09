@@ -41,7 +41,8 @@ struct NewsListItem: View {
                     .custom("Assistant", size: 12)
                         .weight(.semibold)
                 )
-                .foregroundStyle(Color.gray)
+                .opacity(0.7)
+                .foregroundStyle(Color.white)
         }
         .sheet(isPresented: $sheetOpen) {
 			SheetView(url: URL(string: newsItem.link?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "")) {
@@ -57,7 +58,9 @@ struct NewsListItem: View {
 							.custom("Assistant", size: 12)
 								.weight(.semibold)
 						)
-						.foregroundStyle(Color.gray)
+                        .opacity(0.7)
+                        .foregroundStyle(Color.white)
+                        
 				}
 			}
         }
