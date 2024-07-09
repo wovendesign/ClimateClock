@@ -88,6 +88,9 @@
 		F6EF80DD2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
 		F6EF80E42C079AB8001996C9 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = F6EF80E32C079AB8001996C9 /* Sentry */; };
 		F6F2A7852C36B8BF0056FD94 /* iosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F2A7842C36B8BC0056FD94 /* iosClient.swift */; };
+		F6F2A7952C3D92570056FD94 /* WatchToiOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */; };
+		F6F2A7972C3D94130056FD94 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F2A7962C3D940E0056FD94 /* WatchConnector.swift */; };
+		F6F2A7992C3D94EE0056FD94 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F2A7982C3D94EE0056FD94 /* WatchConnectivity.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +208,9 @@
 		F6EF80D82C075D15001996C9 /* NotificationTimeSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeSetter.swift; sourceTree = "<group>"; };
 		F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+TimeFormat.swift"; sourceTree = "<group>"; };
 		F6F2A7842C36B8BC0056FD94 /* iosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosClient.swift; sourceTree = "<group>"; };
+		F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchToiOSConnector.swift; sourceTree = "<group>"; };
+		F6F2A7962C3D940E0056FD94 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
+		F6F2A7982C3D94EE0056FD94 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -246,6 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6F2A7992C3D94EE0056FD94 /* WatchConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +402,7 @@
 				F6BBABED2BF7C0980090780B /* ClimateClock.entitlements */,
 				F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */,
 				F62A7A592B48700A002A7E25 /* ContentView.swift */,
+				F6F2A7962C3D940E0056FD94 /* WatchConnector.swift */,
 				F62A7A5B2B48700B002A7E25 /* Assets.xcassets */,
 				F62A7A5D2B48700B002A7E25 /* Preview Content */,
 			);
@@ -416,6 +424,7 @@
 				F6256D982BF3BA470012FD30 /* Tabs */,
 				F6D315EA2BBDC34100C75299 /* Utilities */,
 				F62DCB852B7BD4BD00855D88 /* Info.plist */,
+				F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */,
 				F62A7A692B48700B002A7E25 /* App.ClimateClock.swift */,
 				F62A7A6B2B48700B002A7E25 /* ContentView.swift */,
 				F6A15DC12C230702006A5643 /* NavigationLinkItem.swift */,
@@ -438,6 +447,7 @@
 		F62A7A802B487048002A7E25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F6F2A7982C3D94EE0056FD94 /* WatchConnectivity.framework */,
 				F62A7A812B487048002A7E25 /* WidgetKit.framework */,
 				F62A7A832B487048002A7E25 /* SwiftUI.framework */,
 			);
@@ -713,6 +723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F62A7A5A2B48700A002A7E25 /* ContentView.swift in Sources */,
+				F6F2A7972C3D94130056FD94 /* WatchConnector.swift in Sources */,
 				F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F60B29B22B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
 				F6F2A7852C36B8BF0056FD94 /* iosClient.swift in Sources */,
@@ -740,6 +751,7 @@
 				F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F62A7A6C2B48700B002A7E25 /* ContentView.swift in Sources */,
 				F62EED602BBB2E5C00352E46 /* CCError.swift in Sources */,
+				F6F2A7952C3D92570056FD94 /* WatchToiOSConnector.swift in Sources */,
 				F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */,
 				F6256D9D2BF4ABE80012FD30 /* LifeLineGoal.swift in Sources */,
 				F672CA452B7D4F4100FAA4B4 /* DeadlineView.swift in Sources */,

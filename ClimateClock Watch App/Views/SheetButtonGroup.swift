@@ -9,6 +9,7 @@ import AuthenticationServices
 import SwiftUI
 
 struct SheetButtonGroup: View {
+	@Environment(WatchToiOSConnector.self) var watchConnector: WatchToiOSConnector
 	let url: URL
 	
 	var body: some View {
@@ -27,12 +28,12 @@ struct SheetButtonGroup: View {
 		}
 		
 		Button {
-			
+			watchConnector.sendUrlToiOS(url: url.absoluteString)
 		} label: {
 			Text("Open on phone (coming soon)")
 		}
-		.disabled(true)
-		.opacity(0.5)
+//		.disabled(true)
+//		.opacity(0.5)
 		
 		ShareLink(item: url)
 	}
