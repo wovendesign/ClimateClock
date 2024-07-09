@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ClimateClock Watch App Release.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>ClimateClock Watch App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -90,6 +95,11 @@
 			<true/>
 		</dict>
 		<key>F62A7AB12B487134002A7E25</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F6579C6D2C2043AB003F037D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

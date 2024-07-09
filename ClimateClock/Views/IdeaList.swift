@@ -2,99 +2,68 @@
 //  IdeaList.swift
 //  ClimateClock
 //
-//  Created by Eric Wätke on 03.07.24.
+//  Created by Eric Wätke on 04.07.24.
 //  Copyright © 2024 woven. All rights reserved.
 //
 
+import SwiftData
 import SwiftUI
 
 struct IdeaList: View {
-	@State var list: [Idea]
-	@State private var searchText: String = ""
-	@State private var showingSheet = false
-	
-	
-	var filteredList: [Idea] {
-		guard !searchText.isEmpty else { return list }
-		return list.filter { $0.idea.localizedCaseInsensitiveContains(searchText) }
-	}
+	@Environment(\.modelContext) var modelContext
+	@Query var ideas: [Idea]
+	var searchText: String = ""
 	
 	var body: some View {
-		VStack {
-			List(filteredList) { idea in
-				Text(idea.idea)
-			}
-			.searchable(text: $searchText, placement: .navigationBarDrawer)
-			.sheet(isPresented: $showingSheet, content: ExampleSheet.init)
-			
-			Spacer()
-			
-			Button {
-				showingSheet = true
-			} label: {
-				Text("Propose your own Idea")
-			}
-			
-		}
-	}
-}
-
-struct ExampleSheet: View {
-	@Environment(\.dismiss) var dismiss
-	@State var title: String = ""
-	@State var description: String = ""
-	
-	var body: some View {
-		NavigationStack {
-			VStack {
-				Form {
-					Section(header: Text("Title")) {
-						TextField("Your idea in a few words", text: $title)
-					}
+		List(ideas) { idea in
+			let hasVoted = idea.votes.contains{ $0.uuidString == UIDevice.current.identifierForVendor!.uuidString }
+			HStack {
+				VStack(alignment: .leading) {
+					Text(idea.date_created.formatted(.relative(presentation: .named, unitsStyle: .wide)))
+					Text(idea.title)
+						.bold()
+					Text(idea.idea)
+				}
+				
+				Spacer()
+				
+				Button {
 					
-					Section(header: Text("Description"), footer: Text("0/255")) {
-						TextField("Describe your idea …", text: $description, axis: .vertical)
-										.lineLimit(2...)
-//						TextEditor(text: $description)
-					}
+				} label: {
+					Text("\(idea.votes.count) +")
+						.padding(.horizontal, 6)
+						.padding(.vertical, 2)
+						.background(hasVoted ? .aquaBlue : .clear)
+						.clipShape(.rect(cornerRadius: 20))
+						.foregroundStyle(hasVoted ? .white : .blue)
 				}
 				
 			}
-			.navigationTitle("Your Idea")
-			.toolbar(content: {
-				ToolbarItem(placement: .topBarLeading) {
-					Button {
-						dismiss()
-					} label: {
-						Text("Cancel")
-					}
-				}
-				ToolbarItem(placement: .topBarTrailing) {
-					Button {
-						dismiss()
-						Task {
-							let idea = InsertableIdea(title: title, 
-													  idea: description,
-													  device_identifier: UIDevice.current.identifierForVendor!.uuidString)
-							do {
-								let res = try await NetworkManager.shared.submitIdea(idea: idea)
-								print (res)
-							} catch {
-								print(error)
-							}
-						}
-					} label: {
-						Text("Send")
-					}
-				}
-			})
 		}
+		.onAppear {
+			print(ideas)
+		}
+		.overlay {
+			if ideas.isEmpty, !searchText.isEmpty {
+				/// In case there aren't any search results, we can
+				/// show the new content unavailable view.
+				ContentUnavailableView.search
+			}
+		}
+	}
+	
+	init(sort: SortDescriptor<Idea>, searchString: String) {
+		_ideas = Query(filter: #Predicate {
+			if searchString.isEmpty {
+				return true
+			} else {
+				return $0.title.localizedStandardContains(searchString) || $0.idea.localizedStandardContains(searchString)
+			}
+		}, sort: [sort])
+		self.searchText = searchString
 	}
 }
 
 #Preview {
-	IdeaList(list: [
-		Idea(id: UUID(), status: .approved, date_created: "", title: "Forum", idea: "Have a plattform for people to connect and share ideas", device_identifier: UIDevice.current.identifierForVendor!.uuidString),
-		Idea(id: UUID(), status: .approved, date_created: "", title: "Upcoming Protests", idea: "Why isnt there a list of upcoming protests", device_identifier: UIDevice.current.identifierForVendor!.uuidString)
-	])
+	IdeaList(sort: SortDescriptor(\Idea.title), searchString: "")
 }
