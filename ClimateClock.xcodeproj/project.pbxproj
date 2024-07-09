@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F6017E7B2C2C3C1A00929507 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6017E7A2C2C3C1400929507 /* LocalNotificationManager.swift */; };
 		F6017E7C2C2C3C1A00929507 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6017E7A2C2C3C1400929507 /* LocalNotificationManager.swift */; };
 		F6017E7D2C2C3C1A00929507 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6017E7A2C2C3C1400929507 /* LocalNotificationManager.swift */; };
 		F6017E802C2C3F8900929507 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6017E7F2C2C3F8400929507 /* LocalNotification.swift */; };
@@ -82,6 +81,7 @@
 		F6D315E82BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
 		F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
 		F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
+		F6D503642C3DAA6700DE50C9 /* iOSNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D503632C3DAA5E00DE50C9 /* iOSNotificationManager.swift */; };
 		F6EF80D72C0757E5001996C9 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80D62C0757E5001996C9 /* NotificationSettings.swift */; };
 		F6EF80D92C075D15001996C9 /* NotificationTimeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80D82C075D15001996C9 /* NotificationTimeSetter.swift */; };
 		F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
@@ -204,6 +204,7 @@
 		F6D315E02BBD85FD00C75299 /* NewsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItem.swift; sourceTree = "<group>"; };
 		F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		F6D503632C3DAA5E00DE50C9 /* iOSNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNotificationManager.swift; sourceTree = "<group>"; };
 		F6EF80D62C0757E5001996C9 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		F6EF80D82C075D15001996C9 /* NotificationTimeSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeSetter.swift; sourceTree = "<group>"; };
 		F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+TimeFormat.swift"; sourceTree = "<group>"; };
@@ -396,6 +397,7 @@
 		F62A7A562B48700A002A7E25 /* ClimateClock */ = {
 			isa = PBXGroup;
 			children = (
+				F6D503632C3DAA5E00DE50C9 /* iOSNotificationManager.swift */,
 				F6F2A7842C36B8BC0056FD94 /* iosClient.swift */,
 				F6F2A7812C36B0550056FD94 /* Tabs */,
 				F675050B2C358EE900351101 /* Views */,
@@ -728,7 +730,6 @@
 				F60B29B22B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
 				F6F2A7852C36B8BF0056FD94 /* iosClient.swift in Sources */,
 				F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */,
-				F6017E7B2C2C3C1A00929507 /* LocalNotificationManager.swift in Sources */,
 				F67505082C358B3200351101 /* DirectusData.swift in Sources */,
 				F62EED5C2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
 				F6BBABE52BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
@@ -736,6 +737,7 @@
 				F6017E812C2C3F8900929507 /* LocalNotification.swift in Sources */,
 				F62EED5F2BBB2E5C00352E46 /* CCError.swift in Sources */,
 				F6256D952BF3B2200012FD30 /* DataModels.swift in Sources */,
+				F6D503642C3DAA6700DE50C9 /* iOSNotificationManager.swift in Sources */,
 				F6256D8D2BF39FE10012FD30 /* Client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

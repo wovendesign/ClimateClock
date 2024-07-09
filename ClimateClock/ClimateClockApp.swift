@@ -10,6 +10,7 @@ import SwiftUI
 
 @main
 struct ClimateClockApp: App {
+	@State var lnManager = LocalNotificationManager()
 	@State var watchConnector = WatchConnector()
 	
     var body: some Scene {
@@ -18,6 +19,7 @@ struct ClimateClockApp: App {
 				.colorScheme(.dark)
 				.preferredColorScheme(.dark)
 				.environment(watchConnector)
+				.environment(lnManager)
         }
 		.modelContainer(for: Idea.self)
     }
