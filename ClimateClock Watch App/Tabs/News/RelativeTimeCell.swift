@@ -25,6 +25,7 @@ struct RelativeTimeCell: View {
     var body: some View {
         if pushDate != nil {
 			Text(relativeDate)
+				.font(.custom("Oswald", size: 12).weight(.regular))
 				.padding(today ?
 						 EdgeInsets(top: 1.5,
 									leading: 6,

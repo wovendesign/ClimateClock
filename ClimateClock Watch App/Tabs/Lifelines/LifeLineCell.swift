@@ -49,7 +49,7 @@ struct LifeLineCell: View {
                                     leading: 0,
                                     bottom: 4,
                                     trailing: 0))
-				.background(lifelineColor.backgroundColor)
+				.background(lifelineColor.backgroundColor.opacity(0.4))
 				.foregroundStyle(lifelineColor.foregroundColor)
                 .clipShape(.rect(cornerRadius: lifeLine.size == .small ? 6 : 8))
 
