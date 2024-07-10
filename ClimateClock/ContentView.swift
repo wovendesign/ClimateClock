@@ -14,6 +14,7 @@ enum SheetContent {
 
 struct ContentView: View {
 	@Environment(\.openURL) var openURL
+	@Environment(\.scenePhase) var scenePhase
 	@Environment(WatchConnector.self) var watchConnector
 	@Environment(LocalNotificationManager.self) var lnManager
 	
@@ -25,12 +26,50 @@ struct ContentView: View {
 			ScrollView {
 				VStack {
 					
-					Button {
-						watchConnector.requestNotificationPermission()
-					} label: {
-						Text("Get Notified")
+					if (!lnManager.isGranted) {
+						Button {
+							watchConnector.requestNotificationPermission()
+						} label: {
+							VStack {
+								VStack {
+									Text("Do you want to read articles & visit links on your phone?")
+										.font(.custom("Oswald", size: 26).weight(.medium))
+										.multilineTextAlignment(.leading)
+										.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+									
+									Text("Allow notifications to be send from your Apple Watch to your phone to read articles and visit links from the Climate Clock app directly on your phone.")
+									  .font(.custom("Assistant", size: 17))
+									  .multilineTextAlignment(.leading)
+									  .foregroundColor(.white)
+									  .frame(maxWidth: .infinity, alignment: .topLeading)
+									  .opacity(0.7)
+								}
+								Text("Allow Notifications")
+								  .font(
+									.custom("Oswald", size: 18)
+									  .weight(.semibold)
+								  )
+								  .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+								  .padding(.top, 12)
+								  .padding(.bottom, 14)
+								  .foregroundStyle(Color(red: 0.03, green: 0.19, blue: 0.31))
+								  .background(Color(red: 0.85, green: 0.89, blue: 0.2))
+								  .clipShape(.rect(cornerRadius: 12))
+							}
+							.padding(.horizontal, 32)
+							.padding(.top, 24)
+							.padding(.bottom, 28)
+							.background(Color(red: 0.11, green: 0.11, blue: 0.12))
+							.foregroundStyle(.white)
+							.clipShape(.rect(cornerRadius: 24))
+							.overlay(
+								RoundedRectangle(cornerRadius: 24)
+									.inset(by: 0.5)
+									.stroke(.white.opacity(0.25), lineWidth: 1)
+
+							)
+						}
 					}
-					.buttonStyle(.bordered)
 					
 					HomeBlob(headerForegroundColor: .black,
 							 headerBackgroundColor: .black,
@@ -40,7 +79,7 @@ struct ContentView: View {
 							 description: nil,
 							 buttonText: "View Tour Again",
 							 buttonImage: "chevron.right",
-							 buttonColor: .navy75,
+							 buttonColor: Color(red: 0.27, green: 0.39, blue: 0.48),
 							 foregroundColor: .black,
 							 backgroundColor: Color(red: 0.56, green: 0.76, blue: 1))
 					.onTapGesture {
@@ -72,7 +111,7 @@ struct ContentView: View {
 							 description: "Join the mailing list for exclusive updates from the Climate Clock and be among the first to know about new clock installations and opportunities for engagement with our global network of changemakers!",
 							 buttonText: "Join the Newsletter",
 							 buttonImage: "chevron.right",
-							 buttonColor: .aquaBlue,
+							 buttonColor: Color(red: 0.56, green: 0.76, blue: 1),
 							 foregroundColor: .white,
 							 backgroundColor: Color(red: 0.11, green: 0.11, blue: 0.12))
 					.onTapGesture {
@@ -95,6 +134,11 @@ struct ContentView: View {
 			}
 			.onAppear {
 				watchConnector.notificationManager = lnManager
+			}
+			.onChange(of: scenePhase) {
+				Task {
+					await lnManager.getCurrentSettings()
+				}
 			}
 			.sheet(isPresented: $sheetOpen) {
 				switch sheetContent {

@@ -225,7 +225,11 @@
 		F675050F2C358EFF00351101 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				HomeBlob.swift,
 				IdeaList.swift,
+				Onboarding/Onboarding.swift,
+				Onboarding/OnboardingView.swift,
+				WebView.swift,
 			);
 			target = F62A7A532B48700A002A7E25 /* ClimateClock */;
 		};
