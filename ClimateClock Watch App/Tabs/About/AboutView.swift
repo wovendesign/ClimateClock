@@ -21,6 +21,8 @@ struct AboutView: View {
 				HStack(alignment: .center) {
 					Spacer()
 					Image("climateclock-logo")
+						.resizable()
+						.frame(width: 24, height: 24)
 					Text("Climate Clock")
 					  .font(Font.custom("Oswald", size: 14))
 					  .foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))

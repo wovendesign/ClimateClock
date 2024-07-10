@@ -12,6 +12,8 @@ struct ActionItem: View {
     let title: String
     let description: String
     let callToAction: String
+	let url: String
+	@Binding var selectedAction: SelectedAction?
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -52,6 +54,9 @@ struct ActionItem: View {
         .padding(4)
         .background(.white.opacity(0.12))
         .clipShape(.rect(cornerRadius: 8))
+		.onTapGesture {
+			selectedAction = SelectedAction(cta: callToAction, description: description, url: url)
+		}
     }
 }
 
@@ -59,5 +64,7 @@ struct ActionItem: View {
     ActionItem(image: "megaphone",
                title: "Megaphone",
                description: "The clock helps decision-makers and the wider public understand that we are in a Climate Emergency.",
-               callToAction: "Sound the alarm")
+               callToAction: "Sound the alarm",
+			   url: "",
+			   selectedAction: .constant(SelectedAction(cta: "", description: "", url: "")))
 }
