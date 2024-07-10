@@ -26,22 +26,17 @@ struct NewsListItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             RelativeTimeCell(pushDate: newsItem.pushDate)
-            Text(newsItem.headline)
-                .font(
-                    .custom("Oswald", size: 16)
-                        .weight(.regular)
-                )
-                .tracking(0.32)
+			Text(newsItem.headline)
+				.applyTextStyle(.Paragraph_Highlighted)
                 .frame(maxWidth: .infinity, alignment: .leading)
 				.environment(\._lineHeightMultiple, 0.8)
 
-            Text(newsItem.source ?? "")
-                .font(
-                    .custom("Assistant", size: 12)
-                        .weight(.semibold)
-                )
-                .opacity(0.7)
-                .foregroundStyle(Color.white)
+			if let source = newsItem.source {
+				Text(source)
+					.applyTextStyle(.Label)
+					.opacity(0.7)
+					.foregroundStyle(Color.white)
+			}
         }
 		.onTapGesture {
 			guard let link = newsItem.link else {

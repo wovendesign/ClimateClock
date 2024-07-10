@@ -19,30 +19,28 @@ struct RelativeTimeCell: View {
         }
         return pushDate.formatted(.relative(presentation: .named))
     }
+	
+	@State var today: Bool = false
 
     var body: some View {
         if pushDate != nil {
-            if relativeDate == "TODAY" {
-                Text(relativeDate)
-                    .font(
-                        .custom("Oswald", size: 12)
-                            .weight(.semibold)
-                    )
-                    .padding(EdgeInsets(top: 1.5,
-                                        leading: 6,
-                                        bottom: 2,
-                                        trailing: 6))
-                    .foregroundStyle(.black)
-                    .background(.lifelineFg1)
-                    .clipShape(.capsule)
-            } else {
-                Text(relativeDate)
-                    .font(
-                        .custom("Oswald", size: 12)
-                            .weight(.semibold)
-                    )
-                    .foregroundStyle(.gray)
-            }
+			Text(relativeDate)
+				.padding(today ?
+						 EdgeInsets(top: 1.5,
+									leading: 6,
+									bottom: 2,
+									trailing: 6) 
+						 : EdgeInsets(top: 0,
+									  leading: 0,
+									  bottom: 0,
+									  trailing: 0)
+				)
+				.foregroundStyle(today ? .black : .gray)
+				.background(today ? .lifelineFg1 : .clear)
+				.clipShape(.capsule)
+				.onAppear {
+					today = relativeDate == "TODAY"
+				}
         }
     }
 }

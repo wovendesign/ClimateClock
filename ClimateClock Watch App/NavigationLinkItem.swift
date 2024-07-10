@@ -51,23 +51,15 @@ struct NavigationLinkItem: View {
 				Image(icon)
 				if let title = title {
 					Text(title)
-						.font(
-							.custom("Oswald", size: 18)
-							.weight(.semibold)
-						)
-						.textCase(.uppercase)
-						.tracking(0.32)
+						.applyHeadlineStyle(.Section_Bold)
 						.environment(\._lineHeightMultiple, 0.75)
 						.padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
 						.minimumScaleFactor(0.5)
+						.textCase(.uppercase)
 				}
 				if let secondaryTitle = secondaryTitle {
 					Text(secondaryTitle)
-						.font(
-							.custom("Oswald", size: 16)
-							.weight(.regular)
-						)
-						.tracking(0.32)
+						.applyHeadlineStyle(.Section)
 						.environment(\._lineHeightMultiple, 0.75)
 					// Top Padding when no other title exists
 						.padding(EdgeInsets(top: title == nil ? 4 : 0, leading: 0, bottom: 0, trailing: 0))
@@ -76,43 +68,23 @@ struct NavigationLinkItem: View {
 				if title == "Deadline" {
 					HStack(alignment: .bottom, spacing: 0) {
 						Text("\(diff(deadline: entry.deadline).years)")
-							.font(
-								.custom("Oswald", size: 16)
-								.weight(.regular)
-							)
-							.tracking(0.32)
+							.applyHeadlineStyle(.Section)
 							.monospacedDigit()
 						Text("y")
-							.font(
-								.custom("Oswald", size: 16)
-								.weight(.regular)
-							)
-							.tracking(0.32)
+							.applyHeadlineStyle(.Section)
 							.monospacedDigit()
 						
 						Text("\(diff(deadline: entry.deadline).days)")
-							.font(
-								.custom("Oswald", size: 16)
-								.weight(.regular)
-							)
-							.tracking(0.32)
+							.applyHeadlineStyle(.Section)
 							.monospacedDigit()
 							.padding(.leading, 4)
 						Text("d")
-							.font(
-								.custom("Oswald", size: 16)
-								.weight(.regular)
-							)
-							.tracking(0.32)
-							.monospacedDigit()
+							.applyHeadlineStyle(.Section)
 						Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
-							.font(
-								.custom("Oswald", size: 16)
-								.weight(.regular)
-							)
-							.tracking(0.32)
+							.applyHeadlineStyle(.Section)
 							.monospacedDigit()
 							.padding(.leading, 4)
+						
 					}
 				}
 				

@@ -15,7 +15,7 @@ struct SheetButtonGroup: View {
 	let url: URL
 	
 	var body: some View {
-		Button("Read on watch") {
+		Button {
 			// Source: https://www.reddit.com/r/apple/comments/rcn2h7/comment/hnwr8do/
 			let session = ASWebAuthenticationSession(
 				url: url,
@@ -27,6 +27,9 @@ struct SheetButtonGroup: View {
 			session.prefersEphemeralWebBrowserSession = true
 			
 			session.start()
+		} label: {
+			Text("Read on Watch")
+				.applyTextStyle(.Label_Button)
 		}
 		
 		Button {
@@ -35,8 +38,16 @@ struct SheetButtonGroup: View {
 										url: url.absoluteString)
 		} label: {
 			Text("Open on phone")
+				.applyTextStyle(.Label_Button)
 		}
 		
-		ShareLink(item: url)
+		ShareLink(item: url) {
+			Label {
+				Text("Share")
+					.applyTextStyle(.Label_Button)
+			} icon: {
+				Image(systemName: "square.and.arrow.up")
+			}
+		}
 	}
 }

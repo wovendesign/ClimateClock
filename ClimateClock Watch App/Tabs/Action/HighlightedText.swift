@@ -14,10 +14,7 @@ struct HighlightedText: View {
 
     var body: some View {
         Text(attributedString)
-			.font(
-			  Font.custom("Assistant", size: 12)
-				.weight(.semibold)
-			)
+			.applyTextStyle(.Label)
 			.foregroundStyle(.gray)
     }
 

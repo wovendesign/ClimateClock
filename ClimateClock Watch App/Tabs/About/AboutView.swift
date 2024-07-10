@@ -16,11 +16,7 @@ struct AboutView: View {
 		ScrollView {
 			VStack(alignment: .leading, spacing: 16) {
 				Text("About the Climate Clock WatchOS App")
-					.font(
-						.custom("Oswald", size: 18)
-							.weight(.semibold)
-					)
-					.tracking(0.32)
+					.applyHeadlineStyle(.Section_Bold)
 				
 				HStack(alignment: .center) {
 					Spacer()
@@ -32,19 +28,14 @@ struct AboutView: View {
 				}
 				
 				Text("Join in and participate in the Climate Clock Community too.\n\n#ClimateClock #ActInTime")
-				  .font(
-					Font.custom("Assistant", size: 12)
-					  .weight(.semibold)
-				  )
-				  .foregroundStyle(.gray)
+					.applyTextStyle(.Label)
+					.foregroundStyle(.gray)
 				
 				VStack(alignment: .leading) {
 					Text("Development")
-					  .font(
-						Font.custom("Assistant", size: 13)
-						  .weight(.semibold)
-					  )
-					  .foregroundColor(Color(red: 0.95, green: 0.96, blue: 0.99))
+						.applyHeadlineStyle(.Section)
+						.bold()
+						.foregroundColor(Color(red: 0.95, green: 0.96, blue: 0.99))
 					HighlightedText(text: "This app was designed and developed by woven.\nwoven.design",
 									highlighted: "woven.design",
 									highlightColor: .red)
@@ -55,9 +46,7 @@ struct AboutView: View {
 				.sheet(isPresented: $sheetOpen) {
 					ScrollView {
 						Text("woven.design")
-							.font(
-								.custom("Oswald", size: 16)
-							)
+							.applyTextStyle(.Paragraph)
 						VStack(alignment: .leading) {
 							SheetButtonGroup(notificationTitle: "Who’s woven?",
 											 notificationBody: "A design & development studio with a focus on user interfaces and websites that spark joy.",

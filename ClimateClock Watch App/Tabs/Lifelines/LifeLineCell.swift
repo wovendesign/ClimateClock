@@ -53,13 +53,10 @@ struct LifeLineCell: View {
 				.foregroundStyle(lifelineColor.foregroundColor)
                 .clipShape(.rect(cornerRadius: lifeLine.size == .small ? 6 : 8))
 
-                if lifeLine.size == .small {
+                if lifeLine.size == .small && label != nil {
                     HStack {
-                        Text(label ?? "")
-                            .font(
-                                .custom("Assistant", size: 12)
-                                    .weight(.semibold)
-                            )
+						Text(label!)
+							.applyTextStyle(.Label)
 							.foregroundStyle(.white)
                         Spacer()
                         Image("arrow_topright_4px_aquablue75")
@@ -92,11 +89,8 @@ struct LifeLineCell: View {
                 calculateTimeAdjustedValue()
             }
             lifeLine.size == .large ? HStack(spacing: 2) {
-                Text("Learn More")
-                    .font(
-                        .custom("Assistant", size: 10)
-                            .weight(.semibold)
-                    )
+				Text("Learn More")
+					.applyTextStyle(.Footnote_Default)
 					.foregroundColor(.white.opacity(0.7))
 
                 Image("arrow_topright_4px_aquablue75")

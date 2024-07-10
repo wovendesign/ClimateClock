@@ -82,6 +82,8 @@
 		F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
 		F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
 		F6D503642C3DAA6700DE50C9 /* iOSNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D503632C3DAA5E00DE50C9 /* iOSNotificationManager.swift */; };
+		F6D503A22C3E96D600DE50C9 /* StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D503A12C3E96D600DE50C9 /* StyledText.swift */; };
+		F6D503A32C3E96D600DE50C9 /* StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D503A12C3E96D600DE50C9 /* StyledText.swift */; };
 		F6EF80D72C0757E5001996C9 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80D62C0757E5001996C9 /* NotificationSettings.swift */; };
 		F6EF80D92C075D15001996C9 /* NotificationTimeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80D82C075D15001996C9 /* NotificationTimeSetter.swift */; };
 		F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
@@ -205,6 +207,7 @@
 		F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		F6D503632C3DAA5E00DE50C9 /* iOSNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNotificationManager.swift; sourceTree = "<group>"; };
+		F6D503A12C3E96D600DE50C9 /* StyledText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledText.swift; sourceTree = "<group>"; };
 		F6EF80D62C0757E5001996C9 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		F6EF80D82C075D15001996C9 /* NotificationTimeSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeSetter.swift; sourceTree = "<group>"; };
 		F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+TimeFormat.swift"; sourceTree = "<group>"; };
@@ -541,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */,
+				F6D503A12C3E96D600DE50C9 /* StyledText.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -624,7 +628,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = woven;
 				TargetAttributes = {
 					F62A7A532B48700A002A7E25 = {
@@ -739,6 +743,7 @@
 				F6256D952BF3B2200012FD30 /* DataModels.swift in Sources */,
 				F6D503642C3DAA6700DE50C9 /* iOSNotificationManager.swift in Sources */,
 				F6256D8D2BF39FE10012FD30 /* Client.swift in Sources */,
+				F6D503A32C3E96D600DE50C9 /* StyledText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +752,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6C570972B7D00320001DCE7 /* GraphViewModel.swift in Sources */,
+				F6D503A22C3E96D600DE50C9 /* StyledText.swift in Sources */,
 				F6EF80DD2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */,
 				F668F6E12C32B79F0083448E /* AboutView.swift in Sources */,
 				F60B29A42B8F837500E41091 /* NewsView.swift in Sources */,
@@ -1015,7 +1021,6 @@
 		F62A7A792B48700C002A7E25 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClimateClock/ClimateClock.entitlements;
@@ -1050,7 +1055,6 @@
 		F62A7A7A2B48700C002A7E25 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClimateClock/ClimateClock.entitlements;

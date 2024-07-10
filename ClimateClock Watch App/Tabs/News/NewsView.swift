@@ -53,18 +53,11 @@ struct NewsView: View {
 				ScrollView {
 					VStack(alignment: .leading) {
 						Text(news.newsItem.headline)
-							.font(
-								.custom("Oswald", size: 16)
-									.weight(.regular)
-							)
-							.tracking(0.32)
+							.applyTextStyle(.Paragraph_Highlighted)
+						
 						if let source = news.newsItem.source {
 							Text(source)
-								.font(
-									.custom("Assistant", size: 12)
-										.weight(.semibold)
-								)
-								.opacity(0.7)
+								.applyTextStyle(.Label)
 								.foregroundStyle(Color.white)
 								
 						}
