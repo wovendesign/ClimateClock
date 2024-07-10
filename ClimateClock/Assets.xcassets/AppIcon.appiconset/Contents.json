@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "filename" : "Icon-App-iTunes 1.png",
+      "filename" : "Icon-App-iTunes_phone.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
     },
     {
-      "filename" : "Icon-App-iTunes.png",
+      "filename" : "Icon-App-iTunes_watch.png",
       "idiom" : "universal",
       "platform" : "watchos",
       "size" : "1024x1024"

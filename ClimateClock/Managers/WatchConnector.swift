@@ -42,12 +42,14 @@ class WatchConnector: NSObject, WCSessionDelegate {
 		
 	}
 	
-	func requestNotificationPermission() {
+	func requestNotificationPermission() -> Bool {
 		let center = UNUserNotificationCenter.current()
+		
+		var grantedVar = false
 		center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-			print(granted)
-			print(error)
+			grantedVar = granted
 		}
+		return grantedVar
 	}
 	
 	func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {

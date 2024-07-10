@@ -20,15 +20,18 @@ struct ContentView: View {
 	
 	@State private var sheetOpen = true
 	@State private var sheetContent: SheetContent = .Onboarding
+	@State private var showingAlert = false
 	
 	var body: some View {
 		NavigationStack {
 			ScrollView {
 				VStack {
-					
 					if (!lnManager.isGranted) {
 						Button {
-							watchConnector.requestNotificationPermission()
+							if (!watchConnector.requestNotificationPermission()) {
+								print("Direct to Settings")
+								showingAlert = true
+							}
 						} label: {
 							VStack {
 								VStack {
@@ -146,13 +149,21 @@ struct ContentView: View {
 					Onboarding(sheetOpen: $sheetOpen)
 						.presentationDragIndicator(.visible)
 				case .ActionClock:
-					NavigationStack {
-						WebView(url: URL(string: "https://digital.cclock.org")!)
-							.ignoresSafeArea()
-							.navigationTitle("Action Clock")
-							.navigationBarTitleDisplayMode(.inline)
-					}
+					WebView(url: URL(string: "https://digital.cclock.org")!)
+						.ignoresSafeArea()
 				}
+			}
+			.alert(isPresented: $showingAlert) {
+				Alert(
+					title: Text("Allow Notifications for the Climate Clock"),
+					message: Text("Please go to Settings and turn on the permissions"),
+					primaryButton: .cancel(Text("Cancel")),
+					secondaryButton: .default(Text("Settings"), action: {
+					  if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+						UIApplication.shared.open(url, options: [:], completionHandler: nil)
+					  }
+					})
+				)
 			}
 		}
 	}
