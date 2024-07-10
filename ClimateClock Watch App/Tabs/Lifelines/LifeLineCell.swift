@@ -110,12 +110,35 @@ struct LifeLineCell: View {
             } : nil
         }
 		.onTapGesture {
+			var url: String = ""
+			switch lifeLine.type {
+			case .renewables:
+				url = "https://climateclock.world/science#renewable-energy"
+			case .agriculture:
+				url = "https://climateclock.world/science#food"
+			case .indigenous:
+				url = "https://climateclock.world/science#indigenous-land"
+			case .g20:
+				url = "https://climateclock.world/science#loss-and-damage"
+			case .g7:
+				url = "https://climateclock.world/science#loss-and-damage"
+			case .women:
+				url = "https://climateclock.world/science#gp"
+			case .youth:
+				url = "https://climateclock.world/mental-health-awareness"
+			case .divestment:
+				url = "https://climateclock.world/science#ffd"
+			case .prolife:
+				url = "https://climateclock.world/"
+			case .none:
+				url = "https://climateclock.world/"
+			}
 			selectedLifeLine = SelectedLifeLine(precision: precision,
 												unit: unit,
 												timestamp: timestamp,
 												lifeLine: lifeLine,
 												label: label ?? "n",
-												url: "https://climateclock.world/science#renewable-energy")
+												url: url)
 		}
     }
 
