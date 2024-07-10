@@ -58,7 +58,7 @@ struct DeadlineView: View {
     var body: some View {
         
         let deadline = Calendar.current.dateComponents([.hour, .minute], from: parseDateString(entry.deadline)!)
-
+        
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
         let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         let tomorrowComponents = Calendar.current.dateComponents([.year, .month, .day], from: tomorrow)
@@ -76,32 +76,39 @@ struct DeadlineView: View {
             hour: deadline.hour,
             minute: deadline.minute
         )
-
+        
         let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
         let isTomorrow = Calendar.current.isDateInToday(tomorrowTimer)
         let todayTimer = Calendar.current.date(from: todayTimerComponents)!
         
-        VStack(alignment: .leading, spacing: 0) {
-            HStack(alignment: .bottom, spacing: 3) {
+        GeometryReader { proxy in
+            
+            let relativeTextSize = proxy.size.width / 4.5
+            
+            VStack(alignment: .leading, spacing: 0) {
+                HStack(alignment: .bottom, spacing: 3) {
                     Text("\(diff(deadline: entry.deadline).years)")
                         .font(
-                            .custom("Oswald", size: 36)
+//                            .custom("Oswald", size: 36, relativeTo: .headline)
+                            .custom("Oswald", size: relativeTextSize)
                             .weight(.bold)
                         )
                         .foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
                         .monospacedDigit()
                     Text("YEARS")
                         .font(
-                            .custom("Oswald", size: 13)
+//                            .custom("Oswald", size: 16, relativeTo: .body)
+                            .custom("Oswald", size: relativeTextSize / 2.5)
                             .weight(.regular)
                         )
                         .foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
                         .monospacedDigit()
                         .padding(.bottom, 8)
-
+                    
                     Text("\(diff(deadline: entry.deadline).days)")
                         .font(
-                            .custom("Oswald", size: 36)
+                            .custom("Oswald", size: relativeTextSize)
+//                            .custom("Oswald", size: 36, relativeTo: .headline)
                             .weight(.bold)
                         )
                         .foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
@@ -109,50 +116,52 @@ struct DeadlineView: View {
                         .padding(.leading, 6)
                     Text("DAYS")
                         .font(
-                            .custom("Oswald", size: 13)
+//                            .custom("Oswald", size: 16, relativeTo: .body)
+                            .custom("Oswald", size: relativeTextSize / 2.5)
                             .weight(.regular)
                         )
                         .foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
                         .monospacedDigit()
                         .padding(.bottom, 8)
-                    Spacer()
-
+                    
                 }
-            .shadow(color: .deadlineForeground1.opacity(0.6), radius: 2)
+                .shadow(color: .deadlineForeground1.opacity(0.6), radius: 2)
                 Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
                     .font(
-                        .custom("Oswald", size: 36)
+//                        .custom("Oswald", size: 36, relativeTo: .headline)
+                        .custom("Oswald", size: relativeTextSize)
                         .weight(.light)
                     )
+                    .lineSpacing(relativeTextSize/2)
                     .tracking(3)
                     .foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
                     .monospacedDigit()
                     .contentTransition(
                         .numericText(countsDown: true)
                     )
-                    .padding(.top, -8)
-                    .minimumScaleFactor(0.5)
+                    .padding(.top, -relativeTextSize/3)
                     .shadow(color: .deadlineForeground1.opacity(0.6), radius: 2)
-
-            Text("Time left to limit global warming to 1.5°c")
-              .font(
-                Font.custom("Assistant", size: 12)
-                  .weight(.semibold)
-              )
-              .lineLimit(2)
-              .padding(.top, 8)
-              .foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
-              .frame(width: 153, alignment: .leading)
+                
+                Text("Time left to limit global warming to 1.5°c")
+                    .font(
+                        Font.custom("Assistant", size: 12)
+                            .weight(.semibold)
+                    )
+                    .lineLimit(2)
+                    .padding(.top, relativeTextSize/6)
+                    .foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
+                    .frame(width: 153, alignment: .leading)
+            }
+            .padding(.leading, 10)
+            .containerBackground(LinearGradient(stops: [
+                Gradient.Stop(color: Color(red: 0.81, green: 0.04, blue: 0.02).opacity(0.075), location: 0.00),
+                Gradient.Stop(color: Color(red: 0.81, green: 0.04, blue: 0.02).opacity(0.3), location: 1.00),
+            ],
+                                                startPoint: .bottom,
+                                                endPoint: .top), for: .navigation)
+            
+            
         }
-        .padding(.leading, 10)
-        .containerBackground(LinearGradient(stops: [
-                            Gradient.Stop(color: Color(red: 0.81, green: 0.04, blue: 0.02).opacity(0.075), location: 0.00),
-                            Gradient.Stop(color: Color(red: 0.81, green: 0.04, blue: 0.02).opacity(0.3), location: 1.00),
-                            ],
-                            startPoint: .bottom,
-                            endPoint: .top), for: .navigation)
-                            
-
     }
 }
 
