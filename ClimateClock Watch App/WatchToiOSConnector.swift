@@ -24,12 +24,11 @@ class WatchToiOSConnector: NSObject, WCSessionDelegate {
 		
 	}
 	
-	func sendUrlToiOS(url: String) {
+	func sendUrlToiOS(title: String, body: String, url: String) {
 		if (!session.isReachable) {
 			print("iphone isnt reachable")
 		}
 		
-		session.sendMessage(["url": url], replyHandler: nil)
-		
+		session.sendMessage(["title": title, "body": body, "url": url], replyHandler: nil)
 	}
 }

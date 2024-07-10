@@ -13,6 +13,12 @@ import UserNotifications
 
 @Observable
 class WatchConnector: NSObject, WCSessionDelegate {
+	struct IncomingLink {
+		let title: String
+		let body: String
+		let url: String
+	}
+	
 	var session: WCSession
 	var notificationManager: LocalNotificationManager?
 	
@@ -50,11 +56,14 @@ class WatchConnector: NSObject, WCSessionDelegate {
 			return
 		}
 		print(message)
-		let url = message["url"] as? String ?? "https://woven.design"
-		let notification: LocalNotification = LocalNotification(identifier: url,
-																title: "Read News of Hope",
+		let incomingLink = IncomingLink(title: message["title"] as? String ?? "Climate Clock",
+										body: message["body"] as? String ?? "Open the Link from your Watch",
+										url: message["url"] as? String ?? "https://climateclock.world")
+		
+		let notification: LocalNotification = LocalNotification(identifier: UUID().uuidString,
+																title: incomingLink.title,
 																userInfo: message,
-																body: url,
+																body: incomingLink.body,
 																timeInterval: 1,
 																repeats: false)
 		

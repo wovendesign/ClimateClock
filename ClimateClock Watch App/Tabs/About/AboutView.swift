@@ -53,11 +53,16 @@ struct AboutView: View {
 					sheetOpen = true
 				}
 				.sheet(isPresented: $sheetOpen) {
-					SheetView(url: URL(string: "https://woven.design")) {
+					ScrollView {
 						Text("woven.design")
 							.font(
 								.custom("Oswald", size: 16)
 							)
+						VStack(alignment: .leading) {
+							SheetButtonGroup(notificationTitle: "Who’s woven?",
+											 notificationBody: "A design & development studio with a focus on user interfaces and websites that spark joy.",
+											 url: URL(string: "https://woven.design")!)
+						}
 					}
 				}
 			}

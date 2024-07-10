@@ -9,6 +9,11 @@ import SwiftData
 import SwiftUI
 import WatchKit
 
+struct SelectedNews: Equatable {
+	let newsItem: NewsItem
+	let url: URL
+}
+
 struct NewsView: View {
 	static var now: Date { Date.now }
 	
@@ -19,11 +24,12 @@ struct NewsView: View {
 	
 	@Environment(Client.self) var client: Client
 	@Environment(LocalNotificationManager.self) var localNotificationManager: LocalNotificationManager
-	@State private var isShowingSheet = false
+	@State var sheetOpen = false
+	@State var selectedNews: SelectedNews?
 	
 	var body: some View {
 		List(news) { item in
-			NewsListItem(newsItem: item)
+			NewsListItem(newsItem: item, selectedNews: $selectedNews)
 		}
 		.padding(.horizontal, 4)
 		.containerBackground(.lime.gradient, for: .navigation)
@@ -35,6 +41,40 @@ struct NewsView: View {
 				}
 			}
 		}
+		.onChange(of: selectedNews, { oldValue, newValue in
+			if (newValue != nil) {
+				sheetOpen = true
+			}
+		})
+		.sheet(isPresented: $sheetOpen, onDismiss: {
+			selectedNews = nil
+		}, content: {
+			if let news = selectedNews {
+				ScrollView {
+					VStack(alignment: .leading) {
+						Text(news.newsItem.headline)
+							.font(
+								.custom("Oswald", size: 16)
+									.weight(.regular)
+							)
+							.tracking(0.32)
+						if let source = news.newsItem.source {
+							Text(source)
+								.font(
+									.custom("Assistant", size: 12)
+										.weight(.semibold)
+								)
+								.opacity(0.7)
+								.foregroundStyle(Color.white)
+								
+						}
+						SheetButtonGroup(notificationTitle: "Read News of Hope",
+										 notificationBody: news.newsItem.headline,
+										 url: news.url)
+					}
+				}
+			}
+		})
 		.onAppear {
 			Task {
 				await localNotificationManager.getCurrentSettings()
