@@ -45,7 +45,7 @@ struct LifelineView: View {
 		LifelineColor(foregroundColor: Color(red: 0.8, green: 0.93, blue: 0.52),
 					  backgroundColor: Color(red: 0.33, green: 0.42, blue: 0.16)),
 		LifelineColor(foregroundColor: Color(red: 0.88, green: 0.95, blue: 0.44),
-					  backgroundColor: Color(red: 0.88, green: 0.95, blue: 0.44))
+					  backgroundColor: Color(red: 0.4, green: 0.45, blue: 0.13))
 	]
 	
 	var body: some View {
