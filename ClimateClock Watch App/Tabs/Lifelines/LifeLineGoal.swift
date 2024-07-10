@@ -14,7 +14,7 @@ struct LifeLineGoal: View {
 			.applyTextStyle(.Footnote_Emphasized)
 			.textCase(.uppercase)
             .scaledToFill()
-            .minimumScaleFactor(0.5)
+//            .minimumScaleFactor(0.5)
             .foregroundStyle(.white)
             .padding(
                 EdgeInsets(

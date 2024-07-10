@@ -45,14 +45,13 @@ class NewsItem: Decodable {
     }
 }
 
+enum LifeLineSize: Codable {
+	case small, large
+}
+
 @Model
 class LifeLine {
-    enum LifeLineSize: Codable {
-        case small, large
-    }
-
-    @Attribute(.unique) let order: Int
-    let size: LifeLineSize
+	@Attribute(.unique) let order: Int
     @Attribute(.unique) let desc: String
     let update_interval_seconds: Int
     let initial: Double
@@ -65,9 +64,8 @@ class LifeLine {
     let goal: String?
     let type: LifeLineType?
 
-    init(order: Int, size: LifeLineSize, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String], goal: String?, type: LifeLineType?) {
+    init(order: Int, desc: String, update_interval_seconds: Int, initial: Double, timestamp: String, growth: apiGrowth, resolution: Double, rate: Double, labels: [String], unit_labels: [String], goal: String?, type: LifeLineType?) {
         self.order = order
-        self.size = size
         self.desc = desc
         self.update_interval_seconds = update_interval_seconds
         self.initial = initial

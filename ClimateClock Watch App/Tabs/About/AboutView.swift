@@ -29,7 +29,7 @@ struct AboutView: View {
 					Spacer()
 				}
 				
-				Text("Join in and participate in the Climate Clock Community too.\n\n#ClimateClock #ActInTime")
+				Text("Participate in the Climate Clock Community.\n\n#ClimateClock #ActInTime")
 					.applyTextStyle(.Label)
 					.foregroundStyle(.gray)
 				

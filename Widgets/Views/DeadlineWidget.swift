@@ -152,7 +152,7 @@ struct Deadline_ComplicationEntryView : View {
 			
 			Spacer()
 			
-			WidgetTitle(title: "1.5 °C Deadline", withBackground: true)
+			WidgetTitle(title: "1.5 °C Deadline", withBackground: showsBackground)
 		}
 		.containerRelativeFrame(.horizontal)
 		.containerRelativeFrame(.vertical)

@@ -17,6 +17,7 @@ struct LifeLineCell: View {
 	@State var timestamp: Date = Date()
     @State var unit: String = ""
     @State var precision: Int = 0
+	@State var size: LifeLineSize = .small
 
     var body: some View {
         VStack(alignment: .trailing, spacing: 4) {
@@ -25,7 +26,7 @@ struct LifeLineCell: View {
                     VStack(alignment: .leading) {
 						LifeLineText(precision: precision, unit: unit, timestamp: timestamp, lifeLine: lifeLine)
 
-                        if lifeLine.size == .large {
+                        if size == .large {
                             Text(label ?? "")
                                 .font(
                                     .custom("Assistant", size: 12)
@@ -34,26 +35,26 @@ struct LifeLineCell: View {
                         }
                     }
                     .padding(
-                        lifeLine.size == .large ? EdgeInsets(top: 6, leading: 6, bottom: 0, trailing: 6) : EdgeInsets(top: 0, leading: 6, bottom: -2, trailing: 6)
+                        size == .large ? EdgeInsets(top: 6, leading: 6, bottom: 0, trailing: 6) : EdgeInsets(top: 0, leading: 6, bottom: -2, trailing: 6)
                     )
 
-                    if lifeLine.size == .large {
+                    if size == .large {
                         if let goal = lifeLine.goal {
                             LifeLineGoal(goal: goal)
-                                .padding(.leading, 4)
+								.padding(.horizontal, 4)
                         }
                     }
                 }
-                .frame(maxWidth: lifeLine.size == .large ? .infinity : nil, alignment: .leading)
+                .frame(maxWidth: size == .large ? .infinity : nil, alignment: .leading)
                 .padding(EdgeInsets(top: 0,
                                     leading: 0,
                                     bottom: 4,
                                     trailing: 0))
 				.background(lifelineColor.backgroundColor.opacity(0.4))
 				.foregroundStyle(lifelineColor.foregroundColor)
-                .clipShape(.rect(cornerRadius: lifeLine.size == .small ? 6 : 8))
+                .clipShape(.rect(cornerRadius: size == .small ? 6 : 8))
 
-                if lifeLine.size == .small && label != nil {
+                if size == .small && label != nil {
                     HStack {
 						Text(label!)
 							.applyTextStyle(.Label)
@@ -87,8 +88,12 @@ struct LifeLineCell: View {
 				unit = lifeLine.unit_labels.sorted(by: { $0.count < $1.count }).first ?? "n"
 				precision = resolutionToPrecision(lifeLine.resolution)
                 calculateTimeAdjustedValue()
+				
+				if lifeLine.goal != nil {
+					size = .large
+				}
             }
-            lifeLine.size == .large ? HStack(spacing: 2) {
+            size == .large ? HStack(spacing: 2) {
 				Text("Learn More")
 					.applyTextStyle(.Footnote_Default)
 					.foregroundColor(.white.opacity(0.7))

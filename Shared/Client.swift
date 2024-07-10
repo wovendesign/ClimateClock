@@ -82,15 +82,16 @@ import UserNotifications
 
         let goal: String? = {
             switch type {
-            case .renewables: return "100% BEFORE 2030"
+            case .renewables: return "100%"
             case .women: return "Reaching 50%"
+			case .indigenous: return "Hold the Line"
+			case .divestment: return "Defund Fossile Fules"
             default:
                 return nil
             }
         }()
 
         return LifeLine(order: order,
-                        size: type == .renewables || type == .women ? .large : .small,
                         desc: module.description,
                         update_interval_seconds: module.update_interval_seconds,
                         initial: module.initial,

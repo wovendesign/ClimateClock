@@ -80,7 +80,7 @@ struct NewsWidgetEntryView: View {
 			
 			Spacer()
 			
-			WidgetTitle(title: "News of Hope", withBackground: true)
+			WidgetTitle(title: "Newsfeed of Hope", withBackground: showsBackground)
         }
 		.padding(.vertical, 3)
 		.containerRelativeFrame(.horizontal)
