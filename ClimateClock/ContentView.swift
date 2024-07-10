@@ -14,17 +14,24 @@ struct ContentView: View {
 	
     var body: some View {
 		NavigationStack {
-			VStack {
-				Text("Climate Clock")
-				Button {
-					watchConnector.requestNotificationPermission()
-				} label: {
-					Text("Get Notified")
+			ScrollView {
+				VStack {
+					HStack(alignment: .center) {
+						Spacer()
+						Image("climateclock-logo")
+						Text("Climate Clock")
+						  .font(Font.custom("Oswald", size: 20))
+						  .foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))
+						Spacer()
+					}
+					Button {
+						watchConnector.requestNotificationPermission()
+					} label: {
+						Text("Get Notified")
+					}
+					.buttonStyle(.bordered)
 				}
-				.buttonStyle(.bordered)
-
 			}
-			.navigationTitle("Climate Clock")
 			.onAppear {
 				watchConnector.notificationManager = lnManager
 			}

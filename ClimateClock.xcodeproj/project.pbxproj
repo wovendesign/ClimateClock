@@ -81,7 +81,6 @@
 		F6D315E82BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */; };
 		F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
 		F6D315ED2BBDC34E00C75299 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */; };
-		F6D503642C3DAA6700DE50C9 /* iOSNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D503632C3DAA5E00DE50C9 /* iOSNotificationManager.swift */; };
 		F6D503A22C3E96D600DE50C9 /* StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D503A12C3E96D600DE50C9 /* StyledText.swift */; };
 		F6D503A32C3E96D600DE50C9 /* StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D503A12C3E96D600DE50C9 /* StyledText.swift */; };
 		F6EF80D72C0757E5001996C9 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80D62C0757E5001996C9 /* NotificationSettings.swift */; };
@@ -89,9 +88,7 @@
 		F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
 		F6EF80DD2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */; };
 		F6EF80E42C079AB8001996C9 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = F6EF80E32C079AB8001996C9 /* Sentry */; };
-		F6F2A7852C36B8BF0056FD94 /* iosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F2A7842C36B8BC0056FD94 /* iosClient.swift */; };
 		F6F2A7952C3D92570056FD94 /* WatchToiOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */; };
-		F6F2A7972C3D94130056FD94 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F2A7962C3D940E0056FD94 /* WatchConnector.swift */; };
 		F6F2A7992C3D94EE0056FD94 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F2A7982C3D94EE0056FD94 /* WatchConnectivity.framework */; };
 /* End PBXBuildFile section */
 
@@ -172,7 +169,7 @@
 		F62A7A702B48700C002A7E25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F62A7A812B487048002A7E25 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F62A7A832B487048002A7E25 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		F62DCB852B7BD4BD00855D88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		F62DCB852B7BD4BD00855D88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "ClimateClock Watch App/Info.plist"; sourceTree = SOURCE_ROOT; };
 		F62EED592BBB2E5C00352E46 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F62EED5A2BBB2E5C00352E46 /* CCError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCError.swift; sourceTree = "<group>"; };
 		F643B94F2B8F7536006D1AC5 /* LifelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineView.swift; sourceTree = "<group>"; };
@@ -203,17 +200,15 @@
 		F6C570992B7D027C0001DCE7 /* PredictionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
 		F6CCBC9E2BD11B7600EB80C2 /* OswaldVF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OswaldVF.ttf; sourceTree = "<group>"; };
 		F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTitle.swift; sourceTree = "<group>"; };
+		F6CCCA152C3ECB0D0006CCD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6D315E02BBD85FD00C75299 /* NewsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListItem.swift; sourceTree = "<group>"; };
 		F6D315E62BBDB9E500C75299 /* Assistant-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assistant-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		F6D315EB2BBDC34E00C75299 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		F6D503632C3DAA5E00DE50C9 /* iOSNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNotificationManager.swift; sourceTree = "<group>"; };
 		F6D503A12C3E96D600DE50C9 /* StyledText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledText.swift; sourceTree = "<group>"; };
 		F6EF80D62C0757E5001996C9 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		F6EF80D82C075D15001996C9 /* NotificationTimeSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeSetter.swift; sourceTree = "<group>"; };
 		F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+TimeFormat.swift"; sourceTree = "<group>"; };
-		F6F2A7842C36B8BC0056FD94 /* iosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosClient.swift; sourceTree = "<group>"; };
 		F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchToiOSConnector.swift; sourceTree = "<group>"; };
-		F6F2A7962C3D940E0056FD94 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
 		F6F2A7982C3D94EE0056FD94 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -242,12 +237,21 @@
 			);
 			target = F62A7A632B48700B002A7E25 /* ClimateClock Watch App */;
 		};
+		F6D503A52C3EC98800DE50C9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				iOSNotificationManager.swift,
+				WatchConnector.swift,
+			);
+			target = F62A7A532B48700A002A7E25 /* ClimateClock */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F668F6DE2C32B6AA0083448E /* Action */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F668F6DF2C32B7880083448E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Action; sourceTree = "<group>"; };
 		F675050B2C358EE900351101 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F675050F2C358EFF00351101 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		F6A15DC32C2343C9006A5643 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F6A15DC62C2343D9006A5643 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		F6D503A42C3EC98400DE50C9 /* Managers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F6D503A52C3EC98800DE50C9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Managers; sourceTree = "<group>"; };
 		F6F2A7812C36B0550056FD94 /* Tabs */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tabs; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -400,16 +404,15 @@
 		F62A7A562B48700A002A7E25 /* ClimateClock */ = {
 			isa = PBXGroup;
 			children = (
-				F6D503632C3DAA5E00DE50C9 /* iOSNotificationManager.swift */,
-				F6F2A7842C36B8BC0056FD94 /* iosClient.swift */,
+				F62A7A5D2B48700B002A7E25 /* Preview Content */,
+				F6D503A42C3EC98400DE50C9 /* Managers */,
 				F6F2A7812C36B0550056FD94 /* Tabs */,
 				F675050B2C358EE900351101 /* Views */,
 				F6BBABED2BF7C0980090780B /* ClimateClock.entitlements */,
 				F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */,
 				F62A7A592B48700A002A7E25 /* ContentView.swift */,
-				F6F2A7962C3D940E0056FD94 /* WatchConnector.swift */,
 				F62A7A5B2B48700B002A7E25 /* Assets.xcassets */,
-				F62A7A5D2B48700B002A7E25 /* Preview Content */,
+				F6CCCA152C3ECB0D0006CCD5 /* Info.plist */,
 			);
 			path = ClimateClock;
 			sourceTree = "<group>";
@@ -428,7 +431,6 @@
 				F6A15DC32C2343C9006A5643 /* Views */,
 				F6256D982BF3BA470012FD30 /* Tabs */,
 				F6D315EA2BBDC34100C75299 /* Utilities */,
-				F62DCB852B7BD4BD00855D88 /* Info.plist */,
 				F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */,
 				F62A7A692B48700B002A7E25 /* App.ClimateClock.swift */,
 				F62A7A6B2B48700B002A7E25 /* ContentView.swift */,
@@ -437,6 +439,7 @@
 				F62A7A6D2B48700C002A7E25 /* Assets.xcassets */,
 				F6BBABEE2BF7C0C20090780B /* ClimateClock Watch App.entitlements */,
 				F62A7A6F2B48700C002A7E25 /* Preview Content */,
+				F62DCB852B7BD4BD00855D88 /* Info.plist */,
 			);
 			path = "ClimateClock Watch App";
 			sourceTree = "<group>";
@@ -729,10 +732,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F62A7A5A2B48700A002A7E25 /* ContentView.swift in Sources */,
-				F6F2A7972C3D94130056FD94 /* WatchConnector.swift in Sources */,
 				F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F60B29B22B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
-				F6F2A7852C36B8BF0056FD94 /* iosClient.swift in Sources */,
 				F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */,
 				F67505082C358B3200351101 /* DirectusData.swift in Sources */,
 				F62EED5C2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
@@ -741,7 +742,6 @@
 				F6017E812C2C3F8900929507 /* LocalNotification.swift in Sources */,
 				F62EED5F2BBB2E5C00352E46 /* CCError.swift in Sources */,
 				F6256D952BF3B2200012FD30 /* DataModels.swift in Sources */,
-				F6D503642C3DAA6700DE50C9 /* iOSNotificationManager.swift in Sources */,
 				F6256D8D2BF39FE10012FD30 /* Client.swift in Sources */,
 				F6D503A32C3E96D600DE50C9 /* StyledText.swift in Sources */,
 			);
@@ -958,7 +958,7 @@
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = "ClimateClock Watch App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Climate Clock Watch App";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = design.woven.climateclockapp;
@@ -995,7 +995,7 @@
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = "ClimateClock Watch App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Climate Clock Watch App";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = design.woven.climateclockapp;
@@ -1030,6 +1030,7 @@
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ClimateClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Climate Clock";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1064,6 +1065,7 @@
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ClimateClock/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Climate Clock";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
