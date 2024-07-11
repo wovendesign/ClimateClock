@@ -52,7 +52,7 @@ struct HomeBlob: View {
 						Text(description)
 							.font(.custom("Assistant", size: 17, relativeTo: .body))
 							.opacity(0.7)
-							.frame(maxWidth: .infinity)
+							.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
 					}
 				}
 				.frame(maxWidth: .infinity)
@@ -69,8 +69,6 @@ struct HomeBlob: View {
 		.frame(maxWidth: .infinity)
 		.padding(.horizontal, 32)
 		.padding(.vertical, 26)
-		.foregroundStyle(foregroundColor)
-		.background(backgroundColor)
 		.clipShape(.rect(cornerRadius: 24))
     }
 }

@@ -127,6 +127,8 @@ struct ContentView: View {
 				ToolbarItem(placement: .navigationBarLeading) {
 					HStack() {
 						Image("climateclock-logo")
+							.resizable()
+							.frame(width: 40, height: 40)
 						Text("Climate Clock for Apple Watch")
 							.font(Font.custom("Oswald", size: 20))
 							.fontWeight(.semibold)
@@ -149,8 +151,29 @@ struct ContentView: View {
 					Onboarding(sheetOpen: $sheetOpen)
 						.presentationDragIndicator(.visible)
 				case .ActionClock:
-					WebView(url: URL(string: "https://digital.cclock.org")!)
-						.ignoresSafeArea()
+					NavigationStack {
+						WebView(url: URL(string: "https://digital.cclock.org")!)
+							.ignoresSafeArea()
+							.presentationDragIndicator(.visible)
+							.toolbar {
+								ToolbarItem(placement: .topBarLeading) {
+									HStack() {
+										Text("Action Clock")
+											.font(Font.custom("Oswald", size: 20))
+											.fontWeight(.semibold)
+											.foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))
+									}
+									.minimumScaleFactor(0.5)
+								}
+								ToolbarItem(placement: .topBarTrailing) {
+									Button {
+										sheetOpen = false
+									} label: {
+										Text("Close")
+									}
+								}
+							}
+					}
 				}
 			}
 			.alert(isPresented: $showingAlert) {

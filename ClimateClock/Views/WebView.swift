@@ -10,16 +10,13 @@ import SwiftUI
 import WebKit
 
 struct WebView: UIViewRepresentable {
-	// 1
 	let url: URL
 	
-	// 2
 	func makeUIView(context: Context) -> WKWebView {
 		let webView = createWebView()
 		return webView
 	}
 	
-	// 3
 	func updateUIView(_ webView: WKWebView, context: Context) {
 		let request = URLRequest(url: url)
 		webView.load(request)
@@ -28,7 +25,7 @@ struct WebView: UIViewRepresentable {
 	// Helper function to create WKWebView with CSS injection
 	private func createWebView() -> WKWebView {
 		let webViewConfiguration = WKWebViewConfiguration()
-		let cssString = "body { background-color: #1C1C1E; }"
+		let cssString = "body { background-color: #1C1C1E; } .sc-fLlhyt.hHFsH{display: none;}"
 		// Create a WKUserScript to inject CSS
 		let cssScript = """
 		var style = document.createElement('style');
