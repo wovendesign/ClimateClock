@@ -14,7 +14,7 @@ struct ClimateClock_Watch_App: App {
     @AppStorage("first_launch") var firstLaunch: Bool = true
 
     @State private var client: Client = .init()
-	@State private var localNotificationManager: LocalNotificationManager = .init()
+	@State private var localNotificationManager: LocalNotificationManager = LocalNotificationManager()
 	@State private var watchConnector: WatchToiOSConnector = WatchToiOSConnector()
 
     // SwiftData Container

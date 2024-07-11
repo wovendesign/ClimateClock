@@ -19,7 +19,7 @@ struct ActionView: View {
 	
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+			VStack(alignment: .leading, spacing: 16) {
                 Text("3 Ways to Use a CLIMATE CLOCK")
                     .font(
                         .custom("Oswald", size: 18)

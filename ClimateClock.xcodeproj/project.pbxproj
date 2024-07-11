@@ -90,6 +90,17 @@
 		F6EF80E42C079AB8001996C9 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = F6EF80E32C079AB8001996C9 /* Sentry */; };
 		F6F2A7952C3D92570056FD94 /* WatchToiOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */; };
 		F6F2A7992C3D94EE0056FD94 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F2A7982C3D94EE0056FD94 /* WatchConnectivity.framework */; };
+		F6FF7F7F2C401F37008A670D /* HighlightedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7F7C2C401F37008A670D /* HighlightedText.swift */; };
+		F6FF7F802C401F37008A670D /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7F7D2C401F37008A670D /* ActionView.swift */; };
+		F6FF7F812C401F37008A670D /* ActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7F7E2C401F37008A670D /* ActionItem.swift */; };
+		F6FF7F852C401FDB008A670D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7F832C401FDB008A670D /* SheetView.swift */; };
+		F6FF7F862C401FDB008A670D /* SheetButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7F842C401FDB008A670D /* SheetButtonGroup.swift */; };
+		F6FF7FA62C4020AA008A670D /* iOSNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7FA42C4020A9008A670D /* iOSNotificationManager.swift */; };
+		F6FF7FA72C4020AA008A670D /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7FA52C4020A9008A670D /* WatchConnector.swift */; };
+		F6FF7FAA2C4020BB008A670D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7FA82C4020BB008A670D /* OnboardingView.swift */; };
+		F6FF7FAB2C4020BB008A670D /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7FA92C4020BB008A670D /* Onboarding.swift */; };
+		F6FF7FB62C4020C3008A670D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7FAF2C4020C3008A670D /* WebView.swift */; };
+		F6FF7FB72C4020C3008A670D /* HomeBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF7FB02C4020C3008A670D /* HomeBlob.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +221,17 @@
 		F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+TimeFormat.swift"; sourceTree = "<group>"; };
 		F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchToiOSConnector.swift; sourceTree = "<group>"; };
 		F6F2A7982C3D94EE0056FD94 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
+		F6FF7F7C2C401F37008A670D /* HighlightedText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HighlightedText.swift; path = "ClimateClock Watch App/Tabs/Action/HighlightedText.swift"; sourceTree = SOURCE_ROOT; };
+		F6FF7F7D2C401F37008A670D /* ActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionView.swift; path = "ClimateClock Watch App/Tabs/Action/ActionView.swift"; sourceTree = SOURCE_ROOT; };
+		F6FF7F7E2C401F37008A670D /* ActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionItem.swift; path = "ClimateClock Watch App/Tabs/Action/ActionItem.swift"; sourceTree = SOURCE_ROOT; };
+		F6FF7F832C401FDB008A670D /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		F6FF7F842C401FDB008A670D /* SheetButtonGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetButtonGroup.swift; sourceTree = "<group>"; };
+		F6FF7FA42C4020A9008A670D /* iOSNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSNotificationManager.swift; sourceTree = "<group>"; };
+		F6FF7FA52C4020A9008A670D /* WatchConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
+		F6FF7FA82C4020BB008A670D /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		F6FF7FA92C4020BB008A670D /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		F6FF7FAF2C4020C3008A670D /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		F6FF7FB02C4020C3008A670D /* HomeBlob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBlob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +294,7 @@
 		F6256D982BF3BA470012FD30 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				F6FF7F7B2C401F22008A670D /* Action */,
 				F6256D9F2BF4BE170012FD30 /* TabTitleLayout.swift */,
 				F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */,
 				F6256D992BF3BA560012FD30 /* Lifelines */,
@@ -360,6 +383,8 @@
 		F62A7A562B48700A002A7E25 /* ClimateClock */ = {
 			isa = PBXGroup;
 			children = (
+				F6FF7F902C40203F008A670D /* Views */,
+				F6FF7F872C402009008A670D /* Managers */,
 				F62A7A5D2B48700B002A7E25 /* Preview Content */,
 				F6BBABED2BF7C0980090780B /* ClimateClock.entitlements */,
 				F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */,
@@ -381,6 +406,7 @@
 		F62A7A682B48700B002A7E25 /* ClimateClock Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				F6FF7F822C401FC2008A670D /* Views */,
 				F6256D982BF3BA470012FD30 /* Tabs */,
 				F6D315EA2BBDC34100C75299 /* Utilities */,
 				F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */,
@@ -510,6 +536,53 @@
 				F6EF80DB2C0763DB001996C9 /* Locale+TimeFormat.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F6FF7F7B2C401F22008A670D /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				F6FF7F7E2C401F37008A670D /* ActionItem.swift */,
+				F6FF7F7D2C401F37008A670D /* ActionView.swift */,
+				F6FF7F7C2C401F37008A670D /* HighlightedText.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		F6FF7F822C401FC2008A670D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F6FF7F842C401FDB008A670D /* SheetButtonGroup.swift */,
+				F6FF7F832C401FDB008A670D /* SheetView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6FF7F872C402009008A670D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F6FF7FA42C4020A9008A670D /* iOSNotificationManager.swift */,
+				F6FF7FA52C4020A9008A670D /* WatchConnector.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F6FF7F902C40203F008A670D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F6FF7FB02C4020C3008A670D /* HomeBlob.swift */,
+				F6FF7FAF2C4020C3008A670D /* WebView.swift */,
+				F6FF7F912C402044008A670D /* Onboarding */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6FF7F912C402044008A670D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F6FF7FA92C4020BB008A670D /* Onboarding.swift */,
+				F6FF7FA82C4020BB008A670D /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -684,16 +757,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				F62A7A5A2B48700A002A7E25 /* ContentView.swift in Sources */,
+				F6FF7FA72C4020AA008A670D /* WatchConnector.swift in Sources */,
 				F6D315EC2BBDC34E00C75299 /* NotificationManager.swift in Sources */,
 				F60B29B22B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
 				F6EF80DC2C0763DB001996C9 /* Locale+TimeFormat.swift in Sources */,
+				F6FF7FB62C4020C3008A670D /* WebView.swift in Sources */,
+				F6FF7FAB2C4020BB008A670D /* Onboarding.swift in Sources */,
 				F67505082C358B3200351101 /* DirectusData.swift in Sources */,
 				F62EED5C2BBB2E5C00352E46 /* NetworkManager.swift in Sources */,
+				F6FF7FA62C4020AA008A670D /* iOSNotificationManager.swift in Sources */,
 				F6BBABE52BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
+				F6FF7FB72C4020C3008A670D /* HomeBlob.swift in Sources */,
 				F62A7A582B48700A002A7E25 /* ClimateClockApp.swift in Sources */,
 				F6017E812C2C3F8900929507 /* LocalNotification.swift in Sources */,
 				F62EED5F2BBB2E5C00352E46 /* CCError.swift in Sources */,
 				F6256D952BF3B2200012FD30 /* DataModels.swift in Sources */,
+				F6FF7FAA2C4020BB008A670D /* OnboardingView.swift in Sources */,
 				F6256D8D2BF39FE10012FD30 /* Client.swift in Sources */,
 				F6D503A32C3E96D600DE50C9 /* StyledText.swift in Sources */,
 			);
@@ -715,6 +794,8 @@
 				F67BD6802B7D2C590015ECBE /* Graph.swift in Sources */,
 				F6256D9D2BF4ABE80012FD30 /* LifeLineGoal.swift in Sources */,
 				F672CA452B7D4F4100FAA4B4 /* DeadlineView.swift in Sources */,
+				F6FF7F852C401FDB008A670D /* SheetView.swift in Sources */,
+				F6FF7F7F2C401F37008A670D /* HighlightedText.swift in Sources */,
 				F6EF80D72C0757E5001996C9 /* NotificationSettings.swift in Sources */,
 				F6BBABE62BF7BF240090780B /* RelativeTimeCell.swift in Sources */,
 				F6256D8E2BF39FE10012FD30 /* Client.swift in Sources */,
@@ -722,6 +803,7 @@
 				F60B29B32B8F9C1E00E41091 /* ClimateClockData.swift in Sources */,
 				F6CCBCA32BD170F700EB80C2 /* TabTitle.swift in Sources */,
 				F6EF80D92C075D15001996C9 /* NotificationTimeSetter.swift in Sources */,
+				F6FF7F802C401F37008A670D /* ActionView.swift in Sources */,
 				F6256DA02BF4BE170012FD30 /* TabTitleLayout.swift in Sources */,
 				F6017E802C2C3F8900929507 /* LocalNotification.swift in Sources */,
 				F62A7A6A2B48700B002A7E25 /* App.ClimateClock.swift in Sources */,
@@ -733,7 +815,9 @@
 				F6C570952B7D00240001DCE7 /* GraphView.swift in Sources */,
 				F643B9502B8F7536006D1AC5 /* LifelineView.swift in Sources */,
 				F673949E2BBC3FD900B7258D /* Alert.swift in Sources */,
+				F6FF7F812C401F37008A670D /* ActionItem.swift in Sources */,
 				F6256D962BF3B2200012FD30 /* DataModels.swift in Sources */,
+				F6FF7F862C401FDB008A670D /* SheetButtonGroup.swift in Sources */,
 				F6D315E12BBD85FD00C75299 /* NewsListItem.swift in Sources */,
 				F6579C8C2C20AC64003F037D /* ToolbarButton.swift in Sources */,
 			);

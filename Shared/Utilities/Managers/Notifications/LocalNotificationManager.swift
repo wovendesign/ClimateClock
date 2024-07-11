@@ -10,7 +10,6 @@ import Foundation
 import UserNotifications
 import SwiftData
 
-@MainActor
 @Observable
 public final class LocalNotificationManager: NSObject {
 	var notificationPermissionGranted: Bool = false
