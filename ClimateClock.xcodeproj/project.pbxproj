@@ -276,7 +276,6 @@
 				F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */,
 				F6256D992BF3BA560012FD30 /* Lifelines */,
 				F6256DA22BF4D8F00012FD30 /* Deadline */,
-				F668F6DE2C32B6AA0083448E /* Action */,
 				F6256DA12BF4D8BB0012FD30 /* Scenarios */,
 				F6256D9E2BF4AE180012FD30 /* News */,
 				F6256DA32BF4D9050012FD30 /* About */,
@@ -362,9 +361,6 @@
 			isa = PBXGroup;
 			children = (
 				F62A7A5D2B48700B002A7E25 /* Preview Content */,
-				F6D503A42C3EC98400DE50C9 /* Managers */,
-				F6F2A7812C36B0550056FD94 /* Tabs */,
-				F675050B2C358EE900351101 /* Views */,
 				F6BBABED2BF7C0980090780B /* ClimateClock.entitlements */,
 				F62A7A572B48700A002A7E25 /* ClimateClockApp.swift */,
 				F62A7A592B48700A002A7E25 /* ContentView.swift */,
@@ -385,7 +381,6 @@
 		F62A7A682B48700B002A7E25 /* ClimateClock Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				F6A15DC32C2343C9006A5643 /* Views */,
 				F6256D982BF3BA470012FD30 /* Tabs */,
 				F6D315EA2BBDC34100C75299 /* Utilities */,
 				F6F2A7942C3D92510056FD94 /* WatchToiOSConnector.swift */,
@@ -1004,9 +999,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = design.woven.climateclockapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1039,9 +1038,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = design.woven.climateclockapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
