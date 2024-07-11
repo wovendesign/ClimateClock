@@ -294,9 +294,9 @@
 		F6256D982BF3BA470012FD30 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				F6FF7F7B2C401F22008A670D /* Action */,
 				F6256D9F2BF4BE170012FD30 /* TabTitleLayout.swift */,
 				F6CCBCA22BD170F700EB80C2 /* TabTitle.swift */,
+				F6FF7F7B2C401F22008A670D /* Action */,
 				F6256D992BF3BA560012FD30 /* Lifelines */,
 				F6256DA22BF4D8F00012FD30 /* Deadline */,
 				F6256DA12BF4D8BB0012FD30 /* Scenarios */,
@@ -361,9 +361,9 @@
 			children = (
 				F668F6E22C32BF4B0083448E /* watchWidgets.entitlements */,
 				F6BBABEF2BF7C0E60090780B /* ClimateClockWidgetExtension.entitlements */,
-				F62DCB7F2B7BD26C00855D88 /* Shared */,
 				F62A7A562B48700A002A7E25 /* ClimateClock */,
 				F62A7A682B48700B002A7E25 /* ClimateClock Watch App */,
+				F62DCB7F2B7BD26C00855D88 /* Shared */,
 				F6579C7D2C20455A003F037D /* Widgets */,
 				F62A7A802B487048002A7E25 /* Frameworks */,
 				F62A7A552B48700A002A7E25 /* Products */,
@@ -988,7 +988,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ClimateClock Watch App/ClimateClock Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
@@ -1003,7 +1003,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = design.woven.climateclockapp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1025,7 +1025,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ClimateClock Watch App/ClimateClock Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
@@ -1040,7 +1040,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = design.woven.climateclockapp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1061,7 +1061,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClimateClock/ClimateClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
@@ -1079,7 +1079,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = design.woven.climateclockapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1100,7 +1100,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClimateClock/ClimateClock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"ClimateClock/Preview Content\"";
 				DEVELOPMENT_TEAM = 855632PAQ8;
 				ENABLE_PREVIEWS = YES;
@@ -1118,7 +1118,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = design.woven.climateclockapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

@@ -18,14 +18,14 @@ import UserNotifications
             switch result {
             case let .success(data):
                 // Saving LifeLines
-                context.insert(moduleToLifeline(module: data.data.modules._youth_anxiety,
-                                                type: .youth))
+//                context.insert(moduleToLifeline(module: data.data.modules._youth_anxiety,
+//                                                type: .youth))
                 context.insert(moduleToLifeline(module: data.data.modules.ff_divestment_stand_dot_earth,
                                                 type: .divestment))
                 context.insert(moduleToLifeline(module: data.data.modules.indigenous_land_1,
                                                 type: .indigenous))
-                context.insert(moduleToLifeline(module: data.data.modules.loss_damage_g20_debt,
-                                                type: .g20))
+//                context.insert(moduleToLifeline(module: data.data.modules.loss_damage_g20_debt,
+//                                                type: .g20))
                 context.insert(moduleToLifeline(module: data.data.modules.loss_damage_g7_debt,
                                                 type: .g7))
                 context.insert(moduleToLifeline(module: data.data.modules.regen_agriculture,
@@ -68,13 +68,12 @@ import UserNotifications
         let order: Int = {
             switch type {
             case .renewables: return 0
-            case .women: return 1
-            case .divestment: return 2
-            case .indigenous: return 3
-            case .g7: return 4
-            case .g20: return 5
-            case .agriculture: return 6
-            case .prolife: return 7
+			case .indigenous: return 1
+			case .g7: return 2
+            case .women: return 3
+            case .divestment: return 4
+            case .agriculture: return 5
+            case .prolife: return 6
             default:
                 return 999
             }
@@ -82,10 +81,12 @@ import UserNotifications
 
         let goal: String? = {
             switch type {
-            case .renewables: return "100%"
-            case .women: return "Reaching 50%"
-			case .indigenous: return "Hold the Line"
-			case .divestment: return "Defund Fossile Fules"
+            case .renewables: return "100% by 2030"
+            case .women: return "50% gender parity"
+			case .indigenous: return "Protect ALL Indigenous Land"
+			case .divestment: return "Defund Fossile Fule Industry"
+			case .agriculture: return "Rapidly scale up regenerative practices"
+			case .g7: return "Full climate reparations"
             default:
                 return nil
             }

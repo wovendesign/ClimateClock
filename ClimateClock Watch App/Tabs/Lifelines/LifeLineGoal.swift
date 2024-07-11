@@ -10,25 +10,30 @@ import SwiftUI
 struct LifeLineGoal: View {
     let goal: String
     var body: some View {
-		Text("Goal: \(goal)")
-			.applyTextStyle(.Footnote_Emphasized)
-			.textCase(.uppercase)
-            .scaledToFill()
-//            .minimumScaleFactor(0.5)
-            .foregroundStyle(.white)
-            .padding(
-                EdgeInsets(
-                    top: 2,
-                    leading: 4,
-                    bottom: 3,
-                    trailing: 4
-                )
-            )
-            .background {
-                Rectangle()
-                    .fill(.black)
-                    .cornerRadius(4.0)
-            }
+		VStack(alignment: .leading) {
+			Text("Goal")
+				.applyTextStyle(.Footnote_Emphasized)
+				.bold()
+				.textCase(.uppercase)
+			Text(goal)
+				.applyTextStyle(.Footnote_Emphasized)
+				.textCase(.uppercase)
+		}
+		.frame(maxWidth: .infinity, alignment: .leading)
+		.foregroundStyle(.white)
+		.padding(
+			EdgeInsets(
+				top: 2,
+				leading: 4,
+				bottom: 3,
+				trailing: 4
+			)
+		)
+		.background {
+			Rectangle()
+				.fill(.black)
+				.cornerRadius(4.0)
+		}
     }
 }
 

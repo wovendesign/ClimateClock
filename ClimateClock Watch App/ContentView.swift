@@ -18,7 +18,7 @@ struct ContentView: View {
     @Environment(\.modelContext) var context
 	
 	@State private var path = NavigationPath()
-	private var pages: [Page] = [.lifeline, .deadline, .news, .action]
+	private var pages: [Page] = [.deadline, .lifeline, .news, .action]
 	
     var body: some View {
 		NavigationStack(path: $path) {

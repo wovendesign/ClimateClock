@@ -30,21 +30,21 @@ struct ActionView: View {
 
                 ActionItem(image: "megaphone",
                            title: "Megaphone",
-                           description: "The clock helps decision-makers and the wider public understand that we are in a Climate Emergency.",
+                           description: "se the Clock to help decision makers and the wider public to realize that we are in a Climate Emergency.",
                            callToAction: "Sound the alarm",
 						   url: "https://climateclock.world/earth-day-2024#page-section-62742a9e506a125c651656a1",
+						   selectedAction: $selectedAction)
+				ActionItem(image: "key",
+						   title: "Key",
+						   description: "Open up doors to decision-makers. With a clock in hand, you can get access to decision-makers that previously ignored you.",
+						   callToAction: "Open Up Doors",
+						   url: "https://climateclock.world/earth-day-2024#page-section-62742a9e506a125c651656aa",
 						   selectedAction: $selectedAction)
                 ActionItem(image: "magnet",
                            title: "Magnet",
                            description: "Bring the media and politicians to you! Use the clock to attract media attention to your action on a new level!",
                            callToAction: "Attract Media",
 						   url: "https://climateclock.world/earth-day-2024#page-section-62742a9e506a125c651656a6",
-						   selectedAction: $selectedAction)
-                ActionItem(image: "key",
-                           title: "Key",
-                           description: "Open up doors to decision-makers. The clock can get you access to decision-makers that previously ignored you.",
-                           callToAction: "Open Up Doors",
-						   url: "https://climateclock.world/earth-day-2024#page-section-62742a9e506a125c651656aa",
 						   selectedAction: $selectedAction)
             }
 			.padding(.horizontal, 4)

@@ -134,7 +134,7 @@ struct NavigationLinkItem: View {
                 endPoint: .bottom)
 			self.title = "Lifelines"
 			self.secondaryTitle = nil
-			self.description = "Solutions are already happening!"
+			self.description = "Follow real-time progress on key climate solutions"
 			self.icon = "lifeline"
 		case .news:
             self.foregroundColor = Color(red: 224/255, green: 241/255, blue: 111/255)
@@ -147,7 +147,7 @@ struct NavigationLinkItem: View {
                 endPoint: .bottom)
 			self.title = "Newsfeed of Hope"
 			self.secondaryTitle = nil
-			self.description = "Daily news of recent climate victories."
+			self.description = "Daily newsfeed of climate victories."
 			self.icon = "news"
 		case .deadline:
 			self.foregroundColor = Color(red: 255/255, green: 107/255, blue: 107/255)

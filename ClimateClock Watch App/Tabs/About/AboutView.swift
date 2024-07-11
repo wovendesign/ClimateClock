@@ -9,8 +9,11 @@
 import SwiftUI
 
 struct AboutView: View {
+	enum AboutSheet {
+		case woven, cclock
+	}
 	@State var sheetOpen = false
-	
+	@State var sheetContent: AboutSheet = .cclock
 	
 	var body: some View {
 		ScrollView {
@@ -18,20 +21,26 @@ struct AboutView: View {
 				Text("About the Climate Clock WatchOS App")
 					.applyHeadlineStyle(.Section_Bold)
 				
-				HStack(alignment: .center) {
-					Spacer()
-					Image("climateclock-logo")
-						.resizable()
-						.frame(width: 24, height: 24)
-					Text("Climate Clock")
-					  .font(Font.custom("Oswald", size: 14))
-					  .foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))
-					Spacer()
+				VStack(alignment: .leading) {
+					HStack(alignment: .center) {
+						Spacer()
+						Image("climateclock-logo")
+							.resizable()
+							.frame(width: 24, height: 24)
+						Text("Climate Clock")
+						  .font(Font.custom("Oswald", size: 14))
+						  .foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))
+						Spacer()
+					}
+					
+					HighlightedText(text: "Join the Climate Clock Community. ClimateClock.world\n\n#ClimateClock #ActInTime",
+									highlighted: "ClimateClock.world",
+									highlightColor: .red)
 				}
-				
-				Text("Participate in the Climate Clock Community.\n\n#ClimateClock #ActInTime")
-					.applyTextStyle(.Label)
-					.foregroundStyle(.gray)
+				.onTapGesture {
+					sheetOpen = true
+					sheetContent = .cclock
+				}
 				
 				VStack(alignment: .leading) {
 					Text("Development")
@@ -44,15 +53,27 @@ struct AboutView: View {
 				}
 				.onTapGesture {
 					sheetOpen = true
+					sheetContent = .woven
 				}
 				.sheet(isPresented: $sheetOpen) {
 					ScrollView {
-						Text("woven.design")
-							.applyTextStyle(.Paragraph)
-						VStack(alignment: .leading) {
-							SheetButtonGroup(notificationTitle: "Who’s woven?",
-											 notificationBody: "A design & development studio with a focus on user interfaces and websites that spark joy.",
-											 url: URL(string: "https://woven.design")!)
+						switch sheetContent {
+						case .cclock :
+							Text("ClimateClock.world")
+								.applyTextStyle(.Paragraph)
+							VStack(alignment: .leading) {
+								SheetButtonGroup(notificationTitle: "Join the Climate Clock Community",
+												 notificationBody: "ClimateClock.world",
+												 url: URL(string: "ClimateClock.world")!)
+							}
+						case .woven:
+							Text("woven.design")
+								.applyTextStyle(.Paragraph)
+							VStack(alignment: .leading) {
+								SheetButtonGroup(notificationTitle: "Who’s woven?",
+												 notificationBody: "A design & development studio with a focus on user interfaces and websites that spark joy.",
+												 url: URL(string: "https://woven.design")!)
+							}
 						}
 					}
 				}
