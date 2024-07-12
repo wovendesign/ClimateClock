@@ -69,6 +69,8 @@ struct HomeBlob: View {
 		.frame(maxWidth: .infinity)
 		.padding(.horizontal, 32)
 		.padding(.vertical, 26)
+		.foregroundStyle(foregroundColor)
+		.background(backgroundColor)
 		.clipShape(.rect(cornerRadius: 24))
     }
 }
