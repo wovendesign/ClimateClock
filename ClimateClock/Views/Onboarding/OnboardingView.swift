@@ -26,8 +26,8 @@ struct OnboardingView: View {
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.padding(.top, 16)
-                .scaleEffect(item.image == "onboarding_1" ? 1.05 : 1)
-                .padding(.top, item.image == "onboarding_1" ? -16 : 0)
+                .scaleEffect(item.image == "onboarding_1" ? 1.02 : 1)
+                .padding(.top, item.image == "onboarding_1" ? -4 : 0)
 			
 			Spacer()
 			VStack(spacing: 8) {
