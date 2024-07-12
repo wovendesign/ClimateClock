@@ -45,7 +45,7 @@ struct OnboardingView: View {
 						HStack {
 							Text(item.buttonText)
 								.font(.custom("Oswald", size: 18).weight(.semibold))
-							Image("arrow-onboarding")
+                            item.image == "onboarding_3" ?  nil : Image("arrow-onboarding")
 						}
 					}
 					.padding(.horizontal, 17)
@@ -56,6 +56,7 @@ struct OnboardingView: View {
 				}
 			}
 			.padding(.horizontal, 16)
+            .padding(.top, 16)
 		}
 		.padding(.top, 16)
 		.padding(.bottom, 48)

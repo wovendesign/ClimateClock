@@ -21,6 +21,7 @@ class WatchConnector: NSObject, WCSessionDelegate {
 	
 	var session: WCSession
 	var notificationManager: LocalNotificationManager?
+    var connectedToWatch = false
 	
 	init(session: WCSession = .default) {
 		self.session = session
@@ -31,15 +32,17 @@ class WatchConnector: NSObject, WCSessionDelegate {
 	}
 	
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
-		
+        if (activationState == .activated) {
+            connectedToWatch = true
+        }
 	}
 	
 	func sessionDidBecomeInactive(_ session: WCSession) {
-		
+		connectedToWatch = false
 	}
 	
 	func sessionDidDeactivate(_ session: WCSession) {
-		
+		connectedToWatch = false
 	}
 	
 	func requestNotificationPermission() -> Bool {
