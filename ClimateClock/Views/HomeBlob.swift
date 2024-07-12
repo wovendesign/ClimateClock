@@ -62,7 +62,7 @@ struct HomeBlob: View {
 			HStack(spacing: 8) {
 				Text(buttonText)
 					.font(.custom("Oswald", size: 18).weight(.semibold))
-				Image(systemName: buttonImage)
+				Image(buttonImage)
 			}
 			.foregroundStyle(buttonColor)
 		}
@@ -83,7 +83,7 @@ struct HomeBlob: View {
 			 headline: "View the Action Clock",
 			 description: "Quickly access the Deadline and Lifelines.",
 			 buttonText: "Open Website",
-			 buttonImage: "arrow.up.forward",
+			 buttonImage: "arrow-clock",
 			 buttonColor: .red,
 			 foregroundColor: .black,
 			 backgroundColor: .white)

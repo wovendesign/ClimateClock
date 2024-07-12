@@ -45,7 +45,7 @@ struct OnboardingView: View {
 						HStack {
 							Text(item.buttonText)
 								.font(.custom("Oswald", size: 18).weight(.semibold))
-							Image(systemName: "chevron.right")
+							Image("arrow-onboarding")
 						}
 					}
 					.padding(.horizontal, 17)

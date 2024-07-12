@@ -27,7 +27,7 @@ struct Onboarding: View {
 					   image: "onboarding_3",
 					   title: "Use our widgets to stay informed and take action! Add them to your widget stack and watch faces.",
 					   description: nil,
-					   buttonText: "Next"),
+					   buttonText: "Done"),
 	]
 	
 	var body: some View {

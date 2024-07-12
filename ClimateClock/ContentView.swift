@@ -81,7 +81,7 @@ struct ContentView: View {
 							 headline: "Open your Apple Watch and start exploring our app.",
 							 description: nil,
 							 buttonText: "View Tour Again",
-							 buttonImage: "chevron.right",
+							 buttonImage: "arrow-tour",
 							 buttonColor: Color(red: 0.03, green: 0.19, blue: 0.31),
 							 foregroundColor: .black,
 							 backgroundColor: Color(red: 0.56, green: 0.76, blue: 1))
@@ -97,7 +97,7 @@ struct ContentView: View {
 							 headline: "View the Action Clock",
 							 description: "Quickly access the Deadline and Lifelines.",
 							 buttonText: "Open Website",
-							 buttonImage: "arrow.up.forward",
+							 buttonImage: "arrow-clock",
 							 buttonColor: .red,
 							 foregroundColor: .black,
 							 backgroundColor: .white)
@@ -113,7 +113,7 @@ struct ContentView: View {
 							 headline: "Subscribe to the Climate Clock Newsletter",
 							 description: "Join the mailing list for exclusive updates from the Climate Clock and be among the first to know about new clock installations and opportunities for engagement with our global network of changemakers!",
 							 buttonText: "Join the Newsletter",
-							 buttonImage: "chevron.right",
+							 buttonImage: "arrow-newsletter",
 							 buttonColor: Color(red: 0.56, green: 0.76, blue: 1),
 							 foregroundColor: .white,
 							 backgroundColor: Color(red: 0.11, green: 0.11, blue: 0.12))
@@ -170,6 +170,8 @@ struct ContentView: View {
 										sheetOpen = false
 									} label: {
 										Text("Close")
+                                            .font(.custom("Oswald", size: 18).weight(.semibold))
+                                            .foregroundStyle(.red)
 									}
 								}
 							}
