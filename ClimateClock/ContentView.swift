@@ -76,13 +76,13 @@ struct ContentView: View {
 					
 					HomeBlob(headerForegroundColor: .black,
 							 headerBackgroundColor: .black,
-							 headerImage: "heart",
+							 headerImage: nil,
 							 headerText: nil,
 							 headline: "Open your Apple Watch and start exploring our app.",
 							 description: nil,
 							 buttonText: "View Tour Again",
 							 buttonImage: "chevron.right",
-							 buttonColor: Color(red: 0.27, green: 0.39, blue: 0.48),
+							 buttonColor: Color(red: 0.03, green: 0.19, blue: 0.31),
 							 foregroundColor: .black,
 							 backgroundColor: Color(red: 0.56, green: 0.76, blue: 1))
 					.onTapGesture {
@@ -92,7 +92,7 @@ struct ContentView: View {
 					
 					HomeBlob(headerForegroundColor: .black,
 							 headerBackgroundColor: .red.opacity(0.2),
-							 headerImage: "heart",
+							 headerImage: "MEGAPHONE",
 							 headerText: "#ActInTime",
 							 headline: "View the Action Clock",
 							 description: "Quickly access the Deadline and Lifelines.",
@@ -108,7 +108,7 @@ struct ContentView: View {
 					
 					HomeBlob(headerForegroundColor: .black,
 							 headerBackgroundColor: .white.opacity(0.4),
-							 headerImage: "heart",
+							 headerImage: "NEWS",
 							 headerText: "STAY INFORMED",
 							 headline: "Subscribe to the Climate Clock Newsletter",
 							 description: "Join the mailing list for exclusive updates from the Climate Clock and be among the first to know about new clock installations and opportunities for engagement with our global network of changemakers!",

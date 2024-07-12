@@ -11,7 +11,7 @@ import SwiftUI
 struct HomeBlob: View {
 	let headerForegroundColor: Color
 	let headerBackgroundColor: Color
-	let headerImage: String
+	let headerImage: String?
 	let headerText: String?
 	
 	let headline: String
@@ -30,7 +30,7 @@ struct HomeBlob: View {
 			VStack(alignment: .leading, spacing: 12) {
 				if let headerText = headerText {
 					HStack {
-						Image(systemName: headerImage)
+                        Image(headerImage!)
 						Text(headerText)
 							.font(.custom("Oswald", size: 17).weight(.medium))
 					}
@@ -78,7 +78,7 @@ struct HomeBlob: View {
 #Preview {
 	HomeBlob(headerForegroundColor: .black,
 			 headerBackgroundColor: .red.opacity(0.2),
-			 headerImage: "heart",
+			 headerImage: "MEGAPHONE",
 			 headerText: "#ActInTime",
 			 headline: "View the Action Clock",
 			 description: "Quickly access the Deadline and Lifelines.",
