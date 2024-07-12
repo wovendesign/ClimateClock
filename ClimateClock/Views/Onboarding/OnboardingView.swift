@@ -26,7 +26,8 @@ struct OnboardingView: View {
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.padding(.top, 16)
-
+                .scaleEffect(item.image == "onboarding_1" ? 1.05 : 1)
+                .padding(.top, item.image == "onboarding_1" ? -16 : 0)
 			
 			Spacer()
 			VStack(spacing: 8) {
@@ -35,7 +36,7 @@ struct OnboardingView: View {
 					.environment(\._lineHeightMultiple, 0.8)
 				if let description = item.description {
 					Text(description)
-						.font(.custom("Assistant", size: 20))
+						.font(.custom("Assistant", size: 17))
 						.opacity(0.6)
 				}
 				HStack {
@@ -58,6 +59,7 @@ struct OnboardingView: View {
 		}
 		.padding(.top, 16)
 		.padding(.bottom, 48)
+        
 	}
 }
 
