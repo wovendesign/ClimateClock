@@ -38,7 +38,7 @@ struct RelativeTimeCell: View {
 				)
 				.foregroundStyle(today ? .black : .gray)
 				.background(today ? .newsFg1 : .clear)
-				.clipShape(.capsule)
+                .clipShape(RoundedRectangle(cornerRadius: today ? 24 : 0))
 				.onAppear {
 					today = relativeDate == "TODAY"
 				}
