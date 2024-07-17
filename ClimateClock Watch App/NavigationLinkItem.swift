@@ -18,7 +18,7 @@ struct NavigationLinkItem: View {
 	let foregroundColor: Color
 	let backgroundColor: LinearGradient
 	
-	let entry = DeadlineEntry(date: Date(), deadline:"2029-07-22T16:00:00+00:00")
+	let entry = DeadlineEntry(date: Date.now, deadline:"2029-07-22T16:00:00+00:00")
 	
 	var body: some View {
 		
@@ -43,7 +43,6 @@ struct NavigationLinkItem: View {
 		)
 		
 		let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
-		let isTomorrow = Calendar.current.isDateInToday(tomorrowTimer)
 		let todayTimer = Calendar.current.date(from: todayTimerComponents)!
 		
 		NavigationLink(value: page) {
@@ -66,25 +65,27 @@ struct NavigationLinkItem: View {
 				}
 				
 				if title == "Deadline" {
-					HStack(alignment: .bottom, spacing: 0) {
-						Text("\(diff(deadline: entry.deadline).years)")
-							.applyHeadlineStyle(.Section)
-							.monospacedDigit()
-						Text("y")
-							.applyHeadlineStyle(.Section)
-							.monospacedDigit()
-						
-						Text("\(diff(deadline: entry.deadline).days)")
-							.applyHeadlineStyle(.Section)
-							.monospacedDigit()
-							.padding(.leading, 4)
-						Text("d")
-							.applyHeadlineStyle(.Section)
-						Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
-							.applyHeadlineStyle(.Section)
-							.monospacedDigit()
-							.padding(.leading, 4)
-						
+					VStack {
+						HStack(alignment: .bottom, spacing: 0) {
+							Text("\(diff(deadline: entry.deadline).years)")
+								.applyHeadlineStyle(.Section)
+								.monospacedDigit()
+							Text("y")
+								.applyHeadlineStyle(.Section)
+								.monospacedDigit()
+							
+							Text("\(diff(deadline: entry.deadline).days)")
+								.applyHeadlineStyle(.Section)
+								.monospacedDigit()
+								.padding(.leading, 4)
+							Text("d")
+								.applyHeadlineStyle(.Section)
+							Text(todayTimer > Date() ? tomorrowTimer : todayTimer, style: .timer)
+								.applyHeadlineStyle(.Section)
+								.monospacedDigit()
+								.padding(.leading, 4)
+							
+						}
 					}
 				}
 				

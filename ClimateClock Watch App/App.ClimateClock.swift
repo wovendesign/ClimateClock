@@ -35,6 +35,12 @@ struct ClimateClock_Watch_App: App {
 						firstLaunch = false
 						localNotificationManager.setDefaultSchedulingPreferences()
                     }
+					Task {
+						let context: ModelContext = .init(container)
+						if let data = await client.getDataFromClimateClockAPI(context: context) {
+							await localNotificationManager.saveNewsNotifications(news: data, context: context)
+						}
+					}
                 }
         }
         .modelContainer(container)
