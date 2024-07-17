@@ -11,21 +11,17 @@ import SwiftData
 import UserNotifications
 
 @Observable public final class Client {
-    func getDataFromClimateClockAPI(context: ModelContext) async -> [NewsItem]? {
+	func getDataFromClimateClockAPI(context: ModelContext, networkManager: NetworkManager) async -> [NewsItem]? {
         do {
-            let result = try await NetworkManager.shared.getClimateClockData()
+            let result = try await networkManager.getClimateClockData()
 
             switch result {
             case let .success(data):
                 // Saving LifeLines
-//                context.insert(moduleToLifeline(module: data.data.modules._youth_anxiety,
-//                                                type: .youth))
                 context.insert(moduleToLifeline(module: data.ff_divestment_stand_dot_earth,
                                                 type: .divestment))
                 context.insert(moduleToLifeline(module: data.indigenous_land_1,
                                                 type: .indigenous))
-//                context.insert(moduleToLifeline(module: data.loss_damage_g20_debt,
-//                                                type: .g20))
                 context.insert(moduleToLifeline(module: data.loss_damage_g7_debt,
                                                 type: .g7))
                 context.insert(moduleToLifeline(module: data.regen_agriculture,

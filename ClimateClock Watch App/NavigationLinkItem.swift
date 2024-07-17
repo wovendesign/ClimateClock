@@ -45,6 +45,8 @@ struct NavigationLinkItem: View {
 		let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
 		let todayTimer = Calendar.current.date(from: todayTimerComponents)!
 		
+		let isTomorrow = todayTimer < Date()
+		
 		NavigationLink(value: page) {
 			VStack (alignment: .leading) {
 				Image(icon)
@@ -80,7 +82,7 @@ struct NavigationLinkItem: View {
 								.padding(.leading, 4)
 							Text("d")
 								.applyHeadlineStyle(.Section)
-							Text(todayTimer > Date() ? tomorrowTimer : todayTimer, style: .timer)
+							Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
 								.applyHeadlineStyle(.Section)
 								.monospacedDigit()
 								.padding(.leading, 4)

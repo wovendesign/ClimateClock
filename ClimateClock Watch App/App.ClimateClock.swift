@@ -16,6 +16,7 @@ struct ClimateClock_Watch_App: App {
     @State private var client: Client = .init()
 	@State private var localNotificationManager: LocalNotificationManager = LocalNotificationManager()
 	@State private var watchConnector: WatchToiOSConnector = WatchToiOSConnector()
+	@State private var networkManager: NetworkManager = NetworkManager()
 
     // SwiftData Container
     let container: ModelContainer = {
@@ -30,24 +31,21 @@ struct ClimateClock_Watch_App: App {
                 .environment(client)
 				.environment(localNotificationManager)
 				.environment(watchConnector)
+				.environment(networkManager)
                 .onAppear {
                     if firstLaunch {
 						firstLaunch = false
 						localNotificationManager.setDefaultSchedulingPreferences()
                     }
-					Task {
-						let context: ModelContext = .init(container)
-						if let data = await client.getDataFromClimateClockAPI(context: context) {
-							await localNotificationManager.saveNewsNotifications(news: data, context: context)
-						}
-					}
                 }
         }
         .modelContainer(container)
         .backgroundTask(.appRefresh("updateClockData")) { _ in
             let context: ModelContext = .init(container)
-			if let data = await client.getDataFromClimateClockAPI(context: context) {
-				await localNotificationManager.saveNewsNotifications(news: data, context: context)
+			if let data = await client.getDataFromClimateClockAPI(context: context,
+																  networkManager: networkManager) {
+				await localNotificationManager.saveNewsNotifications(news: data, 
+																	 context: context)
 			}
         }
     }

@@ -80,6 +80,8 @@ struct DeadlineView: View {
 		let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
 		let todayTimer = Calendar.current.date(from: todayTimerComponents)!
 		
+		let isTomorrow = todayTimer < Date()
+		
 		GeometryReader { proxy in
 			
 			let relativeTextSize = proxy.size.width / 4.5
@@ -114,7 +116,7 @@ struct DeadlineView: View {
 					
 				}
 				.shadow(color: .deadlineForeground1.opacity(0.6), radius: 2)
-				Text(todayTimer > Date() ? tomorrowTimer : todayTimer, style: .timer)
+				Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
 					.font(
 						.custom("Oswald", size: relativeTextSize)
 						.weight(.light)

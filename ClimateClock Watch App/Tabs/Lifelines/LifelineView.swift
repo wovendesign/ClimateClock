@@ -28,6 +28,7 @@ enum LifeLineLoadingState {
 
 struct LifelineView: View {
 	@Environment(Client.self) var client: Client
+	@Environment(NetworkManager.self) var networkManager: NetworkManager
 	@Environment(\.modelContext) var modelContext
 	@Query(sort: \LifeLine.order) var lifeLines: [LifeLine]
 
@@ -65,7 +66,7 @@ struct LifelineView: View {
 					.onAppear {
 						Task {
 							do {
-								let result = try await NetworkManager.shared.getClimateClockData()
+								let result = try await networkManager.getClimateClockData()
 
 								switch result {
 								case let .success(data):
@@ -85,6 +86,7 @@ struct LifelineView: View {
 									loadingState = .done
 
 								case let .failure(error):
+									if (loadingState == .done) { return }
 									switch error {
 									case .invalidURL:
 										print("Invalid URL")
@@ -100,12 +102,13 @@ struct LifelineView: View {
 
 									case .unableToComplete:
 										print("unableToComplete")
-										errorMessage = "Unable to complete"
+										errorMessage = "Couldn’t get LifeLines. Make sure your Watch is connected to your phone."
 									}
 									loadingState = .error
 								}
 							}
 							catch {
+								if (loadingState == .done) { return }
 								errorMessage = error.localizedDescription
 								loadingState = .error
 							}

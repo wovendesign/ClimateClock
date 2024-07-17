@@ -14,6 +14,7 @@ enum Page {
 
 struct ContentView: View {
     @Environment(Client.self) var client
+	@Environment(NetworkManager.self) var networkManager
 	@Environment(LocalNotificationManager.self) var localNotificationManager
     @Environment(\.modelContext) var context
 	
@@ -58,7 +59,8 @@ struct ContentView: View {
 		}
 		.onAppear {
 			Task {
-				if let data = await client.getDataFromClimateClockAPI(context: context) {
+				if let data = await client.getDataFromClimateClockAPI(context: context,
+																	  networkManager: networkManager) {
 					await localNotificationManager.saveNewsNotifications(news: data, context: context)
 				}
 				

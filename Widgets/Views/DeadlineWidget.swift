@@ -31,13 +31,21 @@ struct DeadlineProvider: TimelineProvider {
 		let date = Date()
 		
 		let entry = DeadlineEntry(date: date, deadline:"2029-07-22T16:00:00+00:00")
-		let deadline = parseDateString("2029-07-22T16:00:00+00:00")
+		let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+		let deadline = Calendar.current.dateComponents([.hour, .minute], from: parseDateString(entry.deadline)!)
+		let todayTimerComponents = DateComponents(
+			year: todayComponents.year ?? 0,
+			month: todayComponents.month ?? 0,
+			day: todayComponents.day,
+			hour: deadline.hour,
+			minute: deadline.minute
+		)
 		
 		// Create a date that's 15 minutes in the future.
 		let fallbackUpdateDate = Calendar.current.date(byAdding: .minute, value: 30, to: date)!
 		
 		// Create the timeline with the entry and a reload policy with the date for the next update.
-		let timeline = Timeline(entries: [entry], policy: .after(deadline ?? fallbackUpdateDate))
+		let timeline = Timeline(entries: [entry], policy: .after(todayTimerComponents.date ?? fallbackUpdateDate))
 		
 		// Call the completion to pass the timeline to WidgetKit.
 		completion(timeline)
@@ -117,8 +125,8 @@ struct Deadline_ComplicationEntryView : View {
 		)
 		
 		let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
-		let isTomorrow = Calendar.current.isDateInToday(tomorrowTimer)
 		let todayTimer = Calendar.current.date(from: todayTimerComponents)!
+		let isTomorrow = todayTimer < Date()
 		
 		VStack(alignment: .leading) {
 			VStack(alignment: .center) {

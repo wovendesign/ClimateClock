@@ -14,6 +14,11 @@ struct SelectedNews: Equatable {
 	let url: URL
 }
 
+enum NewsLoadingState {
+	case loading, error, done
+}
+
+
 struct NewsView: View {
 	static var now: Date { Date.now }
 	
@@ -23,13 +28,52 @@ struct NewsView: View {
 	var news: [NewsItem]
 	
 	@Environment(Client.self) var client: Client
+	@Environment(\.modelContext) var modelContext
 	@Environment(LocalNotificationManager.self) var localNotificationManager: LocalNotificationManager
+	@Environment(NetworkManager.self) var networkManager: NetworkManager
 	@State var sheetOpen = false
 	@State var selectedNews: SelectedNews?
+	@State var loadingState: NewsLoadingState = .loading
+	@State var errorMessage: String = ""
 	
 	var body: some View {
-		List(news) { item in
-			NewsListItem(newsItem: item, selectedNews: $selectedNews)
+		ZStack {
+			switch loadingState {
+			case .loading:
+				ProgressView()
+					.onAppear{
+						Task {
+							do {
+								let result = try await networkManager.getClimateClockData()
+								
+								switch result {
+								case .success(let success):
+									await localNotificationManager.saveNewsNotifications(news: success.newsfeed_1.newsfeed,
+																				 context: modelContext)
+								case .failure(let failure):
+									errorMessage = failure.localizedDescription
+									loadingState = .error
+								}
+							} catch {
+								errorMessage = error.localizedDescription
+								loadingState = .error
+							}
+						}
+					}
+			case .error:
+				VStack {
+					Text(errorMessage)
+					Button {
+						loadingState = .loading
+					} label: {
+						Text("Retry")
+					}
+				}
+			case .done:
+				List(news) { item in
+					NewsListItem(newsItem: item, selectedNews: $selectedNews)
+				}
+			}
 		}
 		.padding(.horizontal, 4)
 		.containerBackground(.lime.gradient, for: .navigation)
@@ -69,6 +113,9 @@ struct NewsView: View {
 			}
 		})
 		.onAppear {
+			if (news.count > 0) {
+				loadingState = .done
+			}
 			Task {
 				await localNotificationManager.getCurrentSettings()
 			}
