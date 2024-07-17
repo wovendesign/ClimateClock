@@ -20,22 +20,22 @@ import UserNotifications
                 // Saving LifeLines
 //                context.insert(moduleToLifeline(module: data.data.modules._youth_anxiety,
 //                                                type: .youth))
-                context.insert(moduleToLifeline(module: data.data.modules.ff_divestment_stand_dot_earth,
+                context.insert(moduleToLifeline(module: data.ff_divestment_stand_dot_earth,
                                                 type: .divestment))
-                context.insert(moduleToLifeline(module: data.data.modules.indigenous_land_1,
+                context.insert(moduleToLifeline(module: data.indigenous_land_1,
                                                 type: .indigenous))
-//                context.insert(moduleToLifeline(module: data.data.modules.loss_damage_g20_debt,
+//                context.insert(moduleToLifeline(module: data.loss_damage_g20_debt,
 //                                                type: .g20))
-                context.insert(moduleToLifeline(module: data.data.modules.loss_damage_g7_debt,
+                context.insert(moduleToLifeline(module: data.loss_damage_g7_debt,
                                                 type: .g7))
-                context.insert(moduleToLifeline(module: data.data.modules.regen_agriculture,
+                context.insert(moduleToLifeline(module: data.regen_agriculture,
                                                 type: .agriculture))
-                context.insert(moduleToLifeline(module: data.data.modules.renewables_1,
+                context.insert(moduleToLifeline(module: data.renewables_1,
                                                 type: .renewables))
-                context.insert(moduleToLifeline(module: data.data.modules.women_in_parliaments,
+                context.insert(moduleToLifeline(module: data.women_in_parliaments,
                                                 type: .women))
-				
-				return data.data.modules.newsfeed_1.newsfeed
+
+				return data.newsfeed_1.newsfeed
 
             case let .failure(error):
                 switch error {

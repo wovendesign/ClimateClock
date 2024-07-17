@@ -16,7 +16,7 @@ final class NetworkManager {
 
     private init() {}
 
-    func getClimateClockData() async throws -> Result<ClimateClockResponse, CCError> {
+    func getClimateClockData() async throws -> Result<ClimateClockData, CCError> {
         guard let url = URL(string: clockDataURL) else {
             return .failure(.invalidURL)
         }
@@ -26,7 +26,7 @@ final class NetworkManager {
         do {
             let decoder = JSONDecoder()
             let decodedResponse = try decoder.decode(ClimateClockResponse.self, from: task)
-            return .success(decodedResponse)
+			return .success(decodedResponse.data.modules)
         } catch {
             print(error)
             return .failure(.invalidData)
