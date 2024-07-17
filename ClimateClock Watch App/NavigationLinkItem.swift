@@ -86,6 +86,7 @@ struct NavigationLinkItem: View {
 								.applyHeadlineStyle(.Section)
 								.monospacedDigit()
 								.padding(.leading, 4)
+								.lineLimit(1)
 							
 						}
 					}

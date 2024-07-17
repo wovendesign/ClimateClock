@@ -117,6 +117,7 @@ struct DeadlineView: View {
 				}
 				.shadow(color: .deadlineForeground1.opacity(0.6), radius: 2)
 				Text(isTomorrow ? tomorrowTimer : todayTimer, style: .timer)
+					.allowsTightening(true)
 					.font(
 						.custom("Oswald", size: relativeTextSize)
 						.weight(.light)
