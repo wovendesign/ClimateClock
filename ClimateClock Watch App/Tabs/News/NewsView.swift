@@ -36,6 +36,8 @@ struct NewsView: View {
 	@State var loadingState: NewsLoadingState = .loading
 	@State var errorMessage: String = ""
 	
+	var newsIdFromNotification: String?
+	
 	var body: some View {
 		ZStack {
 			switch loadingState {
@@ -113,6 +115,15 @@ struct NewsView: View {
 			}
 		})
 		.onAppear {
+			if let newsToShow = newsIdFromNotification {
+				let news = news.first { newsItem in
+					newsItem.headline == newsToShow
+				}
+				if let news = news, let link = news.link, let url = URL(string: link) {
+					selectedNews = SelectedNews(newsItem: news, url: url)
+					sheetOpen = true
+				}
+			}
 			if (news.count > 0) {
 				loadingState = .done
 			}

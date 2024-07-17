@@ -23,6 +23,18 @@ struct ContentView: View {
 	
     var body: some View {
 		NavigationStack(path: $path) {
+			Button {
+				Task {
+					await localNotificationManager.schedule(localNotification: LocalNotification(identifier: UUID().uuidString,
+																								 title: "There is hope",
+																								 userInfo: ["view": "newsView", "newsId": "China is building 2/3 of new wind & solar globally"],
+																								 body: "China is building 2/3 of new wind & solar globally",
+																								 timeInterval: 5,
+																								 repeats: false))
+				}
+			} label: {
+				Text("send notification")
+			}
 			List(pages, id:  \.self) { page in
 				NavigationLinkItem(page: page)
 			}
@@ -40,7 +52,7 @@ struct ContentView: View {
 			.navigationDestination(for: Page.self) { page in
 				switch (page) {
 				case .news:
-					NewsView()
+					NewsView(newsIdFromNotification: nil)
 				case .lifeline:
 					LifelineView()
 				case .action:
@@ -49,15 +61,27 @@ struct ContentView: View {
 					DeadlineView()
 				}
 			}
-			.navigationDestination(for: String.self) { textValue in
-				if (textValue == "notificationSettings") {
+			.navigationDestination(for: NavigationData.self) { navData in
+				if (navData.view == "notificationSettings") {
 					NotificationSettings()
-				} else if (textValue == "aboutView") {
+				} else if (navData.view == "aboutView") {
 					AboutView()
+				} else if (navData.view == "newsView") {
+					NewsView(newsIdFromNotification: navData.newsId)
 				}
 			}
 		}
 		.onAppear {
+			NotificationCenter.default.addObserver(forName: Notification.Name("NavigateToView"), object: nil, queue: .main) { notification in
+				print("Recieved Navigation Request to")
+				if let navData = notification.object as? NavigationData {
+					path.append(navData)
+				}
+				if let view = notification.object as? String {
+					print("view \(view)")
+					path.append(view)
+				}
+			}
 			Task {
 				if let data = await client.getDataFromClimateClockAPI(context: context,
 																	  networkManager: networkManager) {

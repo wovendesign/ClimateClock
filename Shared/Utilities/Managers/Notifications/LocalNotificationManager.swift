@@ -10,8 +10,14 @@ import Foundation
 import UserNotifications
 import SwiftData
 
+struct NavigationData: Hashable {
+	let view: String
+	let newsId: String?
+}
+
 @Observable
 public final class LocalNotificationManager: NSObject {
+	let notificationCenter = UNUserNotificationCenter.current()
 	var notificationPermissionGranted: Bool = false
 	var pendingRequests: [UNNotificationRequest] = []
 	
@@ -40,26 +46,38 @@ public final class LocalNotificationManager: NSObject {
 	
 	func schedule(localNotification: LocalNotification) async {
 		let content = UNMutableNotificationContent()
-
 		content.title = localNotification.title
 		content.body = localNotification.body
-		content.sound = .default
+		if let subtitle = localNotification.subtitle {
+			content.subtitle = subtitle
+		}
+		if let bundleImageName = localNotification.bundleImageName {
+			if let url = Bundle.main.url(forResource: bundleImageName, withExtension: "") {
+				if let attachment = try? UNNotificationAttachment(identifier: bundleImageName, url: url) {
+					content.attachments = [attachment]
+				}
+			}
+		}
+		if let userInfo = localNotification.userInfo {
+			content.userInfo = userInfo
+		}
+		if let categoryIdentifier = localNotification.categoryIdentifier {
+			content.categoryIdentifier = categoryIdentifier
+		}
 		
+		content.sound = .default
 		if localNotification.scheduleType == .time {
-			guard let timeInterval = localNotification.timeInterval else { return }
-			let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: localNotification.repeats)
-			
+		guard let timeInterval = localNotification.timeInterval else { return }
+		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval,
+														repeats: localNotification.repeats)
 			let request = UNNotificationRequest(identifier: localNotification.identifier, content: content, trigger: trigger)
-			try? await UNUserNotificationCenter.current().add(request)
+			try? await notificationCenter.add(request)
 		} else {
 			guard let dateComponents = localNotification.dateComponents else { return }
 			let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: localNotification.repeats)
-			
 			let request = UNNotificationRequest(identifier: localNotification.identifier, content: content, trigger: trigger)
-			try? await UNUserNotificationCenter.current().add(request)
+			try? await notificationCenter.add(request)
 		}
-		
-		
 		await getPendingRequests()
 	}
 	
@@ -130,13 +148,11 @@ public final class LocalNotificationManager: NSObject {
 		
 		let notification = LocalNotification(identifier: news.headline,
 											 title: "There is hope!",
+											 userInfo: ["view": "news", "id": news.headline],
 											 body: news.headline,
 											 dateComponents: scheduleDateComponents,
 											 repeats: false)
 
-		//		print("Scheduled \(news.headline) for \(scheduleDateComponents)")
-
-//        scheduleNotification(news: news, triggerTime: scheduleDateComponents)
 		await schedule(localNotification: notification)
 	}
 
@@ -199,10 +215,76 @@ public final class LocalNotificationManager: NSObject {
 }
 
 extension LocalNotificationManager: UNUserNotificationCenterDelegate {
-	// Delegate
+   
+	func registerActions() {
+		let snooze10Action = UNNotificationAction(identifier: "snooze10", title: "Snooze 10 seconds")
+		let snooze60Action = UNNotificationAction(identifier: "snooze60", title: "Snooze 60 seconds")
+		let snoozeCategory = UNNotificationCategory(identifier: "snooze",
+													actions: [snooze10Action, snooze60Action],
+													intentIdentifiers: [])
+		notificationCenter.setNotificationCategories([snoozeCategory])
+	}
+	
 	public func userNotificationCenter(_ center: UNUserNotificationCenter,
 								willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
 		await getPendingRequests()
-		return [.badge]
+		return [.sound, .banner]
+	}
+	
+	@MainActor
+	public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+		print("clicked on notification: \(response.notification.request.content.userInfo)")
+		if let view = response.notification.request.content.userInfo["view"] as? String, let newsId = response.notification.request.content.userInfo["newsId"] as? String {
+
+			// Navigate to the specific view
+			NotificationCenter.default.post(name: Notification.Name("NavigateToView"), object: NavigationData(view: view, newsId: newsId))
+		}
+		
+		// Respond to snooze action
+		var snoozeInterval: Double?
+		if response.actionIdentifier == "snooze10" {
+			snoozeInterval = 10
+		} else {
+			if response.actionIdentifier == "snooze60" {
+				snoozeInterval = 60
+			}
+		}
+		
+		if let snoozeInterval = snoozeInterval {
+			let content = response.notification.request.content
+			let newContent = content.mutableCopy() as! UNMutableNotificationContent
+			let newTrigger = UNTimeIntervalNotificationTrigger(timeInterval: snoozeInterval, repeats: false)
+			let request = UNNotificationRequest(identifier: UUID().uuidString,
+												content: newContent,
+												trigger: newTrigger)
+			do {
+				try await notificationCenter.add(request)
+			} catch {
+				print(error.localizedDescription)
+			}
+			
+			await getPendingRequests()
+		}
 	}
 }
+
+//extension LocalNotificationManager: UNUserNotificationCenterDelegate {
+//	// Delegate
+//	public func userNotificationCenter(_ center: UNUserNotificationCenter,
+//								willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
+//		await getPendingRequests()
+//		return [.badge]
+//	}
+//	
+//	public func userNotificationCenter(_ center: UNUserNotificationCenter, 
+//									   didReceive response: UNNotificationResponse,
+//									   withCompletionHandler completionHandler: @escaping () -> Void) {
+//		let userInfo = response.notification.request.content.userInfo
+//		if let view = userInfo["view"] as? String {
+//			// Navigate to the specific view
+//			print("navigating to \(view)")
+//			NotificationCenter.default.post(name: Notification.Name("NavigateToView"), object: view)
+//		}
+//		completionHandler()
+//	}
+//}
