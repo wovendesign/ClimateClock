@@ -135,12 +135,11 @@ struct DeadlineView: View {
 					.padding(.top, -relativeTextSize/3)
 					.shadow(color: .deadlineForeground1.opacity(0.6), radius: 2)
 				
-				Text("Time left to limit global warming to 1.5°c")
+				Text("Time left to limit global warming to 1.5° C")
 					.applyTextStyle(.Label)
-					.lineLimit(2)
 					.padding(.top, relativeTextSize/6)
 					.foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
-					.frame(width: 153, alignment: .leading)
+					.frame(width: 153, height: 40, alignment: .leading)
 			}
 			.padding(.leading, 10)
 			.containerBackground(

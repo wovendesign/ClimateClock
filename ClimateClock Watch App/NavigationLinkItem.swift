@@ -100,7 +100,7 @@ struct NavigationLinkItem: View {
 						)
 						.lineLimit(3)
 						.multilineTextAlignment(.leading)
-						.environment(\._lineHeightMultiple, 0.75)
+						.environment(\._lineHeightMultiple, 0.8)
 				}
 			}
 		}
@@ -138,7 +138,7 @@ struct NavigationLinkItem: View {
                 endPoint: .bottom)
 			self.title = "Lifelines"
 			self.secondaryTitle = nil
-			self.description = "Follow real-time progress on key climate solutions"
+			self.description = "Real-time progress on key climate solutions"
 			self.icon = "lifeline"
 		case .news:
             self.foregroundColor = Color(red: 224/255, green: 241/255, blue: 111/255)
@@ -151,7 +151,7 @@ struct NavigationLinkItem: View {
                 endPoint: .bottom)
 			self.title = "Newsfeed of Hope"
 			self.secondaryTitle = nil
-			self.description = "Daily newsfeed of climate victories."
+			self.description = "Daily newsfeed of climate victories"
 			self.icon = "news"
 		case .deadline:
 			self.foregroundColor = Color(red: 255/255, green: 107/255, blue: 107/255)

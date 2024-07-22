@@ -80,7 +80,7 @@ import UserNotifications
             case .renewables: return "100% by 2030"
             case .women: return "50% gender parity"
 			case .indigenous: return "Protect ALL Indigenous Land"
-			case .divestment: return "Defund Fossile Fule Industry"
+			case .divestment: return "Defund Fossile Fuel Industry"
 			case .agriculture: return "Rapidly scale up regenerative practices"
 			case .g7: return "Full climate reparations"
             default:

@@ -36,7 +36,7 @@ struct RelativeTimeCell: View {
 									  bottom: 0,
 									  trailing: 0)
 				)
-				.foregroundStyle(today ? .black : .gray)
+				.foregroundStyle(today ? .black : .newsFg1)
 				.background(today ? .newsFg1 : .clear)
                 .clipShape(RoundedRectangle(cornerRadius: today ? 24 : 0))
 				.onAppear {
