@@ -148,7 +148,7 @@ public final class LocalNotificationManager: NSObject {
 		
 		let notification = LocalNotification(identifier: news.headline,
 											 title: "There is hope!",
-											 userInfo: ["view": "news", "id": news.headline],
+											 userInfo: ["newsView": "news", "newsId": news.headline],
 											 body: news.headline,
 											 dateComponents: scheduleDateComponents,
 											 repeats: false)

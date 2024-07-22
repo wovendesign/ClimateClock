@@ -52,6 +52,7 @@ func diff(deadline: String) -> DeadlineContent {
 }
 
 struct DeadlineView: View {
+	@State var isTomorrow = false
 	
 	let entry = DeadlineEntry(date: Date(), deadline:"2029-07-22T16:00:00+00:00")
 	
@@ -80,8 +81,6 @@ struct DeadlineView: View {
 		let tomorrowTimer = Calendar.current.date(from: tomorrowTimerComponents)!
 		let todayTimer = Calendar.current.date(from: todayTimerComponents)!
 		
-		let isTomorrow = todayTimer < Date()
-		
 		GeometryReader { proxy in
 			
 			let relativeTextSize = proxy.size.width / 4.5
@@ -108,6 +107,9 @@ struct DeadlineView: View {
 						.foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
 						.monospacedDigit()
 						.padding(.leading, 6)
+						.contentTransition (
+							.numericText(value: Double(diff(deadline: entry.deadline).days))
+						)
 					Text("DAYS")
 						.applyTextStyle(.Label_Emphasized)
 						.foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
@@ -127,6 +129,7 @@ struct DeadlineView: View {
 					.foregroundColor(Color(red: 0.99, green: 0.27, blue: 0.27))
 					.monospacedDigit()
 					.contentTransition(
+						
 						.numericText(countsDown: true)
 					)
 					.padding(.top, -relativeTextSize/3)
@@ -149,7 +152,19 @@ struct DeadlineView: View {
 					startPoint: .bottom,
 					endPoint: .top),
 				for: .navigation)
+			.onAppear {
+				updateIsTomorrow(todayTimer: todayTimer)
+				Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+					withAnimation {
+						updateIsTomorrow(todayTimer: todayTimer)
+					}
+				}
+			}
 		}
+	}
+	
+	private func updateIsTomorrow(todayTimer: Date) {
+		isTomorrow = todayTimer < Date()
 	}
 }
 

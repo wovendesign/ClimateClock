@@ -23,18 +23,6 @@ struct ContentView: View {
 	
     var body: some View {
 		NavigationStack(path: $path) {
-			Button {
-				Task {
-					await localNotificationManager.schedule(localNotification: LocalNotification(identifier: UUID().uuidString,
-																								 title: "There is hope",
-																								 userInfo: ["view": "newsView", "newsId": "China is building 2/3 of new wind & solar globally"],
-																								 body: "China is building 2/3 of new wind & solar globally",
-																								 timeInterval: 5,
-																								 repeats: false))
-				}
-			} label: {
-				Text("send notification")
-			}
 			List(pages, id:  \.self) { page in
 				NavigationLinkItem(page: page)
 			}
@@ -42,7 +30,7 @@ struct ContentView: View {
 			.navigationTitle("Climate Clock")
 			.toolbar {
 				ToolbarItem(placement: .topBarLeading) {
-					NavigationLink(value: "aboutView") {
+					NavigationLink(value: NavigationData(view: "aboutView", newsId: nil)) {
 						Image("climate_icon")
 							.resizable()
 							.frame(width: 16, height: 16)
